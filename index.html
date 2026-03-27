@@ -5,199 +5,197 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dashboard Proviseur · Lycée Benoit Fourneyron</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --ivoire: #F5F2EA;
-  --ivoire2: #EDE9DE;
-  --ivoire3: #E4DFD1;
-  --sidebar-bg: #1C1F2E;
-  --sidebar2: #242839;
-  --navy: #1A2C5B;
-  --navy-l: #EEF1F8;
-  --navy-m: #C5CDE4;
-  --text: #1A1814;
-  --text2: #5C584E;
-  --text3: #9E9A8E;
-  --green: #1D6B4E;
-  --green-l: #EAF3EE;
-  --amber: #A06820;
-  --amber-l: #FBF0E2;
-  --red: #A03020;
-  --red-l: #FAE8E5;
-  --border: #DDD9CC;
-  --border2: #CECA BB;
-  --r: 6px;
-  --rl: 10px;
-  --shadow: 0 1px 3px rgba(26,20,14,.06), 0 4px 16px rgba(26,20,14,.04);
+  --bg:        #F5F2EA;
+  --bg2:       #EDEAD E;
+  --surface:   #FFFFFF;
+  --border:    #E2DDD4;
+  --navy:      #1A2C5B;
+  --navy-l:    #EEF1F8;
+  --navy-m:    #6B84C4;
+  --text:      #111111;
+  --text2:     #555555;
+  --text3:     #999999;
+  --green:     #16A368;
+  --green-l:   #E6F7F0;
+  --amber:     #D97706;
+  --amber-l:   #FEF3E2;
+  --red:       #DC2626;
+  --red-l:     #FEE2E2;
+  --sidebar:   #111827;
+  --r:         10px;
+  --rl:        14px;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
-body{font-family:'DM Sans',sans-serif;background:var(--ivoire);color:var(--text);min-height:100vh;font-size:14px;line-height:1.65;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;font-size:14px;line-height:1.6;}
 
 /* ── SHELL ── */
-.shell{display:grid;grid-template-columns:260px 1fr;min-height:100vh;}
+.shell{display:grid;grid-template-columns:240px 1fr;min-height:100vh;}
 
 /* ── SIDEBAR ── */
-.sidebar{background:var(--sidebar-bg);padding:2.5rem 2rem;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;}
-.sb-eyebrow{font-size:9px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.5rem;}
-.sb-name{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:500;color:#fff;line-height:1.2;margin-bottom:.2rem;font-style:italic;}
-.sb-city{font-size:11px;color:rgba(255,255,255,.3);margin-bottom:2.5rem;}
-.sb-line{height:1px;background:rgba(255,255,255,.08);margin-bottom:2rem;}
-.nav-item{display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:var(--r);cursor:pointer;transition:all .18s;font-size:13px;font-weight:400;color:rgba(255,255,255,.4);margin-bottom:4px;letter-spacing:.01em;}
-.nav-item:hover{color:rgba(255,255,255,.75);background:rgba(255,255,255,.05);}
-.nav-item.active{color:#fff;background:rgba(255,255,255,.1);font-weight:500;}
-.nav-item.active .nav-marker{opacity:1;}
-.nav-marker{width:2px;height:14px;background:var(--navy-m);border-radius:1px;opacity:0;transition:opacity .2s;flex-shrink:0;}
-.nav-label-txt{flex:1;}
-.nav-alert-dot{width:7px;height:7px;border-radius:50%;background:var(--red);display:none;animation:blink 1.5s infinite;}
-@keyframes blink{0%,100%{opacity:1;}50%{opacity:.4;}}
+.sidebar{background:var(--sidebar);padding:2rem 1.5rem;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;overflow:hidden;}
+.sb-logo{display:flex;align-items:center;gap:10px;margin-bottom:2rem;}
+.sb-logo-mark{width:36px;height:36px;border-radius:8px;background:var(--navy);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:#fff;flex-shrink:0;letter-spacing:-.5px;}
+.sb-logo-name{font-size:13px;font-weight:700;color:#fff;line-height:1.2;}
+.sb-logo-sub{font-size:10px;color:rgba(255,255,255,.3);margin-top:1px;}
+.sb-divider{height:1px;background:rgba(255,255,255,.08);margin-bottom:1.5rem;}
+.sb-section-label{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:.75rem;padding-left:10px;}
+.nav-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:8px;cursor:pointer;transition:all .15s;font-size:13px;font-weight:500;color:rgba(255,255,255,.45);margin-bottom:2px;}
+.nav-item:hover{color:rgba(255,255,255,.8);background:rgba(255,255,255,.06);}
+.nav-item.active{color:#fff;background:rgba(255,255,255,.1);}
+.nav-item-icon{font-size:15px;width:20px;text-align:center;flex-shrink:0;}
+.nav-alert-dot{width:6px;height:6px;border-radius:50%;background:var(--red);display:none;margin-left:auto;animation:blink 1.5s infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:.3;}}
 .sb-footer{margin-top:auto;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.07);}
-.sb-sync{display:flex;align-items:center;gap:8px;margin-bottom:1rem;}
+.sb-sync{display:flex;align-items:center;gap:7px;margin-bottom:.875rem;}
 .sync-dot{width:6px;height:6px;border-radius:50%;}
-.sync-dot.live{background:#4CAF7D;animation:pulse 2s infinite;}
-.sync-dot.loading{background:#E6A800;animation:pulse .7s infinite;}
+.sync-dot.live{background:#22C55E;animation:pulse 2s infinite;}
+.sync-dot.loading{background:#F59E0B;animation:pulse .6s infinite;}
 .sync-dot.error{background:var(--red);}
-@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.25;}}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.2;}}
 .sync-txt{font-size:10px;color:rgba(255,255,255,.28);font-family:'DM Mono',monospace;}
 .sb-user{display:flex;align-items:center;gap:10px;}
-.sb-av{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:rgba(255,255,255,.5);flex-shrink:0;border:1px solid rgba(255,255,255,.1);}
-.sb-uname{font-size:12px;font-weight:500;color:rgba(255,255,255,.7);}
-.sb-urole{font-size:11px;color:rgba(255,255,255,.28);}
+.sb-av{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:rgba(255,255,255,.6);flex-shrink:0;}
+.sb-uname{font-size:12px;font-weight:600;color:rgba(255,255,255,.75);}
+.sb-urole{font-size:10px;color:rgba(255,255,255,.28);}
 
 /* ── MAIN ── */
-.main{padding:3rem 3.5rem;min-height:100vh;}
+.main{padding:2.5rem 3rem;overflow-y:auto;}
 
 /* ── TOPBAR ── */
-.topbar{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:3rem;padding-bottom:2rem;border-bottom:1px solid var(--border);}
-.topbar-left{}
-.topbar-eyebrow{font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--text3);margin-bottom:.6rem;}
-.topbar-title{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:400;color:var(--text);line-height:1;letter-spacing:-.5px;}
-.topbar-title em{font-style:italic;color:var(--navy);}
-.btn-refresh{background:transparent;border:1px solid var(--border2);color:var(--text3);padding:8px 18px;border-radius:var(--r);font-family:'DM Sans',sans-serif;font-size:12px;cursor:pointer;transition:all .15s;letter-spacing:.02em;}
-.btn-refresh:hover{border-color:var(--text3);color:var(--text2);}
+.topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:2.5rem;}
+.topbar-title{font-size:22px;font-weight:800;color:var(--text);letter-spacing:-.5px;}
+.topbar-sub{font-size:13px;color:var(--text3);margin-top:2px;}
+.btn-refresh{background:var(--surface);border:1px solid var(--border);color:var(--text2);padding:8px 16px;border-radius:var(--r);font-family:'Inter',sans-serif;font-size:12px;font-weight:500;cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:6px;}
+.btn-refresh:hover{border-color:var(--navy);color:var(--navy);}
 
 /* ── ALERT BANNER ── */
-.alert-banner{display:none;border-left:3px solid var(--red);background:var(--red-l);padding:14px 20px;border-radius:0 var(--r) var(--r) 0;margin-bottom:2.5rem;cursor:pointer;transition:background .15s;}
-.alert-banner:hover{background:#f5deda;}
-.ab-inner{display:flex;align-items:center;gap:14px;}
-.ab-icon{width:8px;height:8px;border-radius:50%;background:var(--red);flex-shrink:0;animation:blink 1s infinite;}
-.ab-text{font-size:13px;font-weight:500;color:var(--red);flex:1;}
-.ab-sub{font-size:12px;color:#8a3025;margin-top:2px;}
+.alert-banner{display:none;background:var(--red-l);border:1px solid rgba(220,38,38,.2);border-left:3px solid var(--red);border-radius:0 var(--r) var(--r) 0;padding:12px 16px;margin-bottom:2rem;}
+.ab-inner{display:flex;align-items:center;gap:10px;}
+.ab-icon{width:7px;height:7px;border-radius:50%;background:var(--red);flex-shrink:0;animation:blink 1s infinite;}
+.ab-text{font-size:13px;font-weight:600;color:var(--red);}
+.ab-sub{font-size:11px;color:#B91C1C;margin-top:1px;}
 
 /* ── SECTIONS ── */
-.section{display:none;animation:sectionIn .3s ease;}
+.section{display:none;animation:fadeIn .25s ease;}
 .section.active{display:block;}
-@keyframes sectionIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
 
-/* ── HERO ── */
-.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;margin-bottom:2rem;box-shadow:var(--shadow);}
-.hero-cell{background:var(--ivoire);padding:2.5rem 3rem;position:relative;}
-.hero-cell:first-child{border-right:none;}
-.hero-eyebrow{font-size:9px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--text3);margin-bottom:1.25rem;display:flex;align-items:center;gap:8px;}
-.hero-eyebrow::before{content:'';width:20px;height:1px;background:var(--text3);}
-.hero-number{font-family:'Cormorant Garamond',serif;font-size:72px;font-weight:300;line-height:.9;letter-spacing:-3px;margin-bottom:1rem;}
-.hero-cell.engagement .hero-number{color:var(--navy);}
-.hero-cell.qualite .hero-number{color:var(--navy);}
-.hero-desc{font-size:13px;color:var(--text2);line-height:1.6;max-width:280px;}
-.hero-tag{display:inline-flex;align-items:center;gap:6px;margin-top:1.25rem;font-size:11px;font-weight:500;color:var(--text3);background:var(--ivoire2);padding:5px 12px;border-radius:20px;border:1px solid var(--border);}
-.hero-tag.positive{color:var(--green);background:var(--green-l);border-color:rgba(29,107,78,.15);}
+/* ── KPI STRIP ── */
+.kpi-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;margin-bottom:2rem;box-shadow:0 1px 4px rgba(0,0,0,.05);}
+.kpi-cell{background:var(--surface);padding:1.5rem 1.75rem;}
+.kpi-val{font-size:40px;font-weight:900;color:var(--navy);line-height:1;letter-spacing:-2px;margin-bottom:4px;}
+.kpi-lbl{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text3);}
+.kpi-cell.green .kpi-val{color:var(--green);}
+.kpi-cell.red .kpi-val{color:var(--red);}
+.kpi-cell.amber .kpi-val{color:var(--amber);}
 
-/* ── GRAPH ── */
-.graph-wrap{background:var(--ivoire);border:1px solid var(--border);border-radius:var(--rl);padding:2rem 2.5rem;margin-bottom:2rem;box-shadow:var(--shadow);}
-.graph-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:1.75rem;}
-.graph-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;color:var(--text);}
-.graph-sub{font-size:11px;color:var(--text3);letter-spacing:.04em;}
-.graph-area{height:200px;position:relative;}
+/* ── CLASSES GRID ── */
+.classes-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;}
+.classes-title{font-size:16px;font-weight:700;color:var(--text);}
+.classes-sub{font-size:12px;color:var(--text3);margin-top:1px;}
+.classes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2rem;}
+
+/* ── CLASSE CARD ── */
+.classe-card{background:var(--navy);border:none;border-radius:var(--rl);padding:1.5rem;cursor:pointer;transition:all .18s;position:relative;overflow:hidden;}
+.classe-card::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.06) 0%,transparent 60%);pointer-events:none;}
+.classe-card:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(26,44,91,.35);}
+.classe-card.has-alert{background:linear-gradient(135deg,#7F1D1D 0%,#991B1B 100%);}
+.classe-card.ok{background:var(--navy);}
+.classe-card.pending{background:#2A3A6A;}
+.cc-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:1.1rem;}
+.cc-name{font-size:15px;font-weight:800;color:#fff;letter-spacing:-.3px;line-height:1.2;}
+.cc-type{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:3px;}
+.cc-badge{font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;white-space:nowrap;}
+.cc-badge-red{background:rgba(255,255,255,.15);color:#FCA5A5;}
+.cc-badge-green{background:rgba(22,163,104,.25);color:#6EE7B7;}
+.cc-badge-gray{background:rgba(255,255,255,.1);color:rgba(255,255,255,.5);}
+.cc-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.625rem;}
+.cc-stat{background:rgba(255,255,255,.1);border-radius:6px;padding:.625rem .75rem;}
+.cc-stat-val{font-size:24px;font-weight:900;color:#fff;line-height:1;letter-spacing:-1px;}
+.cc-stat-lbl{font-size:9px;font-weight:600;color:rgba(255,255,255,.5);margin-top:3px;letter-spacing:.04em;text-transform:uppercase;}
+.cc-stat.good .cc-stat-val{color:#6EE7B7;}
+.cc-stat.warn .cc-stat-val{color:#FCD34D;}
+.cc-stat.danger .cc-stat-val{color:#FCA5A5;}
+.cc-arrow{position:absolute;bottom:1.25rem;right:1.25rem;font-size:16px;color:rgba(255,255,255,.3);transition:all .18s;}
+.classe-card:hover .cc-arrow{color:rgba(255,255,255,.8);transform:translateX(3px);}
+
+/* ── DETAIL CLASSE ── */
+.detail-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem;}
+.back-btn{display:flex;align-items:center;gap:7px;font-size:13px;font-weight:500;color:var(--text3);cursor:pointer;background:none;border:none;font-family:'Inter',sans-serif;padding:0;transition:color .15s;}
+.back-btn:hover{color:var(--text);}
+.back-btn::before{content:'←';font-size:15px;}
+.detail-title{font-size:28px;font-weight:900;color:var(--text);letter-spacing:-.8px;}
+.detail-sub{font-size:13px;color:var(--text3);margin-top:3px;}
+
+.detail-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;margin-bottom:2rem;}
+.dkpi{background:var(--surface);padding:1.25rem 1.5rem;}
+.dkpi-val{font-size:36px;font-weight:900;color:var(--navy);line-height:1;letter-spacing:-1.5px;margin-bottom:3px;}
+.dkpi-lbl{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);}
 
 /* ── PANEL ── */
-.panel{background:var(--ivoire);border:1px solid var(--border);border-radius:var(--rl);padding:2rem 2.5rem;margin-bottom:2rem;box-shadow:var(--shadow);}
-.panel-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:1.5rem;padding-bottom:1.25rem;border-bottom:1px solid var(--border);}
-.panel-title{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;color:var(--text);}
-.panel-sub{font-size:11px;color:var(--text3);margin-top:3px;}
-.pbadge{font-size:11px;font-weight:500;padding:4px 12px;border-radius:20px;border:1px solid;}
-.pbadge-navy{background:var(--navy-l);color:var(--navy);border-color:var(--navy-m);}
-.pbadge-green{background:var(--green-l);color:var(--green);border-color:rgba(29,107,78,.2);}
-.pbadge-red{background:var(--red-l);color:var(--red);border-color:rgba(160,48,32,.2);}
-.pbadge-gray{background:var(--ivoire2);color:var(--text3);border-color:var(--border);}
+.panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);padding:1.5rem 1.75rem;margin-bottom:1.5rem;}
+.panel-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;padding-bottom:1rem;border-bottom:1px solid var(--border);}
+.panel-title{font-size:15px;font-weight:700;color:var(--text);}
+.panel-sub{font-size:11px;color:var(--text3);margin-top:2px;}
+.pbadge{font-size:10px;font-weight:600;padding:3px 10px;border-radius:20px;border:1px solid;}
+.pbadge-gray{background:var(--bg);color:var(--text3);border-color:var(--border);}
+.pbadge-green{background:var(--green-l);color:var(--green);border-color:rgba(22,163,104,.2);}
+.pbadge-red{background:var(--red-l);color:var(--red);border-color:rgba(220,38,38,.2);}
 
 /* ── TABLE ── */
 .table-wrap{overflow-x:auto;}
 table{width:100%;border-collapse:collapse;}
-th{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);padding:0 0 12px;text-align:left;border-bottom:1px solid var(--border);}
-td{padding:14px 0;font-size:13px;color:var(--text2);border-bottom:1px solid var(--ivoire2);vertical-align:middle;}
-th:not(:first-child),td:not(:first-child){padding-left:20px;}
+th{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);padding:0 0 10px;text-align:left;border-bottom:1px solid var(--border);}
+td{padding:13px 0;font-size:13px;color:var(--text2);border-bottom:1px solid #F0ECE4;vertical-align:middle;}
+th:not(:first-child),td:not(:first-child){padding-left:18px;}
 tr:last-child td{border-bottom:none;}
 tbody tr{cursor:pointer;transition:background .1s;}
-tbody tr:hover td{background:var(--ivoire2);}
-.td-name{color:var(--text);font-weight:500;font-size:14px;}
+tbody tr:hover td{background:#F8F5EF;}
+.td-name{color:var(--text);font-weight:600;font-size:14px;}
 .td-mono{font-family:'DM Mono',monospace;font-size:12px;}
-.td-arr{color:var(--text3);font-size:16px;text-align:right;padding-right:0!important;}
 
 /* ── PILLS ── */
-.pill{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:500;border:1px solid transparent;}
+.pill{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:20px;font-size:11px;font-weight:600;}
 .pill::before{content:'';width:4px;height:4px;border-radius:50%;flex-shrink:0;}
-.pill-green{background:var(--green-l);color:var(--green);border-color:rgba(29,107,78,.15);}
+.pill-green{background:var(--green-l);color:var(--green);}
 .pill-green::before{background:var(--green);}
-.pill-amber{background:var(--amber-l);color:var(--amber);border-color:rgba(160,104,32,.15);}
+.pill-amber{background:var(--amber-l);color:var(--amber);}
 .pill-amber::before{background:var(--amber);}
-.pill-red{background:var(--red-l);color:var(--red);border-color:rgba(160,48,32,.15);}
-.pill-red::before{background:var(--red);}
-.pill-navy{background:var(--navy-l);color:var(--navy);border-color:var(--navy-m);}
-.pill-navy::before{background:var(--navy);}
-.pill-gray{background:var(--ivoire2);color:var(--text3);border-color:var(--border);}
+.pill-red{background:var(--red-l);color:var(--red);}
+.pill-red::before{background:var(--red);animation:blink .8s infinite;}
+.pill-gray{background:var(--bg);color:var(--text3);}
 .pill-gray::before{background:var(--text3);}
 
-/* ── EMPTY ── */
-.empty{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:3rem;text-align:center;}
-.empty-ttl{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400;color:var(--text2);margin-bottom:.4rem;font-style:italic;}
-.empty-sub{font-size:12px;color:var(--text3);max-width:260px;line-height:1.6;}
-
-/* ── RANK ── */
-.rank-item{display:flex;align-items:center;gap:16px;padding:14px 0;border-bottom:1px solid var(--ivoire2);}
-.rank-item:last-child{border-bottom:none;}
-.rank-num{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:300;color:var(--text3);width:28px;text-align:center;flex-shrink:0;line-height:1;}
-.rank-num.top{color:var(--navy);}
-.rank-name{font-size:14px;font-weight:500;color:var(--text);flex:1;}
-.rank-bar-wrap{flex:2;height:3px;background:var(--ivoire3);border-radius:2px;overflow:hidden;}
-.rank-bar{height:100%;background:var(--navy);border-radius:2px;transition:width .8s cubic-bezier(.4,0,.2,1);}
-.rank-taux{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:var(--navy);min-width:52px;text-align:right;}
-
-/* ── BACK ── */
-.back-btn{display:inline-flex;align-items:center;gap:8px;font-size:12px;color:var(--text3);cursor:pointer;margin-bottom:2rem;background:none;border:none;font-family:'DM Sans',sans-serif;padding:0;letter-spacing:.04em;transition:color .15s;}
-.back-btn:hover{color:var(--text2);}
-.back-btn::before{content:'←';font-size:14px;}
-
-/* ── DETAIL KPIS ── */
-.detail-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;margin-bottom:2rem;}
-.dkpi{background:var(--ivoire);padding:1.5rem 2rem;}
-.dkpi-num{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:300;color:var(--navy);line-height:1;letter-spacing:-2px;margin-bottom:.3rem;}
-.dkpi-lbl{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);}
+/* ── LACUNE TAGS ── */
+.lacune-tag{display:inline-block;font-size:10px;font-weight:500;padding:2px 8px;border-radius:4px;background:var(--navy-l);color:var(--navy);margin:2px 2px 0 0;}
 
 /* ── FICHE ROW ── */
-.fiche-row{display:flex;align-items:center;justify-content:space-between;padding:13px 0;border-bottom:1px solid var(--ivoire2);}
+.fiche-row{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid #F0ECE4;}
 .fiche-row:last-child{border-bottom:none;}
-.fiche-name{font-size:13px;font-weight:500;color:var(--text);}
+.fiche-name{font-size:13px;font-weight:600;color:var(--text);}
 .fiche-meta{font-size:11px;color:var(--text3);margin-top:2px;}
-.fiche-score{font-family:'DM Mono',monospace;font-size:12px;color:var(--text2);}
 
-/* ── RING ── */
-.ring-wrap{display:flex;align-items:center;gap:3rem;padding:.5rem 0 1rem;}
-.ring-svg-wrap{position:relative;width:140px;height:140px;flex-shrink:0;}
+/* ── EMPTY ── */
+.empty{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2.5rem;text-align:center;}
+.empty-ttl{font-size:15px;font-weight:600;color:var(--text2);margin-bottom:.3rem;}
+.empty-sub{font-size:12px;color:var(--text3);max-width:240px;line-height:1.6;}
+
+/* ── EVAL ── */
+.ring-wrap{display:flex;align-items:center;gap:2.5rem;padding:.5rem 0 1rem;}
+.ring-svg-wrap{position:relative;width:130px;height:130px;flex-shrink:0;}
 .ring-svg-wrap svg{transform:rotate(-90deg);}
-.ring-bg{fill:none;stroke:var(--ivoire3);stroke-width:8;}
-.ring-fill{fill:none;stroke-width:8;stroke-linecap:butt;transition:stroke-dashoffset 1s cubic-bezier(.4,0,.2,1);}
+.ring-bg{fill:none;stroke:#E8E4DC;stroke-width:10;}
+.ring-fill{fill:none;stroke-width:10;stroke-linecap:butt;transition:stroke-dashoffset 1s cubic-bezier(.4,0,.2,1);}
 .ring-inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;}
-.ring-pct{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;color:var(--navy);line-height:1;letter-spacing:-1px;}
-.ring-lbl{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-top:2px;}
-.ring-info-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;color:var(--text);margin-bottom:.6rem;line-height:1.3;}
-.ring-info-body{font-size:13px;color:var(--text2);line-height:1.65;max-width:340px;}
-
-/* ── LACUNES COMPARE ── */
-.eval-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:2rem;}
-.eval-col{background:var(--ivoire);border:1px solid var(--border);border-radius:var(--rl);padding:1.75rem 2rem;}
-.eval-col-title{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);margin-bottom:1.25rem;padding-bottom:1rem;border-bottom:1px solid var(--border);}
-.lac-row{display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--ivoire2);}
+.ring-pct{font-size:32px;font-weight:900;color:var(--navy);line-height:1;letter-spacing:-1px;}
+.ring-lbl{font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-top:2px;}
+.ring-info-title{font-size:18px;font-weight:700;color:var(--text);margin-bottom:.5rem;}
+.ring-info-body{font-size:13px;color:var(--text2);line-height:1.65;max-width:320px;}
+.lac-row{display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid #F0ECE4;}
 .lac-row:last-child{border-bottom:none;}
 .lac-name{font-size:13px;color:var(--text);}
 .lac-status{font-size:11px;font-weight:600;}
@@ -205,55 +203,85 @@ tbody tr:hover td{background:var(--ivoire2);}
 .s-progress{color:var(--amber);}
 .s-non{color:var(--red);}
 .s-neutral{color:var(--text3);}
+.eval-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:1.5rem;}
+.eval-col{background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);padding:1.5rem 1.75rem;}
+.eval-col-title{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:1rem;padding-bottom:.875rem;border-bottom:1px solid var(--border);}
 
-/* ── GRID ── */
-.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:2rem;}
-
-/* ── STATS BAND ── */
-.stats-band{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;margin-bottom:2rem;}
-.stat-cell{background:var(--ivoire2);padding:1.1rem 1.5rem;display:flex;flex-direction:column;gap:4px;}
-.stat-cell-val{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:var(--text);line-height:1;letter-spacing:-1px;}
-.stat-cell-lbl{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);}
-
-/* ── DIAG ROW ── */
-.diag-row{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--ivoire2);}
+/* DIAGNOSTIC ONGLET */
+.diag-row{display:flex;align-items:center;justify-content:space-between;padding:11px 0;border-bottom:1px solid #F0ECE4;}
 .diag-row:last-child{border-bottom:none;}
-.diag-name{font-size:13px;font-weight:500;color:var(--text);}
-.diag-meta{font-size:11px;color:var(--text3);margin-top:2px;}
-.diag-lacunes{font-family:'DM Mono',monospace;font-size:12px;color:var(--text2);}
+.diag-name{font-size:13px;font-weight:600;color:var(--text);}
+.diag-meta{font-size:11px;color:var(--text3);margin-top:1px;}
+.diag-filter{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:1.25rem;}
+.df-btn{font-size:11px;font-weight:500;padding:4px 12px;border-radius:20px;border:1px solid var(--border);background:var(--surface);color:var(--text2);cursor:pointer;transition:all .15s;font-family:'Inter',sans-serif;}
+.df-btn:hover{border-color:var(--navy);color:var(--navy);}
+.df-btn.active{background:var(--navy);color:#fff;border-color:var(--navy);}
 
-/* ── GRAPH EMPTY STYLED ── */
-.graph-empty{height:200px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;}
-.graph-empty-grid{position:absolute;inset:0;}
-.graph-empty-line{position:absolute;left:0;right:0;height:1px;background:var(--ivoire3);}
-.graph-empty-text{position:relative;z-index:1;text-align:center;}
+@media(max-width:900px){
+  .shell{grid-template-columns:1fr;}
+  .sidebar{display:none;}
+  .classes-grid{grid-template-columns:1fr 1fr;}
+  .kpi-strip{grid-template-columns:1fr 1fr;}
+}
 
-/* ── BOTTOM GRID ── */
-.bottom-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:1.5rem;margin-bottom:2rem;}
+/* ── LOGIN ── */
+.login-screen{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:1000;}
+.login-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2.5rem;width:100%;max-width:400px;box-shadow:0 8px 40px rgba(0,0,0,.1);}
+.login-logo{width:48px;height:48px;border-radius:12px;background:var(--navy);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;color:#fff;margin-bottom:1.5rem;}
+.login-title{font-size:22px;font-weight:800;color:var(--text);margin-bottom:.3rem;letter-spacing:-.5px;}
+.login-sub{font-size:13px;color:var(--text3);margin-bottom:2rem;line-height:1.5;}
+.login-label{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text2);margin-bottom:.4rem;display:block;}
+.login-input{width:100%;height:44px;padding:0 14px;border:1.5px solid var(--border);border-radius:var(--r);font-family:'Inter',sans-serif;font-size:14px;font-weight:500;color:var(--text);background:var(--bg);outline:none;transition:all .2s;margin-bottom:1rem;}
+.login-input:focus{border-color:var(--navy);background:#fff;box-shadow:0 0 0 3px var(--navy-l);}
+.login-err{font-size:12px;color:var(--red);margin-bottom:.75rem;display:none;font-weight:500;}
+.btn-login{width:100%;height:44px;background:var(--navy);color:#fff;border:none;border-radius:var(--r);font-family:'Inter',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all .15s;}
+.btn-login:hover{background:#243d80;}
+.btn-login:disabled{background:#8a9fc5;cursor:not-allowed;}
 </style>
 </head>
 <body>
-<div class="shell">
+
+<!-- ÉCRAN LOGIN -->
+<div class="login-screen" id="login-screen">
+  <div class="login-card">
+    <div class="login-logo">PV</div>
+    <div class="login-title">Espace proviseur</div>
+    <div class="login-sub">Connectez-vous pour accéder au tableau de bord de votre établissement.</div>
+    <label class="login-label">Identifiant</label>
+    <input class="login-input" type="text" id="login-id" placeholder="Votre identifiant">
+    <label class="login-label">Mot de passe</label>
+    <input class="login-input" type="password" id="login-mdp" placeholder="••••••••">
+    <div class="login-err" id="login-err">Identifiant ou mot de passe incorrect.</div>
+    <button class="btn-login" id="btn-login" onclick="connexion()">Accéder au tableau de bord →</button>
+  </div>
+</div>
+
+<div class="shell" id="shell" style="display:none;">
 
 <!-- SIDEBAR -->
 <aside class="sidebar">
-  <div class="sb-eyebrow">Tableau de bord proviseur</div>
-  <div class="sb-name">Lycée Benoit<br>Fourneyron</div>
-  <div class="sb-city">Saint-Étienne · Loire</div>
-  <div class="sb-line"></div>
+  <div class="sb-logo">
+    <div class="sb-logo-mark">LF</div>
+    <div>
+      <div class="sb-logo-name" id="sb-etab-nom">—</div>
+      <div class="sb-logo-sub" id="sb-etab-ville">Tableau de bord</div>
+    </div>
+  </div>
+  <div class="sb-divider"></div>
+  <div class="sb-section-label">Navigation</div>
   <nav>
     <div class="nav-item active" onclick="showSection('accueil',this)">
-      <div class="nav-marker"></div>
-      <div class="nav-label-txt">Accueil</div>
+      <span class="nav-item-icon">⊞</span>
+      <span>Vue générale</span>
       <div class="nav-alert-dot" id="nav-alert-dot"></div>
     </div>
-    <div class="nav-item" onclick="showSection('classes',this)">
-      <div class="nav-marker"></div>
-      <div class="nav-label-txt">Classes</div>
+    <div class="nav-item" onclick="showSection('diagnostic',this)">
+      <span class="nav-item-icon">◎</span>
+      <span>Diagnostic</span>
     </div>
     <div class="nav-item" onclick="showSection('evaluation',this)">
-      <div class="nav-marker"></div>
-      <div class="nav-label-txt">Évaluation</div>
+      <span class="nav-item-icon">◈</span>
+      <span>Évaluation</span>
     </div>
   </nav>
   <div class="sb-footer">
@@ -264,8 +292,8 @@ tbody tr:hover td{background:var(--ivoire2);}
     <div class="sb-user">
       <div class="sb-av">PV</div>
       <div>
-        <div class="sb-uname">Proviseur</div>
-        <div class="sb-urole">Accès établissement</div>
+        <div class="sb-uname" id="sb-identifiant">Proviseur</div>
+        <div class="sb-urole" style="cursor:pointer;text-decoration:underline;" onclick="deconnexion()">Se déconnecter</div>
       </div>
     </div>
   </div>
@@ -280,212 +308,169 @@ tbody tr:hover td{background:var(--ivoire2);}
       <div class="ab-icon"></div>
       <div>
         <div class="ab-text" id="ab-text">—</div>
-        <div class="ab-sub">Ces élèves ont échoué 3 fois sur une même fiche — leur professeur doit intervenir.</div>
+        <div class="ab-sub">Des élèves ont échoué 3 fois — intervention professeur requise.</div>
       </div>
     </div>
   </div>
 
-  <!-- TOPBAR -->
-  <div class="topbar">
-    <div class="topbar-left">
-      <div class="topbar-eyebrow">Remédiation mathématiques · 2024–2025</div>
-      <div class="topbar-title">Vue <em>générale</em></div>
-    </div>
-    <button class="btn-refresh" onclick="loadData()">↻ Actualiser</button>
-  </div>
-
-  <!-- ══ ACCUEIL ══ -->
+  <!-- ══ VUE GÉNÉRALE ══ -->
   <div class="section active" id="accueil">
 
-    <!-- HERO -->
-    <div class="hero-grid">
-      <div class="hero-cell engagement">
-        <div class="hero-eyebrow">Engagement</div>
-        <div class="hero-number" id="h-engagement">—</div>
-        <div class="hero-desc" id="h-engagement-desc">élèves ont commencé au moins une fiche de remédiation</div>
-        <div class="hero-tag" id="h-engagement-tag">En attente de données</div>
+    <div class="topbar">
+      <div>
+        <div class="topbar-title">Vue générale</div>
+        <div class="topbar-sub">Remédiation mathématiques · 2024–2025</div>
       </div>
-      <div class="hero-cell qualite">
-        <div class="hero-eyebrow">Efficacité</div>
-        <div class="hero-number" id="h-qualite">—</div>
-        <div class="hero-desc" id="h-qualite-desc">des fiches tentées sont validées</div>
-        <div class="hero-tag" id="h-qualite-tag">En attente de données</div>
+      <button class="btn-refresh" onclick="loadAll()">↻ Actualiser</button>
+    </div>
+
+    <!-- KPIs globaux -->
+    <div class="kpi-strip">
+      <div class="kpi-cell">
+        <div class="kpi-val" id="kpi-diagnostiques">—</div>
+        <div class="kpi-lbl">Élèves diagnostiqués</div>
+      </div>
+      <div class="kpi-cell amber">
+        <div class="kpi-val" id="kpi-lacunes">—</div>
+        <div class="kpi-lbl">Lacunes détectées</div>
+      </div>
+      <div class="kpi-cell green">
+        <div class="kpi-val" id="kpi-comblees">—</div>
+        <div class="kpi-lbl">Lacunes comblées</div>
+      </div>
+      <div class="kpi-cell">
+        <div class="kpi-val" id="kpi-pct-comblees">—</div>
+        <div class="kpi-lbl">% lacunes comblées</div>
       </div>
     </div>
 
-    <!-- STATS SECONDAIRES -->
-    <div class="stats-band">
-      <div class="stat-cell">
-        <div class="stat-cell-val" id="stat-fiches-dispo">21</div>
-        <div class="stat-cell-lbl">Fiches disponibles</div>
-      </div>
-      <div class="stat-cell">
-        <div class="stat-cell-val" id="stat-fiches-tentees">—</div>
-        <div class="stat-cell-lbl">Fiches tentées</div>
-      </div>
-      <div class="stat-cell">
-        <div class="stat-cell-val" id="stat-fiches-validees">—</div>
-        <div class="stat-cell-lbl">Fiches validées</div>
-      </div>
-      <div class="stat-cell">
-        <div class="stat-cell-val" id="stat-alertes-total">—</div>
-        <div class="stat-cell-lbl">Alertes actives</div>
+    <!-- Grille des classes -->
+    <div class="classes-header">
+      <div>
+        <div class="classes-title">Classes</div>
+        <div class="classes-sub">Cliquez sur une classe pour voir le détail</div>
       </div>
     </div>
-
-    <!-- GRAPHIQUE + DIAGNOSTICS -->
-    <div class="bottom-grid">
-
-      <div class="graph-wrap" style="margin-bottom:0;">
-        <div class="graph-header">
-          <div>
-            <div class="graph-title">Progression du taux de validation</div>
-            <div class="graph-sub">Évolution semaine par semaine · Toutes classes</div>
-          </div>
-        </div>
-        <div class="graph-area" id="graph-area">
-          <div class="graph-empty">
-            <div class="graph-empty-grid">
-              <div class="graph-empty-line" style="bottom:0%;"></div>
-              <div class="graph-empty-line" style="bottom:25%;"></div>
-              <div class="graph-empty-line" style="bottom:50%;"></div>
-              <div class="graph-empty-line" style="bottom:75%;"></div>
-              <div class="graph-empty-line" style="bottom:100%;"></div>
-            </div>
-            <div class="graph-empty-text">
-              <div class="empty-ttl" style="font-size:15px;">Pas encore de données</div>
-              <div class="empty-sub" style="font-size:11px;">Le graphique apparaîtra après la première semaine d'utilisation.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div style="display:flex;flex-direction:column;gap:1.5rem;">
-
-        <!-- DERNIERS DIAGNOSTICS -->
-        <div class="panel" style="margin-bottom:0;flex:1;">
-          <div class="panel-header" style="margin-bottom:1rem;padding-bottom:1rem;">
-            <div>
-              <div class="panel-title">Derniers diagnostics</div>
-              <div class="panel-sub">Élèves ayant passé l'évaluation</div>
-            </div>
-            <span class="pbadge pbadge-gray" id="badge-diags">—</span>
-          </div>
-          <div id="diags-list">
-            <div class="empty" style="padding:1.5rem 0;">
-              <div class="empty-ttl" style="font-size:15px;">Aucun diagnostic</div>
-              <div class="empty-sub" style="font-size:11px;">Les diagnostics apparaîtront ici.</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ALERTES -->
-        <div class="panel" style="margin-bottom:0;">
-          <div class="panel-header" style="margin-bottom:1rem;padding-bottom:1rem;">
-            <div>
-              <div class="panel-title">Élèves bloqués</div>
-              <div class="panel-sub">3 échecs · Intervention requise</div>
-            </div>
-            <span class="pbadge pbadge-gray" id="badge-alertes">0</span>
-          </div>
-          <div id="alertes-list">
-            <div class="empty" style="padding:1.5rem 0;">
-              <div class="empty-ttl" style="font-size:15px;">Aucun élève bloqué</div>
-              <div class="empty-sub" style="font-size:11px;">Tout va bien.</div>
-            </div>
-          </div>
-        </div>
-
-      </div>
+    <div class="classes-grid" id="classes-grid">
+      <!-- générées par JS -->
     </div>
 
   </div>
 
-  <!-- ══ CLASSES ══ -->
-  <div class="section" id="classes">
+  <!-- ══ DÉTAIL CLASSE ══ -->
+  <div class="section" id="detail-classe">
+    <div class="topbar" style="margin-bottom:1.5rem;">
+      <button class="back-btn" onclick="retourAccueil()">Retour aux classes</button>
+      <button class="btn-refresh" onclick="loadAll()">↻ Actualiser</button>
+    </div>
+    <div class="detail-title" id="dc-title">—</div>
+    <div class="detail-sub" id="dc-sub">—</div>
 
-    <!-- Liste -->
-    <div id="view-list">
-      <div class="grid-2">
-        <div class="panel" style="margin-bottom:0;">
-          <div class="panel-header">
-            <div><div class="panel-title">Classement</div><div class="panel-sub">Par taux de validation</div></div>
-          </div>
-          <div id="classes-rank"><div class="empty"><div class="empty-ttl">Aucune donnée</div></div></div>
-        </div>
-        <div class="panel" style="margin-bottom:0;">
-          <div class="panel-header">
-            <div><div class="panel-title">Toutes les classes</div><div class="panel-sub">Cliquez pour le détail</div></div>
-            <span class="pbadge pbadge-gray" id="badge-classes">—</span>
-          </div>
-          <div class="table-wrap">
-            <table>
-              <thead><tr><th>Classe</th><th>Élèves</th><th>Validation</th><th>Alertes</th><th></th></tr></thead>
-              <tbody id="classes-tbody"><tr><td colspan="5" style="text-align:center;padding:2rem;color:var(--text3);">Aucune donnée.</td></tr></tbody>
-            </table>
-          </div>
-        </div>
-      </div>
+    <div class="detail-kpis" style="margin-top:1.5rem;">
+      <div class="dkpi"><div class="dkpi-val" id="dc-kpi-diag">—</div><div class="dkpi-lbl">Diagnostiqués</div></div>
+      <div class="dkpi"><div class="dkpi-val" id="dc-kpi-lacunes">—</div><div class="dkpi-lbl">Lacunes détectées</div></div>
+      <div class="dkpi"><div class="dkpi-val" id="dc-kpi-validees">—</div><div class="dkpi-lbl">Fiches validées</div></div>
+      <div class="dkpi"><div class="dkpi-val" id="dc-kpi-alertes">—</div><div class="dkpi-lbl">Alertes actives</div></div>
     </div>
 
-    <!-- Détail classe -->
-    <div id="view-classe" style="display:none;">
-      <button class="back-btn" onclick="showClassesList()">Toutes les classes</button>
-      <div style="margin-bottom:2rem;">
-        <div style="font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--text3);margin-bottom:.5rem;">Classe</div>
-        <div style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:400;color:var(--text);" id="dc-title">—</div>
-        <div style="font-size:13px;color:var(--text3);margin-top:3px;" id="dc-prof">—</div>
+    <!-- Tableau élèves de la classe -->
+    <div class="panel">
+      <div class="panel-header">
+        <div><div class="panel-title">Élèves</div><div class="panel-sub">Cliquez sur un élève pour le détail</div></div>
+        <span class="pbadge pbadge-gray" id="dc-badge-eleves">—</span>
       </div>
-      <div class="detail-kpis">
-        <div class="dkpi"><div class="dkpi-num" id="dc-eleves">—</div><div class="dkpi-lbl">Élèves actifs</div></div>
-        <div class="dkpi"><div class="dkpi-num" id="dc-taux">—</div><div class="dkpi-lbl">Taux de validation</div></div>
-        <div class="dkpi"><div class="dkpi-num" id="dc-alertes">—</div><div class="dkpi-lbl">Alertes actives</div></div>
-      </div>
-      <div class="panel">
-        <div class="panel-header"><div><div class="panel-title">Élèves</div><div class="panel-sub">Cliquez sur un élève pour ses fiches</div></div></div>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>Élève</th><th>Fiches tentées</th><th>Validées</th><th>Score moyen</th><th>Statut</th><th></th></tr></thead>
-            <tbody id="eleves-tbody"><tr><td colspan="6" style="text-align:center;padding:2rem;color:var(--text3);">Aucun élève actif.</td></tr></tbody>
-          </table>
-        </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Élève</th><th>Lacunes</th><th>Fiches validées</th><th>Alertes</th><th>Statut</th><th></th></tr>
+          </thead>
+          <tbody id="dc-tbody"></tbody>
+        </table>
       </div>
     </div>
+  </div>
 
-    <!-- Détail élève -->
-    <div id="view-eleve" style="display:none;">
-      <button class="back-btn" onclick="showClasseDetail(currentClasse)" id="back-classe">Retour à la classe</button>
-      <div style="margin-bottom:2rem;">
-        <div style="font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--text3);margin-bottom:.5rem;">Élève</div>
-        <div style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:400;color:var(--text);" id="de-name">—</div>
-        <div style="font-size:13px;color:var(--text3);margin-top:3px;" id="de-meta">—</div>
-      </div>
-      <div class="detail-kpis">
-        <div class="dkpi"><div class="dkpi-num" id="de-tentees">—</div><div class="dkpi-lbl">Fiches tentées</div></div>
-        <div class="dkpi"><div class="dkpi-num" id="de-validees">—</div><div class="dkpi-lbl">Fiches validées</div></div>
-        <div class="dkpi"><div class="dkpi-num" id="de-score">—</div><div class="dkpi-lbl">Score moyen</div></div>
-      </div>
-      <div class="panel">
-        <div class="panel-header"><div class="panel-title">Fiches de remédiation</div></div>
-        <div id="eleve-fiches"><div class="empty"><div class="empty-ttl">Aucune fiche</div></div></div>
-      </div>
+  <!-- ══ DÉTAIL ÉLÈVE ══ -->
+  <div class="section" id="detail-eleve">
+    <div class="topbar" style="margin-bottom:1.5rem;">
+      <button class="back-btn" id="back-to-classe" onclick="retourClasse()">Retour à la classe</button>
+      <button class="btn-refresh" onclick="loadAll()">↻ Actualiser</button>
+    </div>
+    <div class="detail-title" id="de-title">—</div>
+    <div class="detail-sub" id="de-sub">—</div>
+
+    <div class="detail-kpis" style="margin-top:1.5rem;">
+      <div class="dkpi"><div class="dkpi-val" id="de-lacunes">—</div><div class="dkpi-lbl">Lacunes détectées</div></div>
+      <div class="dkpi"><div class="dkpi-val" id="de-assignees">—</div><div class="dkpi-lbl">Fiches assignées</div></div>
+      <div class="dkpi"><div class="dkpi-val" id="de-validees">—</div><div class="dkpi-lbl">Fiches validées</div></div>
+      <div class="dkpi"><div class="dkpi-val" id="de-restantes">—</div><div class="dkpi-lbl">Fiches restantes</div></div>
     </div>
 
+    <div class="panel" id="panel-lacunes-eleve" style="display:none;">
+      <div class="panel-header"><div class="panel-title">Lacunes détectées au diagnostic</div></div>
+      <div id="de-lacunes-liste"></div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-header"><div class="panel-title">Fiches de remédiation</div></div>
+      <div id="de-fiches"></div>
+    </div>
+  </div>
+
+  <!-- ══ DIAGNOSTIC ══ -->
+  <div class="section" id="diagnostic">
+    <div class="topbar">
+      <div>
+        <div class="topbar-title">Diagnostic</div>
+        <div class="topbar-sub">Liste complète des élèves évalués</div>
+      </div>
+      <button class="btn-refresh" onclick="loadAll()">↻ Actualiser</button>
+    </div>
+
+    <div class="kpi-strip" style="grid-template-columns:repeat(4,1fr);">
+      <div class="kpi-cell"><div class="kpi-val" id="diag-kpi-total">—</div><div class="kpi-lbl">Diagnostiqués</div></div>
+      <div class="kpi-cell amber"><div class="kpi-val" id="diag-kpi-aveclacunes">—</div><div class="kpi-lbl">Avec lacunes</div></div>
+      <div class="kpi-cell green"><div class="kpi-val" id="diag-kpi-sans">—</div><div class="kpi-lbl">Dispensés</div></div>
+      <div class="kpi-cell"><div class="kpi-val" id="diag-kpi-moy">—</div><div class="kpi-lbl">Lacunes moy.</div></div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-header">
+        <div><div class="panel-title">Tous les élèves</div></div>
+        <span class="pbadge pbadge-gray" id="diag-badge">—</span>
+      </div>
+      <div class="diag-filter" id="diag-filters">
+        <button class="df-btn active" onclick="filterDiag('',this)">Toutes les classes</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Élève</th><th>Classe</th><th>Date</th><th>Lacunes</th><th>Détail</th><th>Statut</th></tr></thead>
+          <tbody id="diag-tbody"></tbody>
+        </table>
+      </div>
+    </div>
   </div>
 
   <!-- ══ ÉVALUATION ══ -->
   <div class="section" id="evaluation">
+    <div class="topbar">
+      <div>
+        <div class="topbar-title">Évaluation</div>
+        <div class="topbar-sub">Lacunes comblées · Estimation basée sur les fiches validées</div>
+      </div>
+      <button class="btn-refresh" onclick="loadAll()">↻ Actualiser</button>
+    </div>
 
     <div class="panel">
       <div class="panel-header">
-        <div><div class="panel-title">Lacunes théoriquement comblées</div><div class="panel-sub">Basé sur les fiches validées · À confirmer par l'évaluation finale</div></div>
+        <div><div class="panel-title">Taux de comblement</div><div class="panel-sub">À confirmer par l'évaluation finale</div></div>
         <span class="pbadge pbadge-gray">Estimation</span>
       </div>
       <div class="ring-wrap">
         <div class="ring-svg-wrap">
-          <svg viewBox="0 0 140 140" width="140" height="140">
-            <circle class="ring-bg" cx="70" cy="70" r="58"/>
-            <circle class="ring-fill" id="ring-fill" cx="70" cy="70" r="58" stroke="var(--navy)" stroke-dasharray="364" stroke-dashoffset="364"/>
+          <svg viewBox="0 0 130 130" width="130" height="130">
+            <circle class="ring-bg" cx="65" cy="65" r="54"/>
+            <circle class="ring-fill" id="ring-fill" cx="65" cy="65" r="54" stroke="var(--navy)" stroke-dasharray="339" stroke-dashoffset="339"/>
           </svg>
           <div class="ring-inner">
             <div class="ring-pct" id="ring-pct">—</div>
@@ -494,32 +479,21 @@ tbody tr:hover td{background:var(--ivoire2);}
         </div>
         <div>
           <div class="ring-info-title" id="ring-title">En attente de données</div>
-          <div class="ring-info-body" id="ring-body">Les données apparaîtront dès que les élèves commenceront leurs fiches de remédiation.</div>
+          <div class="ring-info-body" id="ring-body">Les données apparaîtront dès que les élèves commenceront leurs fiches.</div>
         </div>
       </div>
     </div>
 
     <div class="eval-grid">
       <div class="eval-col">
-        <div class="eval-col-title">Lacunes détectées — diagnostic initial</div>
-        <div id="eval-detectees"><div class="empty" style="padding:1.5rem 0;"><div class="empty-ttl">Aucune donnée</div></div></div>
+        <div class="eval-col-title">Lacunes détectées</div>
+        <div id="eval-detectees"><div class="empty" style="padding:1rem 0;"><div class="empty-ttl">Aucune donnée</div></div></div>
       </div>
       <div class="eval-col">
         <div class="eval-col-title">Statut après remédiation</div>
-        <div id="eval-statut"><div class="empty" style="padding:1.5rem 0;"><div class="empty-ttl">Aucune fiche tentée</div></div></div>
+        <div id="eval-statut"><div class="empty" style="padding:1rem 0;"><div class="empty-ttl">Aucune fiche tentée</div></div></div>
       </div>
     </div>
-
-    <div class="panel">
-      <div class="panel-header">
-        <div><div class="panel-title">Évaluation finale</div><div class="panel-sub">Passée par l'élève une fois toutes ses fiches validées · Confirme le comblement réel</div></div>
-        <span class="pbadge pbadge-gray" id="eval-finale-badge">En attente</span>
-      </div>
-      <div id="eval-finale">
-        <div class="empty"><div class="empty-ttl">Aucune évaluation finale disponible</div><div class="empty-sub">Les résultats apparaîtront ici dès qu'un élève aura validé toutes ses fiches et repassé l'évaluation.</div></div>
-      </div>
-    </div>
-
   </div>
 
 </main>
@@ -527,19 +501,324 @@ tbody tr:hover td{background:var(--ivoire2);}
 
 <script>
 var SCRIPT_URL="https://script.google.com/macros/s/AKfycbxlBMjVXIg58lsopoeQ5sEZW-jcQIOrOtnWwCGVtHLGjcmpi9exaYZ3oAEre4deZum2/exec";
-var ETABLISSEMENT="Fourneyron";
-var DATA=[];
-var currentClasse=null;
-var TOTAL_ELEVES=30;
+var ETABLISSEMENT="Fourneyron"; // sera écrasé après login
+
+// ── LOGIN ──
+document.getElementById('login-id').addEventListener('keydown', function(e){ if(e.key==='Enter') connexion(); });
+document.getElementById('login-mdp').addEventListener('keydown', function(e){ if(e.key==='Enter') connexion(); });
+
+function connexion(){
+  var id  = document.getElementById('login-id').value.trim();
+  var mdp = document.getElementById('login-mdp').value;
+  if(!id || !mdp) return;
+  var btn = document.getElementById('btn-login');
+  btn.disabled = true; btn.textContent = 'Connexion...';
+  document.getElementById('login-err').style.display = 'none';
+
+  fetch(SCRIPT_URL+'?type=login_proviseur&identifiant='+encodeURIComponent(id)+'&mot_de_passe='+encodeURIComponent(mdp)+'&t='+Date.now())
+    .then(function(r){ return r.json(); })
+    .then(function(j){
+      if(j.status === 'ok'){
+        ETABLISSEMENT = j.etablissement;
+        document.getElementById('sb-etab-nom').textContent = j.etablissement;
+        document.getElementById('sb-identifiant').textContent = j.identifiant;
+        document.getElementById('login-screen').style.display = 'none';
+        document.getElementById('shell').style.display = 'grid';
+        loadAll();
+      } else {
+        document.getElementById('login-err').style.display = 'block';
+        btn.disabled = false; btn.textContent = 'Accéder au tableau de bord →';
+      }
+    })
+    .catch(function(){
+      document.getElementById('login-err').textContent = 'Erreur de connexion. Réessayez.';
+      document.getElementById('login-err').style.display = 'block';
+      btn.disabled = false; btn.textContent = 'Accéder au tableau de bord →';
+    });
+}
+
+function deconnexion(){
+  document.getElementById('shell').style.display = 'none';
+  document.getElementById('login-screen').style.display = 'flex';
+  document.getElementById('login-id').value = '';
+  document.getElementById('login-mdp').value = '';
+  document.getElementById('btn-login').disabled = false;
+  document.getElementById('btn-login').textContent = 'Accéder au tableau de bord →';
+  DATA_REM = []; DATA_DIAG = [];
+  ETABLISSEMENT = 'Fourneyron';
+}
+
+
+
+var CLASSES_CONFIG=[
+  {id:"2CAP Charpentier", nom:"2nde Charpentier", type:"CAP"},
+  {id:"2CAP Ébéniste",    nom:"2nde Ébéniste",    type:"CAP"},
+  {id:"2CAP MIS",         nom:"2nde MIS",          type:"CAP"},
+  {id:"2CAP EL",          nom:"2nde EL",           type:"CAP"},
+  {id:"2nde OBPT",        nom:"2nde OBPT",          type:"Bac Pro"},
+  {id:"2nde TEBE",        nom:"2nde TEBE",          type:"Bac Pro"},
+  {id:"2nde TCB",         nom:"2nde TCB",           type:"Bac Pro"},
+  {id:"2nde AMA",         nom:"2nde AMA",           type:"Bac Pro"},
+  {id:"2nde TNE",         nom:"2nde TNE",           type:"Bac Pro"}
+];
 
 var TOUTES_FICHES=['Fractions 6ème','Fractions 5ème','Fractions 4ème','Fractions 3ème','Calcul algébrique 6ème','Calcul algébrique 5ème','Calcul algébrique 4ème','Calcul algébrique 3ème','Proportionnalité 6ème','Proportionnalité 5ème','Proportionnalité 4ème','Proportionnalité 3ème','Grandeurs & Mesures 6ème','Grandeurs & Mesures 5ème','Grandeurs & Mesures 4ème','Géométrie 5ème','Géométrie 4ème','Géométrie 3ème','Fonctions 5ème','Fonctions 4ème','Fonctions 3ème'];
 
+var DATA_REM=[], DATA_DIAG=[];
+var currentClasse=null, currentEleve=null;
+var currentDiagFilter='';
+
+// ── INIT ──
+window.addEventListener('load', loadAll);
+
+function loadAll(){
+  setSyncState('loading','Chargement...');
+  var done=0;
+  function check(){done++;if(done===2){renderAll();setSyncState('live','Sync · '+new Date().toLocaleTimeString('fr-FR'));}}
+  fetch(SCRIPT_URL+'?etablissement='+ETABLISSEMENT+'&type=remediation&t='+Date.now())
+    .then(function(r){return r.json();})
+    .then(function(j){if(j.status==='ok')DATA_REM=j.data||[];check();})
+    .catch(function(){setSyncState('error','Hors ligne');});
+  fetch(SCRIPT_URL+'?etablissement='+ETABLISSEMENT+'&type=diagnostic&t='+Date.now())
+    .then(function(r){return r.json();})
+    .then(function(j){if(j.status==='ok')DATA_DIAG=j.data||[];check();})
+    .catch(function(){check();});
+}
+
+function renderAll(){renderAccueil();renderDiagnostic();renderEval();}
+
+// ── ACCUEIL ──
+function renderAccueil(){
+  var totalDiag=DATA_DIAG.length;
+  var totalLacunes=DATA_DIAG.reduce(function(s,d){return s+(parseInt(d.nbLacunes)||0);},0);
+  var totalComblees=DATA_REM.filter(function(r){return r.statut==='valide';}).length;
+  var pctComblees=totalLacunes>0?Math.round(totalComblees/totalLacunes*100):0;
+  var alertes=DATA_REM.filter(function(r){return r.statut==='echec_3_tentatives'&&r.alerte_traitee==='non';}).length;
+
+  document.getElementById('kpi-diagnostiques').textContent=totalDiag||'—';
+  document.getElementById('kpi-lacunes').textContent=totalLacunes||'—';
+  document.getElementById('kpi-comblees').textContent=totalComblees||'—';
+  document.getElementById('kpi-pct-comblees').textContent=totalLacunes>0?pctComblees+'%':'—';
+
+  // Banner
+  var banner=document.getElementById('alert-banner');
+  var dot=document.getElementById('nav-alert-dot');
+  if(alertes>0){
+    banner.style.display='block';
+    document.getElementById('ab-text').textContent=alertes+' élève'+(alertes>1?'s bloqués':' bloqué')+' — intervention requise';
+    dot.style.display='block';
+  } else {banner.style.display='none';dot.style.display='none';}
+
+  // Cartes classes
+  var grid=document.getElementById('classes-grid');
+  grid.innerHTML=CLASSES_CONFIG.map(function(cl){
+    var diagClasse=DATA_DIAG.filter(function(d){return matchClasse(d.classe,cl.id);});
+    var remClasse=DATA_REM.filter(function(r){return matchClasse(r.classe,cl.id);});
+    var nbDiag=diagClasse.length;
+    var nbLacunes=diagClasse.reduce(function(s,d){return s+(parseInt(d.nbLacunes)||0);},0);
+    var nbComblees=remClasse.filter(function(r){return r.statut==='valide';}).length;
+    var pct=nbLacunes>0?Math.round(nbComblees/nbLacunes*100):0;
+    var nbAlertes=remClasse.filter(function(r){return r.statut==='echec_3_tentatives'&&r.alerte_traitee==='non';}).length;
+
+    var cardClass=nbAlertes>0?'has-alert':nbDiag>0?'ok':'pending';
+    var badge=nbAlertes>0
+      ?'<span class="cc-badge cc-badge-red">'+nbAlertes+' alerte'+(nbAlertes>1?'s':'')+'</span>'
+      :nbDiag>0?'<span class="cc-badge cc-badge-green">Actif</span>'
+      :'<span class="cc-badge cc-badge-gray">En attente</span>';
+
+    var statPct=pct>=80?'good':pct>=40?'warn':pct>0?'':'';
+
+    return '<div class="classe-card '+cardClass+'" onclick="ouvrirClasse(\''+cl.id+'\')">'
+      +'<div class="cc-top">'
+      +'<div><div class="cc-name">'+esc(cl.nom)+'</div><div class="cc-type">'+esc(cl.type)+'</div></div>'
+      +badge
+      +'</div>'
+      +'<div class="cc-stats">'
+      +'<div class="cc-stat"><div class="cc-stat-val">'+nbDiag+'</div><div class="cc-stat-lbl">Diagnost.</div></div>'
+      +'<div class="cc-stat"><div class="cc-stat-val">'+nbComblees+'</div><div class="cc-stat-lbl">Comblées</div></div>'
+      +'<div class="cc-stat '+statPct+'"><div class="cc-stat-val">'+(nbLacunes>0?pct+'%':'—')+'</div><div class="cc-stat-lbl">% comblé</div></div>'
+      +'</div>'
+      +'<div class="cc-arrow">→</div>'
+      +'</div>';
+  }).join('');
+}
+
+function matchClasse(classeEleve, classeId){
+  if(!classeEleve) return false;
+  return classeEleve.toLowerCase().indexOf(classeId.toLowerCase())!==-1
+    || classeId.toLowerCase().indexOf(classeEleve.toLowerCase())!==-1;
+}
+
+// ── DETAIL CLASSE ──
+function ouvrirClasse(classeId){
+  currentClasse=classeId;
+  var cfg=CLASSES_CONFIG.find(function(c){return c.id===classeId;});
+  var diagClasse=DATA_DIAG.filter(function(d){return matchClasse(d.classe,classeId);});
+  var remClasse=DATA_REM.filter(function(r){return matchClasse(r.classe,classeId);});
+
+  document.getElementById('dc-title').textContent=cfg?cfg.nom:classeId;
+  document.getElementById('dc-sub').textContent=(cfg?cfg.type:'')+' · '+diagClasse.length+' élève'+(diagClasse.length>1?'s':'')+' diagnostiqué'+(diagClasse.length>1?'s':'');
+
+  var nbLacunes=diagClasse.reduce(function(s,d){return s+(parseInt(d.nbLacunes)||0);},0);
+  var nbValidees=remClasse.filter(function(r){return r.statut==='valide';}).length;
+  var nbAlertes=remClasse.filter(function(r){return r.statut==='echec_3_tentatives'&&r.alerte_traitee==='non';}).length;
+
+  document.getElementById('dc-kpi-diag').textContent=diagClasse.length||'0';
+  document.getElementById('dc-kpi-lacunes').textContent=nbLacunes||'0';
+  document.getElementById('dc-kpi-validees').textContent=nbValidees||'0';
+  document.getElementById('dc-kpi-alertes').textContent=nbAlertes||'0';
+  document.getElementById('dc-badge-eleves').textContent=diagClasse.length+' élève'+(diagClasse.length>1?'s':'');
+
+  var sorted=diagClasse.slice().sort(function(a,b){return (parseInt(b.nbLacunes)||0)-(parseInt(a.nbLacunes)||0);});
+  document.getElementById('dc-tbody').innerHTML=sorted.length===0
+    ?'<tr><td colspan="6" style="text-align:center;padding:2rem;color:var(--text3);">Aucun élève diagnostiqué.</td></tr>'
+    :sorted.map(function(d){
+      var nb=parseInt(d.nbLacunes)||0;
+      var remEleve=remClasse.filter(function(r){return r.eleve_id===d.email;});
+      var validees=remEleve.filter(function(r){return r.statut==='valide';}).length;
+      var alertes=remEleve.filter(function(r){return r.statut==='echec_3_tentatives'&&r.alerte_traitee==='non';}).length;
+      var statut=alertes>0?'<span class="pill pill-red">Alerte</span>':nb===0?'<span class="pill pill-green">Dispensé</span>':validees>=nb?'<span class="pill pill-green">À jour</span>':'<span class="pill pill-amber">En cours</span>';
+      var lacColor=nb>=7?'color:var(--red);font-weight:700;':nb>=4?'color:var(--amber);font-weight:700;':'';
+      return '<tr onclick="ouvrirEleve(\''+esc(d.email)+'\')">'
+        +'<td class="td-name">'+esc(d.prenom)+' '+esc(d.nom)+'</td>'
+        +'<td class="td-mono" style="'+lacColor+'">'+nb+'</td>'
+        +'<td class="td-mono">'+validees+'</td>'
+        +'<td class="td-mono">'+(alertes||'—')+'</td>'
+        +'<td>'+statut+'</td>'
+        +'<td style="color:var(--text3);text-align:right;">→</td>'
+        +'</tr>';
+    }).join('');
+
+  showSection('detail-classe');
+}
+
+// ── DETAIL ELEVE ──
+function ouvrirEleve(email){
+  currentEleve=email;
+  var diag=DATA_DIAG.find(function(d){return d.email===email;});
+  if(!diag) return;
+  var remEleve=DATA_REM.filter(function(r){return r.eleve_id===email;});
+  var nb=parseInt(diag.nbLacunes)||0;
+  var validees=remEleve.filter(function(r){return r.statut==='valide';}).length;
+  var restantes=nb-validees;
+
+  document.getElementById('de-title').textContent=diag.prenom+' '+diag.nom;
+  document.getElementById('de-sub').textContent='Classe : '+diag.classe;
+  document.getElementById('de-lacunes').textContent=nb||'0';
+  document.getElementById('de-assignees').textContent=nb||'0';
+  document.getElementById('de-validees').textContent=validees||'0';
+  document.getElementById('de-restantes').textContent=Math.max(0,restantes)||'0';
+
+  var lacunesArr=diag.lacunes?diag.lacunes.split(' | ').filter(Boolean):[];
+  var panelLac=document.getElementById('panel-lacunes-eleve');
+  if(lacunesArr.length>0){
+    panelLac.style.display='block';
+    document.getElementById('de-lacunes-liste').innerHTML='<div style="display:flex;flex-wrap:wrap;gap:4px;padding:4px 0;">'+lacunesArr.map(function(l){return'<span class="lacune-tag">'+esc(l.replace('_',' '))+'</span>';}).join('')+'</div>';
+  } else { panelLac.style.display='none'; }
+
+  document.getElementById('de-fiches').innerHTML=remEleve.length===0
+    ?'<div class="empty"><div class="empty-ttl">Aucune fiche commencée</div><div class="empty-sub">L\'élève a '+nb+' lacune'+(nb>1?'s':'')+' à combler.</div></div>'
+    :remEleve.map(function(r){
+      var pill=r.statut==='valide'?'<span class="pill pill-green">Validée</span>':r.statut==='echec_3_tentatives'?'<span class="pill pill-red">3 échecs</span>':'<span class="pill pill-amber">En cours</span>';
+      return'<div class="fiche-row"><div><div class="fiche-name">'+esc(r.fiche_id)+'</div><div class="fiche-meta">'+esc(r.theme)+' · '+esc(r.niveau)+' · Tentative '+esc(r.tentative_num)+'</div></div><div style="display:flex;align-items:center;gap:12px;"><span style="font-family:\'DM Mono\',monospace;font-size:12px;color:var(--text3);">'+(r.score_quiz?r.score_quiz+'/5':'—')+'</span>'+pill+'</div></div>';
+    }).join('');
+
+  showSection('detail-eleve');
+}
+
+function retourAccueil(){showSection('accueil');}
+function retourClasse(){ouvrirClasse(currentClasse);}
+
+// ── DIAGNOSTIC ──
+function renderDiagnostic(){
+  var total=DATA_DIAG.length;
+  var avecLacunes=DATA_DIAG.filter(function(d){return (parseInt(d.nbLacunes)||0)>0;}).length;
+  var sans=total-avecLacunes;
+  var totalLac=DATA_DIAG.reduce(function(s,d){return s+(parseInt(d.nbLacunes)||0);},0);
+  var moy=total>0?(totalLac/total).toFixed(1):'—';
+
+  document.getElementById('diag-kpi-total').textContent=total||'—';
+  document.getElementById('diag-kpi-aveclacunes').textContent=avecLacunes||'—';
+  document.getElementById('diag-kpi-sans').textContent=sans||'—';
+  document.getElementById('diag-kpi-moy').textContent=total>0?moy:'—';
+  document.getElementById('diag-badge').textContent=total+' élève'+(total>1?'s':'');
+
+  // Filtres par classe
+  var classes=[];
+  DATA_DIAG.forEach(function(d){if(d.classe&&classes.indexOf(d.classe)===-1)classes.push(d.classe);});
+  classes.sort();
+  document.getElementById('diag-filters').innerHTML=
+    '<button class="df-btn'+(currentDiagFilter===''?' active':'')+'" onclick="filterDiag(\'\',this)">Toutes</button>'
+    +classes.map(function(cl){
+      return'<button class="df-btn'+(currentDiagFilter===cl?' active':'')+'" onclick="filterDiag(\''+esc(cl)+'\',this)">'+esc(cl)+'</button>';
+    }).join('');
+
+  renderDiagTable(DATA_DIAG);
+}
+
+function filterDiag(classe,btn){
+  currentDiagFilter=classe;
+  document.querySelectorAll('.df-btn').forEach(function(b){b.classList.remove('active');});
+  if(btn)btn.classList.add('active');
+  var filtered=classe?DATA_DIAG.filter(function(d){return d.classe===classe;}):DATA_DIAG;
+  renderDiagTable(filtered);
+}
+
+function renderDiagTable(diags){
+  var sorted=diags.slice().sort(function(a,b){return(parseInt(b.nbLacunes)||0)-(parseInt(a.nbLacunes)||0);});
+  document.getElementById('diag-tbody').innerHTML=sorted.length===0
+    ?'<tr><td colspan="6" style="text-align:center;padding:2rem;color:var(--text3);">Aucun élève.</td></tr>'
+    :sorted.map(function(d){
+      var nb=parseInt(d.nbLacunes)||0;
+      var lacunesArr=d.lacunes?d.lacunes.split(' | ').filter(Boolean):[];
+      var tags=lacunesArr.slice(0,3).map(function(l){return'<span class="lacune-tag">'+esc(l.replace('_',' '))+'</span>';}).join('')+(lacunesArr.length>3?'<span class="lacune-tag">+'+( lacunesArr.length-3)+'</span>':'');
+      var pill=nb===0?'<span class="pill pill-green">Dispensé</span>':nb>=7?'<span class="pill pill-red">'+nb+' lacunes</span>':'<span class="pill pill-amber">'+nb+' lacune'+(nb>1?'s':'')+'</span>';
+      var lacColor=nb>=7?'color:var(--red);font-weight:700;':nb>=4?'color:var(--amber);font-weight:700;':'';
+      return'<tr>'
+        +'<td class="td-name">'+esc(d.prenom)+' '+esc(d.nom)+'</td>'
+        +'<td style="font-size:12px;color:var(--text2);">'+esc(d.classe)+'</td>'
+        +'<td class="td-mono">'+esc(d.horodatage)+'</td>'
+        +'<td class="td-mono" style="'+lacColor+'">'+nb+'</td>'
+        +'<td style="max-width:220px;">'+tags+'</td>'
+        +'<td>'+pill+'</td>'
+        +'</tr>';
+    }).join('');
+}
+
+// ── EVAL ──
+function renderEval(){
+  var ficheIds=DATA_REM.map(function(r){return r.fiche_id;}).filter(function(v,i,a){return a.indexOf(v)===i;});
+  var total=TOUTES_FICHES.length;
+  var comblee=DATA_REM.filter(function(r){return r.statut==='valide';}).map(function(r){return r.fiche_id;}).filter(function(v,i,a){return a.indexOf(v)===i;}).length;
+  var pct=total>0?Math.round(comblee/total*100):0;
+  var circ=339,offset=circ-(pct/100)*circ;
+  document.getElementById('ring-fill').style.strokeDashoffset=offset;
+  document.getElementById('ring-pct').textContent=pct>0?pct+'%':'—';
+  document.getElementById('ring-title').textContent=pct>0?comblee+' fiche'+(comblee>1?'s':'')+' sur '+total+' validée'+(comblee>1?'s':''):'En attente de données';
+  document.getElementById('ring-body').textContent=pct>0?'Estimation — '+pct+'% des lacunes potentiellement comblées. À confirmer par l\'évaluation finale.':'Les données apparaîtront dès que les élèves commenceront leurs fiches.';
+  var h1='',h2='';
+  TOUTES_FICHES.forEach(function(f){
+    var inData=ficheIds.indexOf(f)!==-1;
+    h1+='<div class="lac-row"><div class="lac-name">'+esc(f)+'</div><span class="lac-status '+(inData?'s-ok':'s-neutral')+'">'+(inData?'Détectée':'—')+'</span></div>';
+    if(inData){
+      var fd=DATA_REM.filter(function(r){return r.fiche_id===f;});
+      var v=fd.filter(function(r){return r.statut==='valide';}).length;
+      var t=fd.length;var p=t>0?Math.round(v/t*100):0;
+      var cls=p>=80?'s-ok':p>0?'s-progress':'s-non';
+      var lbl=p>=80?'✓ Validée ('+p+'%)':p>0?p+'% en cours':'Non commencée';
+      h2+='<div class="lac-row"><div class="lac-name">'+esc(f)+'</div><span class="lac-status '+cls+'">'+lbl+'</span></div>';
+    }
+  });
+  document.getElementById('eval-detectees').innerHTML=h1||'<div class="empty" style="padding:1rem 0;"><div class="empty-ttl">Aucune donnée</div></div>';
+  document.getElementById('eval-statut').innerHTML=h2||'<div class="empty" style="padding:1rem 0;"><div class="empty-ttl">Aucune fiche tentée</div></div>';
+}
+
+// ── NAV ──
 function showSection(id,el){
   document.querySelectorAll('.section').forEach(function(s){s.classList.remove('active');});
   document.querySelectorAll('.nav-item').forEach(function(n){n.classList.remove('active');});
   document.getElementById(id).classList.add('active');
   if(el) el.classList.add('active');
-  if(id==='classes') showClassesList();
 }
 
 function setSyncState(s,t){
@@ -547,275 +826,10 @@ function setSyncState(s,t){
   document.getElementById('sync-txt').textContent=t;
 }
 
-function loadData(){
-  setSyncState('loading','Chargement...');
-  fetch(SCRIPT_URL+'?etablissement='+ETABLISSEMENT+'&type=remediation&t='+Date.now())
-    .then(function(r){return r.json();})
-    .then(function(j){
-      if(j.status==='ok'){DATA=j.data||[];renderAll();setSyncState('live','Sync · '+new Date().toLocaleTimeString('fr-FR'));}
-      else setSyncState('error','Erreur');
-    }).catch(function(){setSyncState('error','Hors ligne');});
-}
-
-function renderAll(){renderAccueil();renderClasses();renderEval();}
-
-/* ── ACCUEIL ── */
-function renderAccueil(){
-  var eleves=unique(DATA.map(function(r){return r.eleve_id;})).filter(Boolean);
-  var nb=eleves.length;
-  var tentees=DATA.length;
-  var validees=DATA.filter(function(r){return r.statut==='valide';}).length;
-  var alertes=DATA.filter(function(r){return r.statut==='echec_3_tentatives'&&r.alerte_traitee==='non';});
-  var taux=tentees>0?Math.round(validees/tentees*100):0;
-
-  // Hero engagement
-  document.getElementById('h-engagement').textContent=nb>0?nb+'/'+TOTAL_ELEVES:'—';
-  document.getElementById('h-engagement-desc').textContent=nb>0?nb+' élève'+(nb>1?'s':'')+' sur '+TOTAL_ELEVES+' ont commencé au moins une fiche':'Aucun élève n\'a encore commencé';
-  var etag=document.getElementById('h-engagement-tag');
-  if(nb>0){var pE=Math.round(nb/TOTAL_ELEVES*100);etag.textContent=pE+'% des élèves engagés';etag.className='hero-tag'+(pE>=70?' positive':'');}
-
-  // Hero qualité
-  document.getElementById('h-qualite').textContent=tentees>0?taux+'%':'—';
-  document.getElementById('h-qualite-desc').textContent=tentees>0?validees+' fiche'+(validees>1?'s':'')+' validée'+(validees>1?'s':'')+' sur '+tentees+' tentée'+(tentees>1?'s':''):'Aucune fiche tentée';
-  var qtag=document.getElementById('h-qualite-tag');
-  if(tentees>0){qtag.textContent=taux>=80?'Excellent niveau':taux>=60?'Bon niveau':'Niveau à améliorer';qtag.className='hero-tag'+(taux>=70?' positive':'');}
-
-  // Stats secondaires
-  document.getElementById('stat-fiches-tentees').textContent=tentees||'—';
-  document.getElementById('stat-fiches-validees').textContent=validees||'—';
-  document.getElementById('stat-alertes-total').textContent=alertes.length||'—';
-
-  // Banner alertes
-  var banner=document.getElementById('alert-banner');
-  var dot=document.getElementById('nav-alert-dot');
-  if(alertes.length>0){
-    banner.style.display='block';
-    document.getElementById('ab-text').textContent=alertes.length+' élève'+(alertes.length>1?'s':'')+' bloqué'+(alertes.length>1?'s':'')+' — intervention requise';
-    dot.style.display='block';
-  } else {banner.style.display='none';dot.style.display='none';}
-
-  // Alertes liste
-  document.getElementById('badge-alertes').textContent=alertes.length||'0';
-  document.getElementById('alertes-list').innerHTML=alertes.length===0
-    ?'<div class="empty" style="padding:1rem 0;"><div class="empty-ttl" style="font-size:14px;">Aucun élève bloqué</div><div class="empty-sub" style="font-size:11px;">Tout va bien.</div></div>'
-    :alertes.map(function(r){return'<div class="diag-row"><div><div class="diag-name">'+esc(r.eleve_nom)+'</div><div class="diag-meta">'+esc(r.classe)+' · '+esc(r.prof)+'</div></div><div style="text-align:right;"><div class="diag-lacunes">'+esc(r.fiche_id)+'</div><span class="pill pill-red" style="margin-top:4px;">3 échecs</span></div></div>';}).join('');
-
-  renderGraph();
-  loadDiagnostics();
-}
-
-/* ── DIAGNOSTICS ── */
-function loadDiagnostics(){
-  fetch(SCRIPT_URL+'?etablissement='+ETABLISSEMENT+'&type=diagnostic&t='+Date.now())
-    .then(function(r){return r.json();})
-    .then(function(j){
-      if(j.status==='ok') renderDiagnostics(j.data||[]);
-    }).catch(function(){});
-}
-
-function renderDiagnostics(diags){
-  document.getElementById('badge-diags').textContent=diags.length+' élève'+(diags.length>1?'s':'');
-  var list=document.getElementById('diags-list');
-  if(!diags.length){
-    list.innerHTML='<div class="empty" style="padding:1rem 0;"><div class="empty-ttl" style="font-size:14px;">Aucun diagnostic</div><div class="empty-sub" style="font-size:11px;">Les diagnostics apparaîtront ici.</div></div>';
-    return;
-  }
-  var recent=diags.slice().reverse().slice(0,5);
-  list.innerHTML=recent.map(function(d){
-    var nb=parseInt(d.nbLacunes)||0;
-    var pill=nb===0?'<span class="pill pill-green">Aucune lacune</span>':'<span class="pill pill-amber">'+nb+' lacune'+(nb>1?'s':'')+'</span>';
-    return'<div class="diag-row"><div><div class="diag-name">'+esc(d.prenom)+' '+esc(d.nom)+'</div><div class="diag-meta">'+esc(d.classe)+' · '+esc(d.horodatage)+'</div></div>'+pill+'</div>';
-  }).join('');
-}
-
-/* ── GRAPH ── */
-function renderGraph(){
-  var area=document.getElementById('graph-area');
-  if(!DATA.length){area.innerHTML='<div class="empty" style="padding:2rem 0;"><div class="empty-ttl">Pas encore de données</div><div class="empty-sub">Le graphique apparaîtra après la première semaine d\'utilisation.</div></div>';return;}
-  var weeks={};
-  DATA.forEach(function(r){
-    if(!r.timestamp) return;
-    var p=r.timestamp.split('/');if(p.length<3)return;
-    var d=new Date(p[2],p[1]-1,p[0]);
-    var jan=new Date(d.getFullYear(),0,1);
-    var w=Math.ceil((((d-jan)/86400000)+jan.getDay()+1)/7);
-    var k=d.getFullYear()+'-W'+String(w).padStart(2,'0');
-    if(!weeks[k])weeks[k]={t:0,v:0};
-    weeks[k].t++;
-    if(r.statut==='valide')weeks[k].v++;
-  });
-  var keys=Object.keys(weeks).sort();
-  if(keys.length<2){area.innerHTML='<div class="empty" style="padding:2rem 0;"><div class="empty-ttl">Données insuffisantes</div><div class="empty-sub">Au moins 2 semaines de données requises.</div></div>';return;}
-  var labels=keys.map(function(k){return'S'+k.split('-W')[1];});
-  var vals=keys.map(function(k){var s=weeks[k];return s.t>0?Math.round(s.v/s.t*100):0;});
-  area.innerHTML='<canvas id="graph-canvas"></canvas>';
-  setTimeout(function(){drawChart(labels,vals);},50);
-}
-
-function drawChart(labels,vals){
-  var cv=document.getElementById('graph-canvas');if(!cv)return;
-  var w=cv.parentElement.clientWidth||600,h=200;
-  cv.width=w;cv.height=h;
-  var ctx=cv.getContext('2d');
-  var pad={t:20,r:20,b:35,l:40};
-  var gw=w-pad.l-pad.r,gh=h-pad.t-pad.b;
-  var n=labels.length;
-  ctx.clearRect(0,0,w,h);
-  // grid
-  [0,25,50,75,100].forEach(function(v){
-    var y=pad.t+gh-(v/100)*gh;
-    ctx.strokeStyle='#E4DFD1';ctx.lineWidth=1;
-    ctx.beginPath();ctx.moveTo(pad.l,y);ctx.lineTo(pad.l+gw,y);ctx.stroke();
-    ctx.fillStyle='#9E9A8E';ctx.font='10px DM Mono,monospace';ctx.textAlign='right';
-    ctx.fillText(v+'%',pad.l-8,y+4);
-  });
-  // x labels
-  ctx.fillStyle='#9E9A8E';ctx.font='10px DM Sans,sans-serif';ctx.textAlign='center';
-  labels.forEach(function(l,i){ctx.fillText(l,pad.l+(i/(n-1))*gw,h-8);});
-  // area fill
-  var grad=ctx.createLinearGradient(0,pad.t,0,pad.t+gh);
-  grad.addColorStop(0,'rgba(26,44,91,.1)');grad.addColorStop(1,'rgba(26,44,91,0)');
-  ctx.beginPath();
-  vals.forEach(function(v,i){var x=pad.l+(i/(n-1))*gw,y=pad.t+gh-(v/100)*gh;i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);});
-  ctx.lineTo(pad.l+gw,pad.t+gh);ctx.lineTo(pad.l,pad.t+gh);ctx.closePath();
-  ctx.fillStyle=grad;ctx.fill();
-  // line
-  ctx.beginPath();ctx.strokeStyle='#1A2C5B';ctx.lineWidth=2;ctx.lineJoin='round';
-  vals.forEach(function(v,i){var x=pad.l+(i/(n-1))*gw,y=pad.t+gh-(v/100)*gh;i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);});
-  ctx.stroke();
-  // dots + labels
-  vals.forEach(function(v,i){
-    var x=pad.l+(i/(n-1))*gw,y=pad.t+gh-(v/100)*gh;
-    ctx.beginPath();ctx.arc(x,y,4,0,Math.PI*2);
-    ctx.fillStyle='#F5F2EA';ctx.fill();
-    ctx.strokeStyle='#1A2C5B';ctx.lineWidth=2;ctx.stroke();
-    ctx.fillStyle='#1A2C5B';ctx.font='bold 10px DM Mono,monospace';ctx.textAlign='center';
-    ctx.fillText(v+'%',x,y-12);
-  });
-}
-
-/* ── CLASSES ── */
-function renderClasses(){
-  var cm=buildCM();var keys=Object.keys(cm).sort();
-  document.getElementById('badge-classes').textContent=keys.length+' classe'+(keys.length>1?'s':'');
-  var ranked=keys.slice().sort(function(a,b){return getTaux(cm[b])-getTaux(cm[a]);});
-  var maxT=ranked.length>0?getTaux(cm[ranked[0]]):1;
-  document.getElementById('classes-rank').innerHTML=ranked.length===0
-    ?'<div class="empty"><div class="empty-ttl">Aucune donnée</div></div>'
-    :ranked.map(function(cl,i){
-      var t=getTaux(cm[cl]);var isTop=i<3;
-      return'<div class="rank-item"><div class="rank-num'+(isTop?' top':'')+'">'+String.fromCharCode(8544+i)+'</div><div class="rank-name">'+esc(cl)+'</div><div class="rank-bar-wrap"><div class="rank-bar" style="width:'+(maxT>0?Math.round(t/maxT*100):0)+'%"></div></div><div class="rank-taux">'+(t>0?t+'%':'—')+'</div></div>';
-    }).join('');
-  document.getElementById('classes-tbody').innerHTML=keys.length===0
-    ?'<tr><td colspan="5" style="text-align:center;padding:2rem;color:var(--text3);">Aucune donnée.</td></tr>'
-    :keys.map(function(cl){
-      var c=cm[cl];var t=getTaux(c);
-      var s=c.alertes>0?'<span class="pill pill-red">'+c.alertes+' alerte'+(c.alertes>1?'s':'')+'</span>':'<span class="pill pill-green">OK</span>';
-      return'<tr onclick="showClasseDetail(\''+esc(cl)+'\')"><td class="td-name">'+esc(cl)+'</td><td class="td-mono">'+c.eleves.length+'</td><td class="td-mono">'+(t>0?t+'%':'—')+'</td><td>'+s+'</td><td class="td-arr">→</td></tr>';
-    }).join('');
-}
-
-function buildCM(){
-  var m={};
-  DATA.forEach(function(r){
-    if(!r.classe)return;
-    if(!m[r.classe])m[r.classe]={eleves:[],tentees:0,validees:0,alertes:0,prof:r.prof};
-    if(m[r.classe].eleves.indexOf(r.eleve_id)===-1)m[r.classe].eleves.push(r.eleve_id);
-    m[r.classe].tentees++;
-    if(r.statut==='valide')m[r.classe].validees++;
-    if(r.statut==='echec_3_tentatives'&&r.alerte_traitee==='non')m[r.classe].alertes++;
-  });
-  return m;
-}
-function getTaux(c){return c.tentees>0?Math.round(c.validees/c.tentees*100):0;}
-
-function showClassesList(){
-  document.getElementById('view-list').style.display='block';
-  document.getElementById('view-classe').style.display='none';
-  document.getElementById('view-eleve').style.display='none';
-  currentClasse=null;
-}
-function showClasseDetail(cl){
-  currentClasse=cl;
-  document.getElementById('view-list').style.display='none';
-  document.getElementById('view-eleve').style.display='none';
-  document.getElementById('view-classe').style.display='block';
-  var cd=DATA.filter(function(r){return r.classe===cl;});
-  var prof=cd.length>0?cd[0].prof:'—';
-  document.getElementById('dc-title').textContent=cl;
-  document.getElementById('dc-prof').textContent='Professeur : '+prof;
-  var eleves=unique(cd.map(function(r){return r.eleve_id;})).filter(Boolean);
-  var val=cd.filter(function(r){return r.statut==='valide';}).length;
-  var al=cd.filter(function(r){return r.statut==='echec_3_tentatives'&&r.alerte_traitee==='non';}).length;
-  document.getElementById('dc-eleves').textContent=eleves.length||'0';
-  document.getElementById('dc-taux').textContent=cd.length>0?Math.round(val/cd.length*100)+'%':'—';
-  document.getElementById('dc-alertes').textContent=al||'0';
-  document.getElementById('eleves-tbody').innerHTML=eleves.length===0
-    ?'<tr><td colspan="6" style="text-align:center;padding:2rem;color:var(--text3);">Aucun élève actif.</td></tr>'
-    :eleves.sort().map(function(id){
-      var rows=cd.filter(function(r){return r.eleve_id===id;});
-      var nom=rows[0].eleve_nom;
-      var v=rows.filter(function(r){return r.statut==='valide';}).length;
-      var a=rows.filter(function(r){return r.statut==='echec_3_tentatives';}).length;
-      var scores=rows.filter(function(r){return r.score_quiz;}).map(function(r){return parseInt(r.score_quiz)||0;});
-      var avg=scores.length>0?(scores.reduce(function(a,b){return a+b;},0)/scores.length).toFixed(1)+'/5':'—';
-      var s=a>0?'<span class="pill pill-red">Alerte</span>':v===rows.length?'<span class="pill pill-green">À jour</span>':'<span class="pill pill-amber">En cours</span>';
-      return'<tr onclick="showEleveDetail(\''+id+'\')"><td class="td-name">'+esc(nom)+'</td><td class="td-mono">'+rows.length+'</td><td class="td-mono">'+v+'</td><td class="td-mono">'+avg+'</td><td>'+s+'</td><td class="td-arr">→</td></tr>';
-    }).join('');
-}
-function showEleveDetail(id){
-  document.getElementById('view-classe').style.display='none';
-  document.getElementById('view-eleve').style.display='block';
-  var rows=DATA.filter(function(r){return r.eleve_id===id;});
-  if(!rows.length)return;
-  document.getElementById('de-name').textContent=rows[0].eleve_nom;
-  document.getElementById('de-meta').textContent='Classe : '+rows[0].classe+' · Professeur : '+rows[0].prof;
-  var v=rows.filter(function(r){return r.statut==='valide';}).length;
-  var scores=rows.filter(function(r){return r.score_quiz;}).map(function(r){return parseInt(r.score_quiz)||0;});
-  var avg=scores.length>0?(scores.reduce(function(a,b){return a+b;},0)/scores.length).toFixed(1)+'/5':'—';
-  document.getElementById('de-tentees').textContent=rows.length;
-  document.getElementById('de-validees').textContent=v;
-  document.getElementById('de-score').textContent=avg;
-  document.getElementById('eleve-fiches').innerHTML=rows.map(function(r){
-    var pill=r.statut==='valide'?'<span class="pill pill-green">Validée</span>':r.statut==='echec_3_tentatives'?'<span class="pill pill-red">3 échecs</span>':'<span class="pill pill-amber">En cours</span>';
-    return'<div class="fiche-row"><div><div class="fiche-name">'+esc(r.fiche_id)+'</div><div class="fiche-meta">'+esc(r.theme)+' · '+esc(r.niveau)+' · Tentative '+esc(r.tentative_num)+'</div></div><div style="display:flex;align-items:center;gap:16px;"><span class="fiche-score">'+(r.score_quiz?r.score_quiz+'/5':'—')+'</span>'+pill+'</div></div>';
-  }).join('');
-}
-
-/* ── EVAL ── */
-function renderEval(){
-  var ficheIds=unique(DATA.map(function(r){return r.fiche_id;})).filter(Boolean);
-  var total=TOUTES_FICHES.length;
-  var comblee=unique(DATA.filter(function(r){return r.statut==='valide';}).map(function(r){return r.fiche_id;})).length;
-  var pct=total>0?Math.round(comblee/total*100):0;
-  var circ=364,offset=circ-(pct/100)*circ;
-  document.getElementById('ring-fill').style.strokeDashoffset=offset;
-  document.getElementById('ring-pct').textContent=pct>0?pct+'%':'—';
-  document.getElementById('ring-title').textContent=pct>0?comblee+' fiche'+(comblee>1?'s':'')+' sur '+total+' validée'+(comblee>1?'s':''):'En attente de données';
-  document.getElementById('ring-body').textContent=pct>0?'Estimation théorique — '+pct+'% des lacunes potentiellement comblées. À confirmer par l\'évaluation finale.':'Les données apparaîtront dès que les élèves commenceront leurs fiches.';
-
-  var html1='',html2='';
-  TOUTES_FICHES.forEach(function(f){
-    var inData=ficheIds.indexOf(f)!==-1;
-    html1+='<div class="lac-row"><div class="lac-name">'+esc(f)+'</div><span class="lac-status '+(inData?'s-ok':'s-neutral')+'">'+(inData?'Détectée':'—')+'</span></div>';
-    if(inData){
-      var fd=DATA.filter(function(r){return r.fiche_id===f;});
-      var v=fd.filter(function(r){return r.statut==='valide';}).length;
-      var t=fd.length;var p=t>0?Math.round(v/t*100):0;
-      var cls=p>=80?'s-ok':p>0?'s-progress':'s-non';
-      var lbl=p>=80?'✓ Validée ('+p+'%)':p>0?p+'% en cours':'Non commencée';
-      html2+='<div class="lac-row"><div class="lac-name">'+esc(f)+'</div><span class="lac-status '+cls+'">'+lbl+'</span></div>';
-    }
-  });
-  document.getElementById('eval-detectees').innerHTML=html1||'<div class="empty" style="padding:1.5rem 0;"><div class="empty-ttl">Aucune donnée</div></div>';
-  document.getElementById('eval-statut').innerHTML=html2||'<div class="empty" style="padding:1.5rem 0;"><div class="empty-ttl">Aucune fiche tentée</div></div>';
-}
-
-function unique(a){return a.filter(function(v,i,arr){return arr.indexOf(v)===i;});}
 function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 
-loadData();
-setInterval(loadData,60000);
+// setInterval reload toutes les 60s (actif seulement après login)
+setInterval(function(){ if(document.getElementById('shell').style.display!=='none') loadAll(); }, 60000);
 </script>
 </body>
 </html>
