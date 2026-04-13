@@ -8,37 +8,19 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg:        #F5F2EA;
-  --bg2:       #EDEAD E;
-  --surface:   #FFFFFF;
-  --border:    #E2DDD4;
-  --navy:      #1A2C5B;
-  --navy-l:    #EEF1F8;
-  --navy-m:    #6B84C4;
-  --text:      #111111;
-  --text2:     #555555;
-  --text3:     #999999;
-  --green:     #16A368;
-  --green-l:   #E6F7F0;
-  --amber:     #D97706;
-  --amber-l:   #FEF3E2;
-  --red:       #DC2626;
-  --red-l:     #FEE2E2;
-  --sidebar:   #111827;
-  --r:         10px;
-  --rl:        14px;
+  --bg:#F5F2EA; --surface:#FFFFFF; --border:#E2DDD4;
+  --navy:#1A2C5B; --navy-l:#EEF1F8; --navy-m:#6B84C4;
+  --text:#111111; --text2:#555555; --text3:#999999;
+  --green:#16A368; --green-l:#E6F7F0; --amber:#D97706; --amber-l:#FEF3E2;
+  --red:#DC2626; --red-l:#FEE2E2; --sidebar:#111827; --r:10px; --rl:14px;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
 body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;font-size:14px;line-height:1.6;}
-
-/* ── SHELL ── */
 .shell{display:grid;grid-template-columns:240px 1fr;min-height:100vh;}
-
-/* ── SIDEBAR ── */
 .sidebar{background:var(--sidebar);padding:2rem 1.5rem;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;overflow:hidden;}
 .sb-logo{display:flex;align-items:center;gap:10px;margin-bottom:2rem;}
-.sb-logo-mark{width:36px;height:36px;border-radius:8px;background:var(--navy);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:#fff;flex-shrink:0;letter-spacing:-.5px;}
+.sb-logo-mark{width:36px;height:36px;border-radius:8px;background:var(--navy);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:#fff;flex-shrink:0;}
 .sb-logo-name{font-size:13px;font-weight:700;color:#fff;line-height:1.2;}
 .sb-logo-sub{font-size:10px;color:rgba(255,255,255,.3);margin-top:1px;}
 .sb-divider{height:1px;background:rgba(255,255,255,.08);margin-bottom:1.5rem;}
@@ -61,30 +43,20 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 .sb-av{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:rgba(255,255,255,.6);flex-shrink:0;}
 .sb-uname{font-size:12px;font-weight:600;color:rgba(255,255,255,.75);}
 .sb-urole{font-size:10px;color:rgba(255,255,255,.28);}
-
-/* ── MAIN ── */
 .main{padding:2.5rem 3rem;overflow-y:auto;}
-
-/* ── TOPBAR ── */
 .topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:2.5rem;}
 .topbar-title{font-size:22px;font-weight:800;color:var(--text);letter-spacing:-.5px;}
 .topbar-sub{font-size:13px;color:var(--text3);margin-top:2px;}
 .btn-refresh{background:var(--surface);border:1px solid var(--border);color:var(--text2);padding:8px 16px;border-radius:var(--r);font-family:'Inter',sans-serif;font-size:12px;font-weight:500;cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:6px;}
 .btn-refresh:hover{border-color:var(--navy);color:var(--navy);}
-
-/* ── ALERT BANNER ── */
 .alert-banner{display:none;background:var(--red-l);border:1px solid rgba(220,38,38,.2);border-left:3px solid var(--red);border-radius:0 var(--r) var(--r) 0;padding:12px 16px;margin-bottom:2rem;}
 .ab-inner{display:flex;align-items:center;gap:10px;}
 .ab-icon{width:7px;height:7px;border-radius:50%;background:var(--red);flex-shrink:0;animation:blink 1s infinite;}
 .ab-text{font-size:13px;font-weight:600;color:var(--red);}
 .ab-sub{font-size:11px;color:#B91C1C;margin-top:1px;}
-
-/* ── SECTIONS ── */
 .section{display:none;animation:fadeIn .25s ease;}
 .section.active{display:block;}
 @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
-
-/* ── KPI STRIP ── */
 .kpi-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;margin-bottom:2rem;box-shadow:0 1px 4px rgba(0,0,0,.05);}
 .kpi-cell{background:var(--surface);padding:1.5rem 1.75rem;}
 .kpi-val{font-size:40px;font-weight:900;color:var(--navy);line-height:1;letter-spacing:-2px;margin-bottom:4px;}
@@ -92,14 +64,10 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 .kpi-cell.green .kpi-val{color:var(--green);}
 .kpi-cell.red .kpi-val{color:var(--red);}
 .kpi-cell.amber .kpi-val{color:var(--amber);}
-
-/* ── CLASSES GRID ── */
 .classes-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;}
 .classes-title{font-size:16px;font-weight:700;color:var(--text);}
 .classes-sub{font-size:12px;color:var(--text3);margin-top:1px;}
 .classes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2rem;}
-
-/* ── CLASSE CARD ── */
 .classe-card{background:var(--navy);border:none;border-radius:var(--rl);padding:1.5rem;cursor:pointer;transition:all .18s;position:relative;overflow:hidden;}
 .classe-card::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.06) 0%,transparent 60%);pointer-events:none;}
 .classe-card:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(26,44,91,.35);}
@@ -113,6 +81,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 .cc-badge-red{background:rgba(255,255,255,.15);color:#FCA5A5;}
 .cc-badge-green{background:rgba(22,163,104,.25);color:#6EE7B7;}
 .cc-badge-gray{background:rgba(255,255,255,.1);color:rgba(255,255,255,.5);}
+.cc-badge-amber{background:rgba(217,119,6,.25);color:#FCD34D;}
 .cc-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.625rem;}
 .cc-stat{background:rgba(255,255,255,.1);border-radius:6px;padding:.625rem .75rem;}
 .cc-stat-val{font-size:24px;font-weight:900;color:#fff;line-height:1;letter-spacing:-1px;}
@@ -122,21 +91,15 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 .cc-stat.danger .cc-stat-val{color:#FCA5A5;}
 .cc-arrow{position:absolute;bottom:1.25rem;right:1.25rem;font-size:16px;color:rgba(255,255,255,.3);transition:all .18s;}
 .classe-card:hover .cc-arrow{color:rgba(255,255,255,.8);transform:translateX(3px);}
-
-/* ── DETAIL CLASSE ── */
-.detail-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem;}
 .back-btn{display:flex;align-items:center;gap:7px;font-size:13px;font-weight:500;color:var(--text3);cursor:pointer;background:none;border:none;font-family:'Inter',sans-serif;padding:0;transition:color .15s;}
 .back-btn:hover{color:var(--text);}
 .back-btn::before{content:'←';font-size:15px;}
 .detail-title{font-size:28px;font-weight:900;color:var(--text);letter-spacing:-.8px;}
 .detail-sub{font-size:13px;color:var(--text3);margin-top:3px;}
-
 .detail-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;margin-bottom:2rem;}
 .dkpi{background:var(--surface);padding:1.25rem 1.5rem;}
 .dkpi-val{font-size:36px;font-weight:900;color:var(--navy);line-height:1;letter-spacing:-1.5px;margin-bottom:3px;}
 .dkpi-lbl{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);}
-
-/* ── PANEL ── */
 .panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);padding:1.5rem 1.75rem;margin-bottom:1.5rem;}
 .panel-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;padding-bottom:1rem;border-bottom:1px solid var(--border);}
 .panel-title{font-size:15px;font-weight:700;color:var(--text);}
@@ -145,8 +108,6 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 .pbadge-gray{background:var(--bg);color:var(--text3);border-color:var(--border);}
 .pbadge-green{background:var(--green-l);color:var(--green);border-color:rgba(22,163,104,.2);}
 .pbadge-red{background:var(--red-l);color:var(--red);border-color:rgba(220,38,38,.2);}
-
-/* ── TABLE ── */
 .table-wrap{overflow-x:auto;}
 table{width:100%;border-collapse:collapse;}
 th{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);padding:0 0 10px;text-align:left;border-bottom:1px solid var(--border);}
@@ -157,8 +118,6 @@ tbody tr{cursor:pointer;transition:background .1s;}
 tbody tr:hover td{background:#F8F5EF;}
 .td-name{color:var(--text);font-weight:600;font-size:14px;}
 .td-mono{font-family:'DM Mono',monospace;font-size:12px;}
-
-/* ── PILLS ── */
 .pill{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:20px;font-size:11px;font-weight:600;}
 .pill::before{content:'';width:4px;height:4px;border-radius:50%;flex-shrink:0;}
 .pill-green{background:var(--green-l);color:var(--green);}
@@ -169,62 +128,53 @@ tbody tr:hover td{background:#F8F5EF;}
 .pill-red::before{background:var(--red);animation:blink .8s infinite;}
 .pill-gray{background:var(--bg);color:var(--text3);}
 .pill-gray::before{background:var(--text3);}
-
-/* ── LACUNE TAGS ── */
+.pill-navy{background:var(--navy-l);color:var(--navy);}
+.pill-navy::before{background:var(--navy);}
 .lacune-tag{display:inline-block;font-size:10px;font-weight:500;padding:2px 8px;border-radius:4px;background:var(--navy-l);color:var(--navy);margin:2px 2px 0 0;}
-
-/* ── FICHE ROW ── */
 .fiche-row{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid #F0ECE4;}
 .fiche-row:last-child{border-bottom:none;}
 .fiche-name{font-size:13px;font-weight:600;color:var(--text);}
 .fiche-meta{font-size:11px;color:var(--text3);margin-top:2px;}
-
-/* ── EMPTY ── */
 .empty{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2.5rem;text-align:center;}
 .empty-ttl{font-size:15px;font-weight:600;color:var(--text2);margin-bottom:.3rem;}
 .empty-sub{font-size:12px;color:var(--text3);max-width:240px;line-height:1.6;}
-
-/* ── EVAL ── */
+/* Barre de progression fiche */
+.fiche-prog-wrap{display:flex;align-items:center;gap:10px;}
+.fiche-prog-bar{width:80px;height:5px;background:#E8E4DC;border-radius:3px;overflow:hidden;flex-shrink:0;}
+.fiche-prog-fill{height:100%;border-radius:3px;transition:width .6s;}
+/* Section eval fractions */
+.eval-fractions-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:1.5rem;}
+.ef-cell{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1rem;text-align:center;}
+.ef-val{font-size:28px;font-weight:900;color:var(--navy);line-height:1;letter-spacing:-1px;}
+.ef-lbl{font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--text3);margin-top:4px;}
+.ef-cell.green .ef-val{color:var(--green);}
+.ef-cell.amber .ef-val{color:var(--amber);}
+.ef-cell.red .ef-val{color:var(--red);}
+/* Score bar par fiche */
+.score-fiche-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid #F0ECE4;}
+.score-fiche-row:last-child{border-bottom:none;}
+.score-fiche-name{font-size:12px;font-weight:600;color:var(--text);flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.score-fiche-bar{flex:0 0 120px;height:6px;background:#E8E4DC;border-radius:3px;overflow:hidden;}
+.score-fiche-fill{height:100%;border-radius:3px;}
+.score-fiche-pct{font-size:11px;font-weight:700;font-family:'DM Mono',monospace;color:var(--text2);flex:0 0 36px;text-align:right;}
+.score-fiche-count{font-size:10px;color:var(--text3);flex:0 0 60px;text-align:right;}
+/* Diag filter */
+.diag-filter{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:1.25rem;}
+.df-btn{font-size:11px;font-weight:500;padding:4px 12px;border-radius:20px;border:1px solid var(--border);background:var(--surface);color:var(--text2);cursor:pointer;transition:all .15s;font-family:'Inter',sans-serif;}
+.df-btn:hover{border-color:var(--navy);color:var(--navy);}
+.df-btn.active{background:var(--navy);color:#fff;border-color:var(--navy);}
+/* Ring */
 .ring-wrap{display:flex;align-items:center;gap:2.5rem;padding:.5rem 0 1rem;}
 .ring-svg-wrap{position:relative;width:130px;height:130px;flex-shrink:0;}
 .ring-svg-wrap svg{transform:rotate(-90deg);}
 .ring-bg{fill:none;stroke:#E8E4DC;stroke-width:10;}
-.ring-fill{fill:none;stroke-width:10;stroke-linecap:butt;transition:stroke-dashoffset 1s cubic-bezier(.4,0,.2,1);}
+.ring-fill-el{fill:none;stroke-width:10;stroke-linecap:butt;transition:stroke-dashoffset 1s cubic-bezier(.4,0,.2,1);}
 .ring-inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;}
 .ring-pct{font-size:32px;font-weight:900;color:var(--navy);line-height:1;letter-spacing:-1px;}
 .ring-lbl{font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-top:2px;}
 .ring-info-title{font-size:18px;font-weight:700;color:var(--text);margin-bottom:.5rem;}
 .ring-info-body{font-size:13px;color:var(--text2);line-height:1.65;max-width:320px;}
-.lac-row{display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid #F0ECE4;}
-.lac-row:last-child{border-bottom:none;}
-.lac-name{font-size:13px;color:var(--text);}
-.lac-status{font-size:11px;font-weight:600;}
-.s-ok{color:var(--green);}
-.s-progress{color:var(--amber);}
-.s-non{color:var(--red);}
-.s-neutral{color:var(--text3);}
-.eval-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:1.5rem;}
-.eval-col{background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);padding:1.5rem 1.75rem;}
-.eval-col-title{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:1rem;padding-bottom:.875rem;border-bottom:1px solid var(--border);}
-
-/* DIAGNOSTIC ONGLET */
-.diag-row{display:flex;align-items:center;justify-content:space-between;padding:11px 0;border-bottom:1px solid #F0ECE4;}
-.diag-row:last-child{border-bottom:none;}
-.diag-name{font-size:13px;font-weight:600;color:var(--text);}
-.diag-meta{font-size:11px;color:var(--text3);margin-top:1px;}
-.diag-filter{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:1.25rem;}
-.df-btn{font-size:11px;font-weight:500;padding:4px 12px;border-radius:20px;border:1px solid var(--border);background:var(--surface);color:var(--text2);cursor:pointer;transition:all .15s;font-family:'Inter',sans-serif;}
-.df-btn:hover{border-color:var(--navy);color:var(--navy);}
-.df-btn.active{background:var(--navy);color:#fff;border-color:var(--navy);}
-
-@media(max-width:900px){
-  .shell{grid-template-columns:1fr;}
-  .sidebar{display:none;}
-  .classes-grid{grid-template-columns:1fr 1fr;}
-  .kpi-strip{grid-template-columns:1fr 1fr;}
-}
-
-/* ── LOGIN ── */
+/* Login */
 .login-screen{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:1000;}
 .login-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2.5rem;width:100%;max-width:400px;box-shadow:0 8px 40px rgba(0,0,0,.1);}
 .login-logo{width:48px;height:48px;border-radius:12px;background:var(--navy);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;color:#fff;margin-bottom:1.5rem;}
@@ -237,11 +187,11 @@ tbody tr:hover td{background:#F8F5EF;}
 .btn-login{width:100%;height:44px;background:var(--navy);color:#fff;border:none;border-radius:var(--r);font-family:'Inter',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all .15s;}
 .btn-login:hover{background:#243d80;}
 .btn-login:disabled{background:#8a9fc5;cursor:not-allowed;}
+@media(max-width:900px){.shell{grid-template-columns:1fr;}.sidebar{display:none;}.classes-grid{grid-template-columns:1fr 1fr;}.kpi-strip{grid-template-columns:1fr 1fr;}}
 </style>
 </head>
 <body>
 
-<!-- ÉCRAN LOGIN -->
 <div class="login-screen" id="login-screen">
   <div class="login-card">
     <div class="login-logo">PV</div>
@@ -257,31 +207,26 @@ tbody tr:hover td{background:#F8F5EF;}
 </div>
 
 <div class="shell" id="shell" style="display:none;">
-
-<!-- SIDEBAR -->
 <aside class="sidebar">
   <div class="sb-logo">
     <div class="sb-logo-mark">LF</div>
     <div>
       <div class="sb-logo-name" id="sb-etab-nom">—</div>
-      <div class="sb-logo-sub" id="sb-etab-ville">Tableau de bord</div>
+      <div class="sb-logo-sub">Tableau de bord</div>
     </div>
   </div>
   <div class="sb-divider"></div>
   <div class="sb-section-label">Navigation</div>
   <nav>
     <div class="nav-item active" onclick="showSection('accueil',this)">
-      <span class="nav-item-icon">⊞</span>
-      <span>Vue générale</span>
+      <span class="nav-item-icon">⊞</span><span>Vue générale</span>
       <div class="nav-alert-dot" id="nav-alert-dot"></div>
     </div>
-    <div class="nav-item" onclick="showSection('diagnostic',this)">
-      <span class="nav-item-icon">◎</span>
-      <span>Diagnostic</span>
+    <div class="nav-item" onclick="showSection('section-eval',this)">
+      <span class="nav-item-icon">◈</span><span>Éval. Fractions</span>
     </div>
-    <div class="nav-item" onclick="showSection('evaluation',this)">
-      <span class="nav-item-icon">◈</span>
-      <span>Évaluation</span>
+    <div class="nav-item" onclick="showSection('section-remediation',this)">
+      <span class="nav-item-icon">◎</span><span>Remédiation</span>
     </div>
   </nav>
   <div class="sb-footer">
@@ -299,10 +244,8 @@ tbody tr:hover td{background:#F8F5EF;}
   </div>
 </aside>
 
-<!-- MAIN -->
 <main class="main">
 
-  <!-- ALERT BANNER -->
   <div class="alert-banner" id="alert-banner">
     <div class="ab-inner">
       <div class="ab-icon"></div>
@@ -315,46 +258,22 @@ tbody tr:hover td{background:#F8F5EF;}
 
   <!-- ══ VUE GÉNÉRALE ══ -->
   <div class="section active" id="accueil">
-
     <div class="topbar">
-      <div>
-        <div class="topbar-title">Vue générale</div>
-        <div class="topbar-sub">Remédiation mathématiques · 2024–2025</div>
-      </div>
+      <div><div class="topbar-title">Vue générale</div><div class="topbar-sub">Remédiation mathématiques · Fractions</div></div>
       <button class="btn-refresh" onclick="loadAll()">↻ Actualiser</button>
     </div>
 
-    <!-- KPIs globaux -->
     <div class="kpi-strip">
-      <div class="kpi-cell">
-        <div class="kpi-val" id="kpi-diagnostiques">—</div>
-        <div class="kpi-lbl">Élèves diagnostiqués</div>
-      </div>
-      <div class="kpi-cell amber">
-        <div class="kpi-val" id="kpi-lacunes">—</div>
-        <div class="kpi-lbl">Lacunes détectées</div>
-      </div>
-      <div class="kpi-cell green">
-        <div class="kpi-val" id="kpi-comblees">—</div>
-        <div class="kpi-lbl">Lacunes comblées</div>
-      </div>
-      <div class="kpi-cell">
-        <div class="kpi-val" id="kpi-pct-comblees">—</div>
-        <div class="kpi-lbl">% lacunes comblées</div>
-      </div>
+      <div class="kpi-cell"><div class="kpi-val" id="kpi-evalues">—</div><div class="kpi-lbl">Élèves évalués</div></div>
+      <div class="kpi-cell amber"><div class="kpi-val" id="kpi-assignees">—</div><div class="kpi-lbl">Fiches assignées</div></div>
+      <div class="kpi-cell green"><div class="kpi-val" id="kpi-validees">—</div><div class="kpi-lbl">Fiches validées</div></div>
+      <div class="kpi-cell"><div class="kpi-val" id="kpi-pct">—</div><div class="kpi-lbl">% progression</div></div>
     </div>
 
-    <!-- Grille des classes -->
     <div class="classes-header">
-      <div>
-        <div class="classes-title">Classes</div>
-        <div class="classes-sub">Cliquez sur une classe pour voir le détail</div>
-      </div>
+      <div><div class="classes-title">Classes</div><div class="classes-sub">Cliquez sur une classe pour voir le détail élèves</div></div>
     </div>
-    <div class="classes-grid" id="classes-grid">
-      <!-- générées par JS -->
-    </div>
-
+    <div class="classes-grid" id="classes-grid"></div>
   </div>
 
   <!-- ══ DÉTAIL CLASSE ══ -->
@@ -365,25 +284,20 @@ tbody tr:hover td{background:#F8F5EF;}
     </div>
     <div class="detail-title" id="dc-title">—</div>
     <div class="detail-sub" id="dc-sub">—</div>
-
     <div class="detail-kpis" style="margin-top:1.5rem;">
-      <div class="dkpi"><div class="dkpi-val" id="dc-kpi-diag">—</div><div class="dkpi-lbl">Diagnostiqués</div></div>
-      <div class="dkpi"><div class="dkpi-val" id="dc-kpi-lacunes">—</div><div class="dkpi-lbl">Lacunes détectées</div></div>
+      <div class="dkpi"><div class="dkpi-val" id="dc-kpi-evalues">—</div><div class="dkpi-lbl">Évalués</div></div>
+      <div class="dkpi"><div class="dkpi-val" id="dc-kpi-assignees">—</div><div class="dkpi-lbl">Fiches assignées</div></div>
       <div class="dkpi"><div class="dkpi-val" id="dc-kpi-validees">—</div><div class="dkpi-lbl">Fiches validées</div></div>
       <div class="dkpi"><div class="dkpi-val" id="dc-kpi-alertes">—</div><div class="dkpi-lbl">Alertes actives</div></div>
     </div>
-
-    <!-- Tableau élèves de la classe -->
     <div class="panel">
       <div class="panel-header">
-        <div><div class="panel-title">Élèves</div><div class="panel-sub">Cliquez sur un élève pour le détail</div></div>
+        <div><div class="panel-title">Élèves</div><div class="panel-sub">Cliquez pour voir le détail</div></div>
         <span class="pbadge pbadge-gray" id="dc-badge-eleves">—</span>
       </div>
       <div class="table-wrap">
         <table>
-          <thead>
-            <tr><th>Élève</th><th>Lacunes</th><th>Fiches validées</th><th>Alertes</th><th>Statut</th><th></th></tr>
-          </thead>
+          <thead><tr><th>Élève</th><th>Classe</th><th>Éval. faite</th><th>Fiches assignées</th><th>Validées</th><th>Alertes</th><th>Statut</th><th></th></tr></thead>
           <tbody id="dc-tbody"></tbody>
         </table>
       </div>
@@ -393,106 +307,97 @@ tbody tr:hover td{background:#F8F5EF;}
   <!-- ══ DÉTAIL ÉLÈVE ══ -->
   <div class="section" id="detail-eleve">
     <div class="topbar" style="margin-bottom:1.5rem;">
-      <button class="back-btn" id="back-to-classe" onclick="retourClasse()">Retour à la classe</button>
+      <button class="back-btn" onclick="retourClasse()">Retour à la classe</button>
       <button class="btn-refresh" onclick="loadAll()">↻ Actualiser</button>
     </div>
     <div class="detail-title" id="de-title">—</div>
     <div class="detail-sub" id="de-sub">—</div>
-
     <div class="detail-kpis" style="margin-top:1.5rem;">
-      <div class="dkpi"><div class="dkpi-val" id="de-lacunes">—</div><div class="dkpi-lbl">Lacunes détectées</div></div>
       <div class="dkpi"><div class="dkpi-val" id="de-assignees">—</div><div class="dkpi-lbl">Fiches assignées</div></div>
-      <div class="dkpi"><div class="dkpi-val" id="de-validees">—</div><div class="dkpi-lbl">Fiches validées</div></div>
-      <div class="dkpi"><div class="dkpi-val" id="de-restantes">—</div><div class="dkpi-lbl">Fiches restantes</div></div>
+      <div class="dkpi"><div class="dkpi-val" id="de-validees">—</div><div class="dkpi-lbl">Validées</div></div>
+      <div class="dkpi"><div class="dkpi-val" id="de-restantes">—</div><div class="dkpi-lbl">Restantes</div></div>
+      <div class="dkpi"><div class="dkpi-val" id="de-alertes">—</div><div class="dkpi-lbl">Alertes</div></div>
     </div>
 
-    <div class="panel" id="panel-lacunes-eleve" style="display:none;">
-      <div class="panel-header"><div class="panel-title">Lacunes détectées au diagnostic</div></div>
-      <div id="de-lacunes-liste"></div>
+    <!-- Résultats évaluation diagnostique -->
+    <div class="panel" id="panel-eval-eleve">
+      <div class="panel-header">
+        <div><div class="panel-title">Résultats évaluation diagnostique · Fractions</div><div class="panel-sub">Score par notion (sur 3 questions)</div></div>
+        <span class="pbadge pbadge-navy" id="de-eval-date">—</span>
+      </div>
+      <div id="de-eval-detail"></div>
     </div>
 
+    <!-- Fiches remédiation -->
     <div class="panel">
       <div class="panel-header"><div class="panel-title">Fiches de remédiation</div></div>
       <div id="de-fiches"></div>
     </div>
   </div>
 
-  <!-- ══ DIAGNOSTIC ══ -->
-  <div class="section" id="diagnostic">
+  <!-- ══ ÉVAL FRACTIONS ══ -->
+  <div class="section" id="section-eval">
     <div class="topbar">
-      <div>
-        <div class="topbar-title">Diagnostic</div>
-        <div class="topbar-sub">Liste complète des élèves évalués</div>
-      </div>
+      <div><div class="topbar-title">Évaluation Fractions</div><div class="topbar-sub">Résultats de l'évaluation diagnostique par notion</div></div>
       <button class="btn-refresh" onclick="loadAll()">↻ Actualiser</button>
     </div>
 
-    <div class="kpi-strip" style="grid-template-columns:repeat(4,1fr);">
-      <div class="kpi-cell"><div class="kpi-val" id="diag-kpi-total">—</div><div class="kpi-lbl">Diagnostiqués</div></div>
-      <div class="kpi-cell amber"><div class="kpi-val" id="diag-kpi-aveclacunes">—</div><div class="kpi-lbl">Avec lacunes</div></div>
-      <div class="kpi-cell green"><div class="kpi-val" id="diag-kpi-sans">—</div><div class="kpi-lbl">Dispensés</div></div>
-      <div class="kpi-cell"><div class="kpi-val" id="diag-kpi-moy">—</div><div class="kpi-lbl">Lacunes moy.</div></div>
+    <div class="kpi-strip">
+      <div class="kpi-cell"><div class="kpi-val" id="ev-kpi-total">—</div><div class="kpi-lbl">Élèves évalués</div></div>
+      <div class="kpi-cell amber"><div class="kpi-val" id="ev-kpi-assignees">—</div><div class="kpi-lbl">Total fiches assignées</div></div>
+      <div class="kpi-cell green"><div class="kpi-val" id="ev-kpi-maitrise">—</div><div class="kpi-lbl">Notions maîtrisées</div></div>
+      <div class="kpi-cell"><div class="kpi-val" id="ev-kpi-moy">—</div><div class="kpi-lbl">Moy. fiches / élève</div></div>
     </div>
 
     <div class="panel">
       <div class="panel-header">
-        <div><div class="panel-title">Tous les élèves</div></div>
-        <span class="pbadge pbadge-gray" id="diag-badge">—</span>
+        <div><div class="panel-title">Taux de maîtrise par notion</div><div class="panel-sub">% d'élèves ayant réussi ≥ 2/3 questions</div></div>
       </div>
-      <div class="diag-filter" id="diag-filters">
-        <button class="df-btn active" onclick="filterDiag('',this)">Toutes les classes</button>
+      <div id="ev-score-fiches"></div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-header">
+        <div><div class="panel-title">Détail par élève</div></div>
+        <span class="pbadge pbadge-gray" id="ev-badge">—</span>
       </div>
+      <div class="diag-filter" id="ev-filters"></div>
       <div class="table-wrap">
         <table>
-          <thead><tr><th>Élève</th><th>Classe</th><th>Date</th><th>Lacunes</th><th>Détail</th><th>Statut</th></tr></thead>
-          <tbody id="diag-tbody"></tbody>
+          <thead><tr><th>Élève</th><th>Classe</th><th>Date</th><th>Fiches assignées</th><th>Progression rem.</th><th>Statut</th></tr></thead>
+          <tbody id="ev-tbody"></tbody>
         </table>
       </div>
     </div>
   </div>
 
-  <!-- ══ ÉVALUATION ══ -->
-  <div class="section" id="evaluation">
+  <!-- ══ REMÉDIATION ══ -->
+  <div class="section" id="section-remediation">
     <div class="topbar">
-      <div>
-        <div class="topbar-title">Évaluation</div>
-        <div class="topbar-sub">Lacunes comblées · Estimation basée sur les fiches validées</div>
-      </div>
+      <div><div class="topbar-title">Remédiation</div><div class="topbar-sub">Progression des fiches de remédiation</div></div>
       <button class="btn-refresh" onclick="loadAll()">↻ Actualiser</button>
+    </div>
+
+    <div class="kpi-strip">
+      <div class="kpi-cell"><div class="kpi-val" id="rem-kpi-actifs">—</div><div class="kpi-lbl">Élèves actifs</div></div>
+      <div class="kpi-cell green"><div class="kpi-val" id="rem-kpi-validees">—</div><div class="kpi-lbl">Fiches validées</div></div>
+      <div class="kpi-cell red"><div class="kpi-val" id="rem-kpi-alertes">—</div><div class="kpi-lbl">Alertes actives</div></div>
+      <div class="kpi-cell"><div class="kpi-val" id="rem-kpi-pct">—</div><div class="kpi-lbl">Taux validation</div></div>
     </div>
 
     <div class="panel">
       <div class="panel-header">
-        <div><div class="panel-title">Taux de comblement</div><div class="panel-sub">À confirmer par l'évaluation finale</div></div>
-        <span class="pbadge pbadge-gray">Estimation</span>
+        <div><div class="panel-title">Suivi par fiche</div><div class="panel-sub">Taux de validation pour chaque fiche</div></div>
       </div>
-      <div class="ring-wrap">
-        <div class="ring-svg-wrap">
-          <svg viewBox="0 0 130 130" width="130" height="130">
-            <circle class="ring-bg" cx="65" cy="65" r="54"/>
-            <circle class="ring-fill" id="ring-fill" cx="65" cy="65" r="54" stroke="var(--navy)" stroke-dasharray="339" stroke-dashoffset="339"/>
-          </svg>
-          <div class="ring-inner">
-            <div class="ring-pct" id="ring-pct">—</div>
-            <div class="ring-lbl">comblées</div>
-          </div>
-        </div>
-        <div>
-          <div class="ring-info-title" id="ring-title">En attente de données</div>
-          <div class="ring-info-body" id="ring-body">Les données apparaîtront dès que les élèves commenceront leurs fiches.</div>
-        </div>
-      </div>
+      <div id="rem-score-fiches"></div>
     </div>
 
-    <div class="eval-grid">
-      <div class="eval-col">
-        <div class="eval-col-title">Lacunes détectées</div>
-        <div id="eval-detectees"><div class="empty" style="padding:1rem 0;"><div class="empty-ttl">Aucune donnée</div></div></div>
+    <div class="panel">
+      <div class="panel-header">
+        <div><div class="panel-title">Alertes — élèves bloqués</div></div>
+        <span class="pbadge pbadge-red" id="rem-badge-alertes">—</span>
       </div>
-      <div class="eval-col">
-        <div class="eval-col-title">Statut après remédiation</div>
-        <div id="eval-statut"><div class="empty" style="padding:1rem 0;"><div class="empty-ttl">Aucune fiche tentée</div></div></div>
-      </div>
+      <div id="rem-alertes"></div>
     </div>
   </div>
 
@@ -500,147 +405,104 @@ tbody tr:hover td{background:#F8F5EF;}
 </div>
 
 <script>
-var SCRIPT_URL="https://script.google.com/macros/s/AKfycbxlBMjVXIg58lsopoeQ5sEZW-jcQIOrOtnWwCGVtHLGjcmpi9exaYZ3oAEre4deZum2/exec";
-var ETABLISSEMENT="Fourneyron"; // sera écrasé après login
+var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxlBMjVXIg58lsopoeQ5sEZW-jcQIOrOtnWwCGVtHLGjcmpi9exaYZ3oAEre4deZum2/exec";
+var ETABLISSEMENT = "Fourneyron";
+
+var CLASSES_CONFIG = [
+  {id:"2nde BMA Armurerie", nom:"2nde BMA Armurerie", type:"BMA"},
+  {id:"2nde CAP Cuisine",   nom:"2nde CAP Cuisine",   type:"CAP"},
+  {id:"2nde CAP Coiffure",  nom:"2nde CAP Coiffure",  type:"CAP"},
+  {id:"2nde AMA Bac Pro",   nom:"2nde AMA Bac Pro",   type:"Bac Pro"},
+  {id:"2nde TEBE",          nom:"2nde TEBE",           type:"Bac Pro"},
+  {id:"2nde Bac Pro Autre", nom:"2nde Bac Pro Autre",  type:"Bac Pro"}
+];
+
+var NOMS_FICHES = {
+  'fractions_comprendre':         'Comprendre les fractions',
+  'fractions_reconnaitre_egales': 'Fractions égales',
+  'fractions_irreductible':       'Fraction irréductible',
+  'fractions_add_meme_denom':     'Addition même dénominateur',
+  'fractions_denom_commun_1':     'Dénominateur commun (1)',
+  'fractions_denom_commun_2':     'Dénominateur commun (2)',
+  'fractions_mult_entier':        'Multiplier par un entier',
+  'fractions_mult_fractions':     'Multiplier deux fractions',
+  'fractions_inverse':            'Inverse d\'une fraction',
+  'fractions_division':           'Diviser par une fraction'
+};
+
+var DATA_EVAL = [];   // feuille evaluations
+var DATA_REM  = [];   // feuille Remédiation
+var currentClasse = null, currentEleve = null;
+var evFilter = '';
 
 // ── LOGIN ──
-document.getElementById('login-id').addEventListener('keydown', function(e){ if(e.key==='Enter') connexion(); });
+document.getElementById('login-id').addEventListener('keydown',  function(e){ if(e.key==='Enter') connexion(); });
 document.getElementById('login-mdp').addEventListener('keydown', function(e){ if(e.key==='Enter') connexion(); });
 
 function connexion(){
-  var id  = document.getElementById('login-id').value.trim();
+  var id = document.getElementById('login-id').value.trim();
   var mdp = document.getElementById('login-mdp').value;
-  if(!id || !mdp) return;
+  if(!id||!mdp) return;
   var btn = document.getElementById('btn-login');
-  btn.disabled = true; btn.textContent = 'Connexion...';
-  document.getElementById('login-err').style.display = 'none';
-
+  btn.disabled=true; btn.textContent='Connexion...';
+  document.getElementById('login-err').style.display='none';
   fetch(SCRIPT_URL+'?type=login_proviseur&identifiant='+encodeURIComponent(id)+'&mot_de_passe='+encodeURIComponent(mdp)+'&t='+Date.now())
-    .then(function(r){ return r.json(); })
+    .then(function(r){return r.json();})
     .then(function(j){
-      if(j.status === 'ok'){
-        ETABLISSEMENT = j.etablissement;
-        document.getElementById('sb-etab-nom').textContent = j.etablissement;
-        document.getElementById('sb-identifiant').textContent = j.identifiant;
-        document.getElementById('login-screen').style.display = 'none';
-        document.getElementById('shell').style.display = 'grid';
+      if(j.status==='ok'){
+        ETABLISSEMENT=j.etablissement;
+        document.getElementById('sb-etab-nom').textContent=j.etablissement;
+        document.getElementById('sb-identifiant').textContent=j.identifiant;
+        document.getElementById('login-screen').style.display='none';
+        document.getElementById('shell').style.display='grid';
         loadAll();
       } else {
-        document.getElementById('login-err').style.display = 'block';
-        btn.disabled = false; btn.textContent = 'Accéder au tableau de bord →';
+        document.getElementById('login-err').style.display='block';
+        btn.disabled=false; btn.textContent='Accéder au tableau de bord →';
       }
     })
     .catch(function(){
-      document.getElementById('login-err').textContent = 'Erreur de connexion. Réessayez.';
-      document.getElementById('login-err').style.display = 'block';
-      btn.disabled = false; btn.textContent = 'Accéder au tableau de bord →';
+      document.getElementById('login-err').textContent='Erreur de connexion. Réessayez.';
+      document.getElementById('login-err').style.display='block';
+      btn.disabled=false; btn.textContent='Accéder au tableau de bord →';
     });
 }
 
 function deconnexion(){
-  document.getElementById('shell').style.display = 'none';
-  document.getElementById('login-screen').style.display = 'flex';
-  document.getElementById('login-id').value = '';
-  document.getElementById('login-mdp').value = '';
-  document.getElementById('btn-login').disabled = false;
-  document.getElementById('btn-login').textContent = 'Accéder au tableau de bord →';
-  DATA_REM = []; DATA_DIAG = [];
-  ETABLISSEMENT = 'Fourneyron';
+  document.getElementById('shell').style.display='none';
+  document.getElementById('login-screen').style.display='flex';
+  document.getElementById('login-id').value='';
+  document.getElementById('login-mdp').value='';
+  document.getElementById('btn-login').disabled=false;
+  document.getElementById('btn-login').textContent='Accéder au tableau de bord →';
+  DATA_EVAL=[]; DATA_REM=[];
 }
 
-
-
-var CLASSES_CONFIG=[
-  {id:"2CAP Charpentier", nom:"2nde Charpentier", type:"CAP"},
-  {id:"2CAP Ébéniste",    nom:"2nde Ébéniste",    type:"CAP"},
-  {id:"2CAP MIS",         nom:"2nde MIS",          type:"CAP"},
-  {id:"2CAP EL",          nom:"2nde EL",           type:"CAP"},
-  {id:"2nde OBPT",        nom:"2nde OBPT",          type:"Bac Pro"},
-  {id:"2nde TEBE",        nom:"2nde TEBE",          type:"Bac Pro"},
-  {id:"2nde TCB",         nom:"2nde TCB",           type:"Bac Pro"},
-  {id:"2nde AMA",         nom:"2nde AMA",           type:"Bac Pro"},
-  {id:"2nde TNE",         nom:"2nde TNE",           type:"Bac Pro"}
-];
-
-var TOUTES_FICHES=['Fractions 6ème','Fractions 5ème','Fractions 4ème','Fractions 3ème','Calcul algébrique 6ème','Calcul algébrique 5ème','Calcul algébrique 4ème','Calcul algébrique 3ème','Proportionnalité 6ème','Proportionnalité 5ème','Proportionnalité 4ème','Proportionnalité 3ème','Grandeurs & Mesures 6ème','Grandeurs & Mesures 5ème','Grandeurs & Mesures 4ème','Géométrie 5ème','Géométrie 4ème','Géométrie 3ème','Fonctions 5ème','Fonctions 4ème','Fonctions 3ème'];
-
-var DATA_REM=[], DATA_DIAG=[];
-var currentClasse=null, currentEleve=null;
-var currentDiagFilter='';
-
-// ── INIT ──
-window.addEventListener('load', loadAll);
-
+// ── LOAD ──
 function loadAll(){
   setSyncState('loading','Chargement...');
   var done=0;
   function check(){done++;if(done===2){renderAll();setSyncState('live','Sync · '+new Date().toLocaleTimeString('fr-FR'));}}
-  fetch(SCRIPT_URL+'?etablissement='+ETABLISSEMENT+'&type=remediation&t='+Date.now())
+  fetch(SCRIPT_URL+'?type=evaluations&etablissement='+encodeURIComponent(ETABLISSEMENT)+'&t='+Date.now())
+    .then(function(r){return r.json();})
+    .then(function(j){if(j.status==='ok')DATA_EVAL=j.data||[];check();})
+    .catch(function(){setSyncState('error','Hors ligne');check();});
+  fetch(SCRIPT_URL+'?type=remediation&etablissement='+encodeURIComponent(ETABLISSEMENT)+'&t='+Date.now())
     .then(function(r){return r.json();})
     .then(function(j){if(j.status==='ok')DATA_REM=j.data||[];check();})
-    .catch(function(){setSyncState('error','Hors ligne');});
-  fetch(SCRIPT_URL+'?etablissement='+ETABLISSEMENT+'&type=diagnostic&t='+Date.now())
-    .then(function(r){return r.json();})
-    .then(function(j){if(j.status==='ok')DATA_DIAG=j.data||[];check();})
     .catch(function(){check();});
 }
 
-function renderAll(){renderAccueil();renderDiagnostic();renderEval();}
+function renderAll(){ renderAccueil(); renderEvalSection(); renderRemediationSection(); }
 
-// ── ACCUEIL ──
-function renderAccueil(){
-  var totalDiag=DATA_DIAG.length;
-  var totalLacunes=DATA_DIAG.reduce(function(s,d){return s+(parseInt(d.nbLacunes)||0);},0);
-  var totalComblees=DATA_REM.filter(function(r){return r.statut==='valide';}).length;
-  var pctComblees=totalLacunes>0?Math.round(totalComblees/totalLacunes*100):0;
-  var alertes=DATA_REM.filter(function(r){return r.statut==='echec_3_tentatives'&&r.alerte_traitee==='non';}).length;
-
-  document.getElementById('kpi-diagnostiques').textContent=totalDiag||'—';
-  document.getElementById('kpi-lacunes').textContent=totalLacunes||'—';
-  document.getElementById('kpi-comblees').textContent=totalComblees||'—';
-  document.getElementById('kpi-pct-comblees').textContent=totalLacunes>0?pctComblees+'%':'—';
-
-  // Banner
-  var banner=document.getElementById('alert-banner');
-  var dot=document.getElementById('nav-alert-dot');
-  if(alertes>0){
-    banner.style.display='block';
-    document.getElementById('ab-text').textContent=alertes+' élève'+(alertes>1?'s bloqués':' bloqué')+' — intervention requise';
-    dot.style.display='block';
-  } else {banner.style.display='none';dot.style.display='none';}
-
-  // Cartes classes
-  var grid=document.getElementById('classes-grid');
-  grid.innerHTML=CLASSES_CONFIG.map(function(cl){
-    var diagClasse=DATA_DIAG.filter(function(d){return matchClasse(d.classe,cl.id);});
-    var remClasse=DATA_REM.filter(function(r){return matchClasse(r.classe,cl.id);});
-    var nbDiag=diagClasse.length;
-    var nbLacunes=diagClasse.reduce(function(s,d){return s+(parseInt(d.nbLacunes)||0);},0);
-    var nbComblees=remClasse.filter(function(r){return r.statut==='valide';}).length;
-    var pct=nbLacunes>0?Math.round(nbComblees/nbLacunes*100):0;
-    var nbAlertes=remClasse.filter(function(r){return r.statut==='echec_3_tentatives'&&r.alerte_traitee==='non';}).length;
-
-    var cardClass=nbAlertes>0?'has-alert':nbDiag>0?'ok':'pending';
-    var badge=nbAlertes>0
-      ?'<span class="cc-badge cc-badge-red">'+nbAlertes+' alerte'+(nbAlertes>1?'s':'')+'</span>'
-      :nbDiag>0?'<span class="cc-badge cc-badge-green">Actif</span>'
-      :'<span class="cc-badge cc-badge-gray">En attente</span>';
-
-    var statPct=pct>=80?'good':pct>=40?'warn':pct>0?'':'';
-
-    return '<div class="classe-card '+cardClass+'" onclick="ouvrirClasse(\''+cl.id+'\')">'
-      +'<div class="cc-top">'
-      +'<div><div class="cc-name">'+esc(cl.nom)+'</div><div class="cc-type">'+esc(cl.type)+'</div></div>'
-      +badge
-      +'</div>'
-      +'<div class="cc-stats">'
-      +'<div class="cc-stat"><div class="cc-stat-val">'+nbDiag+'</div><div class="cc-stat-lbl">Diagnost.</div></div>'
-      +'<div class="cc-stat"><div class="cc-stat-val">'+nbComblees+'</div><div class="cc-stat-lbl">Comblées</div></div>'
-      +'<div class="cc-stat '+statPct+'"><div class="cc-stat-val">'+(nbLacunes>0?pct+'%':'—')+'</div><div class="cc-stat-lbl">% comblé</div></div>'
-      +'</div>'
-      +'<div class="cc-arrow">→</div>'
-      +'</div>';
-  }).join('');
+// ── Helpers ──
+function elevesUniques(){
+  var map={};
+  DATA_EVAL.forEach(function(r){
+    if(!map[r.email]) map[r.email]={email:r.email, nom:r.nom, classe:r.classe, date:r.date_evaluation, fiches:[]};
+    map[r.email].fiches.push({fiche:r.fiche_id, score:parseInt(r.score)||0, assigne:r.assigne==='oui'});
+  });
+  return Object.values(map);
 }
 
 function matchClasse(classeEleve, classeId){
@@ -649,39 +511,94 @@ function matchClasse(classeEleve, classeId){
     || classeId.toLowerCase().indexOf(classeEleve.toLowerCase())!==-1;
 }
 
+function remEleve(email){
+  var map={};
+  DATA_REM.filter(function(r){return String(r.eleve_id).toLowerCase()===email.toLowerCase();})
+    .forEach(function(r){
+      if(!map[r.fiche_id]||(parseInt(r.tentative_num)||0)>(parseInt(map[r.fiche_id].tentative_num)||0))
+        map[r.fiche_id]=r;
+    });
+  return Object.values(map);
+}
+
+// ── ACCUEIL ──
+function renderAccueil(){
+  var eleves=elevesUniques();
+  var totalEvalues=eleves.length;
+  var totalAssignees=DATA_EVAL.filter(function(r){return r.assigne==='oui';}).length;
+  var totalValidees=DATA_REM.filter(function(r){return r.statut==='quiz_final_valide';}).length;
+  var pct=totalAssignees>0?Math.round(totalValidees/totalAssignees*100):0;
+  var alertes=DATA_REM.filter(function(r){return r.statut==='echec_3_tentatives'&&r.alerte_traitee==='non';}).length;
+
+  document.getElementById('kpi-evalues').textContent=totalEvalues||'—';
+  document.getElementById('kpi-assignees').textContent=totalAssignees||'—';
+  document.getElementById('kpi-validees').textContent=totalValidees||'—';
+  document.getElementById('kpi-pct').textContent=totalAssignees>0?pct+'%':'—';
+
+  var banner=document.getElementById('alert-banner');
+  var dot=document.getElementById('nav-alert-dot');
+  if(alertes>0){
+    banner.style.display='block';
+    document.getElementById('ab-text').textContent=alertes+' élève'+(alertes>1?'s bloqués':' bloqué')+' — intervention requise';
+    dot.style.display='block';
+  } else { banner.style.display='none'; dot.style.display='none'; }
+
+  var grid=document.getElementById('classes-grid');
+  grid.innerHTML=CLASSES_CONFIG.map(function(cl){
+    var elevesClasse=eleves.filter(function(e){return matchClasse(e.classe,cl.id);});
+    var nbEvalues=elevesClasse.length;
+    var nbAssignees=DATA_EVAL.filter(function(r){return matchClasse(r.classe,cl.id)&&r.assigne==='oui';}).length;
+    var nbValidees=DATA_REM.filter(function(r){return matchClasse(r.classe,cl.id)&&r.statut==='quiz_final_valide';}).length;
+    var pctCl=nbAssignees>0?Math.round(nbValidees/nbAssignees*100):0;
+    var nbAlertes=DATA_REM.filter(function(r){return matchClasse(r.classe,cl.id)&&r.statut==='echec_3_tentatives'&&r.alerte_traitee==='non';}).length;
+
+    var cardClass=nbAlertes>0?'has-alert':nbEvalues>0?'ok':'pending';
+    var badge=nbAlertes>0
+      ?'<span class="cc-badge cc-badge-red">'+nbAlertes+' alerte'+(nbAlertes>1?'s':'')+'</span>'
+      :nbEvalues>0?'<span class="cc-badge cc-badge-green">Actif</span>'
+      :'<span class="cc-badge cc-badge-gray">En attente</span>';
+    var statPct=pctCl>=80?'good':pctCl>=40?'warn':pctCl>0?'danger':'';
+
+    return '<div class="classe-card '+cardClass+'" onclick="ouvrirClasse(\''+cl.id+'\')">'
+      +'<div class="cc-top"><div><div class="cc-name">'+esc(cl.nom)+'</div><div class="cc-type">'+esc(cl.type)+'</div></div>'+badge+'</div>'
+      +'<div class="cc-stats">'
+      +'<div class="cc-stat"><div class="cc-stat-val">'+nbEvalues+'</div><div class="cc-stat-lbl">Évalués</div></div>'
+      +'<div class="cc-stat"><div class="cc-stat-val">'+nbAssignees+'</div><div class="cc-stat-lbl">Assignées</div></div>'
+      +'<div class="cc-stat '+statPct+'"><div class="cc-stat-val">'+(nbAssignees>0?pctCl+'%':'—')+'</div><div class="cc-stat-lbl">Validées</div></div>'
+      +'</div><div class="cc-arrow">→</div></div>';
+  }).join('');
+}
+
 // ── DETAIL CLASSE ──
 function ouvrirClasse(classeId){
   currentClasse=classeId;
   var cfg=CLASSES_CONFIG.find(function(c){return c.id===classeId;});
-  var diagClasse=DATA_DIAG.filter(function(d){return matchClasse(d.classe,classeId);});
-  var remClasse=DATA_REM.filter(function(r){return matchClasse(r.classe,classeId);});
+  var eleves=elevesUniques().filter(function(e){return matchClasse(e.classe,classeId);});
+  var nbAssignees=DATA_EVAL.filter(function(r){return matchClasse(r.classe,classeId)&&r.assigne==='oui';}).length;
+  var nbValidees=DATA_REM.filter(function(r){return matchClasse(r.classe,classeId)&&r.statut==='quiz_final_valide';}).length;
+  var nbAlertes=DATA_REM.filter(function(r){return matchClasse(r.classe,classeId)&&r.statut==='echec_3_tentatives'&&r.alerte_traitee==='non';}).length;
 
   document.getElementById('dc-title').textContent=cfg?cfg.nom:classeId;
-  document.getElementById('dc-sub').textContent=(cfg?cfg.type:'')+' · '+diagClasse.length+' élève'+(diagClasse.length>1?'s':'')+' diagnostiqué'+(diagClasse.length>1?'s':'');
+  document.getElementById('dc-sub').textContent=(cfg?cfg.type:'')+' · '+eleves.length+' élève'+(eleves.length>1?'s':'')+' évalué'+(eleves.length>1?'s':'');
+  document.getElementById('dc-kpi-evalues').textContent=eleves.length;
+  document.getElementById('dc-kpi-assignees').textContent=nbAssignees;
+  document.getElementById('dc-kpi-validees').textContent=nbValidees;
+  document.getElementById('dc-kpi-alertes').textContent=nbAlertes;
+  document.getElementById('dc-badge-eleves').textContent=eleves.length+' élève'+(eleves.length>1?'s':'');
 
-  var nbLacunes=diagClasse.reduce(function(s,d){return s+(parseInt(d.nbLacunes)||0);},0);
-  var nbValidees=remClasse.filter(function(r){return r.statut==='valide';}).length;
-  var nbAlertes=remClasse.filter(function(r){return r.statut==='echec_3_tentatives'&&r.alerte_traitee==='non';}).length;
-
-  document.getElementById('dc-kpi-diag').textContent=diagClasse.length||'0';
-  document.getElementById('dc-kpi-lacunes').textContent=nbLacunes||'0';
-  document.getElementById('dc-kpi-validees').textContent=nbValidees||'0';
-  document.getElementById('dc-kpi-alertes').textContent=nbAlertes||'0';
-  document.getElementById('dc-badge-eleves').textContent=diagClasse.length+' élève'+(diagClasse.length>1?'s':'');
-
-  var sorted=diagClasse.slice().sort(function(a,b){return (parseInt(b.nbLacunes)||0)-(parseInt(a.nbLacunes)||0);});
-  document.getElementById('dc-tbody').innerHTML=sorted.length===0
-    ?'<tr><td colspan="6" style="text-align:center;padding:2rem;color:var(--text3);">Aucun élève diagnostiqué.</td></tr>'
-    :sorted.map(function(d){
-      var nb=parseInt(d.nbLacunes)||0;
-      var remEleve=remClasse.filter(function(r){return r.eleve_id===d.email;});
-      var validees=remEleve.filter(function(r){return r.statut==='valide';}).length;
-      var alertes=remEleve.filter(function(r){return r.statut==='echec_3_tentatives'&&r.alerte_traitee==='non';}).length;
-      var statut=alertes>0?'<span class="pill pill-red">Alerte</span>':nb===0?'<span class="pill pill-green">Dispensé</span>':validees>=nb?'<span class="pill pill-green">À jour</span>':'<span class="pill pill-amber">En cours</span>';
-      var lacColor=nb>=7?'color:var(--red);font-weight:700;':nb>=4?'color:var(--amber);font-weight:700;':'';
-      return '<tr onclick="ouvrirEleve(\''+esc(d.email)+'\')">'
-        +'<td class="td-name">'+esc(d.prenom)+' '+esc(d.nom)+'</td>'
-        +'<td class="td-mono" style="'+lacColor+'">'+nb+'</td>'
+  document.getElementById('dc-tbody').innerHTML=eleves.length===0
+    ?'<tr><td colspan="8" style="text-align:center;padding:2rem;color:var(--text3);">Aucun élève évalué dans cette classe.</td></tr>'
+    :eleves.map(function(e){
+      var assignees=e.fiches.filter(function(f){return f.assigne;}).length;
+      var rem=remEleve(e.email);
+      var validees=rem.filter(function(r){return r.statut==='quiz_final_valide';}).length;
+      var alertes=rem.filter(function(r){return r.statut==='echec_3_tentatives'&&r.alerte_traitee==='non';}).length;
+      var statut=alertes>0?'<span class="pill pill-red">Alerte</span>':assignees===0?'<span class="pill pill-green">Tout maîtrisé</span>':validees>=assignees?'<span class="pill pill-green">À jour</span>':'<span class="pill pill-amber">En cours</span>';
+      return '<tr onclick="ouvrirEleve(\''+esc(e.email)+'\')">'
+        +'<td class="td-name">'+esc(e.nom)+'</td>'
+        +'<td style="font-size:12px;color:var(--text2);">'+esc(e.classe)+'</td>'
+        +'<td><span class="pill pill-green">✓ Faite</span></td>'
+        +'<td class="td-mono">'+assignees+' / 10</td>'
         +'<td class="td-mono">'+validees+'</td>'
         +'<td class="td-mono">'+(alertes||'—')+'</td>'
         +'<td>'+statut+'</td>'
@@ -695,140 +612,206 @@ function ouvrirClasse(classeId){
 // ── DETAIL ELEVE ──
 function ouvrirEleve(email){
   currentEleve=email;
-  var diag=DATA_DIAG.find(function(d){return d.email===email;});
-  if(!diag) return;
-  var remEleve=DATA_REM.filter(function(r){return r.eleve_id===email;});
-  var nb=parseInt(diag.nbLacunes)||0;
-  var validees=remEleve.filter(function(r){return r.statut==='valide';}).length;
-  var restantes=nb-validees;
+  var evalEleve=DATA_EVAL.filter(function(r){return String(r.email).toLowerCase()===email.toLowerCase();});
+  var rem=remEleve(email);
+  var nom=evalEleve.length>0?evalEleve[0].nom:email;
+  var classe=evalEleve.length>0?evalEleve[0].classe:'';
+  var dateEval=evalEleve.length>0?evalEleve[0].date_evaluation:'';
+  var assignees=evalEleve.filter(function(r){return r.assigne==='oui';}).length;
+  var validees=rem.filter(function(r){return r.statut==='quiz_final_valide';}).length;
+  var restantes=Math.max(0,assignees-validees);
+  var alertes=rem.filter(function(r){return r.statut==='echec_3_tentatives'&&r.alerte_traitee==='non';}).length;
 
-  document.getElementById('de-title').textContent=diag.prenom+' '+diag.nom;
-  document.getElementById('de-sub').textContent='Classe : '+diag.classe;
-  document.getElementById('de-lacunes').textContent=nb||'0';
-  document.getElementById('de-assignees').textContent=nb||'0';
-  document.getElementById('de-validees').textContent=validees||'0';
-  document.getElementById('de-restantes').textContent=Math.max(0,restantes)||'0';
+  document.getElementById('de-title').textContent=esc(nom);
+  document.getElementById('de-sub').textContent='Classe : '+esc(classe);
+  document.getElementById('de-assignees').textContent=assignees;
+  document.getElementById('de-validees').textContent=validees;
+  document.getElementById('de-restantes').textContent=restantes;
+  document.getElementById('de-alertes').textContent=alertes||'0';
+  document.getElementById('de-eval-date').textContent=dateEval?'Éval. du '+dateEval:'—';
 
-  var lacunesArr=diag.lacunes?diag.lacunes.split(' | ').filter(Boolean):[];
-  var panelLac=document.getElementById('panel-lacunes-eleve');
-  if(lacunesArr.length>0){
-    panelLac.style.display='block';
-    document.getElementById('de-lacunes-liste').innerHTML='<div style="display:flex;flex-wrap:wrap;gap:4px;padding:4px 0;">'+lacunesArr.map(function(l){return'<span class="lacune-tag">'+esc(l.replace('_',' '))+'</span>';}).join('')+'</div>';
-  } else { panelLac.style.display='none'; }
+  // Détail évaluation : toutes les fiches avec score
+  var evalHtml='';
+  Object.keys(NOMS_FICHES).forEach(function(fid){
+    var ligne=evalEleve.find(function(r){return r.fiche_id===fid;});
+    var score=ligne?parseInt(ligne.score)||0:null;
+    var assigne=ligne?ligne.assigne==='oui':false;
+    var scoreColor=score===null?'var(--text3)':score>=2?'var(--green)':score===1?'var(--amber)':'var(--red)';
+    var badge=score===null?'<span class="pill pill-gray">—</span>'
+      :assigne?'<span class="pill pill-amber">Assignée</span>':'<span class="pill pill-green">Maîtrisée</span>';
+    evalHtml+='<div class="fiche-row">'
+      +'<div><div class="fiche-name">'+esc(NOMS_FICHES[fid])+'</div></div>'
+      +'<div style="display:flex;align-items:center;gap:16px;">'
+      +'<span style="font-family:\'DM Mono\',monospace;font-size:13px;font-weight:700;color:'+scoreColor+';">'+(score!==null?score+'/3':'—')+'</span>'
+      +badge
+      +'</div></div>';
+  });
+  document.getElementById('de-eval-detail').innerHTML=evalHtml;
 
-  document.getElementById('de-fiches').innerHTML=remEleve.length===0
-    ?'<div class="empty"><div class="empty-ttl">Aucune fiche commencée</div><div class="empty-sub">L\'élève a '+nb+' lacune'+(nb>1?'s':'')+' à combler.</div></div>'
-    :remEleve.map(function(r){
-      var pill=r.statut==='valide'?'<span class="pill pill-green">Validée</span>':r.statut==='echec_3_tentatives'?'<span class="pill pill-red">3 échecs</span>':'<span class="pill pill-amber">En cours</span>';
-      return'<div class="fiche-row"><div><div class="fiche-name">'+esc(r.fiche_id)+'</div><div class="fiche-meta">'+esc(r.theme)+' · '+esc(r.niveau)+' · Tentative '+esc(r.tentative_num)+'</div></div><div style="display:flex;align-items:center;gap:12px;"><span style="font-family:\'DM Mono\',monospace;font-size:12px;color:var(--text3);">'+(r.score_quiz?r.score_quiz+'/5':'—')+'</span>'+pill+'</div></div>';
+  // Fiches remédiation
+  var assigneesFiches=evalEleve.filter(function(r){return r.assigne==='oui';}).map(function(r){return r.fiche_id;});
+  document.getElementById('de-fiches').innerHTML=assigneesFiches.length===0
+    ?'<div class="empty"><div class="empty-ttl">Aucune fiche assignée</div><div class="empty-sub">Cet élève maîtrise toutes les notions.</div></div>'
+    :assigneesFiches.map(function(fid){
+      var r=rem.find(function(x){return x.fiche_id===fid;});
+      var statut=r?r.statut:'non_commence';
+      var pill=statut==='quiz_final_valide'?'<span class="pill pill-green">Validée</span>'
+        :statut==='echec_3_tentatives'?'<span class="pill pill-red">3 échecs</span>'
+        :r?'<span class="pill pill-amber">En cours</span>'
+        :'<span class="pill pill-gray">Non commencée</span>';
+      var score=r&&r.score_quiz?r.score_quiz+'%':'—';
+      return '<div class="fiche-row">'
+        +'<div><div class="fiche-name">'+esc(NOMS_FICHES[fid]||fid)+'</div>'
+        +(r?'<div class="fiche-meta">Tentative '+r.tentative_num+' · Dernier score : '+score+'</div>':'')
+        +'</div>'+pill+'</div>';
     }).join('');
 
   showSection('detail-eleve');
 }
 
-function retourAccueil(){showSection('accueil');}
-function retourClasse(){ouvrirClasse(currentClasse);}
+function retourAccueil(){ showSection('accueil'); }
+function retourClasse(){ ouvrirClasse(currentClasse); }
 
-// ── DIAGNOSTIC ──
-function renderDiagnostic(){
-  var total=DATA_DIAG.length;
-  var avecLacunes=DATA_DIAG.filter(function(d){return (parseInt(d.nbLacunes)||0)>0;}).length;
-  var sans=total-avecLacunes;
-  var totalLac=DATA_DIAG.reduce(function(s,d){return s+(parseInt(d.nbLacunes)||0);},0);
-  var moy=total>0?(totalLac/total).toFixed(1):'—';
+// ── SECTION ÉVAL FRACTIONS ──
+function renderEvalSection(){
+  var eleves=elevesUniques();
+  var total=eleves.length;
+  var totalAssignees=DATA_EVAL.filter(function(r){return r.assigne==='oui';}).length;
+  var totalMaitrisees=DATA_EVAL.filter(function(r){return r.assigne==='non';}).length;
+  var moy=total>0?(totalAssignees/total).toFixed(1):'—';
 
-  document.getElementById('diag-kpi-total').textContent=total||'—';
-  document.getElementById('diag-kpi-aveclacunes').textContent=avecLacunes||'—';
-  document.getElementById('diag-kpi-sans').textContent=sans||'—';
-  document.getElementById('diag-kpi-moy').textContent=total>0?moy:'—';
-  document.getElementById('diag-badge').textContent=total+' élève'+(total>1?'s':'');
+  document.getElementById('ev-kpi-total').textContent=total||'—';
+  document.getElementById('ev-kpi-assignees').textContent=totalAssignees||'—';
+  document.getElementById('ev-kpi-maitrise').textContent=totalMaitrisees||'—';
+  document.getElementById('ev-kpi-moy').textContent=total>0?moy:'—';
+  document.getElementById('ev-badge').textContent=total+' élève'+(total>1?'s':'');
 
-  // Filtres par classe
+  // Score par fiche
+  var ficheHtml='';
+  Object.keys(NOMS_FICHES).forEach(function(fid){
+    var lignes=DATA_EVAL.filter(function(r){return r.fiche_id===fid;});
+    var nb=lignes.length;
+    var maitrisees=lignes.filter(function(r){return r.assigne==='non';}).length;
+    var pct=nb>0?Math.round(maitrisees/nb*100):0;
+    var barColor=pct>=80?'var(--green)':pct>=50?'var(--amber)':'var(--red)';
+    ficheHtml+='<div class="score-fiche-row">'
+      +'<div class="score-fiche-name">'+esc(NOMS_FICHES[fid])+'</div>'
+      +'<div class="score-fiche-bar"><div class="score-fiche-fill" style="width:'+pct+'%;background:'+barColor+';"></div></div>'
+      +'<div class="score-fiche-pct">'+pct+'%</div>'
+      +'<div class="score-fiche-count">'+maitrisees+'/'+nb+'</div>'
+      +'</div>';
+  });
+  document.getElementById('ev-score-fiches').innerHTML=ficheHtml||'<div class="empty"><div class="empty-ttl">Aucune donnée</div></div>';
+
+  // Filtres classes
   var classes=[];
-  DATA_DIAG.forEach(function(d){if(d.classe&&classes.indexOf(d.classe)===-1)classes.push(d.classe);});
+  eleves.forEach(function(e){if(e.classe&&classes.indexOf(e.classe)===-1)classes.push(e.classe);});
   classes.sort();
-  document.getElementById('diag-filters').innerHTML=
-    '<button class="df-btn'+(currentDiagFilter===''?' active':'')+'" onclick="filterDiag(\'\',this)">Toutes</button>'
+  document.getElementById('ev-filters').innerHTML=
+    '<button class="df-btn'+(evFilter===''?' active':'')+'" onclick="filterEval(\'\',this)">Toutes</button>'
     +classes.map(function(cl){
-      return'<button class="df-btn'+(currentDiagFilter===cl?' active':'')+'" onclick="filterDiag(\''+esc(cl)+'\',this)">'+esc(cl)+'</button>';
+      return '<button class="df-btn'+(evFilter===cl?' active':'')+'" onclick="filterEval(\''+esc(cl)+'\',this)">'+esc(cl)+'</button>';
     }).join('');
 
-  renderDiagTable(DATA_DIAG);
+  renderEvalTable(eleves);
 }
 
-function filterDiag(classe,btn){
-  currentDiagFilter=classe;
-  document.querySelectorAll('.df-btn').forEach(function(b){b.classList.remove('active');});
-  if(btn)btn.classList.add('active');
-  var filtered=classe?DATA_DIAG.filter(function(d){return d.classe===classe;}):DATA_DIAG;
-  renderDiagTable(filtered);
+function filterEval(classe, btn){
+  evFilter=classe;
+  document.querySelectorAll('#ev-filters .df-btn').forEach(function(b){b.classList.remove('active');});
+  if(btn) btn.classList.add('active');
+  var eleves=elevesUniques();
+  renderEvalTable(classe?eleves.filter(function(e){return e.classe===classe;}):eleves);
 }
 
-function renderDiagTable(diags){
-  var sorted=diags.slice().sort(function(a,b){return(parseInt(b.nbLacunes)||0)-(parseInt(a.nbLacunes)||0);});
-  document.getElementById('diag-tbody').innerHTML=sorted.length===0
-    ?'<tr><td colspan="6" style="text-align:center;padding:2rem;color:var(--text3);">Aucun élève.</td></tr>'
-    :sorted.map(function(d){
-      var nb=parseInt(d.nbLacunes)||0;
-      var lacunesArr=d.lacunes?d.lacunes.split(' | ').filter(Boolean):[];
-      var tags=lacunesArr.slice(0,3).map(function(l){return'<span class="lacune-tag">'+esc(l.replace('_',' '))+'</span>';}).join('')+(lacunesArr.length>3?'<span class="lacune-tag">+'+( lacunesArr.length-3)+'</span>':'');
-      var pill=nb===0?'<span class="pill pill-green">Dispensé</span>':nb>=7?'<span class="pill pill-red">'+nb+' lacunes</span>':'<span class="pill pill-amber">'+nb+' lacune'+(nb>1?'s':'')+'</span>';
-      var lacColor=nb>=7?'color:var(--red);font-weight:700;':nb>=4?'color:var(--amber);font-weight:700;':'';
-      return'<tr>'
-        +'<td class="td-name">'+esc(d.prenom)+' '+esc(d.nom)+'</td>'
-        +'<td style="font-size:12px;color:var(--text2);">'+esc(d.classe)+'</td>'
-        +'<td class="td-mono">'+esc(d.horodatage)+'</td>'
-        +'<td class="td-mono" style="'+lacColor+'">'+nb+'</td>'
-        +'<td style="max-width:220px;">'+tags+'</td>'
-        +'<td>'+pill+'</td>'
+function renderEvalTable(eleves){
+  document.getElementById('ev-tbody').innerHTML=eleves.length===0
+    ?'<tr><td colspan="6" style="text-align:center;padding:2rem;color:var(--text3);">Aucun élève évalué.</td></tr>'
+    :eleves.map(function(e){
+      var assignees=e.fiches.filter(function(f){return f.assigne;}).length;
+      var rem=remEleve(e.email);
+      var validees=rem.filter(function(r){return r.statut==='quiz_final_valide';}).length;
+      var pctProg=assignees>0?Math.round(validees/assignees*100):0;
+      var barColor=pctProg>=80?'var(--green)':pctProg>=40?'var(--amber)':'var(--red)';
+      var statut=assignees===0?'<span class="pill pill-green">Tout maîtrisé</span>'
+        :validees>=assignees?'<span class="pill pill-green">Remédiation OK</span>'
+        :'<span class="pill pill-amber">En cours</span>';
+      return '<tr onclick="ouvrirEleve(\''+esc(e.email)+'\')">'
+        +'<td class="td-name">'+esc(e.nom)+'</td>'
+        +'<td style="font-size:12px;">'+esc(e.classe)+'</td>'
+        +'<td class="td-mono">'+esc(e.date||'—')+'</td>'
+        +'<td class="td-mono">'+assignees+' / 10</td>'
+        +'<td><div class="fiche-prog-wrap">'
+        +'<div class="fiche-prog-bar"><div class="fiche-prog-fill" style="width:'+pctProg+'%;background:'+barColor+';"></div></div>'
+        +'<span class="td-mono">'+pctProg+'%</span></div></td>'
+        +'<td>'+statut+'</td>'
         +'</tr>';
     }).join('');
 }
 
-// ── EVAL ──
-function renderEval(){
-  var ficheIds=DATA_REM.map(function(r){return r.fiche_id;}).filter(function(v,i,a){return a.indexOf(v)===i;});
-  var total=TOUTES_FICHES.length;
-  var comblee=DATA_REM.filter(function(r){return r.statut==='valide';}).map(function(r){return r.fiche_id;}).filter(function(v,i,a){return a.indexOf(v)===i;}).length;
-  var pct=total>0?Math.round(comblee/total*100):0;
-  var circ=339,offset=circ-(pct/100)*circ;
-  document.getElementById('ring-fill').style.strokeDashoffset=offset;
-  document.getElementById('ring-pct').textContent=pct>0?pct+'%':'—';
-  document.getElementById('ring-title').textContent=pct>0?comblee+' fiche'+(comblee>1?'s':'')+' sur '+total+' validée'+(comblee>1?'s':''):'En attente de données';
-  document.getElementById('ring-body').textContent=pct>0?'Estimation — '+pct+'% des lacunes potentiellement comblées. À confirmer par l\'évaluation finale.':'Les données apparaîtront dès que les élèves commenceront leurs fiches.';
-  var h1='',h2='';
-  TOUTES_FICHES.forEach(function(f){
-    var inData=ficheIds.indexOf(f)!==-1;
-    h1+='<div class="lac-row"><div class="lac-name">'+esc(f)+'</div><span class="lac-status '+(inData?'s-ok':'s-neutral')+'">'+(inData?'Détectée':'—')+'</span></div>';
-    if(inData){
-      var fd=DATA_REM.filter(function(r){return r.fiche_id===f;});
-      var v=fd.filter(function(r){return r.statut==='valide';}).length;
-      var t=fd.length;var p=t>0?Math.round(v/t*100):0;
-      var cls=p>=80?'s-ok':p>0?'s-progress':'s-non';
-      var lbl=p>=80?'✓ Validée ('+p+'%)':p>0?p+'% en cours':'Non commencée';
-      h2+='<div class="lac-row"><div class="lac-name">'+esc(f)+'</div><span class="lac-status '+cls+'">'+lbl+'</span></div>';
-    }
+// ── SECTION REMÉDIATION ──
+function renderRemediationSection(){
+  var elevesActifs=[...new Set(DATA_REM.map(function(r){return r.eleve_id;}))].length;
+  var validees=DATA_REM.filter(function(r){return r.statut==='quiz_final_valide';}).length;
+  var alertes=DATA_REM.filter(function(r){return r.statut==='echec_3_tentatives'&&r.alerte_traitee==='non';}).length;
+  var totalTentes=DATA_REM.filter(function(r){return ['quiz_final_valide','quiz_final_echec','echec_3_tentatives'].includes(r.statut);}).length;
+  var pct=totalTentes>0?Math.round(validees/totalTentes*100):0;
+
+  document.getElementById('rem-kpi-actifs').textContent=elevesActifs||'—';
+  document.getElementById('rem-kpi-validees').textContent=validees||'—';
+  document.getElementById('rem-kpi-alertes').textContent=alertes||'—';
+  document.getElementById('rem-kpi-pct').textContent=totalTentes>0?pct+'%':'—';
+  document.getElementById('rem-badge-alertes').textContent=alertes+' alerte'+(alertes>1?'s':'');
+
+  // Score par fiche
+  var ficheHtml='';
+  Object.keys(NOMS_FICHES).forEach(function(fid){
+    // Dernière tentative par élève
+    var map={};
+    DATA_REM.filter(function(r){return r.fiche_id===fid;}).forEach(function(r){
+      if(!map[r.eleve_id]||(parseInt(r.tentative_num)||0)>(parseInt(map[r.eleve_id].tentative_num)||0))
+        map[r.eleve_id]=r;
+    });
+    var tentes=Object.values(map);
+    var nb=tentes.length;
+    var valid=tentes.filter(function(r){return r.statut==='quiz_final_valide';}).length;
+    var pctF=nb>0?Math.round(valid/nb*100):0;
+    var barColor=pctF>=80?'var(--green)':pctF>=50?'var(--amber)':'var(--red)';
+    ficheHtml+='<div class="score-fiche-row">'
+      +'<div class="score-fiche-name">'+esc(NOMS_FICHES[fid])+'</div>'
+      +'<div class="score-fiche-bar"><div class="score-fiche-fill" style="width:'+pctF+'%;background:'+barColor+';"></div></div>'
+      +'<div class="score-fiche-pct">'+pctF+'%</div>'
+      +'<div class="score-fiche-count">'+valid+'/'+nb+'</div>'
+      +'</div>';
   });
-  document.getElementById('eval-detectees').innerHTML=h1||'<div class="empty" style="padding:1rem 0;"><div class="empty-ttl">Aucune donnée</div></div>';
-  document.getElementById('eval-statut').innerHTML=h2||'<div class="empty" style="padding:1rem 0;"><div class="empty-ttl">Aucune fiche tentée</div></div>';
+  document.getElementById('rem-score-fiches').innerHTML=ficheHtml||'<div class="empty"><div class="empty-ttl">Aucune donnée</div></div>';
+
+  // Alertes
+  var alertesData=DATA_REM.filter(function(r){return r.statut==='echec_3_tentatives'&&r.alerte_traitee==='non';});
+  document.getElementById('rem-alertes').innerHTML=alertesData.length===0
+    ?'<div class="empty"><div class="empty-ttl">Aucune alerte active</div><div class="empty-sub">Tous les élèves progressent normalement.</div></div>'
+    :alertesData.map(function(r){
+      return '<div class="fiche-row">'
+        +'<div><div class="fiche-name">'+esc(r.eleve_nom)+'</div>'
+        +'<div class="fiche-meta">'+esc(r.classe)+' · '+esc(NOMS_FICHES[r.fiche_id]||r.fiche_id)+' · Score : '+esc(r.score_quiz)+'%</div></div>'
+        +'<span class="pill pill-red">3 échecs</span>'
+        +'</div>';
+    }).join('');
 }
 
 // ── NAV ──
-function showSection(id,el){
+function showSection(id, el){
   document.querySelectorAll('.section').forEach(function(s){s.classList.remove('active');});
   document.querySelectorAll('.nav-item').forEach(function(n){n.classList.remove('active');});
   document.getElementById(id).classList.add('active');
   if(el) el.classList.add('active');
 }
-
 function setSyncState(s,t){
   document.getElementById('sync-dot').className='sync-dot '+s;
   document.getElementById('sync-txt').textContent=t;
 }
-
 function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 
-// setInterval reload toutes les 60s (actif seulement après login)
 setInterval(function(){ if(document.getElementById('shell').style.display!=='none') loadAll(); }, 60000);
 </script>
 </body>
