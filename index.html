@@ -3,122 +3,183 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dashboard Proviseur · Lycée Benoit Fourneyron</title>
+<title>Dashboard Proviseur · Lycée Benoît Fourneyron</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root {
   --bg:#F5F2EA; --surface:#FFFFFF; --border:#E2DDD4;
-  --navy:#1A2C5B; --navy-l:#EEF1F8; --navy-m:#6B84C4;
+  --navy:#1A2C5B; --navy-l:#EEF1F8;
   --text:#111111; --text2:#555555; --text3:#999999;
-  --green:#16A368; --green-l:#E6F7F0; --amber:#D97706; --amber-l:#FEF3E2;
-  --red:#DC2626; --red-l:#FEE2E2; --sidebar:#111827; --r:10px; --rl:14px;
+  --green:#16A368; --green-l:#E6F7F0;
+  --amber:#D97706; --amber-l:#FEF3E2;
+  --red:#DC2626; --red-l:#FEE2E2;
+  --sidebar:#111827; --r:10px; --rl:14px;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
 body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;font-size:14px;line-height:1.6;}
-.shell{display:grid;grid-template-columns:240px 1fr;min-height:100vh;}
-.sidebar{background:var(--sidebar);padding:2rem 1.5rem;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;overflow:hidden;}
-.sb-logo{display:flex;align-items:center;gap:10px;margin-bottom:2rem;}
-.sb-logo-mark{width:36px;height:36px;border-radius:8px;background:var(--navy);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:#fff;flex-shrink:0;}
-.sb-logo-name{font-size:13px;font-weight:700;color:#fff;line-height:1.2;}
-.sb-logo-sub{font-size:10px;color:rgba(255,255,255,.3);margin-top:1px;}
-.sb-divider{height:1px;background:rgba(255,255,255,.08);margin-bottom:1.5rem;}
-.sb-section-label{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:.75rem;padding-left:10px;}
-.nav-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:8px;cursor:pointer;transition:all .15s;font-size:13px;font-weight:500;color:rgba(255,255,255,.45);margin-bottom:2px;}
-.nav-item:hover{color:rgba(255,255,255,.8);background:rgba(255,255,255,.06);}
-.nav-item.active{color:#fff;background:rgba(255,255,255,.1);}
-.nav-item-icon{font-size:15px;width:20px;text-align:center;flex-shrink:0;}
-.nav-alert-dot{width:6px;height:6px;border-radius:50%;background:var(--red);display:none;margin-left:auto;animation:blink 1.5s infinite;}
-@keyframes blink{0%,100%{opacity:1;}50%{opacity:.3;}}
-.sb-footer{margin-top:auto;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.07);}
-.sb-sync{display:flex;align-items:center;gap:7px;margin-bottom:.875rem;}
-.sync-dot{width:6px;height:6px;border-radius:50%;}
-.sync-dot.live{background:#22C55E;animation:pulse 2s infinite;}
-.sync-dot.loading{background:#F59E0B;animation:pulse .6s infinite;}
-.sync-dot.error{background:var(--red);}
-@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.2;}}
-.sync-txt{font-size:10px;color:rgba(255,255,255,.28);font-family:'DM Mono',monospace;}
-.sb-user{display:flex;align-items:center;gap:10px;}
-.sb-av{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:rgba(255,255,255,.6);flex-shrink:0;}
-.sb-uname{font-size:12px;font-weight:600;color:rgba(255,255,255,.75);}
-.sb-urole{font-size:10px;color:rgba(255,255,255,.28);}
-.main{padding:2.5rem 3rem;overflow-y:auto;}
-.topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:2.5rem;}
-.topbar-title{font-size:22px;font-weight:800;color:var(--text);letter-spacing:-.5px;}
-.topbar-sub{font-size:13px;color:var(--text3);margin-top:2px;}
-.btn-refresh{background:var(--surface);border:1px solid var(--border);color:var(--text2);padding:8px 16px;border-radius:var(--r);font-family:'Inter',sans-serif;font-size:12px;font-weight:500;cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:6px;}
-.btn-refresh:hover{border-color:var(--navy);color:var(--navy);}
-.alert-banner{display:none;background:var(--red-l);border:1px solid rgba(220,38,38,.2);border-left:3px solid var(--red);border-radius:0 var(--r) var(--r) 0;padding:12px 16px;margin-bottom:2rem;}
-.ab-inner{display:flex;align-items:center;gap:10px;}
-.ab-icon{width:7px;height:7px;border-radius:50%;background:var(--red);flex-shrink:0;animation:blink 1s infinite;}
-.ab-text{font-size:13px;font-weight:600;color:var(--red);}
-.ab-sub{font-size:11px;color:#B91C1C;margin-top:1px;}
-.section{display:none;animation:fadeIn .25s ease;}
+.shell{display:block;min-height:100vh;}
+
+/* MAIN */
+.main{padding:2rem 2.75rem;max-width:1100px;margin:0 auto;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:translateY(0);}}
+.section{display:none;animation:fadeIn .2s ease;}
 .section.active{display:block;}
-@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
-.kpi-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;margin-bottom:2rem;box-shadow:0 1px 4px rgba(0,0,0,.05);}
-.kpi-cell{background:var(--surface);padding:1.5rem 1.75rem;}
-.kpi-val{font-size:40px;font-weight:900;color:var(--navy);line-height:1;letter-spacing:-2px;margin-bottom:4px;}
-.kpi-lbl{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text3);}
-.kpi-cell.green .kpi-val{color:var(--green);}
-.kpi-cell.red .kpi-val{color:var(--red);}
-.kpi-cell.amber .kpi-val{color:var(--amber);}
-.classes-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;}
-.classes-title{font-size:16px;font-weight:700;color:var(--text);}
-.classes-sub{font-size:12px;color:var(--text3);margin-top:1px;}
+
+/* TOPBAR */
+.topbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem;}
+.topbar-title{font-size:21px;font-weight:800;letter-spacing:-.5px;}
+.topbar-sub{font-size:12px;color:var(--text3);margin-top:2px;}
+.btn-ref{background:var(--surface);border:1px solid var(--border);color:var(--text2);padding:7px 14px;border-radius:var(--r);font-family:'Inter',sans-serif;font-size:11px;font-weight:500;cursor:pointer;transition:all .15s;}
+.btn-ref:hover{border-color:var(--navy);color:var(--navy);}
+
+/* ALERT BANNER */
+.alert-banner{display:none;background:var(--red-l);border-left:3px solid var(--red);border-radius:0 var(--r) var(--r) 0;padding:10px 14px;margin-bottom:1.5rem;display:none;}
+.ab-inner{display:flex;align-items:center;gap:9px;}
+.ab-dot{width:6px;height:6px;border-radius:50%;background:var(--red);animation:blink 1s infinite;flex-shrink:0;}
+.ab-txt{font-size:12px;font-weight:600;color:var(--red);}
+.ab-sub{font-size:10px;color:#B91C1C;margin-top:1px;}
+
+/* KPI STRIP */
+.kpi-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;margin-bottom:2rem;box-shadow:0 1px 4px rgba(0,0,0,.04);}
+.kpi{background:var(--surface);padding:1.4rem 1.6rem;}
+.kpi-val{font-size:38px;font-weight:900;color:var(--navy);line-height:1;letter-spacing:-2px;margin-bottom:3px;}
+.kpi-lbl{font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text3);}
+.kpi.green .kpi-val{color:var(--green);}
+.kpi.amber .kpi-val{color:var(--amber);}
+
+/* CAMEMBERT GLOBAL */
+.visual-row{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:2rem;}
+.vis-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);padding:1.5rem;display:flex;align-items:center;gap:1.5rem;}
+.pie-wrap{position:relative;width:110px;height:110px;flex-shrink:0;}
+.pie-wrap svg{transform:rotate(-90deg);}
+.pie-bg{fill:none;stroke:#E8E4DC;stroke-width:18;}
+.pie-green{fill:none;stroke:var(--green);stroke-width:18;stroke-linecap:butt;transition:stroke-dashoffset .8s cubic-bezier(.4,0,.2,1);}
+.pie-amber{fill:none;stroke:var(--amber);stroke-width:18;stroke-linecap:butt;transition:stroke-dashoffset .8s cubic-bezier(.4,0,.2,1);}
+.pie-inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.pie-pct{font-size:22px;font-weight:900;color:var(--navy);line-height:1;letter-spacing:-1px;}
+.pie-sub{font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text3);margin-top:2px;}
+.vis-legend{flex:1;}
+.vis-title{font-size:13px;font-weight:700;color:var(--text);margin-bottom:.75rem;}
+.leg-item{display:flex;align-items:center;gap:7px;margin-bottom:.4rem;}
+.leg-dot{width:8px;height:8px;border-radius:2px;flex-shrink:0;}
+.leg-txt{font-size:12px;color:var(--text2);}
+.leg-val{font-size:12px;font-weight:700;color:var(--text);margin-left:auto;font-family:'DM Mono',monospace;}
+
+/* PROG BAR */
+.prog-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);padding:1.5rem 1.75rem;margin-bottom:2rem;}
+.prog-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;}
+.prog-title{font-size:13px;font-weight:700;color:var(--text);}
+.prog-pct{font-size:20px;font-weight:900;font-family:'DM Mono',monospace;color:var(--green);}
+.prog-track{height:10px;background:#E8E4DC;border-radius:5px;overflow:hidden;}
+.prog-fill{height:100%;background:var(--green);border-radius:5px;transition:width 1s cubic-bezier(.4,0,.2,1);width:0%;}
+.prog-note{font-size:11px;color:var(--text3);margin-top:.5rem;}
+
+/* NIVEAUX */
+.niveau-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-bottom:2rem;}
+.niveau-card{background:var(--surface);border:2px solid var(--border);border-radius:var(--rl);padding:1.5rem 1.75rem;cursor:pointer;transition:all .2s;position:relative;overflow:hidden;}
+.niveau-card:hover{border-color:var(--navy);transform:translateY(-2px);box-shadow:0 6px 20px rgba(26,44,91,.12);}
+.niveau-card::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(26,44,91,.03) 0%,transparent 60%);pointer-events:none;}
+.niv-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;}
+.niv-name{font-size:18px;font-weight:800;color:var(--navy);letter-spacing:-.4px;}
+.niv-type{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-top:2px;}
+.niv-arrow{font-size:18px;color:var(--text3);transition:all .2s;}
+.niveau-card:hover .niv-arrow{color:var(--navy);transform:translateX(4px);}
+.niv-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.75rem;}
+.niv-stat{background:var(--bg);border-radius:8px;padding:.75rem;}
+.niv-stat-val{font-size:22px;font-weight:900;color:var(--navy);line-height:1;letter-spacing:-.8px;}
+.niv-stat-lbl{font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--text3);margin-top:3px;}
+.niv-prog{margin-top:1rem;}
+.niv-prog-track{height:5px;background:#E8E4DC;border-radius:3px;overflow:hidden;}
+.niv-prog-fill{height:100%;background:var(--green);border-radius:3px;transition:width .8s;}
+.niv-prog-txt{font-size:10px;color:var(--text3);margin-top:4px;}
+
+/* CLASSES GRID */
 .classes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:2rem;}
-.classe-card{background:var(--navy);border:none;border-radius:var(--rl);padding:1.5rem;cursor:pointer;transition:all .18s;position:relative;overflow:hidden;}
-.classe-card::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.06) 0%,transparent 60%);pointer-events:none;}
-.classe-card:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(26,44,91,.35);}
-.classe-card.has-alert{background:linear-gradient(135deg,#7F1D1D 0%,#991B1B 100%);}
-.classe-card.ok{background:var(--navy);}
-.classe-card.pending{background:#2A3A6A;}
-.cc-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:1.1rem;}
-.cc-name{font-size:15px;font-weight:800;color:#fff;letter-spacing:-.3px;line-height:1.2;}
-.cc-type{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:3px;}
-.cc-badge{font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;white-space:nowrap;}
-.cc-badge-red{background:rgba(255,255,255,.15);color:#FCA5A5;}
-.cc-badge-green{background:rgba(22,163,104,.25);color:#6EE7B7;}
-.cc-badge-gray{background:rgba(255,255,255,.1);color:rgba(255,255,255,.5);}
-.cc-badge-amber{background:rgba(217,119,6,.25);color:#FCD34D;}
-.cc-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.625rem;}
-.cc-stat{background:rgba(255,255,255,.1);border-radius:6px;padding:.625rem .75rem;}
-.cc-stat-val{font-size:24px;font-weight:900;color:#fff;line-height:1;letter-spacing:-1px;}
-.cc-stat-lbl{font-size:9px;font-weight:600;color:rgba(255,255,255,.5);margin-top:3px;letter-spacing:.04em;text-transform:uppercase;}
-.cc-stat.good .cc-stat-val{color:#6EE7B7;}
-.cc-stat.warn .cc-stat-val{color:#FCD34D;}
-.cc-stat.danger .cc-stat-val{color:#FCA5A5;}
-.cc-arrow{position:absolute;bottom:1.25rem;right:1.25rem;font-size:16px;color:rgba(255,255,255,.3);transition:all .18s;}
-.classe-card:hover .cc-arrow{color:rgba(255,255,255,.8);transform:translateX(3px);}
-.back-btn{display:flex;align-items:center;gap:7px;font-size:13px;font-weight:500;color:var(--text3);cursor:pointer;background:none;border:none;font-family:'Inter',sans-serif;padding:0;transition:color .15s;}
+.classe-card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--rl);padding:1.25rem;cursor:pointer;transition:all .18s;position:relative;overflow:hidden;}
+.classe-card:hover{border-color:var(--navy);transform:translateY(-2px);box-shadow:0 5px 16px rgba(26,44,91,.1);}
+.classe-card.has-alert{border-color:rgba(220,38,38,.3);}
+.classe-card.pending{opacity:.65;}
+.cc-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:1rem;}
+.cc-name{font-size:14px;font-weight:800;color:var(--navy);}
+.cc-type{font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-top:2px;}
+.cc-badge{font-size:9px;font-weight:700;padding:2px 8px;border-radius:10px;}
+.badge-green{background:var(--green-l);color:var(--green);}
+.badge-amber{background:var(--amber-l);color:var(--amber);}
+.badge-gray{background:var(--bg);color:var(--text3);border:1px solid var(--border);}
+.badge-red{background:var(--red-l);color:var(--red);}
+.cc-pie-row{display:flex;align-items:center;gap:12px;margin-bottom:.75rem;}
+.cc-pie{position:relative;width:52px;height:52px;flex-shrink:0;}
+.cc-pie svg{transform:rotate(-90deg);}
+.cc-pie-bg{fill:none;stroke:#E8E4DC;stroke-width:8;}
+.cc-pie-fill{fill:none;stroke:var(--green);stroke-width:8;stroke-linecap:butt;}
+.cc-pie-inner{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
+.cc-pie-pct{font-size:11px;font-weight:900;color:var(--navy);}
+.cc-info{flex:1;}
+.cc-info-val{font-size:20px;font-weight:900;color:var(--navy);line-height:1;letter-spacing:-.5px;}
+.cc-info-lbl{font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--text3);margin-top:2px;}
+.cc-prog{margin-top:.5rem;}
+.cc-prog-track{height:4px;background:#E8E4DC;border-radius:2px;overflow:hidden;}
+.cc-prog-fill{height:100%;background:var(--green);border-radius:2px;}
+.cc-prog-txt{font-size:9px;color:var(--text3);margin-top:3px;}
+.cc-arrow{position:absolute;bottom:12px;right:14px;font-size:14px;color:var(--text3);transition:all .18s;}
+.classe-card:hover .cc-arrow{color:var(--navy);transform:translateX(3px);}
+
+/* DETAIL CLASSE - THEMES */
+.back-btn{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:500;color:var(--text3);cursor:pointer;background:none;border:none;font-family:'Inter',sans-serif;padding:0;transition:color .15s;margin-bottom:1.5rem;}
 .back-btn:hover{color:var(--text);}
-.back-btn::before{content:'←';font-size:15px;}
-.detail-title{font-size:28px;font-weight:900;color:var(--text);letter-spacing:-.8px;}
-.detail-sub{font-size:13px;color:var(--text3);margin-top:3px;}
-.detail-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;margin-bottom:2rem;}
-.dkpi{background:var(--surface);padding:1.25rem 1.5rem;}
-.dkpi-val{font-size:36px;font-weight:900;color:var(--navy);line-height:1;letter-spacing:-1.5px;margin-bottom:3px;}
-.dkpi-lbl{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);}
+.back-btn::before{content:'←';font-size:14px;}
+.detail-title{font-size:26px;font-weight:900;color:var(--text);letter-spacing:-.7px;}
+.detail-sub{font-size:12px;color:var(--text3);margin-top:2px;margin-bottom:1.75rem;}
+.detail-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;margin-bottom:1.75rem;}
+.dkpi{background:var(--surface);padding:1.1rem 1.4rem;}
+.dkpi-val{font-size:32px;font-weight:900;color:var(--navy);line-height:1;letter-spacing:-1.2px;margin-bottom:2px;}
+.dkpi-lbl{font-size:9px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);}
+
+/* THEMES GRID */
+.themes-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-bottom:1.75rem;}
+.theme-card{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--rl);padding:1.25rem;cursor:pointer;transition:all .18s;}
+.theme-card:hover{border-color:var(--navy);transform:translateY(-2px);box-shadow:0 5px 16px rgba(26,44,91,.1);}
+.theme-card.disabled{opacity:.55;cursor:default;pointer-events:none;}
+.th-top{display:flex;align-items:center;gap:10px;margin-bottom:1rem;}
+.th-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+.th-ic-fractions{background:#EEF2FF;}
+.th-ic-propor{background:#FFF7ED;}
+.th-ic-litteral{background:#F0FDF4;}
+.th-ic-fonctions{background:#EFF6FF;}
+.th-ic-geometrie{background:#FDF4FF;}
+.th-ic-stats{background:#FFF1F2;}
+.th-name{font-size:13px;font-weight:700;color:var(--text);}
+.th-badge{font-size:9px;font-weight:600;padding:2px 7px;border-radius:8px;margin-top:2px;display:inline-block;}
+.th-pie-row{display:flex;align-items:center;gap:12px;}
+.th-pie{position:relative;width:48px;height:48px;flex-shrink:0;}
+.th-pie svg{transform:rotate(-90deg);}
+.th-pie-bg{fill:none;stroke:#E8E4DC;stroke-width:8;}
+.th-pie-fill{fill:none;stroke:var(--green);stroke-width:8;}
+.th-pie-inner{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
+.th-pie-pct{font-size:11px;font-weight:900;color:var(--navy);}
+.th-info{flex:1;}
+.th-prog-track{height:4px;background:#E8E4DC;border-radius:2px;overflow:hidden;margin-top:.5rem;}
+.th-prog-fill{height:100%;background:var(--green);border-radius:2px;}
+.th-prog-txt{font-size:9px;color:var(--text3);margin-top:3px;}
+.btn-detail{display:inline-flex;align-items:center;gap:6px;background:var(--navy);color:#fff;border:none;padding:9px 18px;border-radius:var(--r);font-family:'Inter',sans-serif;font-size:12px;font-weight:600;cursor:pointer;transition:all .15s;margin-top:.25rem;}
+.btn-detail:hover{background:#243d80;}
+
+/* DETAIL ELEVES */
 .panel{background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);padding:1.5rem 1.75rem;margin-bottom:1.5rem;}
-.panel-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;padding-bottom:1rem;border-bottom:1px solid var(--border);}
-.panel-title{font-size:15px;font-weight:700;color:var(--text);}
-.panel-sub{font-size:11px;color:var(--text3);margin-top:2px;}
-.pbadge{font-size:10px;font-weight:600;padding:3px 10px;border-radius:20px;border:1px solid;}
+.panel-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;padding-bottom:1rem;border-bottom:1px solid var(--border);}
+.panel-title{font-size:14px;font-weight:700;}
+.pbadge{font-size:10px;font-weight:600;padding:3px 10px;border-radius:10px;border:1px solid;}
 .pbadge-gray{background:var(--bg);color:var(--text3);border-color:var(--border);}
-.pbadge-green{background:var(--green-l);color:var(--green);border-color:rgba(22,163,104,.2);}
-.pbadge-red{background:var(--red-l);color:var(--red);border-color:rgba(220,38,38,.2);}
 .table-wrap{overflow-x:auto;}
 table{width:100%;border-collapse:collapse;}
-th{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);padding:0 0 10px;text-align:left;border-bottom:1px solid var(--border);}
-td{padding:13px 0;font-size:13px;color:var(--text2);border-bottom:1px solid #F0ECE4;vertical-align:middle;}
-th:not(:first-child),td:not(:first-child){padding-left:18px;}
+th{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);padding:0 0 9px;text-align:left;border-bottom:1px solid var(--border);}
+td{padding:12px 0;font-size:12px;color:var(--text2);border-bottom:1px solid #F0ECE4;vertical-align:middle;}
+th:not(:first-child),td:not(:first-child){padding-left:16px;}
 tr:last-child td{border-bottom:none;}
-tbody tr{cursor:pointer;transition:background .1s;}
-tbody tr:hover td{background:#F8F5EF;}
-.td-name{color:var(--text);font-weight:600;font-size:14px;}
-.td-mono{font-family:'DM Mono',monospace;font-size:12px;}
-.pill{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:20px;font-size:11px;font-weight:600;}
+.td-name{color:var(--text);font-weight:600;font-size:13px;}
+.td-mono{font-family:'DM Mono',monospace;font-size:11px;}
+.pill{display:inline-flex;align-items:center;gap:3px;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:600;}
 .pill::before{content:'';width:4px;height:4px;border-radius:50%;flex-shrink:0;}
 .pill-green{background:var(--green-l);color:var(--green);}
 .pill-green::before{background:var(--green);}
@@ -128,276 +189,260 @@ tbody tr:hover td{background:#F8F5EF;}
 .pill-red::before{background:var(--red);animation:blink .8s infinite;}
 .pill-gray{background:var(--bg);color:var(--text3);}
 .pill-gray::before{background:var(--text3);}
-.pill-navy{background:var(--navy-l);color:var(--navy);}
-.pill-navy::before{background:var(--navy);}
-.lacune-tag{display:inline-block;font-size:10px;font-weight:500;padding:2px 8px;border-radius:4px;background:var(--navy-l);color:var(--navy);margin:2px 2px 0 0;}
-.fiche-row{display:flex;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid #F0ECE4;}
-.fiche-row:last-child{border-bottom:none;}
-.fiche-name{font-size:13px;font-weight:600;color:var(--text);}
-.fiche-meta{font-size:11px;color:var(--text3);margin-top:2px;}
-.empty{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2.5rem;text-align:center;}
-.empty-ttl{font-size:15px;font-weight:600;color:var(--text2);margin-bottom:.3rem;}
-.empty-sub{font-size:12px;color:var(--text3);max-width:240px;line-height:1.6;}
-/* Barre de progression fiche */
-.fiche-prog-wrap{display:flex;align-items:center;gap:10px;}
-.fiche-prog-bar{width:80px;height:5px;background:#E8E4DC;border-radius:3px;overflow:hidden;flex-shrink:0;}
-.fiche-prog-fill{height:100%;border-radius:3px;transition:width .6s;}
-/* Section eval fractions */
-.eval-fractions-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:1.5rem;}
-.ef-cell{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1rem;text-align:center;}
-.ef-val{font-size:28px;font-weight:900;color:var(--navy);line-height:1;letter-spacing:-1px;}
-.ef-lbl{font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--text3);margin-top:4px;}
-.ef-cell.green .ef-val{color:var(--green);}
-.ef-cell.amber .ef-val{color:var(--amber);}
-.ef-cell.red .ef-val{color:var(--red);}
-/* Score bar par fiche */
-.score-fiche-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid #F0ECE4;}
-.score-fiche-row:last-child{border-bottom:none;}
-.score-fiche-name{font-size:12px;font-weight:600;color:var(--text);flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.score-fiche-bar{flex:0 0 120px;height:6px;background:#E8E4DC;border-radius:3px;overflow:hidden;}
-.score-fiche-fill{height:100%;border-radius:3px;}
-.score-fiche-pct{font-size:11px;font-weight:700;font-family:'DM Mono',monospace;color:var(--text2);flex:0 0 36px;text-align:right;}
-.score-fiche-count{font-size:10px;color:var(--text3);flex:0 0 60px;text-align:right;}
-/* Diag filter */
-.diag-filter{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:1.25rem;}
-.df-btn{font-size:11px;font-weight:500;padding:4px 12px;border-radius:20px;border:1px solid var(--border);background:var(--surface);color:var(--text2);cursor:pointer;transition:all .15s;font-family:'Inter',sans-serif;}
-.df-btn:hover{border-color:var(--navy);color:var(--navy);}
-.df-btn.active{background:var(--navy);color:#fff;border-color:var(--navy);}
-/* Ring */
-.ring-wrap{display:flex;align-items:center;gap:2.5rem;padding:.5rem 0 1rem;}
-.ring-svg-wrap{position:relative;width:130px;height:130px;flex-shrink:0;}
-.ring-svg-wrap svg{transform:rotate(-90deg);}
-.ring-bg{fill:none;stroke:#E8E4DC;stroke-width:10;}
-.ring-fill-el{fill:none;stroke-width:10;stroke-linecap:butt;transition:stroke-dashoffset 1s cubic-bezier(.4,0,.2,1);}
-.ring-inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;}
-.ring-pct{font-size:32px;font-weight:900;color:var(--navy);line-height:1;letter-spacing:-1px;}
-.ring-lbl{font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-top:2px;}
-.ring-info-title{font-size:18px;font-weight:700;color:var(--text);margin-bottom:.5rem;}
-.ring-info-body{font-size:13px;color:var(--text2);line-height:1.65;max-width:320px;}
-/* Login */
+.bar-wrap{display:flex;align-items:center;gap:8px;}
+.bar-track{width:70px;height:4px;background:#E8E4DC;border-radius:2px;overflow:hidden;flex-shrink:0;}
+.bar-fill{height:100%;border-radius:2px;}
+.empty{padding:2rem;text-align:center;color:var(--text3);font-size:12px;}
+
+/* Fiche score row dans détail élève */
+.fiche-score-row{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid #F0ECE4;}
+.fiche-score-row:last-child{border-bottom:none;}
+.fs-name{font-size:12px;font-weight:600;color:var(--text);}
+.fs-score{font-family:'DM Mono',monospace;font-size:12px;font-weight:700;}
+
+/* LOGIN */
 .login-screen{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:1000;}
-.login-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2.5rem;width:100%;max-width:400px;box-shadow:0 8px 40px rgba(0,0,0,.1);}
-.login-logo{width:48px;height:48px;border-radius:12px;background:var(--navy);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;color:#fff;margin-bottom:1.5rem;}
-.login-title{font-size:22px;font-weight:800;color:var(--text);margin-bottom:.3rem;letter-spacing:-.5px;}
-.login-sub{font-size:13px;color:var(--text3);margin-bottom:2rem;line-height:1.5;}
-.login-label{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text2);margin-bottom:.4rem;display:block;}
-.login-input{width:100%;height:44px;padding:0 14px;border:1.5px solid var(--border);border-radius:var(--r);font-family:'Inter',sans-serif;font-size:14px;font-weight:500;color:var(--text);background:var(--bg);outline:none;transition:all .2s;margin-bottom:1rem;}
-.login-input:focus{border-color:var(--navy);background:#fff;box-shadow:0 0 0 3px var(--navy-l);}
-.login-err{font-size:12px;color:var(--red);margin-bottom:.75rem;display:none;font-weight:500;}
-.btn-login{width:100%;height:44px;background:var(--navy);color:#fff;border:none;border-radius:var(--r);font-family:'Inter',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all .15s;}
+.login-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2.5rem;width:100%;max-width:380px;box-shadow:0 8px 40px rgba(0,0,0,.1);}
+.login-logo{width:44px;height:44px;border-radius:12px;background:var(--navy);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;color:#fff;margin-bottom:1.25rem;}
+.login-title{font-size:20px;font-weight:800;color:var(--text);margin-bottom:.25rem;letter-spacing:-.4px;}
+.login-sub{font-size:12px;color:var(--text3);margin-bottom:1.75rem;line-height:1.5;}
+.login-lbl{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text2);margin-bottom:.35rem;display:block;}
+.login-inp{width:100%;height:42px;padding:0 13px;border:1.5px solid var(--border);border-radius:var(--r);font-family:'Inter',sans-serif;font-size:13px;color:var(--text);background:var(--bg);outline:none;transition:all .2s;margin-bottom:.875rem;}
+.login-inp:focus{border-color:var(--navy);background:#fff;}
+.login-err{font-size:11px;color:var(--red);margin-bottom:.625rem;display:none;}
+.btn-login{width:100%;height:42px;background:var(--navy);color:#fff;border:none;border-radius:var(--r);font-family:'Inter',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:all .15s;}
 .btn-login:hover{background:#243d80;}
 .btn-login:disabled{background:#8a9fc5;cursor:not-allowed;}
-@media(max-width:900px){.shell{grid-template-columns:1fr;}.sidebar{display:none;}.classes-grid{grid-template-columns:1fr 1fr;}.kpi-strip{grid-template-columns:1fr 1fr;}}
 </style>
 </head>
 <body>
 
+<!-- LOGIN -->
 <div class="login-screen" id="login-screen">
   <div class="login-card">
     <div class="login-logo">PV</div>
     <div class="login-title">Espace proviseur</div>
-    <div class="login-sub">Connectez-vous pour accéder au tableau de bord de votre établissement.</div>
-    <label class="login-label">Identifiant</label>
-    <input class="login-input" type="text" id="login-id" placeholder="Votre identifiant">
-    <label class="login-label">Mot de passe</label>
-    <input class="login-input" type="password" id="login-mdp" placeholder="••••••••">
+    <div class="login-sub">Connectez-vous pour accéder au tableau de bord.</div>
+    <label class="login-lbl">Identifiant</label>
+    <input class="login-inp" type="text" id="login-id" placeholder="Votre identifiant">
+    <label class="login-lbl">Mot de passe</label>
+    <input class="login-inp" type="password" id="login-mdp" placeholder="••••••••">
     <div class="login-err" id="login-err">Identifiant ou mot de passe incorrect.</div>
-    <button class="btn-login" id="btn-login" onclick="connexion()">Accéder au tableau de bord →</button>
+    <button class="btn-login" id="btn-login" onclick="connexion()">Accéder →</button>
   </div>
 </div>
 
 <div class="shell" id="shell" style="display:none;">
-<aside class="sidebar">
-  <div class="sb-logo">
-    <div class="sb-logo-mark">LF</div>
+<div id="app-header" style="background:var(--sidebar);padding:.875rem 2rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;">
+  <div style="display:flex;align-items:center;gap:10px;">
+    <div style="width:30px;height:30px;border-radius:7px;background:var(--navy);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;">LF</div>
     <div>
-      <div class="sb-logo-name" id="sb-etab-nom">—</div>
-      <div class="sb-logo-sub">Tableau de bord</div>
+      <div style="font-size:12px;font-weight:700;color:#fff;" id="sb-nom">—</div>
+      <div style="font-size:10px;color:rgba(255,255,255,.35);">Tableau de bord · Remédiation maths</div>
     </div>
   </div>
-  <div class="sb-divider"></div>
-  <div class="sb-section-label">Navigation</div>
-  <nav>
-    <div class="nav-item active" onclick="showSection('accueil',this)">
-      <span class="nav-item-icon">⊞</span><span>Vue générale</span>
-      <div class="nav-alert-dot" id="nav-alert-dot"></div>
-    </div>
-    <div class="nav-item" onclick="showSection('section-eval',this)">
-      <span class="nav-item-icon">◈</span><span>Éval. Fractions</span>
-    </div>
-    <div class="nav-item" onclick="showSection('section-remediation',this)">
-      <span class="nav-item-icon">◎</span><span>Remédiation</span>
-    </div>
-  </nav>
-  <div class="sb-footer">
-    <div class="sb-sync">
+  <div style="display:flex;align-items:center;gap:16px;">
+    <div id="sync-row-top" style="display:flex;align-items:center;gap:6px;">
       <div class="sync-dot loading" id="sync-dot"></div>
       <span class="sync-txt" id="sync-txt">Chargement...</span>
     </div>
-    <div class="sb-user">
-      <div class="sb-av">PV</div>
-      <div>
-        <div class="sb-uname" id="sb-identifiant">Proviseur</div>
-        <div class="sb-urole" style="cursor:pointer;text-decoration:underline;" onclick="deconnexion()">Se déconnecter</div>
-      </div>
+    <div style="display:flex;align-items:center;gap:8px;">
+      <span style="font-size:11px;font-weight:600;color:rgba(255,255,255,.6);" id="sb-id">Proviseur</span>
+      <span style="font-size:10px;color:rgba(255,255,255,.3);cursor:pointer;text-decoration:underline;" onclick="deconnexion()">Déconnexion</span>
     </div>
   </div>
-</aside>
-
+</div>
 <main class="main">
 
+  <!-- ALERTE -->
   <div class="alert-banner" id="alert-banner">
-    <div class="ab-inner">
-      <div class="ab-icon"></div>
-      <div>
-        <div class="ab-text" id="ab-text">—</div>
-        <div class="ab-sub">Des élèves ont échoué 3 fois — intervention professeur requise.</div>
-      </div>
+    <div class="ab-inner"><div class="ab-dot"></div>
+      <div><div class="ab-txt" id="ab-txt">—</div><div class="ab-sub">Élèves bloqués après 3 tentatives — intervention requise.</div></div>
     </div>
   </div>
 
-  <!-- ══ VUE GÉNÉRALE ══ -->
+  <!-- ══ ACCUEIL ══ -->
   <div class="section active" id="accueil">
     <div class="topbar">
-      <div><div class="topbar-title">Vue générale</div><div class="topbar-sub">Remédiation mathématiques · Fractions</div></div>
-      <button class="btn-refresh" onclick="loadAll()">↻ Actualiser</button>
+      <div><div class="topbar-title">Vue générale</div><div class="topbar-sub">Lycée Benoît Fourneyron · Remédiation maths</div></div>
+      <button class="btn-ref" onclick="loadAll()">↻ Actualiser</button>
     </div>
 
-    <div class="kpi-strip">
-      <div class="kpi-cell"><div class="kpi-val" id="kpi-evalues">—</div><div class="kpi-lbl">Élèves évalués</div></div>
-      <div class="kpi-cell amber"><div class="kpi-val" id="kpi-assignees">—</div><div class="kpi-lbl">Fiches assignées</div></div>
-      <div class="kpi-cell green"><div class="kpi-val" id="kpi-validees">—</div><div class="kpi-lbl">Fiches validées</div></div>
-      <div class="kpi-cell"><div class="kpi-val" id="kpi-pct">—</div><div class="kpi-lbl">% progression</div></div>
+    <!-- Ligne : nb élèves + camembert + progression -->
+    <div style="display:grid;grid-template-columns:auto 1fr 1fr;gap:1.25rem;align-items:center;background:var(--surface);border:1px solid var(--border);border-radius:var(--rl);padding:2rem 2.25rem;margin-bottom:2rem;">
+
+      <!-- Nb élèves diagnostiqués -->
+      <div style="text-align:center;padding-right:2rem;border-right:1px solid var(--border);">
+        <div style="font-size:64px;font-weight:900;color:var(--navy);line-height:1;letter-spacing:-3px;" id="kpi-evalues">—</div>
+        <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--text3);margin-top:6px;">Élèves diagnostiqués</div>
+      </div>
+
+      <!-- Camembert lacunes / acquis -->
+      <div style="display:flex;align-items:center;gap:1.5rem;padding:0 2rem;border-right:1px solid var(--border);">
+        <div class="pie-wrap" style="width:120px;height:120px;flex-shrink:0;">
+          <svg viewBox="0 0 120 120" width="120" height="120">
+            <circle fill="none" stroke="#EF4444" stroke-width="18" cx="60" cy="60" r="46"/>
+            <circle fill="none" stroke="var(--green)" stroke-width="18" cx="60" cy="60" r="46"
+              stroke-dasharray="289" stroke-dashoffset="289"
+              id="pie-acquis" style="transition:stroke-dashoffset .8s cubic-bezier(.4,0,.2,1);stroke-linecap:butt;"/>
+          </svg>
+          <div class="pie-inner">
+            <div style="font-size:20px;font-weight:900;color:var(--navy);line-height:1;" id="pie-pct-acquis">—</div>
+            <div style="font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text3);">acquis</div>
+          </div>
+        </div>
+        <div>
+          <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:.75rem;">Lacunes / Acquis</div>
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:.4rem;">
+            <div style="width:10px;height:10px;border-radius:2px;background:var(--green);flex-shrink:0;"></div>
+            <span style="font-size:12px;color:var(--text2);">Notions acquises</span>
+            <span style="font-size:13px;font-weight:700;color:var(--text);margin-left:auto;font-family:'DM Mono',monospace;" id="leg-acquis-pct">—</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <div style="width:10px;height:10px;border-radius:2px;background:#EF4444;flex-shrink:0;"></div>
+            <span style="font-size:12px;color:var(--text2);">Lacunes</span>
+            <span style="font-size:13px;font-weight:700;color:var(--text);margin-left:auto;font-family:'DM Mono',monospace;" id="leg-lacunes-pct">—</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Progression remédiation -->
+      <div style="padding-left:2rem;">
+        <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:.5rem;">Progression depuis le début</div>
+        <div style="font-size:48px;font-weight:900;color:var(--green);line-height:1;letter-spacing:-2px;margin-bottom:.5rem;" id="prog-global-pct">—</div>
+        <div style="height:8px;background:#E8E4DC;border-radius:4px;overflow:hidden;margin-bottom:.4rem;">
+          <div id="prog-global-fill" style="height:100%;background:var(--green);border-radius:4px;transition:width 1s cubic-bezier(.4,0,.2,1);width:0%;"></div>
+        </div>
+        <div style="font-size:11px;color:var(--text3);" id="prog-global-note">—</div>
+      </div>
+
     </div>
 
-    <div class="classes-header">
-      <div><div class="classes-title">Classes</div><div class="classes-sub">Cliquez sur une classe pour voir le détail élèves</div></div>
+    <!-- Deux boutons niveaux -->
+    <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:.875rem;">Résultats par niveau</div>
+    <div class="niveau-grid" id="niveaux-grid"></div>
+  </div>
+
+  <!-- ══ NIVEAUX → CLASSES ══ -->
+  <div class="section" id="section-niveaux">
+    <div class="topbar">
+      <div><div class="topbar-title" id="niv-title">Classes</div><div class="topbar-sub" id="niv-sub">—</div></div>
+      <button class="btn-ref" onclick="loadAll()">↻ Actualiser</button>
     </div>
+    <button class="back-btn" onclick="allerVers('accueil')">Retour à la vue générale</button>
     <div class="classes-grid" id="classes-grid"></div>
   </div>
 
-  <!-- ══ DÉTAIL CLASSE ══ -->
+  <!-- ══ DETAIL CLASSE → THEMES ══ -->
   <div class="section" id="detail-classe">
-    <div class="topbar" style="margin-bottom:1.5rem;">
-      <button class="back-btn" onclick="retourAccueil()">Retour aux classes</button>
-      <button class="btn-refresh" onclick="loadAll()">↻ Actualiser</button>
+    <div class="topbar">
+      <div><div class="topbar-title" id="dc-title">—</div><div class="topbar-sub" id="dc-sub">—</div></div>
+      <button class="btn-ref" onclick="loadAll()">↻ Actualiser</button>
     </div>
-    <div class="detail-title" id="dc-title">—</div>
-    <div class="detail-sub" id="dc-sub">—</div>
-    <div class="detail-kpis" style="margin-top:1.5rem;">
-      <div class="dkpi"><div class="dkpi-val" id="dc-kpi-evalues">—</div><div class="dkpi-lbl">Évalués</div></div>
-      <div class="dkpi"><div class="dkpi-val" id="dc-kpi-assignees">—</div><div class="dkpi-lbl">Fiches assignées</div></div>
-      <div class="dkpi"><div class="dkpi-val" id="dc-kpi-validees">—</div><div class="dkpi-lbl">Fiches validées</div></div>
-      <div class="dkpi"><div class="dkpi-val" id="dc-kpi-alertes">—</div><div class="dkpi-lbl">Alertes actives</div></div>
+    <button class="back-btn" id="dc-back" onclick="">Retour</button>
+    <div class="detail-kpis">
+      <div class="dkpi"><div class="dkpi-val" id="dc-evalues">—</div><div class="dkpi-lbl">Évalués</div></div>
+      <div class="dkpi"><div class="dkpi-val" id="dc-assignees">—</div><div class="dkpi-lbl">Fiches assignées</div></div>
+      <div class="dkpi"><div class="dkpi-val" id="dc-validees">—</div><div class="dkpi-lbl">Validées</div></div>
+      <div class="dkpi"><div class="dkpi-val" id="dc-alertes">—</div><div class="dkpi-lbl">Alertes</div></div>
     </div>
+
+    <!-- Camembert + prog classe -->
+    <div class="visual-row" style="margin-bottom:1.5rem;">
+      <div class="vis-card">
+        <div class="pie-wrap">
+          <svg viewBox="0 0 110 110" width="110" height="110">
+            <circle class="pie-bg" cx="55" cy="55" r="42"/>
+            <circle class="pie-green" id="dc-pie-acquis" cx="55" cy="55" r="42" stroke-dasharray="264" stroke-dashoffset="264"/>
+          </svg>
+          <div class="pie-inner"><div class="pie-pct" id="dc-pie-pct">—</div><div class="pie-sub">acquis</div></div>
+        </div>
+        <div class="vis-legend">
+          <div class="vis-title">Lacunes / Acquis</div>
+          <div class="leg-item"><div class="leg-dot" style="background:var(--green);"></div><div class="leg-txt">Acquis</div><div class="leg-val" id="dc-leg-acquis">—</div></div>
+          <div class="leg-item"><div class="leg-dot" style="background:#E8E4DC;"></div><div class="leg-txt">Lacunes</div><div class="leg-val" id="dc-leg-lacunes">—</div></div>
+        </div>
+      </div>
+      <div class="vis-card" style="flex-direction:column;align-items:flex-start;gap:.75rem;">
+        <div class="vis-title">Progression remédiation</div>
+        <div style="width:100%;">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.4rem;">
+            <span style="font-size:12px;color:var(--text2);">Fiches validées / assignées</span>
+            <span class="kpi-val" style="font-size:26px;" id="dc-prog-pct">—</span>
+          </div>
+          <div class="prog-track"><div class="prog-fill" id="dc-prog-fill"></div></div>
+          <div class="prog-note" id="dc-prog-note">—</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:1rem;font-size:14px;font-weight:700;">Thèmes</div>
+    <div class="themes-grid" id="themes-grid"></div>
+    <button class="btn-detail" onclick="voirDetailEleves()">Voir le détail par élève →</button>
+  </div>
+
+  <!-- ══ DETAIL ELEVES ══ -->
+  <div class="section" id="detail-eleves">
+    <div class="topbar">
+      <div><div class="topbar-title" id="de-title">—</div><div class="topbar-sub" id="de-sub">—</div></div>
+      <button class="btn-ref" onclick="loadAll()">↻ Actualiser</button>
+    </div>
+    <button class="back-btn" onclick="allerVers('detail-classe')">Retour aux thèmes</button>
     <div class="panel">
-      <div class="panel-header">
-        <div><div class="panel-title">Élèves</div><div class="panel-sub">Cliquez pour voir le détail</div></div>
-        <span class="pbadge pbadge-gray" id="dc-badge-eleves">—</span>
+      <div class="panel-hdr">
+        <div class="panel-title">Élèves</div>
+        <span class="pbadge pbadge-gray" id="de-badge">—</span>
       </div>
       <div class="table-wrap">
         <table>
-          <thead><tr><th>Élève</th><th>Classe</th><th>Éval. faite</th><th>Fiches assignées</th><th>Validées</th><th>Alertes</th><th>Statut</th><th></th></tr></thead>
-          <tbody id="dc-tbody"></tbody>
+          <thead><tr><th>Élève</th><th>Éval. faite</th><th>Fiches assignées</th><th>Validées</th><th>Progression</th><th>Alertes</th><th>Statut</th><th></th></tr></thead>
+          <tbody id="de-tbody"></tbody>
         </table>
       </div>
     </div>
   </div>
 
-  <!-- ══ DÉTAIL ÉLÈVE ══ -->
-  <div class="section" id="detail-eleve">
-    <div class="topbar" style="margin-bottom:1.5rem;">
-      <button class="back-btn" onclick="retourClasse()">Retour à la classe</button>
-      <button class="btn-refresh" onclick="loadAll()">↻ Actualiser</button>
+  <!-- ══ DETAIL UN ELEVE ══ -->
+  <div class="section" id="detail-un-eleve">
+    <div class="topbar">
+      <div><div class="topbar-title" id="due-title">—</div><div class="topbar-sub" id="due-sub">—</div></div>
+      <button class="btn-ref" onclick="loadAll()">↻ Actualiser</button>
     </div>
-    <div class="detail-title" id="de-title">—</div>
-    <div class="detail-sub" id="de-sub">—</div>
-    <div class="detail-kpis" style="margin-top:1.5rem;">
-      <div class="dkpi"><div class="dkpi-val" id="de-assignees">—</div><div class="dkpi-lbl">Fiches assignées</div></div>
-      <div class="dkpi"><div class="dkpi-val" id="de-validees">—</div><div class="dkpi-lbl">Validées</div></div>
-      <div class="dkpi"><div class="dkpi-val" id="de-restantes">—</div><div class="dkpi-lbl">Restantes</div></div>
-      <div class="dkpi"><div class="dkpi-val" id="de-alertes">—</div><div class="dkpi-lbl">Alertes</div></div>
+    <button class="back-btn" onclick="allerVers('detail-eleves')">Retour à la liste</button>
+    <div class="detail-kpis">
+      <div class="dkpi"><div class="dkpi-val" id="due-assignees">—</div><div class="dkpi-lbl">Assignées</div></div>
+      <div class="dkpi"><div class="dkpi-val" id="due-validees">—</div><div class="dkpi-lbl">Validées</div></div>
+      <div class="dkpi"><div class="dkpi-val" id="due-restantes">—</div><div class="dkpi-lbl">Restantes</div></div>
+      <div class="dkpi"><div class="dkpi-val" id="due-alertes">—</div><div class="dkpi-lbl">Alertes</div></div>
     </div>
-
-    <!-- Résultats évaluation diagnostique -->
-    <div class="panel" id="panel-eval-eleve">
-      <div class="panel-header">
-        <div><div class="panel-title">Résultats évaluation diagnostique · Fractions</div><div class="panel-sub">Score par notion (sur 3 questions)</div></div>
-        <span class="pbadge pbadge-navy" id="de-eval-date">—</span>
-      </div>
-      <div id="de-eval-detail"></div>
-    </div>
-
-    <!-- Fiches remédiation -->
     <div class="panel">
-      <div class="panel-header"><div class="panel-title">Fiches de remédiation</div></div>
-      <div id="de-fiches"></div>
+      <div class="panel-hdr"><div class="panel-title">Résultats évaluation diagnostique · Fractions</div><span class="pbadge pbadge-gray" id="due-date">—</span></div>
+      <div id="due-eval-detail"></div>
+    </div>
+    <div class="panel">
+      <div class="panel-hdr"><div class="panel-title">Fiches de remédiation</div></div>
+      <div id="due-fiches"></div>
     </div>
   </div>
 
-  <!-- ══ ÉVAL FRACTIONS ══ -->
-  <div class="section" id="section-eval">
+  <!-- ══ SECTION REMEDIATION ══ -->
+  <div class="section" id="section-rem">
     <div class="topbar">
-      <div><div class="topbar-title">Évaluation Fractions</div><div class="topbar-sub">Résultats de l'évaluation diagnostique par notion</div></div>
-      <button class="btn-refresh" onclick="loadAll()">↻ Actualiser</button>
+      <div><div class="topbar-title">Remédiation</div><div class="topbar-sub">Suivi des fiches par notion</div></div>
+      <button class="btn-ref" onclick="loadAll()">↻ Actualiser</button>
     </div>
-
     <div class="kpi-strip">
-      <div class="kpi-cell"><div class="kpi-val" id="ev-kpi-total">—</div><div class="kpi-lbl">Élèves évalués</div></div>
-      <div class="kpi-cell amber"><div class="kpi-val" id="ev-kpi-assignees">—</div><div class="kpi-lbl">Total fiches assignées</div></div>
-      <div class="kpi-cell green"><div class="kpi-val" id="ev-kpi-maitrise">—</div><div class="kpi-lbl">Notions maîtrisées</div></div>
-      <div class="kpi-cell"><div class="kpi-val" id="ev-kpi-moy">—</div><div class="kpi-lbl">Moy. fiches / élève</div></div>
+      <div class="kpi"><div class="kpi-val" id="rem-actifs">—</div><div class="kpi-lbl">Élèves actifs</div></div>
+      <div class="kpi green"><div class="kpi-val" id="rem-validees">—</div><div class="kpi-lbl">Fiches validées</div></div>
+      <div class="kpi" style=""><div class="kpi-val" style="color:var(--red);" id="rem-alertes">—</div><div class="kpi-lbl">Alertes actives</div></div>
     </div>
-
     <div class="panel">
-      <div class="panel-header">
-        <div><div class="panel-title">Taux de maîtrise par notion</div><div class="panel-sub">% d'élèves ayant réussi ≥ 2/3 questions</div></div>
-      </div>
-      <div id="ev-score-fiches"></div>
+      <div class="panel-hdr"><div class="panel-title">Taux de validation par fiche</div></div>
+      <div id="rem-fiches"></div>
     </div>
-
     <div class="panel">
-      <div class="panel-header">
-        <div><div class="panel-title">Détail par élève</div></div>
-        <span class="pbadge pbadge-gray" id="ev-badge">—</span>
-      </div>
-      <div class="diag-filter" id="ev-filters"></div>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>Élève</th><th>Classe</th><th>Date</th><th>Fiches assignées</th><th>Progression rem.</th><th>Statut</th></tr></thead>
-          <tbody id="ev-tbody"></tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-
-  <!-- ══ REMÉDIATION ══ -->
-  <div class="section" id="section-remediation">
-    <div class="topbar">
-      <div><div class="topbar-title">Remédiation</div><div class="topbar-sub">Progression des fiches de remédiation</div></div>
-      <button class="btn-refresh" onclick="loadAll()">↻ Actualiser</button>
-    </div>
-
-    <div class="kpi-strip">
-      <div class="kpi-cell"><div class="kpi-val" id="rem-kpi-actifs">—</div><div class="kpi-lbl">Élèves actifs</div></div>
-      <div class="kpi-cell green"><div class="kpi-val" id="rem-kpi-validees">—</div><div class="kpi-lbl">Fiches validées</div></div>
-      <div class="kpi-cell red"><div class="kpi-val" id="rem-kpi-alertes">—</div><div class="kpi-lbl">Alertes actives</div></div>
-      <div class="kpi-cell"><div class="kpi-val" id="rem-kpi-pct">—</div><div class="kpi-lbl">Taux validation</div></div>
-    </div>
-
-    <div class="panel">
-      <div class="panel-header">
-        <div><div class="panel-title">Suivi par fiche</div><div class="panel-sub">Taux de validation pour chaque fiche</div></div>
-      </div>
-      <div id="rem-score-fiches"></div>
-    </div>
-
-    <div class="panel">
-      <div class="panel-header">
-        <div><div class="panel-title">Alertes — élèves bloqués</div></div>
-        <span class="pbadge pbadge-red" id="rem-badge-alertes">—</span>
-      </div>
-      <div id="rem-alertes"></div>
+      <div class="panel-hdr"><div class="panel-title">Alertes — élèves bloqués</div><span class="pbadge pbadge-gray" id="rem-badge-alertes">—</span></div>
+      <div id="rem-alertes-list"></div>
     </div>
   </div>
 
@@ -408,42 +453,56 @@ tbody tr:hover td{background:#F8F5EF;}
 var SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxlBMjVXIg58lsopoeQ5sEZW-jcQIOrOtnWwCGVtHLGjcmpi9exaYZ3oAEre4deZum2/exec";
 var ETABLISSEMENT = "Fourneyron";
 
-var CLASSES_CONFIG = [
-  {id:"2nde BMA Armurerie", nom:"2nde BMA Armurerie", type:"BMA"},
-  {id:"2nde CAP Cuisine",   nom:"2nde CAP Cuisine",   type:"CAP"},
-  {id:"2nde CAP Coiffure",  nom:"2nde CAP Coiffure",  type:"CAP"},
-  {id:"2nde AMA Bac Pro",   nom:"2nde AMA Bac Pro",   type:"Bac Pro"},
-  {id:"2nde TEBE",          nom:"2nde TEBE",           type:"Bac Pro"},
-  {id:"2nde Bac Pro Autre", nom:"2nde Bac Pro Autre",  type:"Bac Pro"}
+var NIVEAUX = [
+  { id:"CAP",     nom:"2nde CAP",     type:"CAP",     classes:[
+    {id:"2CAP Charpentier", nom:"Charpentier", prof:null},
+    {id:"2CAP Ebéniste",    nom:"Ébéniste",    prof:null},
+    {id:"2CAP MIS",         nom:"MIS",         prof:null},
+    {id:"2CAP EL",          nom:"EL",          prof:null}
+  ]},
+  { id:"BACPRO",  nom:"2nde Bac Pro", type:"Bac Pro", classes:[
+    {id:"2nde OBPT", nom:"OBPT", prof:null},
+    {id:"2nde TEBE", nom:"TEBE", prof:"Reydellet"},
+    {id:"2nde AMA",  nom:"AMA",  prof:"Reydellet"},
+    {id:"2nde TCB",  nom:"TCB",  prof:null},
+    {id:"2nde TNE",  nom:"TNE",  prof:null}
+  ]}
+];
+
+var THEMES_CONFIG = [
+  {id:"fractions", nom:"Fractions", icon:"🔢", cls:"th-ic-fractions", actif:true},
+  {id:"proportionnalite", nom:"Proportionnalité", icon:"📊", cls:"th-ic-propor", actif:false},
+  {id:"calcul_litteral", nom:"Calcul littéral", icon:"✏️", cls:"th-ic-litteral", actif:false},
+  {id:"fonctions", nom:"Fonctions", icon:"📈", cls:"th-ic-fonctions", actif:false},
+  {id:"geometrie", nom:"Géométrie", icon:"📐", cls:"th-ic-geometrie", actif:false},
+  {id:"stats", nom:"Statistiques", icon:"🎲", cls:"th-ic-stats", actif:false}
 ];
 
 var NOMS_FICHES = {
-  'fractions_comprendre':         'Comprendre les fractions',
-  'fractions_reconnaitre_egales': 'Fractions égales',
-  'fractions_irreductible':       'Fraction irréductible',
-  'fractions_add_meme_denom':     'Addition même dénominateur',
-  'fractions_denom_commun_1':     'Dénominateur commun (1)',
-  'fractions_denom_commun_2':     'Dénominateur commun (2)',
-  'fractions_mult_entier':        'Multiplier par un entier',
-  'fractions_mult_fractions':     'Multiplier deux fractions',
-  'fractions_inverse':            'Inverse d\'une fraction',
-  'fractions_division':           'Diviser par une fraction'
+  'fractions_comprendre':'Comprendre les fractions',
+  'fractions_reconnaitre_egales':'Fractions égales',
+  'fractions_irreductible':'Fraction irréductible',
+  'fractions_add_meme_denom':'Addition même dénominateur',
+  'fractions_denom_commun_1':'Dénominateur commun (1)',
+  'fractions_denom_commun_2':'Dénominateur commun (2)',
+  'fractions_mult_entier':'Multiplier par un entier',
+  'fractions_mult_fractions':'Multiplier deux fractions',
+  'fractions_inverse':"Inverse d'une fraction",
+  'fractions_division':'Diviser par une fraction'
 };
 
-var DATA_EVAL = [];   // feuille evaluations
-var DATA_REM  = [];   // feuille Remédiation
-var currentClasse = null, currentEleve = null;
-var evFilter = '';
+var DATA_EVAL = [], DATA_REM = [];
+var currentNiveau = null, currentClasse = null, currentEleve = null;
 
 // ── LOGIN ──
-document.getElementById('login-id').addEventListener('keydown',  function(e){ if(e.key==='Enter') connexion(); });
+document.getElementById('login-id').addEventListener('keydown', function(e){ if(e.key==='Enter') connexion(); });
 document.getElementById('login-mdp').addEventListener('keydown', function(e){ if(e.key==='Enter') connexion(); });
 
 function connexion(){
-  var id = document.getElementById('login-id').value.trim();
-  var mdp = document.getElementById('login-mdp').value;
+  var id=document.getElementById('login-id').value.trim();
+  var mdp=document.getElementById('login-mdp').value;
   if(!id||!mdp) return;
-  var btn = document.getElementById('btn-login');
+  var btn=document.getElementById('btn-login');
   btn.disabled=true; btn.textContent='Connexion...';
   document.getElementById('login-err').style.display='none';
   fetch(SCRIPT_URL+'?type=login_proviseur&identifiant='+encodeURIComponent(id)+'&mot_de_passe='+encodeURIComponent(mdp)+'&t='+Date.now())
@@ -451,20 +510,20 @@ function connexion(){
     .then(function(j){
       if(j.status==='ok'){
         ETABLISSEMENT=j.etablissement;
-        document.getElementById('sb-etab-nom').textContent=j.etablissement;
-        document.getElementById('sb-identifiant').textContent=j.identifiant;
+        document.getElementById('sb-nom').textContent=j.etablissement;
+        document.getElementById('sb-id').textContent=j.identifiant;
         document.getElementById('login-screen').style.display='none';
-        document.getElementById('shell').style.display='grid';
+        document.getElementById('shell').style.display='block';
         loadAll();
       } else {
         document.getElementById('login-err').style.display='block';
-        btn.disabled=false; btn.textContent='Accéder au tableau de bord →';
+        btn.disabled=false; btn.textContent='Accéder →';
       }
     })
     .catch(function(){
-      document.getElementById('login-err').textContent='Erreur de connexion. Réessayez.';
+      document.getElementById('login-err').textContent='Erreur. Réessayez.';
       document.getElementById('login-err').style.display='block';
-      btn.disabled=false; btn.textContent='Accéder au tableau de bord →';
+      btn.disabled=false; btn.textContent='Accéder →';
     });
 }
 
@@ -474,7 +533,7 @@ function deconnexion(){
   document.getElementById('login-id').value='';
   document.getElementById('login-mdp').value='';
   document.getElementById('btn-login').disabled=false;
-  document.getElementById('btn-login').textContent='Accéder au tableau de bord →';
+  document.getElementById('btn-login').textContent='Accéder →';
   DATA_EVAL=[]; DATA_REM=[];
 }
 
@@ -484,133 +543,282 @@ function loadAll(){
   var done=0;
   function check(){done++;if(done===2){renderAll();setSyncState('live','Sync · '+new Date().toLocaleTimeString('fr-FR'));}}
   fetch(SCRIPT_URL+'?type=evaluations&etablissement='+encodeURIComponent(ETABLISSEMENT)+'&t='+Date.now())
-    .then(function(r){return r.json();})
-    .then(function(j){if(j.status==='ok')DATA_EVAL=j.data||[];check();})
-    .catch(function(){setSyncState('error','Hors ligne');check();});
+    .then(function(r){return r.json();}).then(function(j){if(j.status==='ok')DATA_EVAL=j.data||[];check();}).catch(function(){check();setSyncState('error','Hors ligne');});
   fetch(SCRIPT_URL+'?type=remediation&etablissement='+encodeURIComponent(ETABLISSEMENT)+'&t='+Date.now())
-    .then(function(r){return r.json();})
-    .then(function(j){if(j.status==='ok')DATA_REM=j.data||[];check();})
-    .catch(function(){check();});
+    .then(function(r){return r.json();}).then(function(j){if(j.status==='ok')DATA_REM=j.data||[];check();}).catch(function(){check();});
 }
 
-function renderAll(){ renderAccueil(); renderEvalSection(); renderRemediationSection(); }
+function renderAll(){ renderAccueil(); renderRemSection(); }
 
-// ── Helpers ──
-function elevesUniques(){
+// ── HELPERS ──
+function elevesUniques(data){
   var map={};
-  DATA_EVAL.forEach(function(r){
-    if(!map[r.email]) map[r.email]={email:r.email, nom:r.nom, classe:r.classe, date:r.date_evaluation, fiches:[]};
-    map[r.email].fiches.push({fiche:r.fiche_id, score:parseInt(r.score)||0, assigne:r.assigne==='oui'});
+  (data||DATA_EVAL).forEach(function(r){
+    if(!map[r.email]) map[r.email]={email:r.email,nom:r.nom,classe:r.classe,date:r.date_evaluation,fiches:[]};
+    map[r.email].fiches.push({fiche:r.fiche_id,score:parseInt(r.score)||0,assigne:r.assigne==='oui'});
   });
   return Object.values(map);
 }
 
-function matchClasse(classeEleve, classeId){
-  if(!classeEleve) return false;
-  return classeEleve.toLowerCase().indexOf(classeId.toLowerCase())!==-1
-    || classeId.toLowerCase().indexOf(classeEleve.toLowerCase())!==-1;
+function matchClasse(classeEleve,classeId){
+  if(!classeEleve||!classeId) return false;
+  return String(classeEleve).toLowerCase().indexOf(String(classeId).toLowerCase())!==-1
+    ||String(classeId).toLowerCase().indexOf(String(classeEleve).toLowerCase())!==-1;
 }
 
+function evalParClasse(classeId){
+  return DATA_EVAL.filter(function(r){return matchClasse(r.classe,classeId);});
+}
+function remParClasse(classeId){
+  return DATA_REM.filter(function(r){return matchClasse(r.classe,classeId);});
+}
 function remEleve(email){
   var map={};
   DATA_REM.filter(function(r){return String(r.eleve_id).toLowerCase()===email.toLowerCase();})
-    .forEach(function(r){
-      if(!map[r.fiche_id]||(parseInt(r.tentative_num)||0)>(parseInt(map[r.fiche_id].tentative_num)||0))
-        map[r.fiche_id]=r;
-    });
+    .forEach(function(r){if(!map[r.fiche_id]||(parseInt(r.tentative_num)||0)>(parseInt(map[r.fiche_id].tentative_num)||0))map[r.fiche_id]=r;});
   return Object.values(map);
+}
+
+function calcPie(acquis, total){
+  var pct=total>0?Math.round(acquis/total*100):0;
+  var circ=264, offset=circ-(pct/100)*circ;
+  return {pct:pct, offset:offset};
+}
+
+function setPie(elId, pct){
+  var circ=264, offset=circ-(pct/100)*circ;
+  var el=document.getElementById(elId);
+  if(el){ el.style.strokeDasharray=circ; el.style.strokeDashoffset=offset; }
 }
 
 // ── ACCUEIL ──
 function renderAccueil(){
-  var eleves=elevesUniques();
-  var totalEvalues=eleves.length;
+  var totalEval=elevesUniques().length;
   var totalAssignees=DATA_EVAL.filter(function(r){return r.assigne==='oui';}).length;
+  var totalMaitrisees=DATA_EVAL.filter(function(r){return r.assigne==='non';}).length;
+  var totalEvals=totalAssignees+totalMaitrisees;
+  var pctAcquis=totalEvals>0?Math.round(totalMaitrisees/totalEvals*100):0;
   var totalValidees=DATA_REM.filter(function(r){return r.statut==='quiz_final_valide';}).length;
-  var pct=totalAssignees>0?Math.round(totalValidees/totalAssignees*100):0;
+  var pctProg=totalAssignees>0?Math.round(totalValidees/totalAssignees*100):0;
   var alertes=DATA_REM.filter(function(r){return r.statut==='echec_3_tentatives'&&r.alerte_traitee==='non';}).length;
 
-  document.getElementById('kpi-evalues').textContent=totalEvalues||'—';
-  document.getElementById('kpi-assignees').textContent=totalAssignees||'—';
-  document.getElementById('kpi-validees').textContent=totalValidees||'—';
-  document.getElementById('kpi-pct').textContent=totalAssignees>0?pct+'%':'—';
+  document.getElementById('kpi-evalues').textContent=totalEval||'0';
 
+  // Camembert : fond rouge (lacunes) + arc vert (acquis)
+  var circ=289, offset=circ-(pctAcquis/100)*circ;
+  setTimeout(function(){
+    var el=document.getElementById('pie-acquis');
+    if(el){el.style.strokeDasharray=circ;el.style.strokeDashoffset=offset;}
+  },100);
+  document.getElementById('pie-pct-acquis').textContent=pctAcquis+'%';
+  document.getElementById('leg-acquis-pct').textContent=pctAcquis+'%';
+  document.getElementById('leg-lacunes-pct').textContent=(100-pctAcquis)+'%';
+
+  // Prog globale
+  document.getElementById('prog-global-pct').textContent=pctProg+'%';
+  setTimeout(function(){document.getElementById('prog-global-fill').style.width=pctProg+'%';},100);
+  document.getElementById('prog-global-note').textContent=totalValidees+' fiche'+(totalValidees>1?'s':'')+' validée'+(totalValidees>1?'s':'')+' sur '+totalAssignees+' assignée'+(totalAssignees>1?'s':'');
+
+  // Alertes
   var banner=document.getElementById('alert-banner');
-  var dot=document.getElementById('nav-alert-dot');
   if(alertes>0){
     banner.style.display='block';
-    document.getElementById('ab-text').textContent=alertes+' élève'+(alertes>1?'s bloqués':' bloqué')+' — intervention requise';
-    dot.style.display='block';
-  } else { banner.style.display='none'; dot.style.display='none'; }
+    document.getElementById('ab-txt').textContent=alertes+' élève'+(alertes>1?'s bloqués':' bloqué')+' — intervention requise';
+  } else { banner.style.display='none'; }
 
-  var grid=document.getElementById('classes-grid');
-  grid.innerHTML=CLASSES_CONFIG.map(function(cl){
-    var elevesClasse=eleves.filter(function(e){return matchClasse(e.classe,cl.id);});
-    var nbEvalues=elevesClasse.length;
-    var nbAssignees=DATA_EVAL.filter(function(r){return matchClasse(r.classe,cl.id)&&r.assigne==='oui';}).length;
-    var nbValidees=DATA_REM.filter(function(r){return matchClasse(r.classe,cl.id)&&r.statut==='quiz_final_valide';}).length;
-    var pctCl=nbAssignees>0?Math.round(nbValidees/nbAssignees*100):0;
-    var nbAlertes=DATA_REM.filter(function(r){return matchClasse(r.classe,cl.id)&&r.statut==='echec_3_tentatives'&&r.alerte_traitee==='non';}).length;
-
-    var cardClass=nbAlertes>0?'has-alert':nbEvalues>0?'ok':'pending';
-    var badge=nbAlertes>0
-      ?'<span class="cc-badge cc-badge-red">'+nbAlertes+' alerte'+(nbAlertes>1?'s':'')+'</span>'
-      :nbEvalues>0?'<span class="cc-badge cc-badge-green">Actif</span>'
-      :'<span class="cc-badge cc-badge-gray">En attente</span>';
-    var statPct=pctCl>=80?'good':pctCl>=40?'warn':pctCl>0?'danger':'';
-
-    return '<div class="classe-card '+cardClass+'" onclick="ouvrirClasse(\''+cl.id+'\')">'
-      +'<div class="cc-top"><div><div class="cc-name">'+esc(cl.nom)+'</div><div class="cc-type">'+esc(cl.type)+'</div></div>'+badge+'</div>'
-      +'<div class="cc-stats">'
-      +'<div class="cc-stat"><div class="cc-stat-val">'+nbEvalues+'</div><div class="cc-stat-lbl">Évalués</div></div>'
-      +'<div class="cc-stat"><div class="cc-stat-val">'+nbAssignees+'</div><div class="cc-stat-lbl">Assignées</div></div>'
-      +'<div class="cc-stat '+statPct+'"><div class="cc-stat-val">'+(nbAssignees>0?pctCl+'%':'—')+'</div><div class="cc-stat-lbl">Validées</div></div>'
-      +'</div><div class="cc-arrow">→</div></div>';
+  // Niveaux
+  document.getElementById('niveaux-grid').innerHTML=NIVEAUX.map(function(niv){
+    var evalNiv=DATA_EVAL.filter(function(r){
+      return niv.classes.some(function(cl){return matchClasse(r.classe,cl.id);});
+    });
+    var elevesNiv=elevesUniques(evalNiv).length;
+    var assigneesNiv=evalNiv.filter(function(r){return r.assigne==='oui';}).length;
+    var maitrisesNiv=evalNiv.filter(function(r){return r.assigne==='non';}).length;
+    var totalEvNiv=assigneesNiv+maitrisesNiv;
+    var pctAcqNiv=totalEvNiv>0?Math.round(maitrisesNiv/totalEvNiv*100):0;
+    var remNiv=DATA_REM.filter(function(r){
+      return niv.classes.some(function(cl){return matchClasse(r.classe,cl.id);});
+    });
+    var valNiv=remNiv.filter(function(r){return r.statut==='quiz_final_valide';}).length;
+    var pctProgNiv=assigneesNiv>0?Math.round(valNiv/assigneesNiv*100):0;
+    var alertNiv=remNiv.filter(function(r){return r.statut==='echec_3_tentatives'&&r.alerte_traitee==='non';}).length;
+    var badge=alertNiv>0?'<span class="cc-badge badge-red">'+alertNiv+' alerte'+(alertNiv>1?'s':'')+'</span>'
+      :elevesNiv>0?'<span class="cc-badge badge-green">Actif</span>'
+      :'<span class="cc-badge badge-gray">En attente</span>';
+    return '<div class="niveau-card" onclick="ouvrirNiveau(\''+niv.id+'\')">'
+      +'<div class="niv-top"><div><div class="niv-name">'+esc(niv.nom)+'</div><div class="niv-type">'+niv.classes.length+' classes</div></div><div class="niv-arrow">→</div></div>'
+      +'<div class="niv-stats">'
+      +'<div class="niv-stat"><div class="niv-stat-val">'+elevesNiv+'</div><div class="niv-stat-lbl">Évalués</div></div>'
+      +'<div class="niv-stat"><div class="niv-stat-val">'+pctAcqNiv+'%</div><div class="niv-stat-lbl">Acquis</div></div>'
+      +'<div class="niv-stat"><div class="niv-stat-val">'+valNiv+'</div><div class="niv-stat-lbl">Validées</div></div>'
+      +'</div>'
+      +'<div class="niv-prog"><div class="niv-prog-track"><div class="niv-prog-fill" style="width:'+pctProgNiv+'%;"></div></div>'
+      +'<div class="niv-prog-txt">'+pctProgNiv+'% de progression remédiation · '+badge+'</div></div>'
+      +'</div>';
   }).join('');
+}
+
+// ── NIVEAU → CLASSES ──
+function ouvrirNiveau(nivId){
+  currentNiveau=nivId;
+  var niv=NIVEAUX.find(function(n){return n.id===nivId;});
+  document.getElementById('niv-title').textContent=niv.nom;
+  document.getElementById('niv-sub').textContent=niv.classes.length+' classes';
+
+  document.getElementById('classes-grid').innerHTML=niv.classes.map(function(cl){
+    var evalCl=evalParClasse(cl.id);
+    var elevesCl=elevesUniques(evalCl).length;
+    var assigneesCl=evalCl.filter(function(r){return r.assigne==='oui';}).length;
+    var maitriseesCl=evalCl.filter(function(r){return r.assigne==='non';}).length;
+    var totalEvCl=assigneesCl+maitriseesCl;
+    var pctAcqCl=totalEvCl>0?Math.round(maitriseesCl/totalEvCl*100):0;
+    var remCl=remParClasse(cl.id);
+    var valCl=remCl.filter(function(r){return r.statut==='quiz_final_valide';}).length;
+    var pctProgCl=assigneesCl>0?Math.round(valCl/assigneesCl*100):0;
+    var alertesCl=remCl.filter(function(r){return r.statut==='echec_3_tentatives'&&r.alerte_traitee==='non';}).length;
+    var hasPendingClass=!cl.prof?'pending':'';
+    var hasAlertClass=alertesCl>0?'has-alert':'';
+    var badge=!cl.prof?'<span class="cc-badge badge-gray">Sans prof</span>'
+      :alertesCl>0?'<span class="cc-badge badge-red">'+alertesCl+' alerte'+(alertesCl>1?'s':'')+'</span>'
+      :elevesCl>0?'<span class="cc-badge badge-green">Actif</span>'
+      :'<span class="cc-badge badge-gray">En attente</span>';
+    var circ=264, offset=circ-(pctAcqCl/100)*circ;
+    return '<div class="classe-card '+hasPendingClass+' '+hasAlertClass+'" onclick="ouvrirClasse(\''+cl.id+'\')">'
+      +'<div class="cc-top"><div><div class="cc-name">'+esc(cl.nom)+'</div><div class="cc-type">'+esc(niv.nom)+'</div></div>'+badge+'</div>'
+      +'<div class="cc-pie-row">'
+      +'<div class="cc-pie"><svg viewBox="0 0 52 52" width="52" height="52"><circle class="cc-pie-bg" cx="26" cy="26" r="21"/><circle class="cc-pie-fill" cx="26" cy="26" r="21" stroke-dasharray="132" stroke-dashoffset="'+offset+'"/></svg>'
+      +'<div class="cc-pie-inner"><span class="cc-pie-pct">'+pctAcqCl+'%</span></div></div>'
+      +'<div class="cc-info"><div class="cc-info-val">'+elevesCl+'</div><div class="cc-info-lbl">Évalués</div></div>'
+      +'</div>'
+      +'<div class="cc-prog"><div class="cc-prog-track"><div class="cc-prog-fill" style="width:'+pctProgCl+'%;"></div></div>'
+      +'<div class="cc-prog-txt">'+pctProgCl+'% remédiation · '+valCl+'/'+assigneesCl+' fiches</div></div>'
+      +'<div class="cc-arrow">→</div>'
+      +'</div>';
+  }).join('');
+
+  allerVers('section-niveaux');
 }
 
 // ── DETAIL CLASSE ──
 function ouvrirClasse(classeId){
   currentClasse=classeId;
-  var cfg=CLASSES_CONFIG.find(function(c){return c.id===classeId;});
-  var eleves=elevesUniques().filter(function(e){return matchClasse(e.classe,classeId);});
-  var nbAssignees=DATA_EVAL.filter(function(r){return matchClasse(r.classe,classeId)&&r.assigne==='oui';}).length;
-  var nbValidees=DATA_REM.filter(function(r){return matchClasse(r.classe,classeId)&&r.statut==='quiz_final_valide';}).length;
-  var nbAlertes=DATA_REM.filter(function(r){return matchClasse(r.classe,classeId)&&r.statut==='echec_3_tentatives'&&r.alerte_traitee==='non';}).length;
+  var niv=NIVEAUX.find(function(n){return n.classes.some(function(c){return c.id===classeId;});});
+  var cl=niv?niv.classes.find(function(c){return c.id===classeId;}):null;
+  var evalCl=evalParClasse(classeId);
+  var elevesCl=elevesUniques(evalCl).length;
+  var assigneesCl=evalCl.filter(function(r){return r.assigne==='oui';}).length;
+  var maitriseesCl=evalCl.filter(function(r){return r.assigne==='non';}).length;
+  var totalEvCl=assigneesCl+maitriseesCl;
+  var pctAcqCl=totalEvCl>0?Math.round(maitriseesCl/totalEvCl*100):0;
+  var remCl=remParClasse(classeId);
+  var valCl=remCl.filter(function(r){return r.statut==='quiz_final_valide';}).length;
+  var pctProgCl=assigneesCl>0?Math.round(valCl/assigneesCl*100):0;
+  var alertesCl=remCl.filter(function(r){return r.statut==='echec_3_tentatives'&&r.alerte_traitee==='non';}).length;
 
-  document.getElementById('dc-title').textContent=cfg?cfg.nom:classeId;
-  document.getElementById('dc-sub').textContent=(cfg?cfg.type:'')+' · '+eleves.length+' élève'+(eleves.length>1?'s':'')+' évalué'+(eleves.length>1?'s':'');
-  document.getElementById('dc-kpi-evalues').textContent=eleves.length;
-  document.getElementById('dc-kpi-assignees').textContent=nbAssignees;
-  document.getElementById('dc-kpi-validees').textContent=nbValidees;
-  document.getElementById('dc-kpi-alertes').textContent=nbAlertes;
-  document.getElementById('dc-badge-eleves').textContent=eleves.length+' élève'+(eleves.length>1?'s':'');
+  document.getElementById('dc-title').textContent=cl?cl.nom:classeId;
+  document.getElementById('dc-sub').textContent=(niv?niv.nom:'')+' · '+elevesCl+' élève'+(elevesCl>1?'s':'')+' évalué'+(elevesCl>1?'s':'');
+  document.getElementById('dc-evalues').textContent=elevesCl;
+  document.getElementById('dc-assignees').textContent=assigneesCl;
+  document.getElementById('dc-validees').textContent=valCl;
+  document.getElementById('dc-alertes').textContent=alertesCl;
+  document.getElementById('dc-back').onclick=function(){allerVers('section-niveaux');};
 
-  document.getElementById('dc-tbody').innerHTML=eleves.length===0
-    ?'<tr><td colspan="8" style="text-align:center;padding:2rem;color:var(--text3);">Aucun élève évalué dans cette classe.</td></tr>'
+  // Pie acquis
+  setTimeout(function(){setPie('dc-pie-acquis',pctAcqCl);},100);
+  document.getElementById('dc-pie-pct').textContent=pctAcqCl+'%';
+  document.getElementById('dc-leg-acquis').textContent=maitriseesCl;
+  document.getElementById('dc-leg-lacunes').textContent=assigneesCl;
+  document.getElementById('dc-prog-pct').textContent=pctProgCl+'%';
+  setTimeout(function(){document.getElementById('dc-prog-fill').style.width=pctProgCl+'%';},100);
+  document.getElementById('dc-prog-note').textContent=valCl+' fiche'+(valCl>1?'s':'')+' validée'+(valCl>1?'s':'')+' sur '+assigneesCl+' assignée'+(assigneesCl>1?'s':'');
+
+  // Thèmes
+  document.getElementById('themes-grid').innerHTML=THEMES_CONFIG.map(function(th){
+    if(!th.actif){
+      return '<div class="theme-card disabled">'
+        +'<div class="th-top"><div class="th-icon '+th.cls+'">'+th.icon+'</div>'
+        +'<div><div class="th-name">'+esc(th.nom)+'</div><span class="th-badge badge-gray">En cours de création</span></div></div>'
+        +'<div class="th-pie-row"><div style="font-size:11px;color:var(--text3);">Fiches à venir</div></div>'
+        +'</div>';
+    }
+    // Fractions actif
+    var assigneesTh=evalCl.filter(function(r){return r.assigne==='oui';}).length;
+    var maitriseesTh=evalCl.filter(function(r){return r.assigne==='non';}).length;
+    var totalTh=assigneesTh+maitriseesTh;
+    var pctTh=totalTh>0?Math.round(maitriseesTh/totalTh*100):0;
+    var valTh=remCl.filter(function(r){return r.statut==='quiz_final_valide';}).length;
+    var pctProgTh=assigneesTh>0?Math.round(valTh/assigneesTh*100):0;
+    var circ=132,off=circ-(pctTh/100)*circ;
+    return '<div class="theme-card" onclick="ouvrirDetailElevesTheme(\''+classeId+'\',\''+th.id+'\')">'
+      +'<div class="th-top"><div class="th-icon '+th.cls+'">'+th.icon+'</div>'
+      +'<div><div class="th-name">'+esc(th.nom)+'</div><span class="th-badge badge-green">'+elevesCl+' élève'+(elevesCl>1?'s':'')+' évalué'+(elevesCl>1?'s':'')+'</span></div></div>'
+      +'<div class="th-pie-row">'
+      +'<div class="th-pie"><svg viewBox="0 0 48 48" width="48" height="48"><circle class="th-pie-bg" cx="24" cy="24" r="18"/><circle class="th-pie-fill" cx="24" cy="24" r="18" stroke-dasharray="'+circ+'" stroke-dashoffset="'+off+'"/></svg>'
+      +'<div class="th-pie-inner"><span class="th-pie-pct">'+pctTh+'%</span></div></div>'
+      +'<div class="th-info"><div style="font-size:12px;font-weight:600;color:var(--text);">'+pctTh+'% acquis</div>'
+      +'<div class="th-prog-track"><div class="th-prog-fill" style="width:'+pctProgTh+'%;"></div></div>'
+      +'<div class="th-prog-txt">'+pctProgTh+'% remédiation</div></div>'
+      +'</div></div>';
+  }).join('');
+
+  allerVers('detail-classe');
+}
+
+function ouvrirDetailElevesTheme(classeId, themeId){
+  currentClasse = classeId;
+  var th = THEMES_CONFIG.find(function(t){ return t.id === themeId; });
+  var niv = NIVEAUX.find(function(n){ return n.classes.some(function(c){ return c.id === classeId; }); });
+  var cl = niv ? niv.classes.find(function(c){ return c.id === classeId; }) : null;
+  document.getElementById('de-title').textContent = (cl ? cl.nom : classeId) + ' · ' + (th ? th.nom : themeId);
+  document.getElementById('de-sub').textContent = 'Détail par élève · ' + (th ? th.nom : themeId);
+  _remplirTableauEleves(classeId);
+  allerVers('detail-eleves');
+}
+
+function voirDetailEleves(){
+  var niv=NIVEAUX.find(function(n){return n.classes.some(function(c){return c.id===currentClasse;});});
+  var cl=niv?niv.classes.find(function(c){return c.id===currentClasse;}):null;
+  document.getElementById('de-title').textContent=cl?cl.nom:currentClasse;
+  document.getElementById('de-sub').textContent='Détail par élève · Fractions';
+  _remplirTableauEleves(currentClasse);
+  allerVers('detail-eleves');
+}
+
+function _remplirTableauEleves(classeId){
+  var evalCl=evalParClasse(classeId);
+  var eleves=elevesUniques(evalCl);
+  document.getElementById('de-badge').textContent=eleves.length+' élève'+(eleves.length>1?'s':'');
+
+  document.getElementById('de-tbody').innerHTML=eleves.length===0
+    ?'<tr><td colspan="8" class="empty">Aucun élève évalué dans cette classe.</td></tr>'
     :eleves.map(function(e){
       var assignees=e.fiches.filter(function(f){return f.assigne;}).length;
       var rem=remEleve(e.email);
       var validees=rem.filter(function(r){return r.statut==='quiz_final_valide';}).length;
       var alertes=rem.filter(function(r){return r.statut==='echec_3_tentatives'&&r.alerte_traitee==='non';}).length;
-      var statut=alertes>0?'<span class="pill pill-red">Alerte</span>':assignees===0?'<span class="pill pill-green">Tout maîtrisé</span>':validees>=assignees?'<span class="pill pill-green">À jour</span>':'<span class="pill pill-amber">En cours</span>';
-      return '<tr onclick="ouvrirEleve(\''+esc(e.email)+'\')">'
+      var pctProg=assignees>0?Math.round(validees/assignees*100):100;
+      var barColor=pctProg>=80?'var(--green)':pctProg>=40?'var(--amber)':'var(--red)';
+      var statut=alertes>0?'<span class="pill pill-red">Alerte</span>'
+        :assignees===0?'<span class="pill pill-green">Tout acquis</span>'
+        :validees>=assignees?'<span class="pill pill-green">Terminé</span>'
+        :'<span class="pill pill-amber">En cours</span>';
+      return '<tr onclick="ouvrirUnEleve(\''+esc(e.email)+'\')">'
         +'<td class="td-name">'+esc(e.nom)+'</td>'
-        +'<td style="font-size:12px;color:var(--text2);">'+esc(e.classe)+'</td>'
         +'<td><span class="pill pill-green">✓ Faite</span></td>'
-        +'<td class="td-mono">'+assignees+' / 10</td>'
+        +'<td class="td-mono">'+assignees+'/10</td>'
         +'<td class="td-mono">'+validees+'</td>'
+        +'<td><div class="bar-wrap"><div class="bar-track"><div class="bar-fill" style="width:'+pctProg+'%;background:'+barColor+';"></div></div><span class="td-mono">'+pctProg+'%</span></div></td>'
         +'<td class="td-mono">'+(alertes||'—')+'</td>'
         +'<td>'+statut+'</td>'
         +'<td style="color:var(--text3);text-align:right;">→</td>'
         +'</tr>';
     }).join('');
 
-  showSection('detail-classe');
+  allerVers('detail-eleves');
 }
 
-// ── DETAIL ELEVE ──
-function ouvrirEleve(email){
+// ── DETAIL UN ÉLÈVE ──
+function ouvrirUnEleve(email){
   currentEleve=email;
   var evalEleve=DATA_EVAL.filter(function(r){return String(r.email).toLowerCase()===email.toLowerCase();});
   var rem=remEleve(email);
@@ -619,39 +827,38 @@ function ouvrirEleve(email){
   var dateEval=evalEleve.length>0?evalEleve[0].date_evaluation:'';
   var assignees=evalEleve.filter(function(r){return r.assigne==='oui';}).length;
   var validees=rem.filter(function(r){return r.statut==='quiz_final_valide';}).length;
-  var restantes=Math.max(0,assignees-validees);
   var alertes=rem.filter(function(r){return r.statut==='echec_3_tentatives'&&r.alerte_traitee==='non';}).length;
 
-  document.getElementById('de-title').textContent=esc(nom);
-  document.getElementById('de-sub').textContent='Classe : '+esc(classe);
-  document.getElementById('de-assignees').textContent=assignees;
-  document.getElementById('de-validees').textContent=validees;
-  document.getElementById('de-restantes').textContent=restantes;
-  document.getElementById('de-alertes').textContent=alertes||'0';
-  document.getElementById('de-eval-date').textContent=dateEval?'Éval. du '+dateEval:'—';
+  document.getElementById('due-title').textContent=esc(nom);
+  document.getElementById('due-sub').textContent='Classe : '+esc(classe);
+  document.getElementById('due-assignees').textContent=assignees;
+  document.getElementById('due-validees').textContent=validees;
+  document.getElementById('due-restantes').textContent=Math.max(0,assignees-validees);
+  document.getElementById('due-alertes').textContent=alertes||'0';
+  document.getElementById('due-date').textContent=dateEval?'Éval. du '+dateEval:'—';
 
-  // Détail évaluation : toutes les fiches avec score
+  // Scores éval
   var evalHtml='';
   Object.keys(NOMS_FICHES).forEach(function(fid){
     var ligne=evalEleve.find(function(r){return r.fiche_id===fid;});
     var score=ligne?parseInt(ligne.score)||0:null;
-    var assigne=ligne?ligne.assigne==='oui':false;
+    var assigne=ligne&&ligne.assigne==='oui';
     var scoreColor=score===null?'var(--text3)':score>=2?'var(--green)':score===1?'var(--amber)':'var(--red)';
     var badge=score===null?'<span class="pill pill-gray">—</span>'
-      :assigne?'<span class="pill pill-amber">Assignée</span>':'<span class="pill pill-green">Maîtrisée</span>';
-    evalHtml+='<div class="fiche-row">'
-      +'<div><div class="fiche-name">'+esc(NOMS_FICHES[fid])+'</div></div>'
-      +'<div style="display:flex;align-items:center;gap:16px;">'
-      +'<span style="font-family:\'DM Mono\',monospace;font-size:13px;font-weight:700;color:'+scoreColor+';">'+(score!==null?score+'/3':'—')+'</span>'
-      +badge
-      +'</div></div>';
+      :assigne?'<span class="pill pill-amber">Fiche assignée</span>'
+      :'<span class="pill pill-green">Maîtrisée</span>';
+    evalHtml+='<div class="fiche-score-row">'
+      +'<div class="fs-name">'+esc(NOMS_FICHES[fid])+'</div>'
+      +'<div style="display:flex;align-items:center;gap:14px;">'
+      +'<span class="fs-score" style="color:'+scoreColor+';">'+(score!==null?score+'/3':'—')+'</span>'
+      +badge+'</div></div>';
   });
-  document.getElementById('de-eval-detail').innerHTML=evalHtml;
+  document.getElementById('due-eval-detail').innerHTML=evalHtml;
 
   // Fiches remédiation
   var assigneesFiches=evalEleve.filter(function(r){return r.assigne==='oui';}).map(function(r){return r.fiche_id;});
-  document.getElementById('de-fiches').innerHTML=assigneesFiches.length===0
-    ?'<div class="empty"><div class="empty-ttl">Aucune fiche assignée</div><div class="empty-sub">Cet élève maîtrise toutes les notions.</div></div>'
+  document.getElementById('due-fiches').innerHTML=assigneesFiches.length===0
+    ?'<div class="empty">Aucune fiche assignée — cet élève maîtrise toutes les notions.</div>'
     :assigneesFiches.map(function(fid){
       var r=rem.find(function(x){return x.fiche_id===fid;});
       var statut=r?r.statut:'non_commence';
@@ -659,153 +866,70 @@ function ouvrirEleve(email){
         :statut==='echec_3_tentatives'?'<span class="pill pill-red">3 échecs</span>'
         :r?'<span class="pill pill-amber">En cours</span>'
         :'<span class="pill pill-gray">Non commencée</span>';
-      var score=r&&r.score_quiz?r.score_quiz+'%':'—';
-      return '<div class="fiche-row">'
-        +'<div><div class="fiche-name">'+esc(NOMS_FICHES[fid]||fid)+'</div>'
-        +(r?'<div class="fiche-meta">Tentative '+r.tentative_num+' · Dernier score : '+score+'</div>':'')
+      return '<div class="fiche-score-row">'
+        +'<div><div class="fs-name">'+esc(NOMS_FICHES[fid]||fid)+'</div>'
+        +(r?'<div style="font-size:10px;color:var(--text3);margin-top:1px;">Tentative '+r.tentative_num+' · Score : '+(r.score_quiz||'—')+'%</div>':'')
         +'</div>'+pill+'</div>';
     }).join('');
 
-  showSection('detail-eleve');
+  allerVers('detail-un-eleve');
 }
 
-function retourAccueil(){ showSection('accueil'); }
-function retourClasse(){ ouvrirClasse(currentClasse); }
-
-// ── SECTION ÉVAL FRACTIONS ──
-function renderEvalSection(){
-  var eleves=elevesUniques();
-  var total=eleves.length;
-  var totalAssignees=DATA_EVAL.filter(function(r){return r.assigne==='oui';}).length;
-  var totalMaitrisees=DATA_EVAL.filter(function(r){return r.assigne==='non';}).length;
-  var moy=total>0?(totalAssignees/total).toFixed(1):'—';
-
-  document.getElementById('ev-kpi-total').textContent=total||'—';
-  document.getElementById('ev-kpi-assignees').textContent=totalAssignees||'—';
-  document.getElementById('ev-kpi-maitrise').textContent=totalMaitrisees||'—';
-  document.getElementById('ev-kpi-moy').textContent=total>0?moy:'—';
-  document.getElementById('ev-badge').textContent=total+' élève'+(total>1?'s':'');
-
-  // Score par fiche
-  var ficheHtml='';
-  Object.keys(NOMS_FICHES).forEach(function(fid){
-    var lignes=DATA_EVAL.filter(function(r){return r.fiche_id===fid;});
-    var nb=lignes.length;
-    var maitrisees=lignes.filter(function(r){return r.assigne==='non';}).length;
-    var pct=nb>0?Math.round(maitrisees/nb*100):0;
-    var barColor=pct>=80?'var(--green)':pct>=50?'var(--amber)':'var(--red)';
-    ficheHtml+='<div class="score-fiche-row">'
-      +'<div class="score-fiche-name">'+esc(NOMS_FICHES[fid])+'</div>'
-      +'<div class="score-fiche-bar"><div class="score-fiche-fill" style="width:'+pct+'%;background:'+barColor+';"></div></div>'
-      +'<div class="score-fiche-pct">'+pct+'%</div>'
-      +'<div class="score-fiche-count">'+maitrisees+'/'+nb+'</div>'
-      +'</div>';
-  });
-  document.getElementById('ev-score-fiches').innerHTML=ficheHtml||'<div class="empty"><div class="empty-ttl">Aucune donnée</div></div>';
-
-  // Filtres classes
-  var classes=[];
-  eleves.forEach(function(e){if(e.classe&&classes.indexOf(e.classe)===-1)classes.push(e.classe);});
-  classes.sort();
-  document.getElementById('ev-filters').innerHTML=
-    '<button class="df-btn'+(evFilter===''?' active':'')+'" onclick="filterEval(\'\',this)">Toutes</button>'
-    +classes.map(function(cl){
-      return '<button class="df-btn'+(evFilter===cl?' active':'')+'" onclick="filterEval(\''+esc(cl)+'\',this)">'+esc(cl)+'</button>';
-    }).join('');
-
-  renderEvalTable(eleves);
-}
-
-function filterEval(classe, btn){
-  evFilter=classe;
-  document.querySelectorAll('#ev-filters .df-btn').forEach(function(b){b.classList.remove('active');});
-  if(btn) btn.classList.add('active');
-  var eleves=elevesUniques();
-  renderEvalTable(classe?eleves.filter(function(e){return e.classe===classe;}):eleves);
-}
-
-function renderEvalTable(eleves){
-  document.getElementById('ev-tbody').innerHTML=eleves.length===0
-    ?'<tr><td colspan="6" style="text-align:center;padding:2rem;color:var(--text3);">Aucun élève évalué.</td></tr>'
-    :eleves.map(function(e){
-      var assignees=e.fiches.filter(function(f){return f.assigne;}).length;
-      var rem=remEleve(e.email);
-      var validees=rem.filter(function(r){return r.statut==='quiz_final_valide';}).length;
-      var pctProg=assignees>0?Math.round(validees/assignees*100):0;
-      var barColor=pctProg>=80?'var(--green)':pctProg>=40?'var(--amber)':'var(--red)';
-      var statut=assignees===0?'<span class="pill pill-green">Tout maîtrisé</span>'
-        :validees>=assignees?'<span class="pill pill-green">Remédiation OK</span>'
-        :'<span class="pill pill-amber">En cours</span>';
-      return '<tr onclick="ouvrirEleve(\''+esc(e.email)+'\')">'
-        +'<td class="td-name">'+esc(e.nom)+'</td>'
-        +'<td style="font-size:12px;">'+esc(e.classe)+'</td>'
-        +'<td class="td-mono">'+esc(e.date||'—')+'</td>'
-        +'<td class="td-mono">'+assignees+' / 10</td>'
-        +'<td><div class="fiche-prog-wrap">'
-        +'<div class="fiche-prog-bar"><div class="fiche-prog-fill" style="width:'+pctProg+'%;background:'+barColor+';"></div></div>'
-        +'<span class="td-mono">'+pctProg+'%</span></div></td>'
-        +'<td>'+statut+'</td>'
-        +'</tr>';
-    }).join('');
-}
-
-// ── SECTION REMÉDIATION ──
-function renderRemediationSection(){
-  var elevesActifs=[...new Set(DATA_REM.map(function(r){return r.eleve_id;}))].length;
+// ── REMÉDIATION ──
+function renderRemSection(){
+  var actifs=[...new Set(DATA_REM.map(function(r){return r.eleve_id;}))].length;
   var validees=DATA_REM.filter(function(r){return r.statut==='quiz_final_valide';}).length;
   var alertes=DATA_REM.filter(function(r){return r.statut==='echec_3_tentatives'&&r.alerte_traitee==='non';}).length;
-  var totalTentes=DATA_REM.filter(function(r){return ['quiz_final_valide','quiz_final_echec','echec_3_tentatives'].includes(r.statut);}).length;
-  var pct=totalTentes>0?Math.round(validees/totalTentes*100):0;
-
-  document.getElementById('rem-kpi-actifs').textContent=elevesActifs||'—';
-  document.getElementById('rem-kpi-validees').textContent=validees||'—';
-  document.getElementById('rem-kpi-alertes').textContent=alertes||'—';
-  document.getElementById('rem-kpi-pct').textContent=totalTentes>0?pct+'%':'—';
+  document.getElementById('rem-actifs').textContent=actifs||'—';
+  document.getElementById('rem-validees').textContent=validees||'—';
+  document.getElementById('rem-alertes').textContent=alertes||'—';
   document.getElementById('rem-badge-alertes').textContent=alertes+' alerte'+(alertes>1?'s':'');
 
-  // Score par fiche
+  // Par fiche
   var ficheHtml='';
   Object.keys(NOMS_FICHES).forEach(function(fid){
-    // Dernière tentative par élève
     var map={};
     DATA_REM.filter(function(r){return r.fiche_id===fid;}).forEach(function(r){
-      if(!map[r.eleve_id]||(parseInt(r.tentative_num)||0)>(parseInt(map[r.eleve_id].tentative_num)||0))
-        map[r.eleve_id]=r;
+      if(!map[r.eleve_id]||(parseInt(r.tentative_num)||0)>(parseInt(map[r.eleve_id].tentative_num)||0)) map[r.eleve_id]=r;
     });
     var tentes=Object.values(map);
     var nb=tentes.length;
     var valid=tentes.filter(function(r){return r.statut==='quiz_final_valide';}).length;
     var pctF=nb>0?Math.round(valid/nb*100):0;
     var barColor=pctF>=80?'var(--green)':pctF>=50?'var(--amber)':'var(--red)';
-    ficheHtml+='<div class="score-fiche-row">'
-      +'<div class="score-fiche-name">'+esc(NOMS_FICHES[fid])+'</div>'
-      +'<div class="score-fiche-bar"><div class="score-fiche-fill" style="width:'+pctF+'%;background:'+barColor+';"></div></div>'
-      +'<div class="score-fiche-pct">'+pctF+'%</div>'
-      +'<div class="score-fiche-count">'+valid+'/'+nb+'</div>'
-      +'</div>';
+    ficheHtml+='<div class="fiche-score-row">'
+      +'<div class="fs-name">'+esc(NOMS_FICHES[fid])+'</div>'
+      +'<div style="display:flex;align-items:center;gap:10px;">'
+      +'<div class="bar-track" style="width:90px;"><div class="bar-fill" style="width:'+pctF+'%;background:'+barColor+';"></div></div>'
+      +'<span class="td-mono" style="font-size:11px;font-weight:700;color:var(--text2);">'+pctF+'%</span>'
+      +'<span style="font-size:10px;color:var(--text3);">'+valid+'/'+nb+'</span>'
+      +'</div></div>';
   });
-  document.getElementById('rem-score-fiches').innerHTML=ficheHtml||'<div class="empty"><div class="empty-ttl">Aucune donnée</div></div>';
+  document.getElementById('rem-fiches').innerHTML=ficheHtml||'<div class="empty">Aucune donnée.</div>';
 
   // Alertes
   var alertesData=DATA_REM.filter(function(r){return r.statut==='echec_3_tentatives'&&r.alerte_traitee==='non';});
-  document.getElementById('rem-alertes').innerHTML=alertesData.length===0
-    ?'<div class="empty"><div class="empty-ttl">Aucune alerte active</div><div class="empty-sub">Tous les élèves progressent normalement.</div></div>'
+  document.getElementById('rem-alertes-list').innerHTML=alertesData.length===0
+    ?'<div class="empty">Aucune alerte active.</div>'
     :alertesData.map(function(r){
-      return '<div class="fiche-row">'
-        +'<div><div class="fiche-name">'+esc(r.eleve_nom)+'</div>'
-        +'<div class="fiche-meta">'+esc(r.classe)+' · '+esc(NOMS_FICHES[r.fiche_id]||r.fiche_id)+' · Score : '+esc(r.score_quiz)+'%</div></div>'
+      return '<div class="fiche-score-row">'
+        +'<div><div class="fs-name">'+esc(r.eleve_nom)+'</div>'
+        +'<div style="font-size:10px;color:var(--text3);">'+esc(r.classe)+' · '+esc(NOMS_FICHES[r.fiche_id]||r.fiche_id)+'</div></div>'
         +'<span class="pill pill-red">3 échecs</span>'
         +'</div>';
     }).join('');
 }
 
 // ── NAV ──
-function showSection(id, el){
+function allerVers(id, navEl){
   document.querySelectorAll('.section').forEach(function(s){s.classList.remove('active');});
-  document.querySelectorAll('.nav-item').forEach(function(n){n.classList.remove('active');});
   document.getElementById(id).classList.add('active');
-  if(el) el.classList.add('active');
+  if(navEl){
+    document.querySelectorAll('.nav').forEach(function(n){n.classList.remove('active');});
+    navEl.classList.add('active');
+  }
 }
+
 function setSyncState(s,t){
   document.getElementById('sync-dot').className='sync-dot '+s;
   document.getElementById('sync-txt').textContent=t;
