@@ -44,30 +44,18 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
 @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
 
 .login-overlay{position:fixed;inset:0;background:#0F1729;z-index:500;overflow:hidden;font-family:'Sora',sans-serif;}
-
-/* Ambient glow */
 .login-overlay::before{content:'';position:absolute;top:-40%;left:-10%;width:70%;height:100%;background:radial-gradient(ellipse 60% 50% at 50% 50%,rgba(74,144,226,.28) 0%,rgba(74,144,226,.1) 30%,transparent 65%);pointer-events:none;filter:blur(40px);}
 .login-overlay::after{content:'';position:absolute;bottom:-50%;right:-20%;width:80%;height:120%;background:radial-gradient(ellipse 55% 45% at 50% 50%,rgba(122,184,245,.14) 0%,transparent 60%);pointer-events:none;filter:blur(60px);}
-
-/* Grain texture overlay */
 .login-grain{position:absolute;inset:0;pointer-events:none;opacity:.35;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.15 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");z-index:1;}
-
-/* Status ticker top-right */
 .login-status{position:absolute;top:1.75rem;right:2rem;display:flex;align-items:center;gap:8px;font-size:11px;color:rgba(255,255,255,.4);z-index:10;font-feature-settings:'tnum';}
 .login-status-dot{width:6px;height:6px;border-radius:50%;background:#22D37C;box-shadow:0 0 10px rgba(34,211,124,.6);animation:statusPulse 2.4s infinite;}
 @keyframes statusPulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.6;transform:scale(.9);}}
 .login-status-sep{width:1px;height:10px;background:rgba(255,255,255,.15);}
 .login-status-time{font-family:'JetBrains Mono',monospace;letter-spacing:.04em;}
-
-/* Logo top-left */
 .login-brand-top{position:absolute;top:1.75rem;left:2rem;display:flex;align-items:center;gap:10px;z-index:10;}
 .login-brand-top-logo{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,#4A90E2 0%,#7AB8F5 100%);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#0F1729;letter-spacing:-.3px;box-shadow:0 0 20px rgba(74,144,226,.3);}
 .login-brand-top-name{font-size:12.5px;font-weight:600;color:rgba(255,255,255,.85);letter-spacing:-.2px;}
-
-/* Main split layout */
 .login-split{position:relative;z-index:2;display:grid;grid-template-columns:1.2fr 1fr;height:100vh;max-width:1280px;margin:0 auto;align-items:center;padding:0 3rem;gap:4rem;}
-
-/* LEFT — Editorial */
 .login-editorial{padding-right:2rem;}
 .login-kicker{display:inline-flex;align-items:center;gap:8px;font-size:10.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:2rem;}
 .login-kicker::before{content:'';width:24px;height:1px;background:rgba(255,255,255,.3);}
@@ -75,33 +63,19 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
 .login-headline .serif{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;letter-spacing:-1.5px;background:linear-gradient(180deg,#fff 0%,#B8C5E0 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:inline-block;margin-right:.15em;}
 .login-headline .sans{display:block;font-family:'Sora',sans-serif;font-weight:700;color:#fff;margin-top:.1em;letter-spacing:-2.8px;}
 .login-tagline{font-size:15px;line-height:1.65;color:rgba(255,255,255,.55);max-width:440px;margin-bottom:2.5rem;font-weight:400;}
-.login-meta{display:flex;align-items:center;gap:1.75rem;padding-top:1.75rem;border-top:1px solid rgba(255,255,255,.08);max-width:440px;}
-.login-meta-item{display:flex;flex-direction:column;}
-.login-meta-val{font-size:20px;font-weight:700;color:#fff;letter-spacing:-.5px;line-height:1;margin-bottom:4px;font-family:'Sora',sans-serif;}
-.login-meta-val .accent{color:#7AB8F5;}
-.login-meta-lbl{font-size:10px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.4);}
-.login-meta-sep{width:1px;height:28px;background:rgba(255,255,255,.08);}
-
-/* RIGHT — Form card */
 .login-form-wrap{position:relative;}
 .login-form-wrap::before{content:'';position:absolute;inset:-1px;border-radius:17px;background:linear-gradient(135deg,rgba(74,144,226,.4) 0%,rgba(255,255,255,.04) 40%,rgba(255,255,255,0) 60%,rgba(122,184,245,.15) 100%);z-index:0;}
 .login-wrap{position:relative;background:rgba(22,30,52,.72);border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:2.5rem 2.25rem;width:100%;max-width:420px;margin:0 auto;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);z-index:1;}
-
 .lr-head{margin-bottom:2rem;}
 .lr-title{font-size:22px;font-weight:600;color:#fff;letter-spacing:-.6px;margin-bottom:.4rem;font-family:'Sora',sans-serif;}
 .lr-sub{font-size:13px;color:rgba(255,255,255,.45);line-height:1.5;}
-
 .form-field{position:relative;margin-bottom:1.1rem;}
 .form-lbl{font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:.55rem;display:block;transition:color .18s;}
 .form-inp{width:100%;height:46px;padding:0 0 0 2px;border:none;border-bottom:1px solid rgba(255,255,255,.12);background:transparent;font-family:'Sora',sans-serif;font-size:14px;color:#fff;outline:none;transition:border-color .25s;letter-spacing:-.1px;}
 .form-inp::placeholder{color:rgba(255,255,255,.2);font-weight:300;}
 .form-inp:focus{border-bottom-color:#7AB8F5;}
-.form-inp:focus + .form-underline{transform:scaleX(1);}
-.form-underline{position:absolute;bottom:0;left:0;width:100%;height:1px;background:linear-gradient(90deg,#4A90E2 0%,#7AB8F5 100%);transform:scaleX(0);transform-origin:left;transition:transform .35s cubic-bezier(.4,0,.2,1);pointer-events:none;}
 .form-field:focus-within .form-lbl{color:rgba(255,255,255,.75);}
-
 .form-err{font-size:11.5px;color:#FF8B8B;margin-bottom:.85rem;display:none;padding:10px 12px;background:rgba(220,38,38,.08);border:1px solid rgba(220,38,38,.2);border-radius:8px;}
-
 .btn-submit{width:100%;height:48px;background:#fff;color:#0F1729;border:none;border-radius:10px;font-family:'Sora',sans-serif;font-size:13.5px;font-weight:700;cursor:pointer;letter-spacing:-.2px;margin-top:1rem;display:flex;align-items:center;justify-content:center;gap:8px;position:relative;overflow:hidden;transition:all .2s;box-shadow:0 0 0 0 rgba(122,184,245,0);}
 .btn-submit::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(74,144,226,.15) 0%,rgba(122,184,245,.08) 100%);opacity:0;transition:opacity .2s;}
 .btn-submit:hover{transform:translateY(-1px);box-shadow:0 8px 32px rgba(122,184,245,.25);}
@@ -111,24 +85,13 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
 .btn-submit:disabled:hover{transform:none;}
 .btn-txt{position:relative;z-index:1;}
 .btn-arrow{position:relative;z-index:1;transition:transform .2s;font-size:15px;}
-
-.login-footer-tiny{text-align:center;margin-top:1.5rem;font-size:10.5px;color:rgba(255,255,255,.3);letter-spacing:.02em;}
-.login-footer-tiny a{color:rgba(255,255,255,.5);text-decoration:none;transition:color .15s;}
-.login-footer-tiny a:hover{color:rgba(255,255,255,.8);}
-
-/* Signature bottom-left */
 .login-signature{position:absolute;bottom:1.75rem;left:2rem;z-index:10;font-size:10.5px;color:rgba(255,255,255,.3);letter-spacing:.02em;}
 .login-signature .em{color:rgba(255,255,255,.55);font-style:italic;font-family:'Instrument Serif',serif;font-size:12.5px;}
-
-/* Version tag bottom-right */
 .login-version{position:absolute;bottom:1.75rem;right:2rem;z-index:10;font-size:10px;color:rgba(255,255,255,.25);font-family:'JetBrains Mono',monospace;letter-spacing:.05em;}
-
-/* Responsive */
 @media (max-width:960px){
   .login-split{grid-template-columns:1fr;padding:5rem 2rem 2rem;gap:2.5rem;}
   .login-editorial{padding-right:0;text-align:center;}
   .login-headline{font-size:48px;letter-spacing:-2px;}
-  .login-meta{justify-content:center;margin:0 auto;}
   .login-kicker{justify-content:center;}
   .login-signature,.login-version{display:none;}
 }
@@ -136,7 +99,7 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
 /* ═══ SHELL ═══ */
 .shell{display:none;min-height:100vh;}
 
-/* ═══ SIDEBAR (collapsed, style Notion) ═══ */
+/* ═══ SIDEBAR ═══ */
 .sidebar{position:fixed;top:0;left:0;width:var(--sidebar-w);height:100vh;background:var(--navy);display:flex;flex-direction:column;z-index:300;}
 .sb-logo-wrap{height:var(--header-h);display:flex;align-items:center;justify-content:center;border-bottom:1px solid rgba(255,255,255,.08);}
 .sb-logo{width:36px;height:36px;border-radius:9px;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#fff;}
@@ -152,7 +115,7 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
 .sb-item.has-flyout:hover .sb-tooltip{opacity:0;}
 .sb-bottom{padding:.75rem .5rem;border-top:1px solid rgba(255,255,255,.08);}
 
-/* ═══ FLYOUT (Notion-style) ═══ */
+/* ═══ FLYOUT ═══ */
 .flyout{position:fixed;left:var(--sidebar-w);top:0;width:var(--flyout-w);height:100vh;background:var(--white);border-right:1px solid var(--border);z-index:280;display:flex;flex-direction:column;transform:translateX(-100%);opacity:0;pointer-events:none;transition:transform .2s cubic-bezier(.4,0,.2,1),opacity .2s;}
 .flyout.open{transform:translateX(0);opacity:1;pointer-events:auto;}
 .flyout-head{height:var(--header-h);padding:0 1.25rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);}
@@ -179,8 +142,6 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
 .fl-item-meta{font-size:10px;color:var(--text3);font-family:'JetBrains Mono',monospace;}
 .flyout-foot{padding:.75rem 1.25rem;border-top:1px solid var(--border);}
 .flyout-foot-info{font-size:10.5px;color:var(--text3);}
-
-/* Overlay for flyout */
 .flyout-backdrop{position:fixed;inset:0;z-index:270;background:rgba(0,0,0,0);pointer-events:none;transition:background .2s;}
 .flyout-backdrop.open{background:rgba(0,0,0,.15);pointer-events:auto;}
 
@@ -195,7 +156,6 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
 .bc-item:hover{color:var(--text2);}
 .bc-item.current{color:var(--text);font-weight:500;cursor:default;}
 .bc-sep{color:var(--text4);font-size:11px;}
-
 .tb-search{flex:1;max-width:480px;position:relative;}
 .tb-search-inp{width:100%;height:36px;padding:0 14px 0 38px;background:var(--bg);border:1px solid transparent;border-radius:var(--r);font-family:'Sora',sans-serif;font-size:12.5px;color:var(--text);outline:none;transition:all .15s;}
 .tb-search-inp::placeholder{color:var(--text3);}
@@ -204,8 +164,6 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
 .tb-search-ico svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
 .tb-search-kbd{position:absolute;right:10px;top:50%;transform:translateY(-50%);font-size:9.5px;font-weight:600;font-family:'JetBrains Mono',monospace;color:var(--text3);background:#fff;border:1px solid var(--border-md);border-radius:5px;padding:2px 6px;pointer-events:none;}
 .tb-search-inp:focus ~ .tb-search-kbd{display:none;}
-
-/* Search results dropdown */
 .search-results{position:absolute;top:calc(100% + 6px);left:0;right:0;background:#fff;border:1px solid var(--border-md);border-radius:var(--rl);box-shadow:0 12px 40px rgba(0,0,0,.08);max-height:400px;overflow-y:auto;z-index:200;display:none;}
 .search-results.visible{display:block;}
 .sr-group{padding:.5rem 0;}
@@ -218,7 +176,6 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
 .sr-name{font-size:12.5px;font-weight:600;color:var(--text);}
 .sr-meta{font-size:10.5px;color:var(--text3);margin-top:1px;}
 .sr-empty{padding:1.5rem;text-align:center;font-size:12px;color:var(--text3);}
-
 .tb-right{display:flex;align-items:center;gap:10px;flex-shrink:0;}
 .tb-sync{display:flex;align-items:center;gap:6px;padding:0 10px;height:28px;border-radius:14px;background:var(--bg);font-size:10.5px;color:var(--text3);}
 .sync-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;}
@@ -241,13 +198,6 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
 .section{display:none;animation:fadeIn .2s ease;}
 .section.active{display:block;}
 
-/* ═══ ALERTE ═══ */
-.alert-banner{display:none;background:var(--red-l);border:1px solid rgba(212,38,38,.18);border-left:3px solid var(--red);border-radius:0 var(--r) var(--r) 0;padding:11px 16px;margin-bottom:1.5rem;}
-.ab-inner{display:flex;align-items:center;gap:10px;}
-.ab-dot{width:7px;height:7px;border-radius:50%;background:var(--red);animation:pulse .9s infinite;flex-shrink:0;}
-.ab-txt{font-size:12px;font-weight:600;color:var(--red);}
-.ab-sub{font-size:11px;color:#b71c1c;margin-top:1px;}
-
 /* ═══ HERO ACCUEIL ═══ */
 .hero{position:relative;background:var(--navy);border-radius:var(--rx);padding:2.5rem 2.75rem;margin-bottom:1.75rem;overflow:hidden;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center;}
 .hero::before{content:'';position:absolute;top:-80px;right:-60px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(74,144,226,.35) 0%,transparent 70%);pointer-events:none;}
@@ -259,8 +209,6 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
 .hero-title .highlight{display:inline-block;background:linear-gradient(135deg,#4A90E2 0%,#7AB8F5 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 .hero-divider{width:40px;height:3px;background:linear-gradient(90deg,var(--accent),transparent);border-radius:2px;margin-bottom:.875rem;position:relative;}
 .hero-sub{font-size:14px;color:rgba(255,255,255,.55);font-weight:400;line-height:1.6;max-width:480px;position:relative;}
-
-/* Visual right side — date + temporal signal */
 .hero-right{position:relative;z-index:2;display:flex;flex-direction:column;align-items:flex-end;gap:.75rem;padding-right:.5rem;}
 .hero-date-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:var(--rl);padding:1rem 1.25rem;backdrop-filter:blur(10px);min-width:200px;text-align:right;}
 .hero-date-label{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:.4rem;}
@@ -287,13 +235,6 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
 .kpi-card.amber .kpi-value{color:var(--amber);}
 .kpi-trend{font-size:11px;color:var(--text3);}
 .kpi-progress{margin-top:10px;}
-.kpi-progress-bar{height:4px;background:var(--bg2);border-radius:2px;overflow:hidden;}
-.kpi-progress-fill{height:100%;background:var(--green);border-radius:2px;transition:width 1s cubic-bezier(.4,0,.2,1);width:0%;}
-
-/* KPI 2 — Lacunes par élève : valeur absolue + % secondaire */
-.kpi-sub-value{font-size:14px;font-weight:600;color:var(--amber);margin-left:6px;letter-spacing:-.3px;}
-
-/* KPI 3 — XP bar gamifiée */
 .xp-wrap{margin-top:.75rem;}
 .xp-bar-track{position:relative;height:12px;background:linear-gradient(180deg,#E0DCCE 0%,#EEEAE0 100%);border-radius:8px;overflow:hidden;border:1px solid rgba(0,0,0,.06);box-shadow:inset 0 1px 2px rgba(0,0,0,.05);}
 .xp-bar-fill{position:relative;height:100%;background:linear-gradient(90deg,#0E7348 0%,#15A362 50%,#22D37C 100%);border-radius:7px;transition:width 1.2s cubic-bezier(.4,0,.2,1);width:0%;box-shadow:0 0 12px rgba(34,211,124,.4);}
@@ -307,30 +248,19 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
 
 /* ═══ TOP LACUNES ═══ */
 .top-lacunes-card{background:var(--white);border:1px solid var(--border);border-radius:var(--rl);padding:1.5rem 1.75rem;margin-bottom:1.75rem;}
-.tl-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem;}
-.tl-title{font-size:15px;font-weight:700;color:var(--text);letter-spacing:-.3px;margin-bottom:.25rem;}
-.tl-sub{font-size:12px;color:var(--text3);}
-.tl-badge{display:inline-flex;align-items:center;gap:6px;font-size:10.5px;font-weight:600;padding:4px 10px;border-radius:12px;background:var(--amber-l);color:var(--amber);letter-spacing:.03em;}
-.tl-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--amber);}
 .tl-list{display:flex;flex-direction:column;gap:10px;}
 .tl-row{display:grid;grid-template-columns:42px 1fr auto;align-items:center;gap:14px;padding:12px 14px;background:linear-gradient(90deg,var(--bg) 0%,#FAF8F1 100%);border:1px solid var(--border);border-radius:var(--r);transition:all .18s;cursor:default;}
 .tl-row:hover{border-color:var(--border-md);background:linear-gradient(90deg,#F2EFE6 0%,#FAF8F1 100%);}
 .tl-rank{font-size:18px;font-weight:800;color:var(--text3);font-family:'JetBrains Mono',monospace;letter-spacing:-1px;line-height:1;display:flex;align-items:center;justify-content:center;}
-
-/* Podium : les 3 premiers rangs mis en évidence */
 .tl-row.rank-1,.tl-row.rank-2,.tl-row.rank-3{position:relative;}
 .tl-row.rank-1{background:linear-gradient(90deg,#FFF8E0 0%,#FFFBF0 50%,var(--white) 100%);border-color:#F3D56B;border-left:4px solid #E6B800;}
 .tl-row.rank-2{background:linear-gradient(90deg,#F2F4F7 0%,#F9FAFB 50%,var(--white) 100%);border-color:#D1D5DB;border-left:4px solid #9CA3AF;}
 .tl-row.rank-3{background:linear-gradient(90deg,#FAEFE6 0%,#FDF6EF 50%,var(--white) 100%);border-color:#E0B084;border-left:4px solid #B87333;}
-
-/* Medal badges */
 .tl-row.rank-1 .tl-rank,.tl-row.rank-2 .tl-rank,.tl-row.rank-3 .tl-rank{width:36px;height:36px;border-radius:50%;font-size:13px;font-weight:800;letter-spacing:0;font-family:'Sora',sans-serif;position:relative;color:#fff;}
 .tl-row.rank-1 .tl-rank{background:linear-gradient(135deg,#FFD700 0%,#E6B800 100%);box-shadow:0 3px 10px rgba(230,184,0,.35);text-shadow:0 1px 2px rgba(0,0,0,.15);}
 .tl-row.rank-2 .tl-rank{background:linear-gradient(135deg,#E5E7EB 0%,#9CA3AF 100%);box-shadow:0 3px 8px rgba(156,163,175,.3);text-shadow:0 1px 2px rgba(0,0,0,.1);}
 .tl-row.rank-3 .tl-rank{background:linear-gradient(135deg,#D49664 0%,#B87333 100%);box-shadow:0 3px 8px rgba(184,115,51,.3);text-shadow:0 1px 2px rgba(0,0,0,.1);}
 .tl-row.rank-1 .tl-rank::after,.tl-row.rank-2 .tl-rank::after,.tl-row.rank-3 .tl-rank::after{content:'';position:absolute;top:3px;left:3px;right:3px;bottom:50%;border-radius:50%;background:linear-gradient(180deg,rgba(255,255,255,.4) 0%,rgba(255,255,255,0) 100%);pointer-events:none;}
-
-/* Cliquable */
 .tl-row.clickable{cursor:pointer;}
 .tl-row.clickable:hover{border-color:var(--navy-mid);transform:translateX(2px);}
 .tl-row.rank-1.clickable:hover{border-left-color:#D4A300;}
@@ -347,56 +277,14 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
 .tl-count-lbl{font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--text3);margin-top:3px;}
 .tl-empty{padding:2.5rem 1rem;text-align:center;color:var(--text3);font-size:12.5px;}
 
-/* ═══ HEATMAP ═══ */
-.heatmap-card{background:var(--white);border:1px solid var(--border);border-radius:var(--rx);padding:1.75rem 1.75rem 1.5rem;margin-bottom:1.75rem;}
-.hm-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:1.5rem;}
-.hm-title{font-size:16px;font-weight:700;color:var(--text);letter-spacing:-.4px;margin-bottom:.25rem;}
-.hm-sub{font-size:12px;color:var(--text3);}
-.hm-legend{display:flex;align-items:center;gap:14px;font-size:10.5px;color:var(--text3);}
-.hm-legend-scale{display:flex;align-items:center;gap:4px;}
-.hm-scale-cell{width:16px;height:16px;border-radius:3px;}
-.hm-legend-soon{display:inline-flex;align-items:center;gap:5px;padding:3px 8px;background:var(--bg);border-radius:10px;}
-.hm-legend-soon::before{content:'';width:8px;height:8px;background:repeating-linear-gradient(45deg,#D8D4C8,#D8D4C8 2px,#ECE8DE 2px,#ECE8DE 4px);border-radius:2px;}
-
-.hm-grid{display:grid;grid-template-columns:160px repeat(6,1fr);gap:6px;}
-.hm-head-row{display:contents;}
-.hm-head-cell{font-size:9.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text3);padding:4px 8px 10px;text-align:center;border-bottom:1px solid var(--border);}
-.hm-head-cell.corner{text-align:left;color:var(--text2);font-size:10.5px;}
-.hm-head-cell.soon{color:var(--text4);}
-.hm-row{display:contents;}
-.hm-row-label{font-size:12px;font-weight:600;color:var(--text);padding:9px 10px;display:flex;align-items:center;gap:8px;border-radius:6px;cursor:pointer;transition:background .15s;}
-.hm-row-label:hover{background:var(--bg);}
-.hm-row-tag{font-size:9px;font-weight:600;padding:1px 6px;border-radius:8px;flex-shrink:0;}
-.hm-row-tag.cap{background:#EEF9F4;color:var(--green-dark);}
-.hm-row-tag.bp{background:var(--navy-l);color:var(--navy);}
-.hm-row-name{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.hm-cell{aspect-ratio:1.2/1;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;cursor:pointer;transition:transform .15s,box-shadow .15s;position:relative;min-height:42px;}
-.hm-cell:hover{transform:scale(1.08);box-shadow:0 3px 10px rgba(0,0,0,.12);z-index:5;}
-.hm-cell.empty{background:var(--bg);color:var(--text4);font-size:11px;font-weight:500;cursor:default;}
-.hm-cell.empty:hover{transform:none;box-shadow:none;}
-.hm-cell.soon{background:repeating-linear-gradient(45deg,#ECE8DE,#ECE8DE 4px,#F5F1E7 4px,#F5F1E7 8px);color:var(--text4);font-size:10px;font-weight:500;cursor:default;}
-.hm-cell.soon:hover{transform:none;box-shadow:none;}
-.hm-cell.lvl-high{background:#0E7348;color:#fff;}
-.hm-cell.lvl-good{background:#15A362;color:#fff;}
-.hm-cell.lvl-mid{background:#8BC49F;color:#0E3D24;}
-.hm-cell.lvl-low{background:#FAC775;color:#6B3E03;}
-.hm-cell.lvl-alert{background:#EE7878;color:#fff;}
-.hm-cell-pct{line-height:1;}
-.hm-cell-alerts{position:absolute;top:4px;right:4px;width:14px;height:14px;background:var(--red);color:#fff;border-radius:50%;font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;border:2px solid #fff;}
-
-.hm-footer{display:flex;align-items:center;justify-content:space-between;margin-top:1.25rem;padding-top:1rem;border-top:1px solid var(--border);}
-.hm-footer-info{font-size:11px;color:var(--text3);}
-.hm-footer-link{font-size:11.5px;font-weight:600;color:var(--accent);cursor:pointer;display:inline-flex;align-items:center;gap:4px;text-decoration:none;}
-.hm-footer-link:hover{text-decoration:underline;}
-
-/* ═══ PAGE HEADER GÉNÉRIQUE ═══ */
+/* ═══ PAGE HEADER ═══ */
 .page-header{margin-bottom:1.5rem;}
 .page-title{font-size:26px;font-weight:800;color:var(--text);letter-spacing:-.8px;margin-bottom:.3rem;}
 .page-sub{font-size:13px;color:var(--text3);}
 .back-btn{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:500;color:var(--text3);cursor:pointer;background:var(--white);border:1px solid var(--border-md);padding:6px 14px;border-radius:var(--r);margin-bottom:1.25rem;transition:all .15s;font-family:'Sora',sans-serif;}
 .back-btn:hover{border-color:var(--navy);color:var(--navy);}
 
-/* ═══ NIVEAU GRID (Résultats par classe) ═══ */
+/* ═══ NIVEAUX / CLASSES / DETAIL (inchangés) ═══ */
 .niveau-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem;}
 .niveau-card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--rl);padding:1.75rem;cursor:pointer;transition:all .2s;position:relative;overflow:hidden;}
 .niveau-card:hover{border-color:var(--navy-mid);transform:translateY(-2px);box-shadow:0 8px 28px rgba(27,46,94,.1);}
@@ -417,8 +305,6 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
 .badge-alert{display:inline-flex;align-items:center;font-size:10px;font-weight:600;padding:2px 9px;border-radius:12px;background:var(--red-l);color:var(--red);}
 .badge-ok{display:inline-flex;align-items:center;font-size:10px;font-weight:600;padding:2px 9px;border-radius:12px;background:var(--green-l);color:var(--green-dark);}
 .badge-wait{display:inline-flex;align-items:center;font-size:10px;font-weight:600;padding:2px 9px;border-radius:12px;background:var(--bg);color:var(--text3);border:1px solid var(--border-md);}
-
-/* ═══ CLASSES GRID ═══ */
 .classes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
 .classe-card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--rl);padding:1.4rem;cursor:pointer;transition:all .18s;position:relative;}
 .classe-card:hover{border-color:var(--navy-mid);transform:translateY(-2px);box-shadow:0 6px 20px rgba(27,46,94,.09);}
@@ -441,13 +327,10 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
 .cc-prog-txt{font-size:10px;color:var(--text3);}
 .cc-arrow{position:absolute;bottom:14px;right:16px;font-size:14px;color:var(--text3);transition:all .18s;}
 .classe-card:hover .cc-arrow{color:var(--navy);transform:translateX(3px);}
-
-/* ═══ DETAIL CLASSE ═══ */
 .kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;margin-bottom:1.5rem;}
 .kpi-cell{background:var(--white);padding:1.15rem 1.4rem;}
 .kpi-val{font-size:32px;font-weight:800;color:var(--navy);line-height:1;letter-spacing:-1.3px;margin-bottom:3px;}
 .kpi-lbl{font-size:9.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);}
-
 .visual-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem;}
 .vis-card{background:var(--white);border:1px solid var(--border);border-radius:var(--rl);padding:1.4rem;}
 .vis-title{font-size:13px;font-weight:600;color:var(--text);margin-bottom:1rem;}
@@ -466,7 +349,6 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
 .prog-track{height:7px;background:var(--bg2);border-radius:4px;overflow:hidden;}
 .prog-fill{height:100%;background:var(--green);border-radius:4px;transition:width 1s;}
 .prog-note{font-size:11px;color:var(--text3);margin-top:.3rem;}
-
 .themes-section-title{font-size:13px;font-weight:600;color:var(--text);margin-bottom:1rem;}
 .themes-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-bottom:1.5rem;}
 .theme-card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--rl);padding:1.2rem;cursor:pointer;transition:all .18s;}
@@ -486,11 +368,8 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
 .th-prog-track{height:3.5px;background:var(--bg2);border-radius:2px;overflow:hidden;margin-top:.3rem;}
 .th-prog-fill{height:100%;background:var(--green);border-radius:2px;}
 .th-prog-txt{font-size:9.5px;color:var(--text3);margin-top:.25rem;}
-
 .btn-cta{display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:#fff;border:none;padding:10px 22px;border-radius:var(--r);font-family:'Sora',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:background .15s;}
 .btn-cta:hover{background:var(--navy-mid);}
-
-/* ═══ PANELS / TABLES ═══ */
 .panel{background:var(--white);border:1px solid var(--border);border-radius:var(--rl);padding:0;margin-bottom:1.25rem;overflow:hidden;}
 .panel-hdr{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.4rem;border-bottom:1px solid var(--border);}
 .panel-title{font-size:13.5px;font-weight:700;}
@@ -523,13 +402,15 @@ tr:hover td{background:#FDFCF9;}
 .fr-sub{font-size:10px;color:var(--text3);margin-top:2px;}
 .fr-score{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;}
 
-/* ═══ STATS MENU CARDS ═══ */
-.stats-menu-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem;}
+/* ═══ STATS MENU (3 cartes : classement, lacunes, DYS) ═══ */
+.stats-menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;}
+@media (max-width:900px){.stats-menu-grid{grid-template-columns:repeat(2,1fr);}}
 .stats-menu-card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--rl);padding:1.75rem;cursor:pointer;transition:all .2s;position:relative;overflow:hidden;}
 .stats-menu-card:hover{border-color:var(--navy-mid);transform:translateY(-2px);box-shadow:0 8px 28px rgba(27,46,94,.1);}
 .sm-ico-wrap{width:46px;height:46px;border-radius:12px;background:var(--navy-l);color:var(--navy);display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;}
 .sm-ico-wrap.amber{background:var(--amber-l);color:var(--amber);}
 .sm-ico-wrap.green{background:var(--green-l);color:var(--green-dark);}
+.sm-ico-wrap.accent{background:var(--accent-l);color:var(--accent);}
 .sm-ico-wrap svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
 .sm-title{font-size:17px;font-weight:700;color:var(--text);letter-spacing:-.4px;margin-bottom:.35rem;}
 .sm-desc{font-size:12.5px;color:var(--text3);line-height:1.55;margin-bottom:1.25rem;}
@@ -538,13 +419,10 @@ tr:hover td{background:#FDFCF9;}
 .sm-arrow{font-size:16px;color:var(--text3);transition:all .2s;}
 .stats-menu-card:hover .sm-arrow{color:var(--navy);transform:translateX(4px);}
 
-/* ═══ THEME CARDS GRID (lacunes par thème) ═══ */
 .theme-stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
 .theme-stats-card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--rl);padding:1.5rem 1.4rem;cursor:pointer;transition:all .2s;position:relative;overflow:hidden;}
 .theme-stats-card:hover{border-color:var(--navy-mid);transform:translateY(-2px);box-shadow:0 6px 20px rgba(27,46,94,.09);}
 .theme-stats-card.soon{opacity:.55;cursor:default;pointer-events:none;background:repeating-linear-gradient(45deg,var(--white),var(--white) 10px,#FBF9F3 10px,#FBF9F3 20px);}
-
-/* Podium medals on theme cards */
 .theme-stats-card.rank-1,.theme-stats-card.rank-2,.theme-stats-card.rank-3{border-width:2px;}
 .theme-stats-card.rank-1{border-color:#F3D56B;background:linear-gradient(180deg,#FFFBEF 0%,var(--white) 60%);}
 .theme-stats-card.rank-2{border-color:#D1D5DB;background:linear-gradient(180deg,#F9FAFB 0%,var(--white) 60%);}
@@ -555,7 +433,6 @@ tr:hover td{background:#FDFCF9;}
 .theme-stats-card.rank-2 .theme-rank-medal{background:linear-gradient(135deg,#E5E7EB 0%,#9CA3AF 100%);box-shadow:0 3px 8px rgba(156,163,175,.3);text-shadow:0 1px 2px rgba(0,0,0,.1);}
 .theme-stats-card.rank-3 .theme-rank-medal{background:linear-gradient(135deg,#D49664 0%,#B87333 100%);box-shadow:0 3px 8px rgba(184,115,51,.3);text-shadow:0 1px 2px rgba(0,0,0,.1);}
 .theme-rank-num{position:absolute;top:12px;right:12px;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--text3);background:var(--bg);border:1px solid var(--border-md);font-family:'JetBrains Mono',monospace;}
-
 .tsc-head{display:flex;align-items:center;gap:12px;margin-bottom:1.25rem;padding-right:42px;}
 .tsc-ico{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
 .tsc-name{font-size:14px;font-weight:700;color:var(--text);letter-spacing:-.3px;}
@@ -572,15 +449,34 @@ tr:hover td{background:#FDFCF9;}
 .tsc-arrow{position:absolute;bottom:1.25rem;right:1.4rem;font-size:14px;color:var(--text3);transition:all .2s;}
 .theme-stats-card:hover .tsc-arrow{color:var(--navy);transform:translateX(3px);}
 
-/* ═══ STAT DETAIL PANEL WRAPPER ═══ */
+/* ═══ DYS — Mini-hero inclusif ═══ */
+.dys-hero{background:linear-gradient(135deg,#EEF1F9 0%,#E8F1FB 100%);border:1px solid rgba(74,144,226,.18);border-radius:var(--rl);padding:1.5rem 1.75rem;margin-bottom:1.5rem;display:flex;align-items:center;gap:1.25rem;}
+.dys-hero-ico{width:54px;height:54px;border-radius:14px;background:var(--white);border:1px solid rgba(74,144,226,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--accent);}
+.dys-hero-ico svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.dys-hero-body{flex:1;}
+.dys-hero-val{font-size:34px;font-weight:800;color:var(--navy);letter-spacing:-1px;line-height:1;margin-bottom:.35rem;font-family:'Sora',sans-serif;}
+.dys-hero-val .sub{font-size:15px;font-weight:600;color:var(--text3);margin-left:.3rem;letter-spacing:-.2px;}
+.dys-hero-lbl{font-size:12.5px;color:var(--text2);line-height:1.5;}
+
+/* Liste élèves DYS */
+.dys-list{display:flex;flex-direction:column;gap:8px;}
+.dys-row{display:grid;grid-template-columns:40px 1fr auto auto;align-items:center;gap:14px;padding:12px 16px;background:var(--white);border:1px solid var(--border);border-radius:var(--r);cursor:pointer;transition:all .18s;}
+.dys-row:hover{border-color:var(--navy-mid);transform:translateX(2px);box-shadow:0 3px 12px rgba(27,46,94,.06);}
+.dys-row-avatar{width:36px;height:36px;border-radius:50%;background:var(--accent-l);color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;}
+.dys-row-body{display:flex;flex-direction:column;min-width:0;}
+.dys-row-name{font-size:13px;font-weight:700;color:var(--text);letter-spacing:-.2px;}
+.dys-row-meta{font-size:10.5px;color:var(--text3);margin-top:2px;}
+.dys-row-prog{display:flex;align-items:center;gap:8px;}
+.dys-row-prog-track{width:90px;height:4px;background:var(--bg2);border-radius:2px;overflow:hidden;}
+.dys-row-prog-fill{height:100%;border-radius:2px;}
+.dys-row-prog-pct{font-size:11px;font-weight:700;font-family:'JetBrains Mono',monospace;color:var(--text2);min-width:36px;text-align:right;}
+.dys-row-arrow{font-size:14px;color:var(--text3);transition:transform .15s;}
+.dys-row:hover .dys-row-arrow{color:var(--navy);transform:translateX(3px);}
+
+.dys-note{background:var(--white);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:var(--r);padding:12px 16px;margin-top:1.25rem;font-size:12px;color:var(--text2);line-height:1.55;}
+.dys-note strong{color:var(--text);font-weight:600;}
+
 .stat-detail-head{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:1.5rem;}
-.stats-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:5rem 2rem;text-align:center;background:var(--white);border:1px solid var(--border);border-radius:var(--rx);}
-.stats-icon{width:64px;height:64px;border-radius:16px;background:var(--navy-l);display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;color:var(--navy);}
-.stats-icon svg{width:28px;height:28px;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;}
-.stats-title{font-size:22px;font-weight:700;color:var(--text);letter-spacing:-.5px;margin-bottom:.5rem;}
-.stats-sub{font-size:13px;color:var(--text3);line-height:1.65;max-width:420px;}
-.stats-chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:1.5rem;}
-.stats-chip{font-size:11px;font-weight:500;padding:5px 14px;border-radius:20px;background:var(--bg);color:var(--text3);border:1px solid var(--border-md);}
 </style>
 </head>
 <body>
@@ -588,8 +484,6 @@ tr:hover td{background:#FDFCF9;}
 <!-- ══ LOGIN ══ -->
 <div class="login-overlay" id="login-screen">
   <div class="login-grain"></div>
-
-  <!-- Top bar -->
   <div class="login-brand-top">
     <div class="login-brand-top-logo">DR</div>
     <div class="login-brand-top-name">Diagnostic et remédiation mathématiques</div>
@@ -600,11 +494,7 @@ tr:hover td{background:#FDFCF9;}
     <div class="login-status-sep"></div>
     <span class="login-status-time" id="login-time">—</span>
   </div>
-
-  <!-- Split -->
   <div class="login-split">
-
-    <!-- LEFT: Editorial -->
     <div class="login-editorial">
       <h1 class="login-headline">
         <span class="serif">Lycée</span>
@@ -612,47 +502,34 @@ tr:hover td{background:#FDFCF9;}
       </h1>
       <p class="login-tagline">Identifier, combler et suivre les lacunes de vos élèves.</p>
     </div>
-
-    <!-- RIGHT: Form -->
     <div class="login-form-wrap">
       <div class="login-wrap">
         <div class="lr-head">
           <div class="lr-title">Bienvenue</div>
           <div class="lr-sub">Connectez-vous pour accéder à votre tableau de bord.</div>
         </div>
-
         <div class="form-field">
           <label class="form-lbl">Identifiant</label>
           <input class="form-inp" type="text" id="login-id" placeholder="Votre identifiant">
-          <div class="form-underline"></div>
         </div>
-
         <div class="form-field">
           <label class="form-lbl">Mot de passe</label>
           <input class="form-inp" type="password" id="login-mdp" placeholder="••••••••">
-          <div class="form-underline"></div>
         </div>
-
         <div class="form-err" id="login-err">Identifiant ou mot de passe incorrect.</div>
-
         <button class="btn-submit" id="btn-login" onclick="connexion()">
           <span class="btn-txt">Accéder à mon espace</span>
           <span class="btn-arrow">→</span>
         </button>
       </div>
     </div>
-
   </div>
-
-  <!-- Signature + version -->
   <div class="login-signature"><span class="em">Diagnostic et remédiation mathématiques</span></div>
   <div class="login-version">v1.0 · 2026</div>
 </div>
 
 <!-- ══ SHELL ══ -->
 <div class="shell" id="shell">
-
-  <!-- Sidebar -->
   <nav class="sidebar">
     <div class="sb-logo-wrap"><div class="sb-logo">AM</div></div>
     <div class="sb-nav">
@@ -677,7 +554,6 @@ tr:hover td{background:#FDFCF9;}
     </div>
   </nav>
 
-  <!-- Flyout -->
   <div class="flyout-backdrop" id="flyout-backdrop" onclick="closeFlyout()"></div>
   <aside class="flyout" id="flyout">
     <div class="flyout-head">
@@ -690,7 +566,6 @@ tr:hover td{background:#FDFCF9;}
     </div>
   </aside>
 
-  <!-- Main -->
   <div class="main">
     <div class="topbar">
       <div class="tb-left">
@@ -877,7 +752,7 @@ tr:hover td{background:#FDFCF9;}
       <!-- ══ STATISTIQUES ══ -->
       <div class="section" id="section-stats">
 
-        <!-- Sous-vue menu principale -->
+        <!-- Menu principal : 3 cartes -->
         <div id="view-stats-menu">
           <div class="page-header">
             <div class="page-title">Statistiques</div>
@@ -902,10 +777,19 @@ tr:hover td{background:#FDFCF9;}
                 <div class="sm-arrow">→</div>
               </div>
             </div>
+            <div class="stats-menu-card" onclick="ouvrirStatDetail('dys')">
+              <div class="sm-ico-wrap accent"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 10l2 2 4-4"/><path d="M9 15h6"/></svg></div>
+              <div class="sm-title">Élèves en mode adapté</div>
+              <div class="sm-desc">Liste des élèves qui ont activé le mode de lecture adapté (DYS) sur la plateforme.</div>
+              <div class="sm-foot">
+                <div class="sm-badge" id="sm-badge-dys">—</div>
+                <div class="sm-arrow">→</div>
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- Sous-vue détail : Classement -->
+        <!-- Détail : Classement -->
         <div id="view-stats-classement" style="display:none;">
           <button class="back-btn" onclick="retourStatsMenu()">← Retour aux statistiques</button>
           <div class="page-header">
@@ -917,7 +801,7 @@ tr:hover td{background:#FDFCF9;}
           </div>
         </div>
 
-        <!-- Sous-vue détail : Lacunes (grille des thèmes) -->
+        <!-- Détail : Lacunes (thèmes) -->
         <div id="view-stats-lacunes" style="display:none;">
           <button class="back-btn" onclick="retourStatsMenu()">← Retour aux statistiques</button>
           <div class="page-header">
@@ -927,7 +811,7 @@ tr:hover td{background:#FDFCF9;}
           <div class="theme-stats-grid" id="stats-themes-grid"></div>
         </div>
 
-        <!-- Sous-vue détail : Lacunes d'un thème -->
+        <!-- Détail : Lacunes d'un thème -->
         <div id="view-stats-lacunes-theme" style="display:none;">
           <button class="back-btn" onclick="retourStatsLacunes()">← Retour aux thèmes</button>
           <div class="page-header">
@@ -939,11 +823,33 @@ tr:hover td{background:#FDFCF9;}
           </div>
         </div>
 
+        <!-- Détail : Élèves DYS -->
+        <div id="view-stats-dys" style="display:none;">
+          <button class="back-btn" onclick="retourStatsMenu()">← Retour aux statistiques</button>
+          <div class="page-header">
+            <div class="page-title">Élèves en mode adapté</div>
+            <div class="page-sub">Liste des élèves pour qui le mode de lecture adapté (DYS) est activé.</div>
+          </div>
+          <div class="dys-hero">
+            <div class="dys-hero-ico">
+              <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2zM22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            </div>
+            <div class="dys-hero-body">
+              <div class="dys-hero-val"><span id="dys-hero-count">0</span><span class="sub" id="dys-hero-total">sur 0 élèves</span></div>
+              <div class="dys-hero-lbl">élèves bénéficient d'une police et d'un espacement adaptés pour faciliter la lecture.</div>
+            </div>
+          </div>
+          <div class="dys-list" id="dys-list"></div>
+          <div class="dys-note">
+            <strong>À propos du mode adapté.</strong> Le mode DYS est activé par l'élève à l'inscription et s'applique automatiquement sur toutes les fiches et l'évaluation. Il propose la police OpenDyslexic, un espacement augmenté et des temps de lecture allongés sur les retours d'exercices.
+          </div>
+        </div>
+
       </div>
 
-    </div><!-- /content -->
-  </div><!-- /main -->
-</div><!-- /shell -->
+    </div>
+  </div>
+</div>
 
 <script>
 var SCRIPT_URL="https://script.google.com/macros/s/AKfycbxlBMjVXIg58lsopoeQ5sEZW-jcQIOrOtnWwCGVtHLGjcmpi9exaYZ3oAEre4deZum2/exec";
@@ -987,14 +893,13 @@ var NOMS_FICHES={
   'fractions_division':'Diviser par une fraction'
 };
 
-var DATA_EVAL=[],DATA_REM=[];
+var DATA_EVAL=[],DATA_REM=[],DATA_COMPTES=[];
 var currentNiveau=null,currentClasse=null,currentEleve=null;
 
 // ── LOGIN
 document.getElementById('login-id').addEventListener('keydown',function(e){if(e.key==='Enter')connexion();});
 document.getElementById('login-mdp').addEventListener('keydown',function(e){if(e.key==='Enter')connexion();});
 
-// Clock in login status bar
 function updateLoginTime(){
   var el=document.getElementById('login-time');
   if(!el) return;
@@ -1042,18 +947,21 @@ function deconnexion(){
   document.getElementById('login-mdp').value='';
   document.getElementById('btn-login').disabled=false;
   document.getElementById('btn-login').textContent='Accéder →';
-  DATA_EVAL=[];DATA_REM=[];
+  DATA_EVAL=[];DATA_REM=[];DATA_COMPTES=[];
 }
 
-// ── LOAD
+// ── LOAD (3 fetchs : eval, rem, comptes)
 function loadAll(){
   setSyncState('loading','Chargement...');
-  var done=0;
-  function check(){done++;if(done===2){renderAll();setSyncState('live','Sync · '+new Date().toLocaleTimeString('fr-FR'));}}
+  var done=0,total=3;
+  function check(){done++;if(done===total){renderAll();setSyncState('live','Sync · '+new Date().toLocaleTimeString('fr-FR'));}}
   fetch(SCRIPT_URL+'?type=evaluations&etablissement='+encodeURIComponent(ETABLISSEMENT)+'&t='+Date.now())
     .then(function(r){return r.json();}).then(function(j){if(j.status==='ok')DATA_EVAL=j.data||[];check();}).catch(function(){check();setSyncState('error','Hors ligne');});
   fetch(SCRIPT_URL+'?type=remediation&etablissement='+encodeURIComponent(ETABLISSEMENT)+'&t='+Date.now())
     .then(function(r){return r.json();}).then(function(j){if(j.status==='ok')DATA_REM=j.data||[];check();}).catch(function(){check();});
+  // NOUVEAU : récupérer les comptes pour avoir le flag DYS par élève
+  fetch(SCRIPT_URL+'?type=comptes&etablissement='+encodeURIComponent(ETABLISSEMENT)+'&t='+Date.now())
+    .then(function(r){return r.json();}).then(function(j){if(j.status==='ok')DATA_COMPTES=j.data||[];check();}).catch(function(){check();});
 }
 
 function renderAll(){
@@ -1061,6 +969,7 @@ function renderAll(){
   renderNiveauxGrid('niveaux-grid-2');
   renderFlyout();
   renderStats();
+  renderStatsDysBadge();
   updateHeroDateTime();
 }
 
@@ -1105,6 +1014,12 @@ function remEleve(email){
     .forEach(function(r){if(!map[r.fiche_id]||(parseInt(r.tentative_num)||0)>(parseInt(map[r.fiche_id].tentative_num)||0))map[r.fiche_id]=r;});
   return Object.values(map);
 }
+// Est-ce qu'un élève (par email) a le flag DYS=oui ?
+function estDys(email){
+  if(!email) return false;
+  var c=DATA_COMPTES.find(function(r){return String(r.email||'').toLowerCase()===String(email).toLowerCase();});
+  return c && String(c.dys||'').toLowerCase()==='oui';
+}
 function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 function setSyncState(s,t){document.getElementById('sync-dot').className='sync-dot '+s;document.getElementById('sync-txt').textContent=t;}
 
@@ -1131,7 +1046,7 @@ function navVers(dest){
 }
 
 function showStatsView(view){
-  ['view-stats-menu','view-stats-classement','view-stats-lacunes','view-stats-lacunes-theme'].forEach(function(v){
+  ['view-stats-menu','view-stats-classement','view-stats-lacunes','view-stats-lacunes-theme','view-stats-dys'].forEach(function(v){
     var el=document.getElementById(v);
     if(el) el.style.display='none';
   });
@@ -1145,6 +1060,10 @@ function ouvrirStatDetail(type){
   } else if(type==='lacunes'){
     showStatsView('lacunes');
     setBreadcrumb([{label:'Statistiques',onclick:'retourStatsMenu()'},{label:'Lacunes les plus fréquentes',current:true}]);
+  } else if(type==='dys'){
+    renderDysView();
+    showStatsView('dys');
+    setBreadcrumb([{label:'Statistiques',onclick:'retourStatsMenu()'},{label:'Élèves en mode adapté',current:true}]);
   }
 }
 
@@ -1184,7 +1103,7 @@ function retourClasses(){
 function retourDetailClasse(){showSubView('detail-classe');}
 function retourDetailEleves(){showSubView('detail-eleves');}
 
-// ── FLYOUT (style Notion)
+// ── FLYOUT
 var flyoutOpen=false;
 function toggleFlyout(){if(flyoutOpen)closeFlyout();else openFlyout();}
 function openFlyout(){
@@ -1203,7 +1122,6 @@ function renderFlyout(){
   var html='';
   NIVEAUX.forEach(function(niv,idx){
     var evalNiv=DATA_EVAL.filter(function(r){return niv.classes.some(function(cl){return matchClasse(r.classe,cl.id);});});
-    var elevesNiv=elevesUniques(evalNiv).length;
     var expanded=idx===0?'expanded':'';
     html+='<div class="fl-group '+expanded+'" data-group="'+niv.id+'">'
       +'<div class="fl-group-header" onclick="toggleFlyoutGroup(\''+niv.id+'\')">'
@@ -1253,14 +1171,8 @@ function renderAccueil(){
   var avgLacunes=totalEval>0?Math.round(assignees/totalEval):0;
   var validees=DATA_REM.filter(function(r){return r.statut==='quiz_final_valide';}).length;
   var pctComblees=assignees>0?Math.round(validees/assignees*100):0;
-
-  // KPI 1 — Élèves diagnostiqués
   document.getElementById('kpi-evalues').textContent=totalEval||'0';
-
-  // KPI 2 — Nombre moyen de lacunes par élève
   document.getElementById('kpi-lacunes-avg').textContent=avgLacunes;
-
-  // KPI 3 — Lacunes comblées (XP bar)
   document.getElementById('kpi-comblees').textContent=pctComblees+'%';
   setTimeout(function(){document.getElementById('kpi-comblees-fill').style.width=pctComblees+'%';},150);
   document.getElementById('kpi-comblees-sub').textContent=validees+' / '+assignees+' comblée'+(assignees>1?'s':'');
@@ -1273,6 +1185,85 @@ function renderAccueil(){
 function renderStats(){
   renderClassesRanking();
   renderTopLacunes();
+}
+
+function renderStatsDysBadge(){
+  var badge=document.getElementById('sm-badge-dys');
+  if(!badge) return;
+  // On compte les élèves DYS qui apparaissent dans les évaluations (= élèves actifs)
+  var elevesActifs=elevesUniques();
+  var nbDys=elevesActifs.filter(function(e){return estDys(e.email);}).length;
+  badge.textContent=nbDys+' élève'+(nbDys>1?'s':'');
+}
+
+// ── VUE DYS
+function renderDysView(){
+  // Prendre les élèves qui ont fait l'évaluation et qui sont flaggés DYS
+  var elevesActifs=elevesUniques();
+  var elevesDys=elevesActifs.filter(function(e){return estDys(e.email);});
+
+  // Trier par classe puis par nom
+  elevesDys.sort(function(a,b){
+    var c=(a.classe||'').localeCompare(b.classe||'');
+    if(c!==0) return c;
+    return (a.nom||'').localeCompare(b.nom||'');
+  });
+
+  document.getElementById('dys-hero-count').textContent=elevesDys.length;
+  document.getElementById('dys-hero-total').textContent='sur '+elevesActifs.length+' élèves diagnostiqués';
+
+  var container=document.getElementById('dys-list');
+  if(elevesDys.length===0){
+    container.innerHTML='<div class="tl-empty">Aucun élève en mode adapté pour le moment.<br>Le mode adapté s\'active à l\'inscription de l\'élève sur la plateforme.</div>';
+    return;
+  }
+
+  container.innerHTML=elevesDys.map(function(e){
+    var parts=(e.nom||'').split(' ');
+    var initials=((parts[0]||'')[0]||'')+((parts[1]||'')[0]||'');
+    initials=initials.toUpperCase()||'??';
+
+    // Progression : fiches validées / fiches assignées
+    var evalEl=DATA_EVAL.filter(function(r){return String(r.email).toLowerCase()===String(e.email).toLowerCase();});
+    var assignees=evalEl.filter(function(r){return r.assigne==='oui';}).length;
+    var rem=remEleve(e.email);
+    var validees=rem.filter(function(r){return r.statut==='quiz_final_valide';}).length;
+    var pct=assignees>0?Math.round(validees/assignees*100):(assignees===0?100:0);
+    var barColor=pct>=80?'var(--green)':pct>=40?'var(--amber)':pct===0&&assignees===0?'var(--green)':'var(--accent)';
+
+    var metaTxt;
+    if(assignees===0) metaTxt=esc(e.classe)+' · Aucune fiche assignée';
+    else metaTxt=esc(e.classe)+' · '+validees+' / '+assignees+' fiche'+(assignees>1?'s':'')+' validée'+(validees>1?'s':'');
+
+    return '<div class="dys-row" onclick="ouvrirEleveDepuisDys(\''+esc(e.email)+'\')">'
+      +'<div class="dys-row-avatar">'+initials+'</div>'
+      +'<div class="dys-row-body">'
+        +'<div class="dys-row-name">'+esc(e.nom)+'</div>'
+        +'<div class="dys-row-meta">'+metaTxt+'</div>'
+      +'</div>'
+      +'<div class="dys-row-prog">'
+        +'<div class="dys-row-prog-track"><div class="dys-row-prog-fill" style="width:'+pct+'%;background:'+barColor+';"></div></div>'
+        +'<div class="dys-row-prog-pct">'+pct+'%</div>'
+      +'</div>'
+      +'<div class="dys-row-arrow">→</div>'
+      +'</div>';
+  }).join('');
+}
+
+function ouvrirEleveDepuisDys(email){
+  // Trouver la classe et le niveau de l'élève puis ouvrir son détail
+  var evalEl=DATA_EVAL.filter(function(r){return String(r.email).toLowerCase()===email.toLowerCase();});
+  if(evalEl.length===0) return;
+  var classe=evalEl[0].classe;
+  var niv=null,cl=null;
+  NIVEAUX.forEach(function(n){n.classes.forEach(function(c){if(matchClasse(classe,c.id)){niv=n;cl=c;}});});
+  if(!niv) return;
+  currentNiveau=niv.id;currentClasse=cl.id;
+  document.querySelectorAll('.section').forEach(function(s){s.classList.remove('active');});
+  document.querySelectorAll('.sb-item').forEach(function(n){n.classList.remove('active');});
+  document.getElementById('section-classes').classList.add('active');
+  document.getElementById('sb-classes').classList.add('active');
+  ouvrirUnEleve(email);
 }
 
 function renderClassesRanking(){
@@ -1288,24 +1279,19 @@ function renderClassesRanking(){
       classes.push({niv:niv,cl:cl,eleves:elevesCl,lacunes:assignCl,avg:avg});
     });
   });
-
-  // Classer : d'abord les classes avec données, du moins au plus en difficulté. Les classes vides à la fin.
   classes.sort(function(a,b){
     if(a.avg===null&&b.avg===null) return 0;
     if(a.avg===null) return 1;
     if(b.avg===null) return -1;
     return a.avg-b.avg;
   });
-
   var maxAvg=0;
   classes.forEach(function(c){if(c.avg!==null&&c.avg>maxAvg) maxAvg=c.avg;});
   if(maxAvg===0) maxAvg=1;
-
   if(classes.length===0){
     container.innerHTML='<div class="tl-empty">Aucune donnée disponible.</div>';
     return;
   }
-
   container.innerHTML=classes.map(function(c,i){
     var rank=i+1;
     var isPodium=rank<=3&&c.avg!==null;
@@ -1317,7 +1303,7 @@ function renderClassesRanking(){
       return '<div class="tl-row" style="opacity:.55;">'
         +'<div class="tl-rank">—</div>'
         +'<div class="tl-body">'
-          +'<div class="tl-name"><span class="hm-row-tag '+tagCls+'" style="font-size:9px;font-weight:600;padding:1px 6px;border-radius:8px;margin-right:6px;">'+tagLabel+'</span>'+esc(c.cl.nom)+'</div>'
+          +'<div class="tl-name"><span style="font-size:9px;font-weight:600;padding:1px 6px;border-radius:8px;margin-right:6px;background:'+(tagCls==='cap'?'#EEF9F4':'#EEF1F9')+';color:'+(tagCls==='cap'?'var(--green-dark)':'var(--navy)')+';">'+tagLabel+'</span>'+esc(c.cl.nom)+'</div>'
           +'<div class="tl-meter"><span class="tl-meter-lbl">Aucun élève évalué</span></div>'
         +'</div>'
         +'<div class="tl-count">'
@@ -1332,7 +1318,7 @@ function renderClassesRanking(){
     return '<div class="tl-row clickable '+rankCls+'" onclick="ouvrirClasseDepuisStats(\''+c.niv.id+'\',\''+c.cl.id+'\')">'
       +'<div class="tl-rank">'+rankDisplay+'</div>'
       +'<div class="tl-body">'
-        +'<div class="tl-name"><span class="hm-row-tag '+tagCls+'" style="font-size:9px;font-weight:600;padding:1px 6px;border-radius:8px;margin-right:6px;">'+tagLabel+'</span>'+esc(c.cl.nom)+'</div>'
+        +'<div class="tl-name"><span style="font-size:9px;font-weight:600;padding:1px 6px;border-radius:8px;margin-right:6px;background:'+(tagCls==='cap'?'#EEF9F4':'#EEF1F9')+';color:'+(tagCls==='cap'?'var(--green-dark)':'var(--navy)')+';">'+tagLabel+'</span>'+esc(c.cl.nom)+'</div>'
         +'<div class="tl-meter">'
           +'<div class="tl-meter-track"><div class="tl-meter-fill" style="width:'+pctMeter+'%;background:'+meterColor+';"></div></div>'
           +'<span class="tl-meter-lbl">'+c.eleves+' élève'+(c.eleves>1?'s':'')+' · '+c.lacunes+' lacune'+(c.lacunes>1?'s':'')+'</span>'
@@ -1347,11 +1333,8 @@ function renderClassesRanking(){
 }
 
 function renderTopLacunes(){
-  // Affiche la grille des 6 thèmes classés par nombre de lacunes décroissant (Niveau 1 du drill-down)
   var container=document.getElementById('stats-themes-grid');
   if(!container) return;
-
-  // Calcul total lacunes par thème (seulement Fractions est actif pour l'instant — les fiches commencent par 'fractions_')
   var countsByTheme={};
   var elevesByTheme={};
   THEMES_CONFIG.forEach(function(th){countsByTheme[th.id]=0;elevesByTheme[th.id]=new Set();});
@@ -1368,25 +1351,18 @@ function renderTopLacunes(){
       elevesByTheme[themeId].add(r.email);
     }
   });
-
-  // Séparation actifs / inactifs, puis tri des actifs par nb lacunes desc
   var actifs=THEMES_CONFIG.filter(function(th){return th.actif;}).map(function(th){
     return {theme:th,count:countsByTheme[th.id]||0,eleves:elevesByTheme[th.id].size};
   });
   actifs.sort(function(a,b){return b.count-a.count;});
   var inactifs=THEMES_CONFIG.filter(function(th){return !th.actif;});
-
   var html='';
-
-  // Rendu des thèmes actifs avec rangs
   actifs.forEach(function(item,i){
     var rank=i+1;
     var th=item.theme;
     var isPodium=rank<=3;
     var rankCls=isPodium?' rank-'+rank:'';
-    var medalHtml=isPodium
-      ?'<div class="theme-rank-medal">'+rank+'</div>'
-      :'<div class="theme-rank-num">#'+rank+'</div>';
+    var medalHtml=isPodium?'<div class="theme-rank-medal">'+rank+'</div>':'<div class="theme-rank-num">#'+rank+'</div>';
     html+='<div class="theme-stats-card'+rankCls+'" onclick="ouvrirThemeDetail(\''+th.id+'\')">'
       +medalHtml
       +'<div class="tsc-head">'
@@ -1394,16 +1370,11 @@ function renderTopLacunes(){
         +'<div><div class="tsc-name">'+esc(th.nom)+'</div><div class="tsc-status">'+item.eleves+' élève'+(item.eleves>1?'s':'')+' concerné'+(item.eleves>1?'s':'')+'</div></div>'
       +'</div>'
       +'<div class="tsc-body">'
-        +'<div class="tsc-stat">'
-          +'<div class="tsc-stat-val">'+item.count+'</div>'
-          +'<div class="tsc-stat-lbl">lacune'+(item.count>1?'s':'')+' identifiée'+(item.count>1?'s':'')+'</div>'
-        +'</div>'
+        +'<div class="tsc-stat"><div class="tsc-stat-val">'+item.count+'</div><div class="tsc-stat-lbl">lacune'+(item.count>1?'s':'')+' identifiée'+(item.count>1?'s':'')+'</div></div>'
         +'<div class="tsc-arrow">→</div>'
       +'</div>'
       +'</div>';
   });
-
-  // Rendu des thèmes inactifs à la fin
   inactifs.forEach(function(th){
     html+='<div class="theme-stats-card soon">'
       +'<div class="tsc-head">'
@@ -1413,18 +1384,14 @@ function renderTopLacunes(){
       +'<div class="tsc-body"><div class="tsc-soon-badge">À venir</div></div>'
       +'</div>';
   });
-
   container.innerHTML=html;
 }
 
 function ouvrirThemeDetail(themeId){
   var th=THEMES_CONFIG.find(function(t){return t.id===themeId;});
   if(!th||!th.actif) return;
-
   document.getElementById('stats-theme-title').textContent=th.nom;
   document.getElementById('stats-theme-sub').textContent='Classement des lacunes de ce thème, de la plus fréquente à la moins fréquente.';
-
-  // Comptage par fiche (dans ce thème)
   var prefix=themeId+'_';
   var counts={};
   DATA_EVAL.filter(function(r){return r.assigne==='oui'&&String(r.fiche_id||'').indexOf(prefix)===0;}).forEach(function(r){
@@ -1433,7 +1400,6 @@ function ouvrirThemeDetail(themeId){
   var arr=Object.keys(counts).map(function(k){return {id:k,nom:NOMS_FICHES[k]||k,count:counts[k]};});
   arr.sort(function(a,b){return b.count-a.count;});
   var maxCount=arr.length>0?arr[0].count:1;
-
   var container=document.getElementById('stats-theme-lacunes');
   if(arr.length===0){
     container.innerHTML='<div class="tl-empty">Aucune lacune identifiée dans ce thème pour le moment.</div>';
@@ -1460,7 +1426,6 @@ function ouvrirThemeDetail(themeId){
         +'</div>';
     }).join('');
   }
-
   showStatsView('lacunes-theme');
   setBreadcrumb([
     {label:'Statistiques',onclick:'retourStatsMenu()'},
@@ -1475,82 +1440,6 @@ function retourStatsLacunes(){
 }
 
 function ouvrirClasseDepuisStats(nivId,classeId){
-  currentNiveau=nivId;
-  document.querySelectorAll('.section').forEach(function(s){s.classList.remove('active');});
-  document.querySelectorAll('.sb-item').forEach(function(n){n.classList.remove('active');});
-  document.getElementById('section-classes').classList.add('active');
-  document.getElementById('sb-classes').classList.add('active');
-  ouvrirDetailClasse(classeId);
-}
-
-// ── HEATMAP
-function getHeatLevel(pct){
-  if(pct>=85)return 'lvl-high';
-  if(pct>=65)return 'lvl-good';
-  if(pct>=45)return 'lvl-mid';
-  if(pct>=20)return 'lvl-low';
-  return 'lvl-alert';
-}
-
-function renderHeatmap(){
-  var classes=[];
-  NIVEAUX.forEach(function(n){n.classes.forEach(function(c){classes.push({niv:n,cl:c});});});
-
-  var html='';
-  // Header
-  html+='<div class="hm-head-row">';
-  html+='<div class="hm-head-cell corner">Classe</div>';
-  THEMES_CONFIG.forEach(function(th){
-    var cls=th.actif?'hm-head-cell':'hm-head-cell soon';
-    html+='<div class="'+cls+'">'+esc(th.nom)+'</div>';
-  });
-  html+='</div>';
-
-  // Rows
-  classes.forEach(function(item){
-    var niv=item.niv,cl=item.cl;
-    var evalCl=evalParClasse(cl.id);
-    var elevesCl=elevesUniques(evalCl).length;
-    var remCl=remParClasse(cl.id);
-    var tagCls=niv.id==='CAP'?'cap':'bp';
-    html+='<div class="hm-row">';
-    html+='<div class="hm-row-label" onclick="ouvrirClasseDepuisHeatmap(\''+niv.id+'\',\''+cl.id+'\')">'
-      +'<span class="hm-row-tag '+tagCls+'">'+(niv.id==='CAP'?'CAP':'BP')+'</span>'
-      +'<span class="hm-row-name">'+esc(cl.nom)+'</span>'
-      +'</div>';
-    THEMES_CONFIG.forEach(function(th){
-      if(!th.actif){
-        html+='<div class="hm-cell soon">—</div>';
-        return;
-      }
-      if(elevesCl===0){
-        html+='<div class="hm-cell empty">—</div>';
-        return;
-      }
-      // Pour Fractions actif : calculer
-      var assignTh=evalCl.filter(function(r){return r.assigne==='oui';}).length;
-      var maitrTh=evalCl.filter(function(r){return r.assigne==='non';}).length;
-      var totTh=assignTh+maitrTh;
-      var pctTh=totTh>0?Math.round(maitrTh/totTh*100):0;
-      var alertsTh=remCl.filter(function(r){return r.statut==='echec_3_tentatives'&&r.alerte_traitee==='non';}).length;
-      var lvl=getHeatLevel(pctTh);
-      html+='<div class="hm-cell '+lvl+'" onclick="ouvrirClasseDepuisHeatmap(\''+niv.id+'\',\''+cl.id+'\')">'
-        +'<span class="hm-cell-pct">'+pctTh+'%</span>'
-        +(alertsTh>0?'<span class="hm-cell-alerts">'+alertsTh+'</span>':'')
-        +'</div>';
-    });
-    html+='</div>';
-  });
-
-  document.getElementById('hm-grid').innerHTML=html;
-
-  // Footer info
-  var themesActifs=THEMES_CONFIG.filter(function(t){return t.actif;}).length;
-  var themesATotal=THEMES_CONFIG.length;
-  document.getElementById('hm-footer-info').textContent=themesActifs+' thème actif · '+(themesATotal-themesActifs)+' à venir · '+classes.length+' classes suivies';
-}
-
-function ouvrirClasseDepuisHeatmap(nivId,classeId){
   currentNiveau=nivId;
   document.querySelectorAll('.section').forEach(function(s){s.classList.remove('active');});
   document.querySelectorAll('.sb-item').forEach(function(n){n.classList.remove('active');});
@@ -1601,7 +1490,6 @@ function ouvrirNiveauClasses(nivId){
     {label:'Résultats par classe',onclick:'retourNiveaux()'},
     {label:niv.nom,current:true}
   ]);
-
   document.getElementById('classes-grid').innerHTML=niv.classes.map(function(cl){
     var evalCl=evalParClasse(cl.id);
     var elevesCl=elevesUniques(evalCl).length;
@@ -1630,7 +1518,6 @@ function ouvrirNiveauClasses(nivId){
       +'<div class="cc-arrow">→</div>'
       +'</div>';
   }).join('');
-
   showSubView('classes');
 }
 
@@ -1649,7 +1536,6 @@ function ouvrirDetailClasse(classeId){
   var valCl=remCl.filter(function(r){return r.statut==='quiz_final_valide';}).length;
   var pctProg=assignCl>0?Math.round(valCl/assignCl*100):0;
   var alertesCl=remCl.filter(function(r){return r.statut==='echec_3_tentatives'&&r.alerte_traitee==='non';}).length;
-
   setBreadcrumb([
     {label:'Résultats par classe',onclick:'retourNiveaux()'},
     {label:niv?niv.nom:'',onclick:'retourClasses()'},
@@ -1661,7 +1547,6 @@ function ouvrirDetailClasse(classeId){
   document.getElementById('dc-assignees').textContent=assignCl;
   document.getElementById('dc-validees').textContent=valCl;
   document.getElementById('dc-alertes').textContent=alertesCl;
-
   var circ=289,off=circ-(pctAcq/100)*circ;
   setTimeout(function(){var el=document.getElementById('dc-pie-fill');if(el){el.style.strokeDasharray=circ;el.style.strokeDashoffset=off;}},100);
   document.getElementById('dc-pie-pct').textContent=pctAcq+'%';
@@ -1670,7 +1555,6 @@ function ouvrirDetailClasse(classeId){
   document.getElementById('dc-prog-pct').textContent=pctProg+'%';
   setTimeout(function(){document.getElementById('dc-prog-fill-bar').style.width=pctProg+'%';},100);
   document.getElementById('dc-prog-note').textContent=valCl+' fiche'+(valCl>1?'s':'')+' validée'+(valCl>1?'s':'')+' sur '+assignCl+' assignée'+(assignCl>1?'s':'');
-
   document.getElementById('themes-grid').innerHTML=THEMES_CONFIG.map(function(th){
     if(!th.actif){
       return '<div class="theme-card disabled">'
@@ -1692,7 +1576,6 @@ function ouvrirDetailClasse(classeId){
       +'<div class="th-prog-txt">'+pctProgTh+'% remédiation</div></div>'
       +'</div></div>';
   }).join('');
-
   showSubView('detail-classe');
 }
 
@@ -1751,7 +1634,6 @@ function ouvrirUnEleve(email){
   var assignees=evalEl.filter(function(r){return r.assigne==='oui';}).length;
   var validees=rem.filter(function(r){return r.statut==='quiz_final_valide';}).length;
   var alertes=rem.filter(function(r){return r.statut==='echec_3_tentatives'&&r.alerte_traitee==='non';}).length;
-
   document.getElementById('due-title').textContent=esc(nom);
   document.getElementById('due-sub').textContent='Classe : '+esc(classe);
   document.getElementById('due-assignees').textContent=assignees;
@@ -1759,7 +1641,6 @@ function ouvrirUnEleve(email){
   document.getElementById('due-restantes').textContent=Math.max(0,assignees-validees);
   document.getElementById('due-alertes').textContent=alertes||'0';
   document.getElementById('due-date').textContent=dateEval?'Éval. du '+dateEval:'—';
-
   var evalHtml='';
   Object.keys(NOMS_FICHES).forEach(function(fid){
     var ligne=evalEl.find(function(r){return r.fiche_id===fid;});
@@ -1776,7 +1657,6 @@ function ouvrirUnEleve(email){
       +badge+'</div></div>';
   });
   document.getElementById('due-eval-detail').innerHTML=evalHtml;
-
   var assigneesFiches=evalEl.filter(function(r){return r.assigne==='oui';}).map(function(r){return r.fiche_id;});
   document.getElementById('due-fiches').innerHTML=assigneesFiches.length===0
     ?'<div class="empty">Aucune fiche assignée — cet élève maîtrise toutes les notions.</div>'
@@ -1792,14 +1672,12 @@ function ouvrirUnEleve(email){
         +(r?'<div class="fr-sub">Tentative '+r.tentative_num+' · Score : '+(r.score_quiz||'—')+'%</div>':'')
         +'</div>'+pill+'</div>';
     }).join('');
-
   showSubView('detail-eleve');
 }
 
 // ── RECHERCHE GLOBALE
 var searchInp=document.getElementById('search-inp');
 var searchRes=document.getElementById('search-results');
-
 searchInp.addEventListener('input',function(){
   var q=searchInp.value.trim().toLowerCase();
   if(q.length<2){searchRes.classList.remove('visible');return;}
@@ -1817,7 +1695,6 @@ document.addEventListener('keydown',function(e){
 });
 
 function renderSearchResults(q){
-  // Classes
   var classesMatch=[];
   NIVEAUX.forEach(function(n){
     n.classes.forEach(function(c){
@@ -1826,12 +1703,10 @@ function renderSearchResults(q){
       }
     });
   });
-  // Élèves
   var eleves=elevesUniques();
   var elevesMatch=eleves.filter(function(e){
     return String(e.nom||'').toLowerCase().indexOf(q)!==-1;
   }).slice(0,6);
-
   var html='';
   if(classesMatch.length===0&&elevesMatch.length===0){
     html='<div class="sr-empty">Aucun résultat pour "'+esc(q)+'"</div>';
