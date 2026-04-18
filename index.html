@@ -588,7 +588,7 @@ tr:hover td{background:#FDFCF9;}
     <div class="loading-avatar" id="loading-avatar">BS</div>
     <div class="loading-text">
       <div class="loading-greeting">Bienvenue</div>
-      <div class="loading-name" id="loading-name">Benjamin Sciabbarrasi</div>
+      <div class="loading-name" id="loading-name">—</div>
       <div class="loading-role">Proviseur · Lycée Benoît Fourneyron</div>
     </div>
     <div class="loading-bar-wrap">
@@ -1123,13 +1123,14 @@ function connexion(){
     .then(function(j){
       if(j.status==='ok'){
         ETABLISSEMENT=j.etablissement;
-        document.getElementById('tb-uname').textContent=j.identifiant;
-        document.getElementById('tb-avatar').textContent=(j.identifiant||'PV').substring(0,2).toUpperCase();
+        var nomAffiche=j.nom_complet||j.identifiant||'Proviseur';
+        var initiales=nomAffiche.split(' ').map(function(p){return (p[0]||'');}).join('').substring(0,2).toUpperCase()||'PV';
+        document.getElementById('tb-uname').textContent=nomAffiche;
+        document.getElementById('tb-avatar').textContent=initiales;
         document.getElementById('login-screen').style.display='none';
         document.getElementById('loading-screen').classList.remove('hidden');
-        // Mettre à jour les initiales avec l'identifiant du proviseur
-        var initiales=(j.identifiant||'PV').substring(0,2).toUpperCase();
         document.getElementById('loading-avatar').textContent=initiales;
+        document.getElementById('loading-name').textContent=nomAffiche;
         loadAll();
       } else {
         document.getElementById('login-err').style.display='block';
