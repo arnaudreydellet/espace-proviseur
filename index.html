@@ -40,7 +40,6 @@
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;font-size:14px;line-height:1.55;overflow-x:hidden;}
 
-/* ═══ LOGIN — ÉDITORIAL PREMIUM (Linear/Vercel style) ═══ */
 @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
 
 .login-overlay{position:fixed;inset:0;background:#0F1729;z-index:500;overflow:hidden;font-family:'Sora',sans-serif;}
@@ -96,10 +95,8 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
   .login-signature,.login-version{display:none;}
 }
 
-/* ═══ SHELL ═══ */
 .shell{display:none;min-height:100vh;}
 
-/* ═══ SIDEBAR ═══ */
 .sidebar{position:fixed;top:0;left:0;width:var(--sidebar-w);height:100vh;background:var(--navy);display:flex;flex-direction:column;z-index:300;}
 .sb-logo-wrap{height:var(--header-h);display:flex;align-items:center;justify-content:center;border-bottom:1px solid rgba(255,255,255,.08);}
 .sb-logo{width:36px;height:36px;border-radius:9px;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#fff;}
@@ -115,7 +112,6 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
 .sb-item.has-flyout:hover .sb-tooltip{opacity:0;}
 .sb-bottom{padding:.75rem .5rem;border-top:1px solid rgba(255,255,255,.08);}
 
-/* ═══ FLYOUT ═══ */
 .flyout{position:fixed;left:var(--sidebar-w);top:0;width:var(--flyout-w);height:100vh;background:var(--white);border-right:1px solid var(--border);z-index:280;display:flex;flex-direction:column;transform:translateX(-100%);opacity:0;pointer-events:none;transition:transform .2s cubic-bezier(.4,0,.2,1),opacity .2s;}
 .flyout.open{transform:translateX(0);opacity:1;pointer-events:auto;}
 .flyout-head{height:var(--header-h);padding:0 1.25rem;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);}
@@ -145,10 +141,8 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
 .flyout-backdrop{position:fixed;inset:0;z-index:270;background:rgba(0,0,0,0);pointer-events:none;transition:background .2s;}
 .flyout-backdrop.open{background:rgba(0,0,0,.15);pointer-events:auto;}
 
-/* ═══ MAIN ═══ */
 .main{margin-left:var(--sidebar-w);min-height:100vh;display:flex;flex-direction:column;}
 
-/* ═══ TOPBAR ═══ */
 .topbar{height:var(--header-h);background:var(--white);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;position:sticky;top:0;z-index:90;gap:1.5rem;}
 .tb-left{display:flex;align-items:center;gap:12px;flex-shrink:0;}
 .breadcrumb{display:flex;align-items:center;gap:7px;font-size:12px;}
@@ -192,13 +186,11 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
 .tb-logout:hover{color:var(--text);}
 @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.4;}}
 
-/* ═══ CONTENT ═══ */
 .content{flex:1;padding:1.75rem 2rem 3rem;max-width:1400px;width:100%;margin:0 auto;}
 @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
 .section{display:none;animation:fadeIn .2s ease;}
 .section.active{display:block;}
 
-/* ═══ HERO ACCUEIL ═══ */
 .hero{position:relative;background:var(--navy);border-radius:var(--rx);padding:2.5rem 2.75rem;margin-bottom:1.75rem;overflow:hidden;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center;}
 .hero::before{content:'';position:absolute;top:-80px;right:-60px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(74,144,226,.35) 0%,transparent 70%);pointer-events:none;}
 .hero::after{content:'';position:absolute;bottom:-100px;left:30%;width:350px;height:350px;border-radius:50%;background:radial-gradient(circle,rgba(21,163,98,.18) 0%,transparent 65%);pointer-events:none;}
@@ -217,7 +209,6 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
 .hero-live{display:inline-flex;align-items:center;gap:6px;font-size:10.5px;color:rgba(255,255,255,.5);letter-spacing:.02em;}
 .hero-live-dot{width:6px;height:6px;border-radius:50%;background:#22D37C;box-shadow:0 0 8px rgba(34,211,124,.6);animation:statusPulse 2.4s infinite;}
 
-/* ═══ KPI STRIP ═══ */
 .kpi-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.75rem;}
 .kpi-card{background:var(--white);border:1px solid var(--border);border-radius:var(--rl);padding:1.4rem 1.6rem;position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s;}
 .kpi-card:hover{transform:translateY(-1px);box-shadow:0 6px 22px rgba(0,0,0,.06);}
@@ -246,7 +237,6 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
 .xp-delta.down{color:var(--red);background:var(--red-l);}
 .xp-delta.neutral{color:var(--text3);background:var(--bg);}
 
-/* ═══ TOP LACUNES ═══ */
 .top-lacunes-card{background:var(--white);border:1px solid var(--border);border-radius:var(--rl);padding:1.5rem 1.75rem;margin-bottom:1.75rem;}
 .tl-list{display:flex;flex-direction:column;gap:10px;}
 .tl-row{display:grid;grid-template-columns:42px 1fr auto;align-items:center;gap:14px;padding:12px 14px;background:linear-gradient(90deg,var(--bg) 0%,#FAF8F1 100%);border:1px solid var(--border);border-radius:var(--r);transition:all .18s;cursor:default;}
@@ -277,14 +267,12 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
 .tl-count-lbl{font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--text3);margin-top:3px;}
 .tl-empty{padding:2.5rem 1rem;text-align:center;color:var(--text3);font-size:12.5px;}
 
-/* ═══ PAGE HEADER ═══ */
 .page-header{margin-bottom:1.5rem;}
 .page-title{font-size:26px;font-weight:800;color:var(--text);letter-spacing:-.8px;margin-bottom:.3rem;}
 .page-sub{font-size:13px;color:var(--text3);}
 .back-btn{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:500;color:var(--text3);cursor:pointer;background:var(--white);border:1px solid var(--border-md);padding:6px 14px;border-radius:var(--r);margin-bottom:1.25rem;transition:all .15s;font-family:'Sora',sans-serif;}
 .back-btn:hover{border-color:var(--navy);color:var(--navy);}
 
-/* ═══ NIVEAUX / CLASSES / DETAIL (inchangés) ═══ */
 .niveau-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem;}
 .niveau-card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--rl);padding:1.75rem;cursor:pointer;transition:all .2s;position:relative;overflow:hidden;}
 .niveau-card:hover{border-color:var(--navy-mid);transform:translateY(-2px);box-shadow:0 8px 28px rgba(27,46,94,.1);}
@@ -402,7 +390,6 @@ tr:hover td{background:#FDFCF9;}
 .fr-sub{font-size:10px;color:var(--text3);margin-top:2px;}
 .fr-score{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;}
 
-/* ═══ STATS MENU (3 cartes : classement, lacunes, DYS) ═══ */
 .stats-menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;}
 @media (max-width:900px){.stats-menu-grid{grid-template-columns:repeat(2,1fr);}}
 .stats-menu-card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--rl);padding:1.75rem;cursor:pointer;transition:all .2s;position:relative;overflow:hidden;}
@@ -411,11 +398,13 @@ tr:hover td{background:#FDFCF9;}
 .sm-ico-wrap.amber{background:var(--amber-l);color:var(--amber);}
 .sm-ico-wrap.green{background:var(--green-l);color:var(--green-dark);}
 .sm-ico-wrap.accent{background:var(--accent-l);color:var(--accent);}
+.sm-ico-wrap.teal{background:#E1F5EE;color:#0F6E56;}
 .sm-ico-wrap svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
 .sm-title{font-size:17px;font-weight:700;color:var(--text);letter-spacing:-.4px;margin-bottom:.35rem;}
 .sm-desc{font-size:12.5px;color:var(--text3);line-height:1.55;margin-bottom:1.25rem;}
 .sm-foot{display:flex;align-items:center;justify-content:space-between;}
 .sm-badge{font-size:10.5px;font-weight:600;padding:3px 10px;border-radius:11px;background:var(--bg);color:var(--text2);border:1px solid var(--border-md);}
+.sm-badge.soon{background:var(--amber-l);color:var(--amber);border-color:transparent;}
 .sm-arrow{font-size:16px;color:var(--text3);transition:all .2s;}
 .stats-menu-card:hover .sm-arrow{color:var(--navy);transform:translateX(4px);}
 
@@ -449,7 +438,6 @@ tr:hover td{background:#FDFCF9;}
 .tsc-arrow{position:absolute;bottom:1.25rem;right:1.4rem;font-size:14px;color:var(--text3);transition:all .2s;}
 .theme-stats-card:hover .tsc-arrow{color:var(--navy);transform:translateX(3px);}
 
-/* ═══ DYS — Mini-hero inclusif ═══ */
 .dys-hero{background:linear-gradient(135deg,#EEF1F9 0%,#E8F1FB 100%);border:1px solid rgba(74,144,226,.18);border-radius:var(--rl);padding:1.5rem 1.75rem;margin-bottom:1.5rem;display:flex;align-items:center;gap:1.25rem;}
 .dys-hero-ico{width:54px;height:54px;border-radius:14px;background:var(--white);border:1px solid rgba(74,144,226,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--accent);}
 .dys-hero-ico svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
@@ -457,8 +445,6 @@ tr:hover td{background:#FDFCF9;}
 .dys-hero-val{font-size:34px;font-weight:800;color:var(--navy);letter-spacing:-1px;line-height:1;margin-bottom:.35rem;font-family:'Sora',sans-serif;}
 .dys-hero-val .sub{font-size:15px;font-weight:600;color:var(--text3);margin-left:.3rem;letter-spacing:-.2px;}
 .dys-hero-lbl{font-size:12.5px;color:var(--text2);line-height:1.5;}
-
-/* Liste élèves DYS */
 .dys-list{display:flex;flex-direction:column;gap:8px;}
 .dys-row{display:grid;grid-template-columns:40px 1fr auto auto;align-items:center;gap:14px;padding:12px 16px;background:var(--white);border:1px solid var(--border);border-radius:var(--r);cursor:pointer;transition:all .18s;}
 .dys-row:hover{border-color:var(--navy-mid);transform:translateX(2px);box-shadow:0 3px 12px rgba(27,46,94,.06);}
@@ -472,16 +458,83 @@ tr:hover td{background:#FDFCF9;}
 .dys-row-prog-pct{font-size:11px;font-weight:700;font-family:'JetBrains Mono',monospace;color:var(--text2);min-width:36px;text-align:right;}
 .dys-row-arrow{font-size:14px;color:var(--text3);transition:transform .15s;}
 .dys-row:hover .dys-row-arrow{color:var(--navy);transform:translateX(3px);}
-
 .dys-note{background:var(--white);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:var(--r);padding:12px 16px;margin-top:1.25rem;font-size:12px;color:var(--text2);line-height:1.55;}
 .dys-note strong{color:var(--text);font-weight:600;}
-
 .stat-detail-head{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:1.5rem;}
+
+/* ═══ ÉCRAN DE CHARGEMENT POST-LOGIN ═══ */
+.loading-screen{position:fixed;inset:0;background:#0F1729;z-index:450;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;}
+.loading-screen.hidden{display:none;}
+.loading-screen::before{content:'';position:absolute;top:-30%;left:-10%;width:70%;height:90%;background:radial-gradient(ellipse 60% 50% at 50% 50%,rgba(74,144,226,.22) 0%,rgba(74,144,226,.08) 35%,transparent 65%);pointer-events:none;filter:blur(40px);}
+.loading-screen::after{content:'';position:absolute;bottom:-40%;right:-15%;width:75%;height:100%;background:radial-gradient(ellipse 55% 45% at 50% 50%,rgba(122,184,245,.12) 0%,transparent 60%);pointer-events:none;filter:blur(60px);}
+.loading-grain{position:absolute;inset:0;pointer-events:none;opacity:.25;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.15 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");z-index:1;}
+.loading-inner{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:1.75rem;}
+.loading-avatar{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,rgba(74,144,226,.25) 0%,rgba(74,144,226,.1) 100%);border:1px solid rgba(74,144,226,.35);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;color:#7AB8F5;letter-spacing:-.5px;box-shadow:0 0 32px rgba(74,144,226,.2);}
+.loading-text{text-align:center;}
+.loading-greeting{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.5rem;}
+.loading-name{font-size:22px;font-weight:700;color:#fff;letter-spacing:-.6px;line-height:1.1;margin-bottom:.35rem;}
+.loading-role{font-size:13px;color:rgba(255,255,255,.4);font-weight:400;}
+.loading-bar-wrap{width:240px;height:2px;background:rgba(255,255,255,.08);border-radius:2px;overflow:hidden;}
+.loading-bar-fill{height:100%;background:linear-gradient(90deg,#4A90E2,#7AB8F5);border-radius:2px;width:0%;transition:width .5s cubic-bezier(.4,0,.2,1);}
+.loading-steps{display:flex;flex-direction:column;gap:9px;}
+.loading-step{display:flex;align-items:center;gap:10px;font-size:11.5px;color:rgba(255,255,255,.28);transition:color .3s;font-family:'Sora',sans-serif;}
+.loading-step.done{color:rgba(255,255,255,.6);}
+.loading-step.active{color:rgba(255,255,255,.9);}
+.loading-step-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.15);flex-shrink:0;transition:background .3s;}
+.loading-step.done .loading-step-dot{background:#22D37C;}
+.loading-step.active .loading-step-dot{background:#4A90E2;animation:statusPulse 1s infinite;}
+
+.impact-soon-card{background:linear-gradient(135deg,#FFF8E8 0%,#FEF5E2 100%);border:1px solid rgba(212,123,6,.2);border-radius:var(--rl);padding:2rem 2.25rem;display:flex;align-items:center;gap:1.5rem;margin-bottom:1.5rem;}
+.impact-soon-ico{width:58px;height:58px;border-radius:14px;background:var(--white);border:1px solid rgba(212,123,6,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--amber);}
+.impact-soon-ico svg{width:26px;height:26px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.impact-soon-body{flex:1;}
+.impact-soon-title{font-size:17px;font-weight:700;color:var(--text);letter-spacing:-.3px;margin-bottom:.4rem;}
+.impact-soon-desc{font-size:12.5px;color:var(--text2);line-height:1.55;}
+.impact-preview-card{background:var(--white);border:1px solid var(--border);border-radius:var(--rl);padding:1.5rem 1.75rem;margin-bottom:1.5rem;position:relative;overflow:hidden;}
+.impact-preview-card::after{content:'Éval. post-remédiation à venir';position:absolute;top:12px;right:14px;font-size:9.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--amber);background:var(--amber-l);padding:3px 9px;border-radius:10px;}
+.impact-preview-title{font-size:13px;font-weight:700;color:var(--text);margin-bottom:1.25rem;padding-right:180px;}
+.impact-bar-row{display:grid;grid-template-columns:150px 1fr 80px;align-items:center;gap:14px;padding:10px 0;border-bottom:1px solid #F2EFE8;}
+.impact-bar-row:last-child{border-bottom:none;}
+.impact-bar-name{font-size:12.5px;font-weight:600;color:var(--text2);}
+.impact-bar-bars{display:flex;flex-direction:column;gap:4px;}
+.impact-bar-one{display:grid;grid-template-columns:42px 1fr 44px;align-items:center;gap:8px;}
+.impact-bar-one-lbl{font-size:9.5px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;}
+.impact-bar-one-track{height:8px;background:var(--bg2);border-radius:4px;overflow:hidden;}
+.impact-bar-one-fill{height:100%;border-radius:4px;}
+.impact-bar-one-fill.before{background:#D1D5DB;}
+.impact-bar-one-fill.after{background:var(--green);}
+.impact-bar-one-val{font-size:11px;font-weight:700;font-family:'JetBrains Mono',monospace;color:var(--text2);text-align:right;}
+.impact-bar-delta{display:flex;align-items:center;justify-content:flex-end;font-size:13px;font-weight:700;}
+.impact-selector{display:flex;align-items:center;gap:.5rem;margin-bottom:1.25rem;flex-wrap:wrap;}
+.impact-selector-label{font-size:11.5px;font-weight:600;color:var(--text3);letter-spacing:.05em;text-transform:uppercase;margin-right:.25rem;}
+.impact-chip{font-size:11.5px;font-weight:600;padding:6px 13px;border-radius:20px;background:var(--white);border:1px solid var(--border-md);color:var(--text2);cursor:pointer;transition:all .15s;font-family:'Sora',sans-serif;display:inline-block;}
+.impact-chip:hover{border-color:var(--navy-mid);color:var(--navy);}
+.impact-chip.active{background:var(--navy);color:#fff;border-color:var(--navy);}
+
+/* ═══ SOUS-MENU IMPACT (3 cartes filles) ═══ */
+.impact-submenu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;}
+@media (max-width:900px){.impact-submenu-grid{grid-template-columns:1fr;}}
+.impact-sub-card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--rl);padding:1.75rem;cursor:pointer;transition:all .2s;position:relative;overflow:hidden;}
+.impact-sub-card:hover{border-color:var(--navy-mid);transform:translateY(-2px);box-shadow:0 8px 28px rgba(27,46,94,.1);}
+.impact-sub-card .sm-ico-wrap{margin-bottom:1.25rem;}
+.impact-sub-card .sm-title{font-size:17px;font-weight:700;color:var(--text);letter-spacing:-.4px;margin-bottom:.35rem;}
+.impact-sub-card .sm-desc{font-size:12.5px;color:var(--text3);line-height:1.55;margin-bottom:1.25rem;}
+.impact-sub-card .sm-foot{display:flex;align-items:center;justify-content:space-between;}
+.impact-sub-card .sm-arrow{font-size:16px;color:var(--text3);transition:all .2s;}
+.impact-sub-card:hover .sm-arrow{color:var(--navy);transform:translateX(4px);}
+.impact-empty-view{background:var(--white);border:1px solid var(--border);border-radius:var(--rl);padding:3rem 2rem;text-align:center;color:var(--text3);}
+.impact-empty-view .ico{font-size:32px;margin-bottom:1rem;}
+.impact-empty-view .title{font-size:16px;font-weight:700;color:var(--text);margin-bottom:.5rem;}
+.impact-empty-view .sub{font-size:13px;line-height:1.6;}
+
+/* ═══ EXPORT ═══ */
+.btn-export{display:inline-flex;align-items:center;gap:7px;font-size:11.5px;font-weight:600;color:var(--text2);background:var(--bg);border:1px solid var(--border-md);padding:6px 14px;border-radius:var(--r);cursor:pointer;transition:all .15s;font-family:'Sora',sans-serif;}
+.btn-export:hover{background:var(--white);border-color:var(--navy);color:var(--navy);}
+.btn-export svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
 </style>
 </head>
 <body>
 
-<!-- ══ LOGIN ══ -->
 <div class="login-overlay" id="login-screen">
   <div class="login-grain"></div>
   <div class="login-brand-top">
@@ -528,7 +581,36 @@ tr:hover td{background:#FDFCF9;}
   <div class="login-version">v1.0 · 2026</div>
 </div>
 
-<!-- ══ SHELL ══ -->
+<!-- ══ LOADING ══ -->
+<div class="loading-screen hidden" id="loading-screen">
+  <div class="loading-grain"></div>
+  <div class="loading-inner">
+    <div class="loading-avatar" id="loading-avatar">BS</div>
+    <div class="loading-text">
+      <div class="loading-greeting">Bienvenue</div>
+      <div class="loading-name" id="loading-name">Benjamin Sciabbarrasi</div>
+      <div class="loading-role">Proviseur · Lycée Benoît Fourneyron</div>
+    </div>
+    <div class="loading-bar-wrap">
+      <div class="loading-bar-fill" id="loading-bar"></div>
+    </div>
+    <div class="loading-steps">
+      <div class="loading-step" id="lstep-1">
+        <div class="loading-step-dot"></div>
+        <span>Évaluations diagnostiques</span>
+      </div>
+      <div class="loading-step" id="lstep-2">
+        <div class="loading-step-dot"></div>
+        <span>Données de remédiation</span>
+      </div>
+      <div class="loading-step" id="lstep-3">
+        <div class="loading-step-dot"></div>
+        <span>Comptes élèves</span>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="shell" id="shell">
   <nav class="sidebar">
     <div class="sb-logo-wrap"><div class="sb-logo">AM</div></div>
@@ -597,7 +679,6 @@ tr:hover td{background:#FDFCF9;}
 
     <div class="content">
 
-      <!-- ══ ACCUEIL ══ -->
       <div class="section active" id="section-accueil">
         <div class="hero">
           <div class="hero-left">
@@ -651,7 +732,6 @@ tr:hover td{background:#FDFCF9;}
         </div>
       </div>
 
-      <!-- ══ RÉSULTATS PAR CLASSE ══ -->
       <div class="section" id="section-classes">
         <div id="view-niveaux">
           <div class="page-header">
@@ -718,9 +798,18 @@ tr:hover td{background:#FDFCF9;}
             <div class="page-sub" id="de-sub">—</div>
           </div>
           <div class="panel">
-            <div class="panel-hdr"><div class="panel-title">Élèves</div><span class="pbadge" id="de-badge">—</span></div>
+            <div class="panel-hdr">
+              <div class="panel-title">Élèves</div>
+              <div style="display:flex;align-items:center;gap:10px;">
+                <span class="pbadge" id="de-badge">—</span>
+                <button class="btn-export" onclick="exporterCSV()">
+                  <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  Exporter CSV
+                </button>
+              </div>
+            </div>
             <div class="table-wrap">
-              <table><thead><tr><th>Élève</th><th>Éval. faite</th><th>Assignées</th><th>Validées</th><th>Progression</th><th>Alertes</th><th>Statut</th><th></th></tr></thead>
+              <table><thead><tr><th>Élève</th><th>Éval. faite</th><th>Assignées</th><th>Validées</th><th>Progression</th><th>Dernière activité</th><th>Alertes</th><th>Statut</th><th></th></tr></thead>
               <tbody id="de-tbody"></tbody></table>
             </div>
           </div>
@@ -749,10 +838,8 @@ tr:hover td{background:#FDFCF9;}
         </div>
       </div>
 
-      <!-- ══ STATISTIQUES ══ -->
       <div class="section" id="section-stats">
 
-        <!-- Menu principal : 3 cartes -->
         <div id="view-stats-menu">
           <div class="page-header">
             <div class="page-title">Statistiques</div>
@@ -786,10 +873,28 @@ tr:hover td{background:#FDFCF9;}
                 <div class="sm-arrow">→</div>
               </div>
             </div>
+            <div class="stats-menu-card" onclick="ouvrirStatDetail('impact')">
+              <div class="sm-ico-wrap teal"><svg viewBox="0 0 24 24"><path d="M3 20h18"/><path d="M7 16V10"/><path d="M12 16V6"/><path d="M17 16v-8"/><path d="M4 6l5-4 5 2 6-3"/></svg></div>
+              <div class="sm-title">Impact de la remédiation</div>
+              <div class="sm-desc">Scores moyens des élèves avant et après remédiation, par classe et par thème.</div>
+              <div class="sm-foot">
+                <div class="sm-badge soon">En attente</div>
+                <div class="sm-arrow">→</div>
+              </div>
+            </div>
+
+            <div class="stats-menu-card" onclick="ouvrirStatDetail('engagement')">
+              <div class="sm-ico-wrap" style="background:#FAECE7;color:#712B13;"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+              <div class="sm-title">Taux d'engagement</div>
+              <div class="sm-desc">Nombre et proportion d'élèves qui utilisent activement l'outil après leur évaluation diagnostique.</div>
+              <div class="sm-foot">
+                <div class="sm-badge soon">En attente</div>
+                <div class="sm-arrow">→</div>
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- Détail : Classement -->
         <div id="view-stats-classement" style="display:none;">
           <button class="back-btn" onclick="retourStatsMenu()">← Retour aux statistiques</button>
           <div class="page-header">
@@ -801,7 +906,6 @@ tr:hover td{background:#FDFCF9;}
           </div>
         </div>
 
-        <!-- Détail : Lacunes (thèmes) -->
         <div id="view-stats-lacunes" style="display:none;">
           <button class="back-btn" onclick="retourStatsMenu()">← Retour aux statistiques</button>
           <div class="page-header">
@@ -811,7 +915,6 @@ tr:hover td{background:#FDFCF9;}
           <div class="theme-stats-grid" id="stats-themes-grid"></div>
         </div>
 
-        <!-- Détail : Lacunes d'un thème -->
         <div id="view-stats-lacunes-theme" style="display:none;">
           <button class="back-btn" onclick="retourStatsLacunes()">← Retour aux thèmes</button>
           <div class="page-header">
@@ -823,7 +926,6 @@ tr:hover td{background:#FDFCF9;}
           </div>
         </div>
 
-        <!-- Détail : Élèves DYS -->
         <div id="view-stats-dys" style="display:none;">
           <button class="back-btn" onclick="retourStatsMenu()">← Retour aux statistiques</button>
           <div class="page-header">
@@ -842,6 +944,104 @@ tr:hover td{background:#FDFCF9;}
           <div class="dys-list" id="dys-list"></div>
           <div class="dys-note">
             <strong>À propos du mode adapté.</strong> Le mode DYS est activé par l'élève à l'inscription et s'applique automatiquement sur toutes les fiches et l'évaluation. Il propose la police OpenDyslexic, un espacement augmenté et des temps de lecture allongés sur les retours d'exercices.
+          </div>
+        </div>
+
+        <!-- Sous-menu : Impact de la remédiation -->
+        <div id="view-stats-impact" style="display:none;">
+          <button class="back-btn" onclick="retourStatsMenu()">← Retour aux statistiques</button>
+          <div class="page-header">
+            <div class="page-title">Impact de la remédiation</div>
+            <div class="page-sub">Sélectionnez un indicateur pour explorer.</div>
+          </div>
+          <div class="impact-submenu-grid">
+
+            <div class="impact-sub-card" onclick="ouvrirImpactDetail('scores')">
+              <div class="sm-ico-wrap teal"><svg viewBox="0 0 24 24"><path d="M3 20h18"/><path d="M7 16V10"/><path d="M12 16V6"/><path d="M17 16v-8"/><path d="M4 6l5-4 5 2 6-3"/></svg></div>
+              <div class="sm-title">Scores avant / après</div>
+              <div class="sm-desc">Comparaison des scores moyens à l'évaluation diagnostique avant et après les fiches de remédiation, par thème et par classe.</div>
+              <div class="sm-foot">
+                <div class="sm-badge soon">En attente</div>
+                <div class="sm-arrow">→</div>
+              </div>
+            </div>
+
+            <div class="impact-sub-card" onclick="ouvrirImpactDetail('ecarts')">
+              <div class="sm-ico-wrap purple" style="background:#EEEDFE;color:#3C3489;"><svg viewBox="0 0 24 24"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></div>
+              <div class="sm-title">Hétérogénéité des résultats</div>
+              <div class="sm-desc">Mesurez si l'hétérogénéité des résultats entre élèves se réduit grâce à la remédiation.</div>
+              <div class="sm-foot">
+                <div class="sm-badge soon">En attente</div>
+                <div class="sm-arrow">→</div>
+              </div>
+            </div>
+
+            <div class="impact-sub-card" onclick="ouvrirImpactDetail('difficultes')">
+              <div class="sm-ico-wrap" style="background:#FAECE7;color:#712B13;"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 12l-4 4-2-2"/></svg></div>
+              <div class="sm-title">Élèves en difficulté</div>
+              <div class="sm-desc">Suivi de la progression spécifique des élèves les plus fragiles (quartile Q1) depuis le début de la remédiation.</div>
+              <div class="sm-foot">
+                <div class="sm-badge soon">En attente</div>
+                <div class="sm-arrow">→</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Vue : Scores avant / après -->
+        <div id="view-stats-impact-scores" style="display:none;">
+          <button class="back-btn" onclick="retourImpactMenu()">← Retour à l'impact</button>
+          <div class="page-header">
+            <div class="page-title">Scores avant / après remédiation</div>
+            <div class="page-sub">Comparaison par thème et par classe.</div>
+          </div>
+          <div class="impact-empty-view">
+            <div class="ico">📊</div>
+            <div class="title">Données à venir</div>
+            <div class="sub">Cette vue s'activera dès que les élèves auront repassé l'évaluation diagnostique après leurs fiches de remédiation.</div>
+          </div>
+        </div>
+
+        <!-- Vue : Écart faibles / forts -->
+        <div id="view-stats-impact-ecarts" style="display:none;">
+          <button class="back-btn" onclick="retourImpactMenu()">← Retour à l'impact</button>
+          <div class="page-header">
+            <div class="page-title">Hétérogénéité des résultats</div>
+            <div class="page-sub">Évolution de l'hétérogénéité des résultats grâce à la remédiation.</div>
+          </div>
+          <div class="impact-empty-view">
+            <div class="ico">📉</div>
+            <div class="title">Données à venir</div>
+            <div class="sub">Cette vue s'activera dès que les post-évaluations seront disponibles et permettra de comparer l'écart initial avec l'écart résiduel.</div>
+          </div>
+        </div>
+
+        <!-- Vue : Élèves en difficulté -->
+        <div id="view-stats-impact-difficultes" style="display:none;">
+          <button class="back-btn" onclick="retourImpactMenu()">← Retour à l'impact</button>
+          <div class="page-header">
+            <div class="page-title">Progression des élèves en difficulté</div>
+            <div class="page-sub">Suivi du quartile Q1 — les 25% d'élèves avec le plus de lacunes.</div>
+          </div>
+          <div class="impact-empty-view">
+            <div class="ico">🎯</div>
+            <div class="title">Données à venir</div>
+            <div class="sub">Cette vue listera les élèves Q1 et mesurera leur progression individuelle et collective au fil des fiches validées.</div>
+          </div>
+        </div>
+
+        <!-- Vue : Taux d'engagement -->
+        <div id="view-stats-engagement" style="display:none;">
+          <button class="back-btn" onclick="retourStatsMenu()">← Retour aux statistiques</button>
+          <div class="page-header">
+            <div class="page-title">Taux d'engagement</div>
+            <div class="page-sub">Nombre et proportion d'élèves qui utilisent activement l'outil.</div>
+          </div>
+          <div class="impact-empty-view">
+            <div class="ico">⏱️</div>
+            <div class="title">Données à venir</div>
+            <div class="sub">Cette vue affichera le nombre d'élèves ayant ouvert au moins une fiche après leur diagnostic, ainsi que leur niveau d'activité sur la plateforme.</div>
           </div>
         </div>
 
@@ -895,8 +1095,8 @@ var NOMS_FICHES={
 
 var DATA_EVAL=[],DATA_REM=[],DATA_COMPTES=[];
 var currentNiveau=null,currentClasse=null,currentEleve=null;
+var currentImpactClasse="all";
 
-// ── LOGIN
 document.getElementById('login-id').addEventListener('keydown',function(e){if(e.key==='Enter')connexion();});
 document.getElementById('login-mdp').addEventListener('keydown',function(e){if(e.key==='Enter')connexion();});
 
@@ -926,7 +1126,10 @@ function connexion(){
         document.getElementById('tb-uname').textContent=j.identifiant;
         document.getElementById('tb-avatar').textContent=(j.identifiant||'PV').substring(0,2).toUpperCase();
         document.getElementById('login-screen').style.display='none';
-        document.getElementById('shell').style.display='block';
+        document.getElementById('loading-screen').classList.remove('hidden');
+        // Mettre à jour les initiales avec l'identifiant du proviseur
+        var initiales=(j.identifiant||'PV').substring(0,2).toUpperCase();
+        document.getElementById('loading-avatar').textContent=initiales;
         loadAll();
       } else {
         document.getElementById('login-err').style.display='block';
@@ -942,26 +1145,58 @@ function connexion(){
 
 function deconnexion(){
   document.getElementById('shell').style.display='none';
+  document.getElementById('loading-screen').classList.add('hidden');
   document.getElementById('login-screen').style.display='flex';
   document.getElementById('login-id').value='';
   document.getElementById('login-mdp').value='';
   document.getElementById('btn-login').disabled=false;
   document.getElementById('btn-login').textContent='Accéder →';
+  setLoadingStep(1,''); setLoadingStep(2,''); setLoadingStep(3,'');
+  setLoadingBar(0);
   DATA_EVAL=[];DATA_REM=[];DATA_COMPTES=[];
 }
 
-// ── LOAD (3 fetchs : eval, rem, comptes)
+function setLoadingStep(n,state){
+  var el=document.getElementById('lstep-'+n);
+  if(!el) return;
+  el.className='loading-step'+(state?' '+state:'');
+}
+function setLoadingBar(pct){
+  var el=document.getElementById('loading-bar');
+  if(el) el.style.width=pct+'%';
+}
+function showShell(){
+  document.getElementById('loading-screen').classList.add('hidden');
+  document.getElementById('shell').style.display='block';
+}
+
 function loadAll(){
   setSyncState('loading','Chargement...');
   var done=0,total=3;
-  function check(){done++;if(done===total){renderAll();setSyncState('live','Sync · '+new Date().toLocaleTimeString('fr-FR'));}}
+  setLoadingStep(1,'active'); setLoadingStep(2,''); setLoadingStep(3,'');
+  setLoadingBar(5);
+
+  function check(stepDone){
+    setLoadingStep(stepDone,'done');
+    done++;
+    setLoadingBar(Math.round(done/total*100));
+    // Activer la prochaine étape
+    if(done<total) setLoadingStep(stepDone+1,'active');
+    if(done===total){
+      setTimeout(function(){
+        renderAll();
+        setSyncState('live','Sync · '+new Date().toLocaleTimeString('fr-FR'));
+        showShell();
+      },300);
+    }
+  }
+
   fetch(SCRIPT_URL+'?type=evaluations&etablissement='+encodeURIComponent(ETABLISSEMENT)+'&t='+Date.now())
-    .then(function(r){return r.json();}).then(function(j){if(j.status==='ok')DATA_EVAL=j.data||[];check();}).catch(function(){check();setSyncState('error','Hors ligne');});
+    .then(function(r){return r.json();}).then(function(j){if(j.status==='ok')DATA_EVAL=j.data||[];check(1);}).catch(function(){check(1);setSyncState('error','Hors ligne');});
   fetch(SCRIPT_URL+'?type=remediation&etablissement='+encodeURIComponent(ETABLISSEMENT)+'&t='+Date.now())
-    .then(function(r){return r.json();}).then(function(j){if(j.status==='ok')DATA_REM=j.data||[];check();}).catch(function(){check();});
-  // NOUVEAU : récupérer les comptes pour avoir le flag DYS par élève
+    .then(function(r){return r.json();}).then(function(j){if(j.status==='ok')DATA_REM=j.data||[];check(2);}).catch(function(){check(2);});
   fetch(SCRIPT_URL+'?type=comptes&etablissement='+encodeURIComponent(ETABLISSEMENT)+'&t='+Date.now())
-    .then(function(r){return r.json();}).then(function(j){if(j.status==='ok')DATA_COMPTES=j.data||[];check();}).catch(function(){check();});
+    .then(function(r){return r.json();}).then(function(j){if(j.status==='ok')DATA_COMPTES=j.data||[];check(3);}).catch(function(){check(3);});
 }
 
 function renderAll(){
@@ -993,7 +1228,6 @@ function getWeekNumber(d){
   return Math.ceil(((date-y)/86400000+1)/7);
 }
 
-// ── HELPERS
 function elevesUniques(data){
   var map={};
   (data||DATA_EVAL).forEach(function(r){
@@ -1014,16 +1248,24 @@ function remEleve(email){
     .forEach(function(r){if(!map[r.fiche_id]||(parseInt(r.tentative_num)||0)>(parseInt(map[r.fiche_id].tentative_num)||0))map[r.fiche_id]=r;});
   return Object.values(map);
 }
-// Est-ce qu'un élève (par email) a le flag DYS=oui ?
 function estDys(email){
   if(!email) return false;
   var c=DATA_COMPTES.find(function(r){return String(r.email||'').toLowerCase()===String(email).toLowerCase();});
   return c && String(c.dys||'').toLowerCase()==='oui';
 }
+function themeDeFiche(fid){
+  fid=String(fid||'');
+  if(fid.indexOf('fractions_')===0) return 'fractions';
+  if(fid.indexOf('proportionnalite_')===0) return 'proportionnalite';
+  if(fid.indexOf('calcul_litteral_')===0) return 'calcul_litteral';
+  if(fid.indexOf('fonctions_')===0) return 'fonctions';
+  if(fid.indexOf('geometrie_')===0) return 'geometrie';
+  if(fid.indexOf('stats_')===0) return 'stats';
+  return null;
+}
 function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 function setSyncState(s,t){document.getElementById('sync-dot').className='sync-dot '+s;document.getElementById('sync-txt').textContent=t;}
 
-// ── NAV
 function navVers(dest){
   closeFlyout();
   document.querySelectorAll('.section').forEach(function(s){s.classList.remove('active');});
@@ -1046,7 +1288,7 @@ function navVers(dest){
 }
 
 function showStatsView(view){
-  ['view-stats-menu','view-stats-classement','view-stats-lacunes','view-stats-lacunes-theme','view-stats-dys'].forEach(function(v){
+  ['view-stats-menu','view-stats-classement','view-stats-lacunes','view-stats-lacunes-theme','view-stats-dys','view-stats-impact','view-stats-impact-scores','view-stats-impact-ecarts','view-stats-impact-difficultes','view-stats-engagement'].forEach(function(v){
     var el=document.getElementById(v);
     if(el) el.style.display='none';
   });
@@ -1064,12 +1306,37 @@ function ouvrirStatDetail(type){
     renderDysView();
     showStatsView('dys');
     setBreadcrumb([{label:'Statistiques',onclick:'retourStatsMenu()'},{label:'Élèves en mode adapté',current:true}]);
+  } else if(type==='impact'){
+    renderImpactView();
+    showStatsView('impact');
+    setBreadcrumb([{label:'Statistiques',onclick:'retourStatsMenu()'},{label:'Impact de la remédiation',current:true}]);
+  } else if(type==='engagement'){
+    showStatsView('engagement');
+    setBreadcrumb([{label:'Statistiques',onclick:'retourStatsMenu()'},{label:'Taux d\'engagement',current:true}]);
   }
 }
 
 function retourStatsMenu(){
   showStatsView('menu');
   setBreadcrumb([{label:'Statistiques',current:true}]);
+}
+
+function ouvrirImpactDetail(type){
+  showStatsView('impact-'+type);
+  var labels={scores:'Scores avant / après',ecarts:'Hétérogénéité des résultats',difficultes:'Élèves en difficulté'};
+  setBreadcrumb([
+    {label:'Statistiques',onclick:'retourStatsMenu()'},
+    {label:'Impact de la remédiation',onclick:'retourImpactMenu()'},
+    {label:labels[type]||type,current:true}
+  ]);
+}
+
+function retourImpactMenu(){
+  showStatsView('impact');
+  setBreadcrumb([
+    {label:'Statistiques',onclick:'retourStatsMenu()'},
+    {label:'Impact de la remédiation',current:true}
+  ]);
 }
 
 function showSubView(view){
@@ -1103,11 +1370,12 @@ function retourClasses(){
 function retourDetailClasse(){showSubView('detail-classe');}
 function retourDetailEleves(){showSubView('detail-eleves');}
 
-// ── FLYOUT
 var flyoutOpen=false;
 function toggleFlyout(){if(flyoutOpen)closeFlyout();else openFlyout();}
 function openFlyout(){
   flyoutOpen=true;
+  document.querySelectorAll('.sb-item').forEach(function(n){n.classList.remove('active');});
+  document.getElementById('sb-classes').classList.add('active');
   document.getElementById('flyout').classList.add('open');
   document.getElementById('flyout-backdrop').classList.add('open');
   renderFlyout();
@@ -1116,13 +1384,21 @@ function closeFlyout(){
   flyoutOpen=false;
   document.getElementById('flyout').classList.remove('open');
   document.getElementById('flyout-backdrop').classList.remove('open');
+  // Remettre l'onglet actif selon la section visible
+  var shell=document.getElementById('shell');
+  if(shell && shell.style.display!=='none'){
+    var accueil=document.getElementById('section-accueil');
+    var stats=document.getElementById('section-stats');
+    if(accueil && accueil.classList.contains('active')) document.getElementById('sb-accueil').classList.add('active');
+    else if(stats && stats.classList.contains('active')) document.getElementById('sb-stats').classList.add('active');
+    else document.getElementById('sb-classes').classList.add('active');
+  }
 }
 
 function renderFlyout(){
   var html='';
   NIVEAUX.forEach(function(niv,idx){
-    var evalNiv=DATA_EVAL.filter(function(r){return niv.classes.some(function(cl){return matchClasse(r.classe,cl.id);});});
-    var expanded=idx===0?'expanded':'';
+    var expanded='';
     html+='<div class="fl-group '+expanded+'" data-group="'+niv.id+'">'
       +'<div class="fl-group-header" onclick="toggleFlyoutGroup(\''+niv.id+'\')">'
       +'<span class="fl-chevron">▶</span>'
@@ -1164,7 +1440,6 @@ function ouvrirClasseDepuisFlyout(nivId,classeId){
   closeFlyout();
 }
 
-// ── ACCUEIL
 function renderAccueil(){
   var totalEval=elevesUniques().length;
   var assignees=DATA_EVAL.filter(function(r){return r.assigne==='oui';}).length;
@@ -1181,7 +1456,6 @@ function renderAccueil(){
   deltaEl.innerHTML='<svg viewBox="0 0 24 24" width="11" height="11" style="stroke:currentColor;fill:none;stroke-width:2.5;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> Delta hebdo bientôt';
 }
 
-// ── STATISTIQUES
 function renderStats(){
   renderClassesRanking();
   renderTopLacunes();
@@ -1190,51 +1464,39 @@ function renderStats(){
 function renderStatsDysBadge(){
   var badge=document.getElementById('sm-badge-dys');
   if(!badge) return;
-  // On compte les élèves DYS qui apparaissent dans les évaluations (= élèves actifs)
   var elevesActifs=elevesUniques();
   var nbDys=elevesActifs.filter(function(e){return estDys(e.email);}).length;
   badge.textContent=nbDys+' élève'+(nbDys>1?'s':'');
 }
 
-// ── VUE DYS
 function renderDysView(){
-  // Prendre les élèves qui ont fait l'évaluation et qui sont flaggés DYS
   var elevesActifs=elevesUniques();
   var elevesDys=elevesActifs.filter(function(e){return estDys(e.email);});
-
-  // Trier par classe puis par nom
   elevesDys.sort(function(a,b){
     var c=(a.classe||'').localeCompare(b.classe||'');
     if(c!==0) return c;
     return (a.nom||'').localeCompare(b.nom||'');
   });
-
   document.getElementById('dys-hero-count').textContent=elevesDys.length;
   document.getElementById('dys-hero-total').textContent='sur '+elevesActifs.length+' élèves diagnostiqués';
-
   var container=document.getElementById('dys-list');
   if(elevesDys.length===0){
     container.innerHTML='<div class="tl-empty">Aucun élève en mode adapté pour le moment.<br>Le mode adapté s\'active à l\'inscription de l\'élève sur la plateforme.</div>';
     return;
   }
-
   container.innerHTML=elevesDys.map(function(e){
     var parts=(e.nom||'').split(' ');
     var initials=((parts[0]||'')[0]||'')+((parts[1]||'')[0]||'');
     initials=initials.toUpperCase()||'??';
-
-    // Progression : fiches validées / fiches assignées
     var evalEl=DATA_EVAL.filter(function(r){return String(r.email).toLowerCase()===String(e.email).toLowerCase();});
     var assignees=evalEl.filter(function(r){return r.assigne==='oui';}).length;
     var rem=remEleve(e.email);
     var validees=rem.filter(function(r){return r.statut==='quiz_final_valide';}).length;
     var pct=assignees>0?Math.round(validees/assignees*100):(assignees===0?100:0);
     var barColor=pct>=80?'var(--green)':pct>=40?'var(--amber)':pct===0&&assignees===0?'var(--green)':'var(--accent)';
-
     var metaTxt;
     if(assignees===0) metaTxt=esc(e.classe)+' · Aucune fiche assignée';
     else metaTxt=esc(e.classe)+' · '+validees+' / '+assignees+' fiche'+(assignees>1?'s':'')+' validée'+(validees>1?'s':'');
-
     return '<div class="dys-row" onclick="ouvrirEleveDepuisDys(\''+esc(e.email)+'\')">'
       +'<div class="dys-row-avatar">'+initials+'</div>'
       +'<div class="dys-row-body">'
@@ -1251,7 +1513,6 @@ function renderDysView(){
 }
 
 function ouvrirEleveDepuisDys(email){
-  // Trouver la classe et le niveau de l'élève puis ouvrir son détail
   var evalEl=DATA_EVAL.filter(function(r){return String(r.email).toLowerCase()===email.toLowerCase();});
   if(evalEl.length===0) return;
   var classe=evalEl[0].classe;
@@ -1264,6 +1525,73 @@ function ouvrirEleveDepuisDys(email){
   document.getElementById('section-classes').classList.add('active');
   document.getElementById('sb-classes').classList.add('active');
   ouvrirUnEleve(email);
+}
+
+function renderImpactView(){
+  // Le sous-menu ne contient plus de chips ni de barres — rien à rendre
+}
+
+function selectImpactClasse(el,classeId){
+  currentImpactClasse=classeId;
+  document.querySelectorAll('.impact-chip').forEach(function(c){c.classList.remove('active');});
+  el.classList.add('active');
+  renderImpactBars(classeId);
+}
+
+function computeImpactForTheme(themeId,classeFilter){
+  var evalData=DATA_EVAL;
+  if(classeFilter && classeFilter!=='all'){
+    evalData=evalData.filter(function(r){return matchClasse(r.classe,classeFilter);});
+  }
+  var themeEval=evalData.filter(function(r){return themeDeFiche(r.fiche_id)===themeId;});
+  var avgBefore=null;
+  if(themeEval.length>0){
+    var sum=0,n=0;
+    themeEval.forEach(function(r){var s=parseInt(r.score);if(!isNaN(s)){sum+=s;n++;}});
+    avgBefore=n>0?Math.round(sum/n/3*100):null;
+  }
+  var remData=DATA_REM;
+  if(classeFilter && classeFilter!=='all'){
+    remData=remData.filter(function(r){return matchClasse(r.classe,classeFilter);});
+  }
+  var themeRem=remData.filter(function(r){return themeDeFiche(r.fiche_id)===themeId && r.statut==='quiz_final_valide';});
+  var avgAfter=null;
+  if(themeRem.length>0){
+    var sumA=0,nA=0;
+    themeRem.forEach(function(r){var s=parseFloat(r.score_quiz);if(!isNaN(s)){sumA+=s;nA++;}});
+    avgAfter=nA>0?Math.round(sumA/nA):null;
+  }
+  return {before:avgBefore,after:avgAfter,nEval:themeEval.length,nRem:themeRem.length};
+}
+
+function renderImpactBars(classeFilter){
+  var titleEl=document.getElementById('impact-preview-title');
+  var labelClasse='Toutes les classes';
+  if(classeFilter && classeFilter!=='all'){
+    NIVEAUX.forEach(function(niv){niv.classes.forEach(function(cl){if(cl.id===classeFilter)labelClasse=cl.nom;});});
+  }
+  titleEl.textContent=labelClasse+' · Scores moyens avant / après par thème';
+  var container=document.getElementById('impact-preview-bars');
+  var html='';
+  THEMES_CONFIG.forEach(function(th){
+    var d=computeImpactForTheme(th.id,classeFilter);
+    var beforeVal=d.before!==null?d.before:0;
+    var afterVal=d.after!==null?d.after:0;
+    var beforeStr=d.before!==null?d.before+'%':'—';
+    var afterStr=d.after!==null?d.after+'%':'à venir';
+    var delta=(d.before!==null && d.after!==null)?(d.after-d.before):null;
+    var deltaStr=delta!==null?(delta>=0?'+'+delta:delta)+' pts':'—';
+    var deltaColor=delta===null?'var(--text3)':(delta>=0?'var(--green-dark)':'var(--red)');
+    html+='<div class="impact-bar-row">'
+      +'<div class="impact-bar-name">'+th.icon+' '+esc(th.nom)+'</div>'
+      +'<div class="impact-bar-bars">'
+        +'<div class="impact-bar-one"><div class="impact-bar-one-lbl">Avant</div><div class="impact-bar-one-track"><div class="impact-bar-one-fill before" style="width:'+beforeVal+'%;"></div></div><div class="impact-bar-one-val">'+beforeStr+'</div></div>'
+        +'<div class="impact-bar-one"><div class="impact-bar-one-lbl">Après</div><div class="impact-bar-one-track"><div class="impact-bar-one-fill after" style="width:'+afterVal+'%;opacity:'+(d.after===null?0.25:1)+';"></div></div><div class="impact-bar-one-val">'+afterStr+'</div></div>'
+      +'</div>'
+      +'<div class="impact-bar-delta" style="color:'+deltaColor+';">'+deltaStr+'</div>'
+      +'</div>';
+  });
+  container.innerHTML=html;
 }
 
 function renderClassesRanking(){
@@ -1339,13 +1667,7 @@ function renderTopLacunes(){
   var elevesByTheme={};
   THEMES_CONFIG.forEach(function(th){countsByTheme[th.id]=0;elevesByTheme[th.id]=new Set();});
   DATA_EVAL.filter(function(r){return r.assigne==='oui';}).forEach(function(r){
-    var themeId=null;
-    if(String(r.fiche_id||'').indexOf('fractions_')===0) themeId='fractions';
-    else if(String(r.fiche_id||'').indexOf('proportionnalite_')===0) themeId='proportionnalite';
-    else if(String(r.fiche_id||'').indexOf('calcul_litteral_')===0) themeId='calcul_litteral';
-    else if(String(r.fiche_id||'').indexOf('fonctions_')===0) themeId='fonctions';
-    else if(String(r.fiche_id||'').indexOf('geometrie_')===0) themeId='geometrie';
-    else if(String(r.fiche_id||'').indexOf('stats_')===0) themeId='stats';
+    var themeId=themeDeFiche(r.fiche_id);
     if(themeId){
       countsByTheme[themeId]=(countsByTheme[themeId]||0)+1;
       elevesByTheme[themeId].add(r.email);
@@ -1448,7 +1770,6 @@ function ouvrirClasseDepuisStats(nivId,classeId){
   ouvrirDetailClasse(classeId);
 }
 
-// ── NIVEAUX GRID
 function renderNiveauxGrid(targetId){
   document.getElementById(targetId).innerHTML=NIVEAUX.map(function(niv){
     var evalNiv=DATA_EVAL.filter(function(r){return niv.classes.some(function(cl){return matchClasse(r.classe,cl.id);});});
@@ -1521,7 +1842,6 @@ function ouvrirNiveauClasses(nivId){
   showSubView('classes');
 }
 
-// ── DETAIL CLASSE
 function ouvrirDetailClasse(classeId){
   currentClasse=classeId;
   var niv=NIVEAUX.find(function(n){return n.classes.some(function(c){return c.id===classeId;});});
@@ -1593,6 +1913,39 @@ function voirDetailEleves(){
   _remplirTableauEleves(currentClasse);
 }
 
+function derniereActivite(email){
+  // Cherche la date la plus récente dans DATA_REM pour cet élève
+  var entries=DATA_REM.filter(function(r){return String(r.eleve_id).toLowerCase()===email.toLowerCase();});
+  if(entries.length===0) return null;
+  var dates=entries.map(function(r){
+    if(!r.timestamp) return null;
+    var parts=String(r.timestamp).split('/');
+    if(parts.length===3) return new Date(parseInt(parts[2]),parseInt(parts[1])-1,parseInt(parts[0]));
+    return null;
+  }).filter(Boolean);
+  if(dates.length===0) return null;
+  return new Date(Math.max.apply(null,dates));
+}
+
+function formatActivite(date){
+  if(!date) return '—';
+  var now=new Date();
+  var diff=Math.floor((now-date)/(1000*60*60*24));
+  if(diff===0) return "Aujourd'hui";
+  if(diff===1) return 'Hier';
+  if(diff<=7) return 'Il y a '+diff+' j';
+  if(diff<=30) return 'Il y a '+Math.floor(diff/7)+' sem';
+  return date.toLocaleDateString('fr-FR',{day:'numeric',month:'short'});
+}
+
+function activiteColor(date){
+  if(!date) return 'var(--text4)';
+  var diff=Math.floor((new Date()-date)/(1000*60*60*24));
+  if(diff<=3) return 'var(--green)';
+  if(diff<=14) return 'var(--amber)';
+  return 'var(--red)';
+}
+
 function _remplirTableauEleves(classeId){
   var evalCl=evalParClasse(classeId);
   var eleves=elevesUniques(evalCl);
@@ -1610,12 +1963,16 @@ function _remplirTableauEleves(classeId){
         :assignees===0?'<span class="pill pill-green">Tout acquis</span>'
         :validees>=assignees?'<span class="pill pill-green">Terminé</span>'
         :'<span class="pill pill-amber">En cours</span>';
+      var lastDate=derniereActivite(e.email);
+      var lastStr=formatActivite(lastDate);
+      var lastColor=activiteColor(lastDate);
       return '<tr onclick="ouvrirUnEleve(\''+esc(e.email)+'\')" style="cursor:pointer;">'
         +'<td class="td-name">'+esc(e.nom)+'</td>'
         +'<td><span class="pill pill-green">✓ Faite</span></td>'
         +'<td class="td-mono">'+assignees+'/10</td>'
         +'<td class="td-mono">'+validees+'</td>'
         +'<td><div class="bar-wrap"><div class="bar-track"><div class="bar-fill" style="width:'+pct+'%;background:'+barColor+';"></div></div><span class="td-mono">'+pct+'%</span></div></td>'
+        +'<td class="td-mono" style="color:'+lastColor+';">'+lastStr+'</td>'
         +'<td class="td-mono">'+(alertes||'—')+'</td>'
         +'<td>'+statut+'</td>'
         +'<td style="color:var(--text3);">→</td>'
@@ -1635,7 +1992,9 @@ function ouvrirUnEleve(email){
   var validees=rem.filter(function(r){return r.statut==='quiz_final_valide';}).length;
   var alertes=rem.filter(function(r){return r.statut==='echec_3_tentatives'&&r.alerte_traitee==='non';}).length;
   document.getElementById('due-title').textContent=esc(nom);
-  document.getElementById('due-sub').textContent='Classe : '+esc(classe);
+  var lastDate=derniereActivite(email);
+  var lastStr=lastDate?'Dernière activité : '+formatActivite(lastDate):'Aucune activité sur les fiches';
+  document.getElementById('due-sub').textContent='Classe : '+esc(classe)+' · '+lastStr;
   document.getElementById('due-assignees').textContent=assignees;
   document.getElementById('due-validees').textContent=validees;
   document.getElementById('due-restantes').textContent=Math.max(0,assignees-validees);
@@ -1675,7 +2034,6 @@ function ouvrirUnEleve(email){
   showSubView('detail-eleve');
 }
 
-// ── RECHERCHE GLOBALE
 var searchInp=document.getElementById('search-inp');
 var searchRes=document.getElementById('search-results');
 searchInp.addEventListener('input',function(){
@@ -1767,7 +2125,60 @@ function searchGoEleve(email){
   ouvrirUnEleve(email);
 }
 
-setInterval(function(){if(document.getElementById('shell').style.display!=='none')loadAll();},60000);
+function exporterCSV(){
+  if(!currentClasse) return;
+  var evalCl=evalParClasse(currentClasse);
+  var eleves=elevesUniques(evalCl);
+  if(eleves.length===0) return;
+
+  var lignes=[['Nom','Classe','Email','Fiches assignées','Fiches validées','Progression (%)','Dernière activité','Alertes','Statut']];
+
+  eleves.forEach(function(e){
+    var assignees=e.fiches.filter(function(f){return f.assigne;}).length;
+    var rem=remEleve(e.email);
+    var validees=rem.filter(function(r){return r.statut==='quiz_final_valide';}).length;
+    var alertes=rem.filter(function(r){return r.statut==='echec_3_tentatives'&&r.alerte_traitee==='non';}).length;
+    var pct=assignees>0?Math.round(validees/assignees*100):100;
+    var lastDate=derniereActivite(e.email);
+    var lastStr=lastDate?lastDate.toLocaleDateString('fr-FR'):'—';
+    var statut=alertes>0?'Alerte':assignees===0?'Tout acquis':validees>=assignees?'Terminé':'En cours';
+    lignes.push([e.nom,e.classe,e.email,assignees,validees,pct,lastStr,alertes||0,statut]);
+  });
+
+  var csv=lignes.map(function(row){
+    return row.map(function(cell){
+      var s=String(cell||'');
+      if(s.indexOf(',')!==-1||s.indexOf('"')!==-1) s='"'+s.replace(/"/g,'""')+'"';
+      return s;
+    }).join(',');
+  }).join('\n');
+
+  var niv=NIVEAUX.find(function(n){return n.classes.some(function(c){return c.id===currentClasse;});});
+  var cl=niv?niv.classes.find(function(c){return c.id===currentClasse;}):null;
+  var nomFichier='eleves_'+(cl?cl.nom:currentClasse)+'_'+new Date().toLocaleDateString('fr-FR').replace(/\//g,'-')+'.csv';
+
+  var blob=new Blob(['\uFEFF'+csv],{type:'text/csv;charset=utf-8;'});
+  var url=URL.createObjectURL(blob);
+  var a=document.createElement('a');
+  a.href=url;a.download=nomFichier;
+  document.body.appendChild(a);a.click();
+  document.body.removeChild(a);URL.revokeObjectURL(url);
+}
+
+setInterval(function(){
+  if(document.getElementById('shell').style.display!=='none'){
+    // Rafraîchissement silencieux sans loading screen
+    setSyncState('loading','Actualisation...');
+    var done=0,total=3;
+    function chk(){done++;if(done===total){renderAll();setSyncState('live','Sync · '+new Date().toLocaleTimeString('fr-FR'));}}
+    fetch(SCRIPT_URL+'?type=evaluations&etablissement='+encodeURIComponent(ETABLISSEMENT)+'&t='+Date.now())
+      .then(function(r){return r.json();}).then(function(j){if(j.status==='ok')DATA_EVAL=j.data||[];chk();}).catch(function(){chk();setSyncState('error','Hors ligne');});
+    fetch(SCRIPT_URL+'?type=remediation&etablissement='+encodeURIComponent(ETABLISSEMENT)+'&t='+Date.now())
+      .then(function(r){return r.json();}).then(function(j){if(j.status==='ok')DATA_REM=j.data||[];chk();}).catch(function(){chk();});
+    fetch(SCRIPT_URL+'?type=comptes&etablissement='+encodeURIComponent(ETABLISSEMENT)+'&t='+Date.now())
+      .then(function(r){return r.json();}).then(function(j){if(j.status==='ok')DATA_COMPTES=j.data||[];chk();}).catch(function(){chk();});
+  }
+},60000);
 setInterval(updateHeroDateTime,30000);
 </script>
 </body>
