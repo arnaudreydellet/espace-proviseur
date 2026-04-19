@@ -589,7 +589,7 @@ tr:hover td{background:#FDFCF9;}
     <div class="loading-text">
       <div class="loading-greeting">Bienvenue</div>
       <div class="loading-name" id="loading-name">—</div>
-      <div class="loading-role">Proviseur · Lycée Benoît Fourneyron</div>
+      <div class="loading-role" id="loading-role">Proviseur · Lycée Benoît Fourneyron</div>
     </div>
     <div class="loading-bar-wrap">
       <div class="loading-bar-fill" id="loading-bar"></div>
@@ -1124,6 +1124,7 @@ function connexion(){
       if(j.status==='ok'){
         ETABLISSEMENT=j.etablissement;
         var nomAffiche=j.nom_complet||j.identifiant||'Proviseur';
+        var titreAffiche=j.titre||'Proviseur';
         var initiales=nomAffiche.split(' ').map(function(p){return (p[0]||'');}).join('').substring(0,2).toUpperCase()||'PV';
         document.getElementById('tb-uname').textContent=nomAffiche;
         document.getElementById('tb-avatar').textContent=initiales;
@@ -1131,6 +1132,7 @@ function connexion(){
         document.getElementById('loading-screen').classList.remove('hidden');
         document.getElementById('loading-avatar').textContent=initiales;
         document.getElementById('loading-name').textContent=nomAffiche;
+        document.getElementById('loading-role').textContent=titreAffiche+' · Lycée Benoît Fourneyron';
         loadAll();
       } else {
         document.getElementById('login-err').style.display='block';
