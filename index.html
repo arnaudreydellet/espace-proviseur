@@ -527,6 +527,10 @@ tr:hover td{background:#FDFCF9;}
 .impact-empty-view .title{font-size:16px;font-weight:700;color:var(--text);margin-bottom:.5rem;}
 .impact-empty-view .sub{font-size:13px;line-height:1.6;}
 
+/* ═══ KPI SUB-LABEL ═══ */
+.kpi-sub{font-size:11.5px;color:var(--text3);font-weight:500;margin-top:.25rem;font-family:'JetBrains Mono',monospace;}
+.kpi-card.green .kpi-sub{color:var(--green-dark);opacity:.65;}
+
 /* ═══ KPI CARD CLICKABLE ═══ */
 .kpi-card.clickable{cursor:pointer;}
 .kpi-card.clickable:hover{border-color:var(--navy-mid);transform:translateY(-2px);box-shadow:0 8px 24px rgba(27,46,94,.08);}
@@ -705,6 +709,50 @@ tr:hover td{background:#FDFCF9;}
 .distrib-classes-legend-profile-tag.mixte{background:var(--amber-l);color:var(--amber);}
 .distrib-classes-legend-profile-tag.hetero{background:#EEEDFE;color:#3C3489;}
 
+/* ═══ LOADER VUE DIAGNOSTIQUÉS ═══ */
+.diag-loader-overlay{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:4rem 2rem;background:var(--white);border:1px solid var(--border);border-radius:var(--rl);margin-bottom:1.5rem;}
+.diag-loader-spinner{width:44px;height:44px;border-radius:50%;border:3px solid var(--bg2);border-top-color:var(--navy-mid);animation:diagSpin .8s linear infinite;margin-bottom:1.25rem;}
+@keyframes diagSpin{to{transform:rotate(360deg);}}
+.diag-loader-title{font-size:14px;font-weight:700;color:var(--text);letter-spacing:-.2px;margin-bottom:.35rem;}
+.diag-loader-sub{font-size:12px;color:var(--text3);}
+.diag-loader-dots{display:inline-block;width:20px;text-align:left;}
+.diag-loader-dots::after{content:'';animation:diagDots 1.4s infinite;}
+@keyframes diagDots{0%,20%{content:'';}40%{content:'.';}60%{content:'..';}80%,100%{content:'...';}}
+
+/* Skeleton pour le sélecteur en chargement */
+.mois-selector-skeleton{height:54px;background:var(--white);border:1px solid var(--border);border-radius:var(--rl);margin-bottom:.75rem;position:relative;overflow:hidden;}
+.mois-selector-skeleton::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(74,144,226,.06),transparent);animation:skeletonShine 1.4s infinite;}
+@keyframes skeletonShine{0%{transform:translateX(-100%);}100%{transform:translateX(100%);}}
+
+/* ═══ SÉLECTEUR DE MOIS + DELTAS ═══ */
+.mois-selector-wrap{display:flex;align-items:center;gap:.5rem;margin-bottom:.75rem;flex-wrap:wrap;padding:.875rem 1.125rem;background:var(--white);border:1px solid var(--border);border-radius:var(--rl);}
+.mois-selector-label{font-size:10.5px;font-weight:600;color:var(--text3);letter-spacing:.08em;text-transform:uppercase;margin-right:.5rem;display:flex;align-items:center;gap:6px;}
+.mois-selector-label svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.mois-chip{font-size:12px;font-weight:600;padding:7px 13px;border-radius:18px;background:var(--bg);border:1px solid var(--border-md);color:var(--text2);cursor:pointer;transition:all .15s;font-family:'Sora',sans-serif;display:inline-flex;align-items:center;gap:6px;}
+.mois-chip:hover{border-color:var(--navy-mid);color:var(--navy);background:var(--white);}
+.mois-chip.active{background:var(--navy);color:#fff;border-color:var(--navy);}
+.mois-chip.courant{position:relative;}
+.mois-chip.courant::after{content:'';width:6px;height:6px;border-radius:50%;background:#22D37C;box-shadow:0 0 6px rgba(34,211,124,.6);animation:statusPulse 2.4s infinite;margin-left:2px;}
+.mois-meta-bar{background:var(--bg);border:1px solid var(--border);border-radius:var(--r);padding:.625rem 1rem;margin-bottom:1.25rem;font-size:11.5px;color:var(--text2);display:flex;align-items:center;gap:8px;}
+.mois-meta-bar strong{color:var(--text);font-weight:700;}
+.mois-meta-bar .sep{color:var(--text4);margin:0 4px;}
+.mois-meta-bar-ico{color:var(--accent);display:flex;align-items:center;}
+.mois-meta-bar-ico svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+
+/* Deltas KPI (indicateurs avec comparaison mois précédent) */
+.kpi-delta-wrap{margin-top:.5rem;}
+.kpi-delta{display:inline-flex;align-items:center;gap:4px;font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:10px;font-family:'Sora',sans-serif;}
+.kpi-delta.up-good{color:var(--green-dark);background:var(--green-l);}
+.kpi-delta.down-bad{color:var(--red);background:var(--red-l);}
+.kpi-delta.up-bad{color:var(--red);background:var(--red-l);}
+.kpi-delta.down-good{color:var(--green-dark);background:var(--green-l);}
+.kpi-delta.neutral{color:var(--text3);background:var(--bg);}
+
+/* Mode "archive" : bandeau signalant qu'on voit un mois passé */
+.archive-banner{background:linear-gradient(135deg,#FEF5E2 0%,#FFFBEF 100%);border:1px solid rgba(212,123,6,.2);border-radius:var(--r);padding:.75rem 1.25rem;margin-bottom:1.25rem;display:flex;align-items:center;gap:10px;font-size:12px;color:var(--amber);}
+.archive-banner strong{color:#8B5500;font-weight:700;}
+.archive-banner svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;}
+
 /* ═══ HISTORIQUE MENSUEL ═══ */
 .histo-hero{background:linear-gradient(135deg,#EEF1F9 0%,#F0F5FC 100%);border:1px solid rgba(74,144,226,.15);border-radius:var(--rl);padding:1.5rem 1.75rem;margin-bottom:1.5rem;display:flex;align-items:center;gap:1.25rem;}
 .histo-hero-ico{width:54px;height:54px;border-radius:14px;background:var(--white);border:1px solid rgba(74,144,226,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--accent);}
@@ -742,6 +790,335 @@ tr:hover td{background:#FDFCF9;}
 .histo-section-title::before{content:'';width:3px;height:14px;background:var(--navy-mid);border-radius:2px;}
 .histo-meta{font-size:11px;color:var(--text3);margin-bottom:1rem;}
 .histo-meta strong{color:var(--text2);font-weight:600;}
+
+/* ═══ JAUGE GLOBALE NOTIONS ACQUISES ═══ */
+.global-container{width:100%;max-width:900px;margin:0 auto;padding:.25rem 0;}
+.global-main{display:grid;grid-template-columns:240px 1fr;gap:2rem;align-items:center;padding:1.75rem 1.5rem;background:var(--bg);border:1px solid var(--border);border-radius:var(--rl);}
+@media (max-width:760px){.global-main{grid-template-columns:1fr;gap:1.5rem;padding:1.5rem 1.25rem;}}
+.global-gauge{position:relative;width:220px;height:220px;flex-shrink:0;margin:0 auto;}
+.global-gauge svg{transform:rotate(-90deg);}
+.global-gauge-bg{fill:none;stroke:var(--bg2);stroke-width:18;}
+.global-gauge-fill{fill:none;stroke-width:18;stroke-linecap:round;transition:stroke-dashoffset 1.4s cubic-bezier(.4,0,.2,1);}
+.global-gauge-fill.excellent{stroke:#15A362;filter:drop-shadow(0 0 8px rgba(21,163,98,.3));}
+.global-gauge-fill.good{stroke:#22D37C;}
+.global-gauge-fill.mid{stroke:#D47B06;}
+.global-gauge-fill.bad{stroke:#D42626;}
+.global-gauge-inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;}
+.global-gauge-val{font-size:52px;font-weight:800;color:var(--navy);letter-spacing:-2.5px;line-height:1;font-family:'Sora',sans-serif;}
+.global-gauge-val.excellent{color:var(--green-dark);}
+.global-gauge-val.good{color:#0E7348;}
+.global-gauge-val.mid{color:var(--amber);}
+.global-gauge-val.bad{color:var(--red);}
+.global-gauge-lbl{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--text3);margin-top:8px;}
+.global-gauge-sub{font-size:11px;color:var(--text3);margin-top:6px;font-family:'JetBrains Mono',monospace;}
+.global-stats{display:flex;flex-direction:column;gap:.875rem;}
+.global-stat-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:1.1rem 1.3rem;display:flex;align-items:center;gap:1rem;transition:all .15s;}
+.global-stat-card:hover{border-color:var(--border-md);box-shadow:0 2px 8px rgba(0,0,0,.03);}
+.global-stat-ico{width:44px;height:44px;border-radius:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.global-stat-ico.eleves{background:var(--navy-l);color:var(--navy);}
+.global-stat-ico.lacunes{background:var(--amber-l);color:var(--amber);}
+.global-stat-ico svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.global-stat-body{flex:1;min-width:0;}
+.global-stat-val{font-size:26px;font-weight:800;line-height:1;letter-spacing:-.8px;font-family:'Sora',sans-serif;color:var(--navy);}
+.global-stat-val.amber{color:var(--amber);}
+.global-stat-lbl{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--text3);margin-top:4px;}
+.global-stat-detail{font-size:10.5px;color:var(--text3);margin-top:2px;}
+.global-empty{text-align:center;color:var(--text3);font-size:12.5px;padding:3rem 2rem;width:100%;}
+
+/* Carte d'interprétation en dessous */
+.global-verdict{margin-top:1rem;padding:1rem 1.3rem;border-radius:var(--r);display:flex;align-items:flex-start;gap:12px;border:1px solid;}
+.global-verdict.excellent{background:var(--green-l);border-color:rgba(21,163,98,.25);}
+.global-verdict.good{background:#EEF1F9;border-color:rgba(74,144,226,.2);}
+.global-verdict.mid{background:var(--amber-l);border-color:rgba(212,123,6,.2);}
+.global-verdict.bad{background:var(--red-l);border-color:rgba(212,38,38,.2);}
+.global-verdict-ico{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:15px;}
+.global-verdict.excellent .global-verdict-ico{background:#15A362;color:#fff;}
+.global-verdict.good .global-verdict-ico{background:var(--navy-mid);color:#fff;}
+.global-verdict.mid .global-verdict-ico{background:var(--amber);color:#fff;}
+.global-verdict.bad .global-verdict-ico{background:var(--red);color:#fff;}
+.global-verdict-body{flex:1;font-size:12px;line-height:1.55;color:var(--text2);padding-top:3px;}
+.global-verdict-body strong{font-weight:700;}
+.global-verdict.excellent .global-verdict-body strong{color:var(--green-dark);}
+.global-verdict.good .global-verdict-body strong{color:var(--navy);}
+.global-verdict.mid .global-verdict-body strong{color:#8B5500;}
+.global-verdict.bad .global-verdict-body strong{color:var(--red);}
+
+/* ═══ COMPARAISON PAR FILIÈRE — NOTIONS ACQUISES ═══ */
+.filiere-wrap{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;width:100%;padding:.25rem 0;}
+@media (max-width:780px){.filiere-wrap{grid-template-columns:1fr;}}
+.filiere-block{background:var(--white);border:1.5px solid var(--border);border-radius:var(--rl);padding:0;position:relative;overflow:hidden;transition:all .2s;}
+.filiere-block.cap{border-color:rgba(21,163,98,.2);}
+.filiere-block.bp{border-color:rgba(27,46,94,.15);}
+.filiere-block.cap:hover{border-color:#15A362;box-shadow:0 4px 18px rgba(21,163,98,.1);}
+.filiere-block.bp:hover{border-color:var(--navy-mid);box-shadow:0 4px 18px rgba(27,46,94,.1);}
+/* Bandeau d'identité de filière en haut */
+.filiere-identity{padding:.875rem 1.25rem;display:flex;align-items:center;justify-content:space-between;gap:10px;border-bottom:1.5px solid;}
+.filiere-identity.cap{background:linear-gradient(135deg,#E6F6EE 0%,#EEF9F4 100%);border-bottom-color:rgba(21,163,98,.2);}
+.filiere-identity.bp{background:linear-gradient(135deg,#EEF1F9 0%,#F0F5FC 100%);border-bottom-color:rgba(27,46,94,.15);}
+.filiere-identity-left{display:flex;align-items:center;gap:12px;}
+.filiere-badge{font-size:12.5px;font-weight:800;padding:6px 14px;border-radius:20px;letter-spacing:.04em;font-family:'Sora',sans-serif;color:#fff;box-shadow:0 2px 6px rgba(0,0,0,.08);}
+.filiere-badge.cap{background:linear-gradient(135deg,#15A362 0%,#0E7348 100%);}
+.filiere-badge.bp{background:linear-gradient(135deg,var(--navy-mid) 0%,var(--navy) 100%);}
+.filiere-identity-title{font-size:13px;font-weight:700;color:var(--text);letter-spacing:-.2px;}
+.filiere-identity-right{display:flex;align-items:center;gap:5px;font-size:11px;font-weight:600;color:var(--text2);background:rgba(255,255,255,.6);padding:4px 10px;border-radius:20px;}
+.filiere-identity-right-num{font-size:13px;font-weight:800;color:var(--navy);font-family:'Sora',sans-serif;letter-spacing:-.2px;}
+/* Le corps du bloc */
+.filiere-block-body-wrap{padding:1.4rem 1.5rem;}
+.filiere-block-header{display:none;} /* Ancien header masqué */
+.filiere-block-title{display:none;}
+.filiere-tag{font-size:10px;font-weight:700;padding:4px 10px;border-radius:11px;letter-spacing:.08em;font-family:'Sora',sans-serif;}
+.filiere-tag.cap{background:#EEF9F4;color:var(--green-dark);}
+.filiere-tag.bp{background:var(--navy-l);color:var(--navy);}
+.filiere-block-name{display:none;}
+.filiere-block-eleves{display:none;}
+.filiere-body{display:grid;grid-template-columns:auto 1fr;gap:1.25rem;align-items:center;}
+.filiere-gauge{position:relative;width:130px;height:130px;flex-shrink:0;}
+.filiere-gauge svg{transform:rotate(-90deg);}
+.filiere-gauge-bg{fill:none;stroke:var(--bg2);stroke-width:12;}
+.filiere-gauge-fill{fill:none;stroke-width:12;stroke-linecap:round;transition:stroke-dashoffset 1.4s cubic-bezier(.4,0,.2,1);}
+.filiere-gauge-fill.cap-excellent{stroke:#15A362;}
+.filiere-gauge-fill.cap-good{stroke:#22D37C;}
+.filiere-gauge-fill.cap-mid{stroke:#D47B06;}
+.filiere-gauge-fill.cap-bad{stroke:#D42626;}
+.filiere-gauge-fill.bp-excellent{stroke:var(--navy);}
+.filiere-gauge-fill.bp-good{stroke:var(--navy-mid);}
+.filiere-gauge-fill.bp-mid{stroke:#D47B06;}
+.filiere-gauge-fill.bp-bad{stroke:#D42626;}
+.filiere-gauge-inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;}
+.filiere-gauge-val{font-size:32px;font-weight:800;letter-spacing:-1.2px;line-height:1;font-family:'Sora',sans-serif;}
+.filiere-gauge-val.cap{color:var(--green-dark);}
+.filiere-gauge-val.bp{color:var(--navy);}
+.filiere-gauge-val.mid{color:var(--amber);}
+.filiere-gauge-val.bad{color:var(--red);}
+.filiere-gauge-lbl{font-size:8.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--text3);margin-top:4px;}
+.filiere-stats{display:flex;flex-direction:column;gap:.65rem;}
+.filiere-stat-row{display:flex;flex-direction:column;gap:3px;}
+.filiere-stat-row-lbl{font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--text3);}
+.filiere-stat-row-val{font-size:18px;font-weight:800;color:var(--navy);letter-spacing:-.5px;line-height:1.05;font-family:'Sora',sans-serif;}
+.filiere-stat-row-val.amber{color:var(--amber);}
+.filiere-stat-row-sub{font-size:10.5px;color:var(--text3);font-family:'JetBrains Mono',monospace;}
+.filiere-empty-block{padding:2.5rem 1rem;text-align:center;color:var(--text3);font-size:11.5px;font-style:italic;background:repeating-linear-gradient(45deg,transparent,transparent 8px,rgba(0,0,0,.02) 8px,rgba(0,0,0,.02) 16px);border-radius:var(--r);margin:1rem 0;}
+.filiere-footer{margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid var(--border);font-size:12px;color:var(--text2);line-height:1.55;text-align:center;}
+.filiere-footer strong{color:var(--text);font-weight:700;}
+.filiere-footer.notable{color:var(--amber);}
+.filiere-footer.critical{color:var(--red);}
+
+/* ═══ ACQUISITION PAR CLASSE ═══ */
+.acq-container{width:100%;max-width:900px;margin:0 auto;padding:.25rem 0;}
+.acq-table-header{display:grid;grid-template-columns:200px 1fr 140px;align-items:center;gap:16px;padding:0 18px 10px;margin-bottom:4px;border-bottom:1px solid var(--border);}
+.acq-th{font-size:9.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);}
+.acq-th-right{text-align:right;}
+.acq-classes-wrap{display:flex;flex-direction:column;gap:6px;}
+.acq-row{display:grid;grid-template-columns:200px 1fr 140px;align-items:center;gap:16px;padding:12px 18px;background:var(--white);border:1px solid var(--border);border-radius:var(--r);transition:all .18s;}
+.acq-row:hover{border-color:var(--navy-mid);box-shadow:0 3px 12px rgba(27,46,94,.06);transform:translateX(2px);}
+.acq-row.en-attente{background:repeating-linear-gradient(45deg,#FBF9F3,#FBF9F3 10px,var(--white) 10px,var(--white) 20px);opacity:.7;}
+.acq-row.en-attente:hover{transform:none;box-shadow:none;border-color:var(--border);}
+.acq-row-label{display:flex;align-items:center;gap:8px;min-width:0;}
+.acq-row-rank{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:var(--text3);background:var(--bg);flex-shrink:0;font-family:'JetBrains Mono',monospace;}
+.acq-row-rank.top-1{background:linear-gradient(135deg,#FFD700 0%,#E6B800 100%);color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.15);box-shadow:0 2px 6px rgba(230,184,0,.3);}
+.acq-row-rank.top-2{background:linear-gradient(135deg,#E5E7EB 0%,#9CA3AF 100%);color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.1);box-shadow:0 2px 5px rgba(156,163,175,.25);}
+.acq-row-rank.top-3{background:linear-gradient(135deg,#D49664 0%,#B87333 100%);color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.1);box-shadow:0 2px 5px rgba(184,115,51,.25);}
+.acq-row-tag{font-size:8.5px;font-weight:700;padding:2px 7px;border-radius:6px;letter-spacing:.05em;flex-shrink:0;font-family:'Sora',sans-serif;}
+.acq-row-tag.cap{background:#EEF9F4;color:var(--green-dark);}
+.acq-row-tag.bp{background:var(--navy-l);color:var(--navy);}
+.acq-row-name{font-size:13px;font-weight:600;color:var(--text);letter-spacing:-.2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;min-width:0;}
+.acq-row-track{position:relative;height:30px;background:var(--bg2);border-radius:8px;overflow:hidden;box-shadow:inset 0 1px 2px rgba(0,0,0,.04);}
+.acq-row-fill{height:100%;border-radius:8px;transition:width 1.2s cubic-bezier(.4,0,.2,1);display:flex;align-items:center;padding-left:12px;min-width:2px;position:relative;}
+.acq-row-fill::after{content:'';position:absolute;top:0;left:0;right:0;height:50%;background:linear-gradient(180deg,rgba(255,255,255,.18) 0%,rgba(255,255,255,0) 100%);border-radius:8px 8px 0 0;pointer-events:none;}
+.acq-row-fill.excellent{background:linear-gradient(90deg,#15A362 0%,#22D37C 100%);}
+.acq-row-fill.good{background:linear-gradient(90deg,#4A90E2 0%,#7AB8F5 100%);}
+.acq-row-fill.mid{background:linear-gradient(90deg,#D47B06 0%,#E89020 100%);}
+.acq-row-fill.bad{background:linear-gradient(90deg,#D42626 0%,#E84545 100%);}
+.acq-row-pct{font-size:13px;font-weight:800;color:#fff;letter-spacing:-.3px;text-shadow:0 1px 2px rgba(0,0,0,.18);font-family:'Sora',sans-serif;position:relative;z-index:1;}
+.acq-row-pct.outside{position:absolute;left:calc(100% + 10px);color:var(--text);text-shadow:none;white-space:nowrap;}
+.acq-row-right{display:flex;flex-direction:column;align-items:flex-end;gap:2px;}
+.acq-row-lacunes{font-size:18px;font-weight:800;color:var(--amber);letter-spacing:-.5px;font-family:'Sora',sans-serif;line-height:1;}
+.acq-row-lacunes.green{color:var(--green-dark);}
+.acq-row-lacunes.red{color:var(--red);}
+.acq-row-lacunes-lbl{font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--text3);}
+.acq-row-lacunes-sub{font-size:10px;color:var(--text3);margin-top:1px;font-family:'JetBrains Mono',monospace;}
+.acq-row-empty-msg{font-size:10.5px;color:var(--text3);font-style:italic;text-align:right;}
+.acq-row-empty-val{color:var(--text3);font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:700;text-align:right;}
+
+.acq-bottom-row{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid var(--border);}
+@media (max-width:700px){.acq-bottom-row{grid-template-columns:1fr;}}
+.acq-legend-block{background:var(--bg);border:1px solid var(--border);border-radius:var(--r);padding:1rem 1.25rem;}
+.acq-legend-title{font-size:9.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:.75rem;}
+.acq-legend-list{display:flex;flex-direction:column;gap:6px;}
+.acq-legend-item{display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--text2);}
+.acq-legend-dot{width:14px;height:14px;border-radius:4px;flex-shrink:0;}
+.acq-legend-dot.excellent{background:linear-gradient(90deg,#15A362 0%,#22D37C 100%);}
+.acq-legend-dot.good{background:linear-gradient(90deg,#4A90E2 0%,#7AB8F5 100%);}
+.acq-legend-dot.mid{background:linear-gradient(90deg,#D47B06 0%,#E89020 100%);}
+.acq-legend-dot.bad{background:linear-gradient(90deg,#D42626 0%,#E84545 100%);}
+.acq-legend-label{font-weight:600;}
+.acq-legend-pct{color:var(--text3);margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:10.5px;}
+.acq-footer-block{background:var(--bg);border:1px solid var(--border);border-radius:var(--r);padding:1rem 1.25rem;display:flex;flex-direction:column;justify-content:center;}
+.acq-footer-title{font-size:9.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:.75rem;}
+.acq-footer-content{font-size:12px;color:var(--text2);line-height:1.6;}
+.acq-footer-content strong{color:var(--text);font-weight:700;}
+.acq-footer-metric{display:flex;align-items:baseline;gap:6px;margin-bottom:.5rem;}
+.acq-footer-metric-val{font-size:22px;font-weight:800;color:var(--navy);letter-spacing:-.6px;font-family:'Sora',sans-serif;line-height:1;}
+.acq-footer-metric-val.notable{color:var(--amber);}
+.acq-footer-metric-val.critical{color:var(--red);}
+.acq-footer-metric-lbl{font-size:11px;color:var(--text3);}
+
+/* ═══ ACQUISITION PAR THÈME MATHÉMATIQUE ═══ */
+.themes-acq-container{width:100%;max-width:900px;margin:0 auto;padding:.25rem 0;}
+.themes-acq-list{display:flex;flex-direction:column;gap:8px;}
+.theme-acq-row{display:grid;grid-template-columns:220px 1fr 130px;align-items:center;gap:16px;padding:14px 18px;background:var(--white);border:1px solid var(--border);border-radius:var(--r);transition:all .18s;position:relative;}
+.theme-acq-row.actif:hover{border-color:var(--navy-mid);box-shadow:0 3px 12px rgba(27,46,94,.06);transform:translateX(2px);}
+.theme-acq-row.inactif{background:repeating-linear-gradient(45deg,#FBF9F3,#FBF9F3 10px,var(--white) 10px,var(--white) 20px);opacity:.6;}
+.theme-acq-label{display:flex;align-items:center;gap:12px;min-width:0;}
+.theme-acq-icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.theme-acq-info{display:flex;flex-direction:column;min-width:0;}
+.theme-acq-name{font-size:13.5px;font-weight:700;color:var(--text);letter-spacing:-.3px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.theme-acq-meta{font-size:10.5px;color:var(--text3);margin-top:2px;font-family:'JetBrains Mono',monospace;}
+.theme-acq-meta-inactif{font-size:10.5px;color:var(--text3);margin-top:2px;font-style:italic;}
+.theme-acq-track{position:relative;height:32px;background:var(--bg2);border-radius:8px;overflow:hidden;box-shadow:inset 0 1px 2px rgba(0,0,0,.04);}
+.theme-acq-fill{height:100%;border-radius:8px;transition:width 1.2s cubic-bezier(.4,0,.2,1);display:flex;align-items:center;padding-left:12px;min-width:2px;position:relative;}
+.theme-acq-fill::after{content:'';position:absolute;top:0;left:0;right:0;height:50%;background:linear-gradient(180deg,rgba(255,255,255,.2) 0%,rgba(255,255,255,0) 100%);border-radius:8px 8px 0 0;pointer-events:none;}
+.theme-acq-fill.excellent{background:linear-gradient(90deg,#15A362 0%,#22D37C 100%);}
+.theme-acq-fill.good{background:linear-gradient(90deg,#4A90E2 0%,#7AB8F5 100%);}
+.theme-acq-fill.mid{background:linear-gradient(90deg,#D47B06 0%,#E89020 100%);}
+.theme-acq-fill.bad{background:linear-gradient(90deg,#D42626 0%,#E84545 100%);}
+.theme-acq-pct{font-size:13px;font-weight:800;color:#fff;letter-spacing:-.3px;text-shadow:0 1px 2px rgba(0,0,0,.18);font-family:'Sora',sans-serif;position:relative;z-index:1;}
+.theme-acq-pct.outside{position:absolute;top:50%;transform:translateY(-50%);color:var(--text);text-shadow:none;white-space:nowrap;z-index:2;}
+.theme-acq-right{display:flex;flex-direction:column;align-items:flex-end;gap:2px;}
+.theme-acq-lacunes{font-size:18px;font-weight:800;color:var(--amber);letter-spacing:-.5px;font-family:'Sora',sans-serif;line-height:1;}
+.theme-acq-lacunes.green{color:var(--green-dark);}
+.theme-acq-lacunes.red{color:var(--red);}
+.theme-acq-lacunes-lbl{font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--text3);}
+.theme-acq-empty-val{color:var(--text3);font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:700;text-align:right;}
+.theme-acq-empty-lbl{font-size:10px;color:var(--text3);font-style:italic;text-align:right;}
+.theme-soon-badge{display:inline-flex;align-items:center;gap:5px;font-size:9.5px;font-weight:600;padding:2px 8px;border-radius:10px;background:var(--bg);color:var(--text3);border:1px solid var(--border-md);margin-top:3px;width:fit-content;}
+.theme-soon-badge::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--text3);}
+
+.themes-summary{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid var(--border);}
+@media (max-width:700px){.themes-summary{grid-template-columns:1fr;}}
+.theme-summary-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--r);padding:1rem 1.25rem;}
+.theme-summary-card.best{border-left:3px solid #15A362;}
+.theme-summary-card.worst{border-left:3px solid var(--red);}
+.theme-summary-title{font-size:9.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:.75rem;display:flex;align-items:center;gap:6px;}
+.theme-summary-icon{font-size:13px;}
+.theme-summary-theme{display:flex;align-items:center;gap:10px;margin-bottom:.5rem;}
+.theme-summary-theme-ico{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0;}
+.theme-summary-theme-name{font-size:14px;font-weight:700;color:var(--text);letter-spacing:-.2px;}
+.theme-summary-metric{display:flex;align-items:baseline;gap:6px;}
+.theme-summary-metric-val{font-size:26px;font-weight:800;letter-spacing:-.8px;font-family:'Sora',sans-serif;line-height:1;}
+.theme-summary-metric-val.good{color:var(--green-dark);}
+.theme-summary-metric-val.bad{color:var(--red);}
+.theme-summary-metric-lbl{font-size:10.5px;color:var(--text3);}
+.theme-summary-empty{font-size:11.5px;color:var(--text3);font-style:italic;padding:1rem 0;text-align:center;}
+
+/* ═══ VOLUMÉTRIE — KPIs + BARRES PAR CLASSE ═══ */
+.vol-kpi-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.25rem;}
+@media (max-width:780px){.vol-kpi-strip{grid-template-columns:1fr;}}
+.vol-kpi-card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--rl);padding:1.3rem 1.5rem;position:relative;overflow:hidden;transition:all .18s;}
+.vol-kpi-card:hover{transform:translateY(-1px);box-shadow:0 4px 18px rgba(0,0,0,.05);}
+.vol-kpi-card.total{border-color:rgba(27,46,94,.15);}
+.vol-kpi-card.total::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--navy) 0%,var(--navy-mid) 100%);}
+.vol-kpi-card.cap{border-color:rgba(21,163,98,.18);}
+.vol-kpi-card.cap::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#15A362 0%,#22D37C 100%);}
+.vol-kpi-card.bp{border-color:rgba(27,46,94,.15);}
+.vol-kpi-card.bp::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--navy-mid) 0%,#4A90E2 100%);}
+.vol-kpi-head{display:flex;align-items:center;gap:10px;margin-bottom:1rem;}
+.vol-kpi-ico{width:36px;height:36px;border-radius:10px;background:var(--navy-l);color:var(--navy);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.vol-kpi-ico.cap{background:#EEF9F4;color:var(--green-dark);}
+.vol-kpi-ico.bp{background:var(--navy-l);color:var(--navy);}
+.vol-kpi-ico svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.vol-kpi-label{font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--text3);}
+.vol-kpi-value{font-size:44px;font-weight:800;color:var(--navy);letter-spacing:-2px;line-height:1;font-family:'Sora',sans-serif;margin-bottom:6px;}
+.vol-kpi-card.cap .vol-kpi-value{color:var(--green-dark);}
+.vol-kpi-card.bp .vol-kpi-value{color:var(--navy);}
+.vol-kpi-sub{font-size:11px;color:var(--text3);font-family:'JetBrains Mono',monospace;}
+
+/* Barres par classe (volumétrie) */
+.vol-classes-container{width:100%;max-width:900px;margin:0 auto;padding:.25rem 0;}
+.vol-classes-list{display:flex;flex-direction:column;gap:6px;}
+.vol-class-row{display:grid;grid-template-columns:200px 1fr 80px;align-items:center;gap:16px;padding:12px 18px;background:var(--white);border:1px solid var(--border);border-radius:var(--r);transition:all .15s;}
+.vol-class-row:hover{border-color:var(--border-md);}
+.vol-class-row.zero{opacity:.55;background:repeating-linear-gradient(45deg,#FBF9F3,#FBF9F3 10px,var(--white) 10px,var(--white) 20px);}
+.vol-class-label{display:flex;align-items:center;gap:8px;min-width:0;}
+.vol-class-tag{font-size:8.5px;font-weight:700;padding:2px 7px;border-radius:6px;letter-spacing:.05em;flex-shrink:0;font-family:'Sora',sans-serif;}
+.vol-class-tag.cap{background:#EEF9F4;color:var(--green-dark);}
+.vol-class-tag.bp{background:var(--navy-l);color:var(--navy);}
+.vol-class-name{font-size:13px;font-weight:600;color:var(--text);letter-spacing:-.2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.vol-class-track{position:relative;height:24px;background:var(--bg2);border-radius:7px;overflow:hidden;box-shadow:inset 0 1px 2px rgba(0,0,0,.04);}
+.vol-class-fill{height:100%;border-radius:7px;transition:width 1.2s cubic-bezier(.4,0,.2,1);display:flex;align-items:center;padding-left:10px;min-width:2px;position:relative;}
+.vol-class-fill.cap{background:linear-gradient(90deg,#15A362 0%,#22D37C 100%);}
+.vol-class-fill.bp{background:linear-gradient(90deg,var(--navy-mid) 0%,#4A90E2 100%);}
+.vol-class-fill::after{content:'';position:absolute;top:0;left:0;right:0;height:50%;background:linear-gradient(180deg,rgba(255,255,255,.2) 0%,rgba(255,255,255,0) 100%);border-radius:7px 7px 0 0;pointer-events:none;}
+.vol-class-count{font-size:11.5px;font-weight:800;color:#fff;letter-spacing:-.2px;text-shadow:0 1px 2px rgba(0,0,0,.15);font-family:'Sora',sans-serif;position:relative;z-index:1;}
+.vol-class-count.outside{position:absolute;left:calc(var(--bar-w,4%) + 8px);top:50%;transform:translateY(-50%);color:var(--text);text-shadow:none;white-space:nowrap;z-index:2;}
+.vol-class-right{text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:1px;}
+.vol-class-total{font-size:16px;font-weight:800;color:var(--navy);letter-spacing:-.3px;font-family:'Sora',sans-serif;line-height:1;}
+.vol-class-total-lbl{font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--text3);}
+.vol-class-empty{font-size:11px;color:var(--text3);font-style:italic;text-align:right;}
+.vol-class-empty-val{font-size:14px;color:var(--text3);font-family:'JetBrains Mono',monospace;}
+.vol-footer{margin-top:1.25rem;padding:1rem 1.25rem;background:var(--bg);border:1px solid var(--border);border-radius:var(--r);display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+@media (max-width:600px){.vol-footer{grid-template-columns:1fr;}}
+.vol-footer-stat{display:flex;flex-direction:column;gap:2px;}
+.vol-footer-stat-lbl{font-size:9.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text3);}
+.vol-footer-stat-val{font-size:14px;font-weight:700;color:var(--text);}
+.vol-footer-stat-val strong{color:var(--navy);}
+
+/* ═══ MODE ADAPTÉ DYS ═══ */
+.dys-container{width:100%;max-width:900px;margin:0 auto;padding:.25rem 0;}
+/* Hero du haut : total DYS avec icône */
+.dys-hero{display:grid;grid-template-columns:auto 1fr;gap:1.5rem;align-items:center;padding:1.5rem 1.75rem;background:linear-gradient(135deg,#F3E8FF 0%,#EDE4FB 100%);border:1.5px solid rgba(124,58,237,.15);border-radius:var(--rl);margin-bottom:1.25rem;}
+@media (max-width:680px){.dys-hero{grid-template-columns:1fr;text-align:center;}}
+.dys-hero-left{display:flex;align-items:center;gap:1.25rem;}
+.dys-hero-ico{width:64px;height:64px;border-radius:16px;background:linear-gradient(135deg,#7C3AED 0%,#6D28D9 100%);display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 4px 14px rgba(124,58,237,.25);}
+.dys-hero-ico svg{width:30px;height:30px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.dys-hero-num-block{display:flex;flex-direction:column;}
+.dys-hero-num{font-size:52px;font-weight:800;color:#5B21B6;letter-spacing:-2.5px;line-height:1;font-family:'Sora',sans-serif;}
+.dys-hero-lbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#6D28D9;margin-top:4px;}
+.dys-hero-right{display:flex;flex-direction:column;gap:4px;}
+.dys-hero-title{font-size:14px;font-weight:700;color:#4C1D95;letter-spacing:-.3px;}
+.dys-hero-desc{font-size:12px;color:#6D28D9;line-height:1.55;}
+.dys-hero-desc strong{font-weight:700;color:#5B21B6;}
+.dys-hero-empty{font-size:12px;color:#6D28D9;font-style:italic;}
+
+/* Split CAP / Bac Pro */
+.dys-split{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.25rem;}
+@media (max-width:680px){.dys-split{grid-template-columns:1fr;}}
+.dys-split-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:1.1rem 1.25rem;position:relative;overflow:hidden;}
+.dys-split-card.cap{border-top:3px solid #15A362;}
+.dys-split-card.bp{border-top:3px solid var(--navy-mid);}
+.dys-split-header{display:flex;align-items:center;gap:8px;margin-bottom:.75rem;}
+.dys-split-tag{font-size:10px;font-weight:700;padding:3px 9px;border-radius:8px;letter-spacing:.05em;font-family:'Sora',sans-serif;}
+.dys-split-tag.cap{background:#EEF9F4;color:var(--green-dark);}
+.dys-split-tag.bp{background:var(--navy-l);color:var(--navy);}
+.dys-split-label{font-size:11px;font-weight:600;color:var(--text2);letter-spacing:-.2px;}
+.dys-split-body{display:flex;align-items:baseline;gap:8px;}
+.dys-split-num{font-size:32px;font-weight:800;letter-spacing:-1.2px;line-height:1;font-family:'Sora',sans-serif;}
+.dys-split-num.cap{color:var(--green-dark);}
+.dys-split-num.bp{color:var(--navy);}
+.dys-split-num.zero{color:var(--text3);}
+.dys-split-sub{font-size:11px;color:var(--text3);}
+.dys-split-sub strong{color:var(--text2);font-weight:700;}
+
+/* Détail par classe (lignes) */
+.dys-classes-title{font-size:9.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:.75rem;padding:0 2px;}
+.dys-classes-list{display:flex;flex-direction:column;gap:6px;}
+.dys-class-row{display:grid;grid-template-columns:200px 1fr 80px;align-items:center;gap:16px;padding:10px 16px;background:var(--white);border:1px solid var(--border);border-radius:var(--r);}
+.dys-class-label{display:flex;align-items:center;gap:8px;min-width:0;}
+.dys-class-tag{font-size:8.5px;font-weight:700;padding:2px 7px;border-radius:6px;letter-spacing:.05em;flex-shrink:0;font-family:'Sora',sans-serif;}
+.dys-class-tag.cap{background:#EEF9F4;color:var(--green-dark);}
+.dys-class-tag.bp{background:var(--navy-l);color:var(--navy);}
+.dys-class-name{font-size:12.5px;font-weight:600;color:var(--text);letter-spacing:-.2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.dys-class-track{position:relative;height:22px;background:var(--bg2);border-radius:6px;overflow:hidden;box-shadow:inset 0 1px 2px rgba(0,0,0,.04);}
+.dys-class-fill{height:100%;border-radius:6px;background:linear-gradient(90deg,#7C3AED 0%,#A78BFA 100%);transition:width 1.2s cubic-bezier(.4,0,.2,1);display:flex;align-items:center;padding-left:9px;min-width:2px;position:relative;}
+.dys-class-fill::after{content:'';position:absolute;top:0;left:0;right:0;height:50%;background:linear-gradient(180deg,rgba(255,255,255,.2) 0%,rgba(255,255,255,0) 100%);border-radius:6px 6px 0 0;pointer-events:none;}
+.dys-class-count{font-size:11px;font-weight:800;color:#fff;letter-spacing:-.2px;text-shadow:0 1px 2px rgba(0,0,0,.18);font-family:'Sora',sans-serif;position:relative;z-index:1;}
+.dys-class-count.outside{position:absolute;color:var(--text2);text-shadow:none;top:50%;transform:translateY(-50%);white-space:nowrap;z-index:2;}
+.dys-class-right{text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:0;}
+.dys-class-total{font-size:15px;font-weight:800;color:#5B21B6;letter-spacing:-.3px;font-family:'Sora',sans-serif;line-height:1;}
+.dys-class-total-lbl{font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--text3);margin-top:2px;}
+
+.dys-empty-big{text-align:center;padding:2.5rem 1.5rem;color:var(--text3);font-size:12.5px;}
+.dys-empty-big-ico{font-size:32px;margin-bottom:.5rem;opacity:.5;}
 
 /* ═══ EXPORT ═══ */
 .btn-export{display:inline-flex;align-items:center;gap:7px;font-size:11.5px;font-weight:600;color:var(--text2);background:var(--bg);border:1px solid var(--border-md);padding:6px 14px;border-radius:var(--r);cursor:pointer;transition:all .15s;font-family:'Sora',sans-serif;}
@@ -843,10 +1220,6 @@ tr:hover td{background:#FDFCF9;}
         <div class="sb-ico"><svg viewBox="0 0 24 24"><path d="M3 20h18M7 16V8m5 8V4m5 12v-6"/></svg></div>
         <div class="sb-tooltip">Statistiques</div>
       </div>
-      <div class="sb-item" id="sb-historique" onclick="navVers('historique')">
-        <div class="sb-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-        <div class="sb-tooltip">Historique mensuel</div>
-      </div>
     </div>
     <div class="sb-bottom">
       <div class="sb-item" onclick="deconnexion()" title="Déconnexion">
@@ -929,14 +1302,16 @@ tr:hover td{background:#FDFCF9;}
             <div class="kpi-value" id="kpi-evalues">—</div>
             <div class="kpi-cta">Voir les graphiques détaillés →</div>
           </div>
-          <div class="kpi-card amber">
+          <div class="kpi-card green clickable" onclick="ouvrirVueNotionsAcquises()">
             <div class="kpi-head">
-              <div class="kpi-label">Nombre moyen de lacunes par élève</div>
-              <div class="kpi-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+              <div class="kpi-label">Notions acquises</div>
+              <div class="kpi-ico"><svg viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
             </div>
-            <div class="kpi-value" id="kpi-lacunes-avg">—</div>
+            <div class="kpi-value" id="kpi-notions-acquises">—</div>
+            <div class="kpi-sub" id="kpi-notions-acquises-sub">—</div>
+            <div class="kpi-cta">Voir les graphiques détaillés →</div>
           </div>
-          <div class="kpi-card green">
+          <div class="kpi-card amber clickable" onclick="ouvrirVueLacunesComblees()">
             <div class="kpi-head">
               <div class="kpi-label">Lacunes comblées</div>
               <div class="kpi-ico"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
@@ -949,6 +1324,7 @@ tr:hover td{background:#FDFCF9;}
               <div class="kpi-trend" id="kpi-comblees-sub">—</div>
               <div class="xp-delta neutral" id="kpi-comblees-delta">—</div>
             </div>
+            <div class="kpi-cta">Voir les graphiques détaillés →</div>
           </div>
         </div>
       </div>
@@ -961,12 +1337,45 @@ tr:hover td{background:#FDFCF9;}
           <div class="page-sub">Analyse quantitative et qualitative de la population évaluée dans votre établissement.</div>
         </div>
 
-        <!-- Bloc quantitatif -->
-        <div class="themes-section-title" style="margin-top:.5rem;">Vue quantitative</div>
+        <!-- Sélecteur de mois + bandeau snapshot -->
+        <div id="mois-selector-wrap" class="mois-selector-wrap"></div>
+        <div id="mois-meta-wrap"></div>
+
+        <!-- Volumétrie -->
+        <div class="themes-section-title" style="margin-top:.5rem;">Volumétrie</div>
+
+        <!-- KPIs volumétrie : 3 grosses tuiles en haut -->
+        <div class="vol-kpi-strip">
+          <div class="vol-kpi-card total">
+            <div class="vol-kpi-head">
+              <div class="vol-kpi-ico"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+              <div class="vol-kpi-label">Total diagnostiqués</div>
+            </div>
+            <div class="vol-kpi-value" id="vol-total">—</div>
+            <div class="vol-kpi-sub" id="vol-total-sub">—</div>
+          </div>
+          <div class="vol-kpi-card cap">
+            <div class="vol-kpi-head">
+              <div class="vol-kpi-ico cap"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+              <div class="vol-kpi-label">Filière CAP</div>
+            </div>
+            <div class="vol-kpi-value" id="vol-cap">—</div>
+            <div class="vol-kpi-sub" id="vol-cap-sub">—</div>
+          </div>
+          <div class="vol-kpi-card bp">
+            <div class="vol-kpi-head">
+              <div class="vol-kpi-ico bp"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+              <div class="vol-kpi-label">Filière Bac Pro</div>
+            </div>
+            <div class="vol-kpi-value" id="vol-bp">—</div>
+            <div class="vol-kpi-sub" id="vol-bp-sub">—</div>
+          </div>
+        </div>
+
         <div class="charts-grid">
 
-          <!-- 1. Camembert CAP / Bac Pro -->
-          <div class="chart-card">
+          <!-- Camembert CAP / Bac Pro (conservé) -->
+          <div class="chart-card full">
             <div class="chart-header">
               <div>
                 <div class="chart-title">Répartition par filière</div>
@@ -976,67 +1385,103 @@ tr:hover td{background:#FDFCF9;}
             <div class="chart-body" id="chart-filiere"></div>
           </div>
 
-          <!-- 2. Barres lacunes moyennes par classe -->
-          <div class="chart-card">
+          <!-- Répartition par classe -->
+          <div class="chart-card full">
             <div class="chart-header">
               <div>
-                <div class="chart-title">Nombre moyen de lacunes par classe</div>
-                <div class="chart-subtitle">Une barre par classe, triée par ordre croissant.</div>
+                <div class="chart-title">Nombre d'élèves diagnostiqués par classe</div>
+                <div class="chart-subtitle">Volumétrie par classe pour suivre le déploiement de l'évaluation dans l'établissement.</div>
               </div>
             </div>
-            <div class="chart-body" id="chart-lacunes-classe"></div>
-          </div>
-
-          <!-- 3. Comparaison CAP vs Bac Pro -->
-          <div class="chart-card">
-            <div class="chart-header">
-              <div>
-                <div class="chart-title">Lacunes moyennes : CAP vs Bac Pro</div>
-                <div class="chart-subtitle">Comparaison des deux filières sur le nombre moyen de lacunes par élève.</div>
-              </div>
-            </div>
-            <div class="chart-body" id="chart-comparaison-filiere"></div>
-          </div>
-
-          <!-- 4. Podium : classes les plus fragiles / les plus solides -->
-          <div class="chart-card">
-            <div class="chart-header">
-              <div>
-                <div class="chart-title">Top 3 des classes</div>
-                <div class="chart-subtitle">Les classes les plus fragiles et les plus solides en un coup d'œil.</div>
-              </div>
-            </div>
-            <div class="chart-body" id="chart-podium"></div>
+            <div class="chart-body" id="vol-chart-classes"></div>
           </div>
 
         </div>
 
-        <!-- Bloc qualitatif -->
-        <div class="themes-section-title" style="margin-top:1.5rem;">Vue qualitative</div>
+        <!-- Mode adapté (DYS) -->
+        <div class="themes-section-title" style="margin-top:1.5rem;">Mode adapté (DYS)</div>
         <div class="charts-grid">
 
-          <!-- 5. Distribution globale des lacunes -->
           <div class="chart-card full">
             <div class="chart-header">
               <div>
-                <div class="chart-title">Distribution des lacunes au niveau établissement</div>
-                <div class="chart-subtitle">Combien d'élèves ont 1 lacune, 2 lacunes, 3 lacunes, etc. — toutes classes confondues.</div>
+                <div class="chart-title">Élèves en mode adapté DYS</div>
+                <div class="chart-subtitle">Suivi des élèves bénéficiant d'un mode adapté (police OpenDyslexic, espacements augmentés, feedbacks prolongés).</div>
               </div>
             </div>
-            <div class="chart-body" id="chart-distrib-etablissement"></div>
+            <div class="chart-body" id="dys-chart"></div>
           </div>
 
-          <!-- 6. Distribution par classe -->
+        </div>
+
+      </div>
+
+      <!-- ══ VUE : Graphiques des notions acquises ══ -->
+      <div class="section" id="section-notions-acquises">
+        <button class="back-btn" onclick="navVers('accueil')">← Retour à l'accueil</button>
+        <div class="page-header">
+          <div class="page-title">Vue d'ensemble des notions acquises</div>
+          <div class="page-sub">Analyse des notions maîtrisées par vos élèves, de la vue globale au détail par thème.</div>
+        </div>
+
+        <!-- Sélecteur de mois + bandeau snapshot -->
+        <div id="na-mois-selector-wrap" class="mois-selector-wrap"></div>
+        <div id="na-mois-meta-wrap"></div>
+
+        <!-- Graphique 1 : vue globale établissement (pleine largeur en haut) -->
+        <div class="themes-section-title" style="margin-top:.5rem;">Vue d'ensemble de l'établissement</div>
+        <div class="charts-grid">
           <div class="chart-card full">
             <div class="chart-header">
               <div>
-                <div class="chart-title">Distribution des lacunes par classe</div>
-                <div class="chart-subtitle">Un mini-histogramme par classe pour voir l'homogénéité ou la dispersion des résultats.</div>
+                <div class="chart-title">Taux d'acquisition global de l'établissement</div>
+                <div class="chart-subtitle">Pourcentage de notions maîtrisées et nombre moyen de lacunes par élève, tous niveaux confondus.</div>
               </div>
             </div>
-            <div class="chart-body" id="chart-distrib-classes"></div>
+            <div class="chart-body" id="na-chart-global"></div>
           </div>
+        </div>
 
+        <!-- Graphique 2 : par filière (2 cartes côte à côte) -->
+        <div class="themes-section-title" style="margin-top:1.5rem;">Comparaison par filière</div>
+        <div class="charts-grid">
+          <div class="chart-card full">
+            <div class="chart-header">
+              <div>
+                <div class="chart-title">Taux d'acquisition par filière</div>
+                <div class="chart-subtitle">Comparaison CAP vs Bac Pro sur le % de notions acquises et le nombre moyen de lacunes par élève.</div>
+              </div>
+            </div>
+            <div class="chart-body" id="na-chart-filiere"></div>
+          </div>
+        </div>
+
+        <!-- Graphique 3 : par classes -->
+        <div class="themes-section-title" style="margin-top:1.5rem;">Détail par classe</div>
+        <div class="charts-grid">
+          <div class="chart-card full">
+            <div class="chart-header">
+              <div>
+                <div class="chart-title">Taux d'acquisition par classe</div>
+                <div class="chart-subtitle">Classement des classes par % de notions acquises, avec le nombre moyen de lacunes par élève.</div>
+              </div>
+            </div>
+            <div class="chart-body" id="na-chart-classes"></div>
+          </div>
+        </div>
+
+        <!-- Graphique 4 : par thème mathématique -->
+        <div class="themes-section-title" style="margin-top:1.5rem;">Détail par thème mathématique</div>
+        <div class="charts-grid">
+          <div class="chart-card full">
+            <div class="chart-header">
+              <div>
+                <div class="chart-title">Taux d'acquisition par thème</div>
+                <div class="chart-subtitle">Identifier les thèmes mathématiques les mieux maîtrisés et ceux qui posent le plus de difficultés.</div>
+              </div>
+            </div>
+            <div class="chart-body" id="na-chart-themes"></div>
+          </div>
         </div>
 
       </div>
@@ -1356,24 +1801,6 @@ tr:hover td{background:#FDFCF9;}
 
       </div>
 
-      <!-- ══ SECTION HISTORIQUE MENSUEL ══ -->
-      <div class="section" id="section-historique">
-        <div class="page-header">
-          <div class="page-title">Historique mensuel</div>
-          <div class="page-sub">Retrouvez l\'état de vos indicateurs à chaque mois passé.</div>
-        </div>
-        <div class="histo-hero">
-          <div class="histo-hero-ico">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          </div>
-          <div class="histo-hero-body">
-            <div class="histo-hero-title">Photographie mensuelle de l\'établissement</div>
-            <div class="histo-hero-desc">Chaque 1er du mois, un instantané des indicateurs clés et des graphiques est automatiquement enregistré. Sélectionnez un mois ci-dessous pour voir l\'état à cette date, avec une comparaison automatique au mois précédent.</div>
-          </div>
-        </div>
-        <div id="histo-content"></div>
-      </div>
-
     </div>
   </div>
 </div>
@@ -1615,12 +2042,521 @@ function navVers(dest){
     document.getElementById('sb-stats').classList.add('active');
     showStatsView('menu');
     setBreadcrumb([{label:'Statistiques',current:true}]);
-  } else if(dest==='historique'){
-    document.getElementById('section-historique').classList.add('active');
-    document.getElementById('sb-historique').classList.add('active');
-    setBreadcrumb([{label:'Historique mensuel',current:true}]);
-    chargerHistoriqueMensuel();
   }
+}
+
+function ouvrirVueNotionsAcquises(){
+  closeFlyout();
+  document.querySelectorAll('.section').forEach(function(s){s.classList.remove('active');});
+  document.querySelectorAll('.sb-item').forEach(function(n){n.classList.remove('active');});
+  document.getElementById('section-notions-acquises').classList.add('active');
+  document.getElementById('sb-accueil').classList.add('active');
+  setBreadcrumb([
+    {label:'Accueil',onclick:'navVers(\'accueil\')'},
+    {label:'Notions acquises',current:true}
+  ]);
+  renderNaChartGlobal();
+  renderNaChartFiliere();
+  renderNaChartClasses();
+  renderNaChartThemes();
+}
+
+function themeDeFicheId(fid){
+  // Détermine le thème d'une fiche à partir de son ID (ex: fractions_comprendre → fractions)
+  fid=String(fid||'');
+  if(fid.indexOf('fractions_')===0) return 'fractions';
+  if(fid.indexOf('proportionnalite_')===0) return 'proportionnalite';
+  if(fid.indexOf('calcul_litteral_')===0) return 'calcul_litteral';
+  if(fid.indexOf('fonctions_')===0) return 'fonctions';
+  if(fid.indexOf('geometrie_')===0) return 'geometrie';
+  if(fid.indexOf('stats_')===0) return 'stats';
+  return null;
+}
+
+function renderNaChartThemes(){
+  var container=document.getElementById('na-chart-themes');
+  if(!container) return;
+  if(DATA_EVAL.length===0){
+    container.innerHTML='<div class="global-empty">Aucune donnée de diagnostic disponible pour le moment.</div>';
+    return;
+  }
+  // Calcul par thème
+  var themes=THEMES_CONFIG.map(function(th){
+    var lignes=DATA_EVAL.filter(function(r){return themeDeFicheId(r.fiche_id)===th.id;});
+    if(lignes.length===0){
+      return {th:th,totalNotions:0,acquises:0,lacunes:0,pctAcq:null,nbEleves:0,moyLacunes:null,actif:th.actif};
+    }
+    var totalNotions=lignes.length;
+    var acquises=lignes.filter(function(r){return r.assigne==='non';}).length;
+    var lacunes=totalNotions-acquises;
+    var mapE={};
+    lignes.forEach(function(r){mapE[r.email]=true;});
+    var nbEleves=Object.keys(mapE).length;
+    return {
+      th:th,
+      totalNotions:totalNotions,
+      acquises:acquises,
+      lacunes:lacunes,
+      pctAcq:Math.round(acquises/totalNotions*100),
+      nbEleves:nbEleves,
+      moyLacunes:nbEleves>0?(lacunes/nbEleves):null,
+      actif:th.actif
+    };
+  });
+  // Tri : thèmes avec données d'abord (meilleur % en haut), puis thèmes en attente
+  themes.sort(function(a,b){
+    if(a.pctAcq===null && b.pctAcq===null) return 0;
+    if(a.pctAcq===null) return 1;
+    if(b.pctAcq===null) return -1;
+    return b.pctAcq-a.pctAcq;
+  });
+
+  // Rendu des lignes
+  var rowsHtml='<div class="themes-acq-list">'+themes.map(function(item){
+    if(item.pctAcq===null){
+      // Thème inactif ou sans données
+      var metaText=item.actif?'Aucune donnée pour le moment':'Thème en préparation';
+      return '<div class="theme-acq-row inactif">'
+        +'<div class="theme-acq-label">'
+          +'<div class="theme-acq-icon" style="background:'+item.th.bg+';">'+item.th.icon+'</div>'
+          +'<div class="theme-acq-info">'
+            +'<span class="theme-acq-name">'+esc(item.th.nom)+'</span>'
+            +(item.actif
+              ?'<span class="theme-acq-meta-inactif">'+metaText+'</span>'
+              :'<span class="theme-soon-badge">À venir</span>')
+          +'</div>'
+        +'</div>'
+        +'<div class="theme-acq-track"><div class="theme-acq-fill" style="width:0%;"></div></div>'
+        +'<div class="theme-acq-right"><span class="theme-acq-empty-val">—</span><span class="theme-acq-empty-lbl">'+(item.actif?'En attente':'Indisponible')+'</span></div>'
+        +'</div>';
+    }
+    var fillCls;
+    if(item.pctAcq>=80) fillCls='excellent';
+    else if(item.pctAcq>=60) fillCls='good';
+    else if(item.pctAcq>=40) fillCls='mid';
+    else fillCls='bad';
+    var moyDisplay=item.moyLacunes.toFixed(1).replace('.',',');
+    var lacColorCls=item.moyLacunes<=2?'green':(item.moyLacunes>=6?'red':'');
+    // Texte à l'intérieur ou à l'extérieur selon la largeur
+    var pctHtml;
+    if(item.pctAcq<15){
+      pctHtml='<div class="theme-acq-fill '+fillCls+'" style="width:'+Math.max(4,item.pctAcq)+'%;"></div><span class="theme-acq-pct outside" style="left:calc('+Math.max(4,item.pctAcq)+'% + 10px);">'+item.pctAcq+'%</span>';
+    } else {
+      pctHtml='<div class="theme-acq-fill '+fillCls+'" style="width:'+item.pctAcq+'%;"><span class="theme-acq-pct">'+item.pctAcq+'%</span></div>';
+    }
+    return '<div class="theme-acq-row actif">'
+      +'<div class="theme-acq-label">'
+        +'<div class="theme-acq-icon" style="background:'+item.th.bg+';">'+item.th.icon+'</div>'
+        +'<div class="theme-acq-info">'
+          +'<span class="theme-acq-name">'+esc(item.th.nom)+'</span>'
+          +'<span class="theme-acq-meta">'+item.acquises+' / '+item.totalNotions+' notions · '+item.nbEleves+' élève'+(item.nbEleves>1?'s':'')+'</span>'
+        +'</div>'
+      +'</div>'
+      +'<div class="theme-acq-track">'+pctHtml+'</div>'
+      +'<div class="theme-acq-right">'
+        +'<span class="theme-acq-lacunes '+lacColorCls+'">'+moyDisplay+'</span>'
+        +'<span class="theme-acq-lacunes-lbl">lac./élève</span>'
+      +'</div>'
+      +'</div>';
+  }).join('')+'</div>';
+
+  // Synthèse : meilleur thème vs thème le plus fragile (parmi les thèmes actifs et diagnostiqués)
+  var actifsAvecDonnees=themes.filter(function(t){return t.pctAcq!==null;});
+  var summaryHtml='';
+  if(actifsAvecDonnees.length>=2){
+    var meilleur=actifsAvecDonnees[0];
+    var pire=actifsAvecDonnees[actifsAvecDonnees.length-1];
+    summaryHtml=
+      '<div class="themes-summary">'
+        +'<div class="theme-summary-card best">'
+          +'<div class="theme-summary-title"><span class="theme-summary-icon">✓</span>Thème le mieux maîtrisé</div>'
+          +'<div class="theme-summary-theme"><div class="theme-summary-theme-ico" style="background:'+meilleur.th.bg+';">'+meilleur.th.icon+'</div><div class="theme-summary-theme-name">'+esc(meilleur.th.nom)+'</div></div>'
+          +'<div class="theme-summary-metric"><span class="theme-summary-metric-val good">'+meilleur.pctAcq+'%</span><span class="theme-summary-metric-lbl">de notions acquises</span></div>'
+        +'</div>'
+        +'<div class="theme-summary-card worst">'
+          +'<div class="theme-summary-title"><span class="theme-summary-icon">⚠</span>Thème le plus fragile</div>'
+          +'<div class="theme-summary-theme"><div class="theme-summary-theme-ico" style="background:'+pire.th.bg+';">'+pire.th.icon+'</div><div class="theme-summary-theme-name">'+esc(pire.th.nom)+'</div></div>'
+          +'<div class="theme-summary-metric"><span class="theme-summary-metric-val bad">'+pire.pctAcq+'%</span><span class="theme-summary-metric-lbl">de notions acquises</span></div>'
+        +'</div>'
+      +'</div>';
+  } else if(actifsAvecDonnees.length===1){
+    var seul=actifsAvecDonnees[0];
+    summaryHtml=
+      '<div class="themes-summary">'
+        +'<div class="theme-summary-card best" style="grid-column:1/-1;">'
+          +'<div class="theme-summary-title"><span class="theme-summary-icon">📍</span>Seul thème diagnostiqué à ce jour</div>'
+          +'<div class="theme-summary-theme"><div class="theme-summary-theme-ico" style="background:'+seul.th.bg+';">'+seul.th.icon+'</div><div class="theme-summary-theme-name">'+esc(seul.th.nom)+'</div></div>'
+          +'<div class="theme-summary-metric"><span class="theme-summary-metric-val" style="color:var(--navy);">'+seul.pctAcq+'%</span><span class="theme-summary-metric-lbl">de notions acquises sur ce thème</span></div>'
+          +'<div class="theme-summary-empty" style="margin-top:.5rem;text-align:left;font-size:11px;">La comparaison entre thèmes sera possible dès le déploiement d\'autres évaluations diagnostiques.</div>'
+        +'</div>'
+      +'</div>';
+  }
+
+  container.innerHTML='<div class="themes-acq-container">'+rowsHtml+summaryHtml+'</div>';
+}
+
+function renderNaChartClasses(){
+  var container=document.getElementById('na-chart-classes');
+  if(!container) return;
+  if(DATA_EVAL.length===0){
+    container.innerHTML='<div class="global-empty">Aucune donnée de diagnostic disponible pour le moment.</div>';
+    return;
+  }
+  // Calcul par classe
+  var classes=[];
+  NIVEAUX.forEach(function(niv){
+    niv.classes.forEach(function(cl){
+      var lignes=DATA_EVAL.filter(function(r){return matchClasse(r.classe,cl.id);});
+      if(lignes.length===0){
+        classes.push({niv:niv,cl:cl,totalNotions:0,acquises:0,lacunes:0,pctAcq:null,nbEleves:0,moyLacunes:null});
+        return;
+      }
+      var totalNotions=lignes.length;
+      var acquises=lignes.filter(function(r){return r.assigne==='non';}).length;
+      var lacunes=totalNotions-acquises;
+      var mapE={};
+      lignes.forEach(function(r){mapE[r.email]=true;});
+      var nbEleves=Object.keys(mapE).length;
+      classes.push({niv:niv,cl:cl,totalNotions:totalNotions,acquises:acquises,lacunes:lacunes,pctAcq:Math.round(acquises/totalNotions*100),nbEleves:nbEleves,moyLacunes:nbEleves>0?(lacunes/nbEleves):null});
+    });
+  });
+  classes.sort(function(a,b){
+    if(a.pctAcq===null && b.pctAcq===null) return 0;
+    if(a.pctAcq===null) return 1;
+    if(b.pctAcq===null) return -1;
+    return b.pctAcq-a.pctAcq;
+  });
+
+  // En-tête du tableau (colonnes)
+  var headerHtml=
+    '<div class="acq-table-header">'
+      +'<div class="acq-th">Classe</div>'
+      +'<div class="acq-th">Taux d\'acquisition</div>'
+      +'<div class="acq-th acq-th-right">Lacunes / élève</div>'
+    +'</div>';
+
+  // Compteur pour le classement (uniquement sur les classes diagnostiquées)
+  var rankCount=0;
+  var rowsHtml='<div class="acq-classes-wrap">'+classes.map(function(item){
+    var tagCls=item.niv.id==='CAP'?'cap':'bp';
+    var tagLabel=item.niv.id==='CAP'?'CAP':'BP';
+    if(item.pctAcq===null){
+      return '<div class="acq-row en-attente">'
+        +'<div class="acq-row-label">'
+          +'<span class="acq-row-rank">—</span>'
+          +'<span class="acq-row-tag '+tagCls+'">'+tagLabel+'</span>'
+          +'<span class="acq-row-name">'+esc(item.cl.nom)+'</span>'
+        +'</div>'
+        +'<div class="acq-row-track"><div class="acq-row-fill" style="width:0%;"></div></div>'
+        +'<div class="acq-row-right">'
+          +'<span class="acq-row-empty-val">—</span>'
+          +'<span class="acq-row-empty-msg">En attente</span>'
+        +'</div>'
+        +'</div>';
+    }
+    rankCount++;
+    var rankCls='';
+    if(rankCount===1) rankCls=' top-1';
+    else if(rankCount===2) rankCls=' top-2';
+    else if(rankCount===3) rankCls=' top-3';
+
+    var fillCls;
+    if(item.pctAcq>=80) fillCls='excellent';
+    else if(item.pctAcq>=60) fillCls='good';
+    else if(item.pctAcq>=40) fillCls='mid';
+    else fillCls='bad';
+    var moyDisplay=item.moyLacunes.toFixed(1).replace('.',',');
+    var lacColorCls=item.moyLacunes<=2?'green':(item.moyLacunes>=6?'red':'');
+    // Si le pourcentage est faible (<15%), on affiche le texte à l'extérieur de la barre
+    var pctDisplay;
+    if(item.pctAcq<15){
+      pctDisplay='<div class="acq-row-fill '+fillCls+'" style="width:'+Math.max(4,item.pctAcq)+'%;"></div><span class="acq-row-pct outside" style="position:absolute;left:calc('+Math.max(4,item.pctAcq)+'% + 10px);top:50%;transform:translateY(-50%);color:var(--text);text-shadow:none;">'+item.pctAcq+'%</span>';
+    } else {
+      pctDisplay='<div class="acq-row-fill '+fillCls+'" style="width:'+item.pctAcq+'%;"><span class="acq-row-pct">'+item.pctAcq+'%</span></div>';
+    }
+    return '<div class="acq-row">'
+      +'<div class="acq-row-label">'
+        +'<span class="acq-row-rank'+rankCls+'">'+rankCount+'</span>'
+        +'<span class="acq-row-tag '+tagCls+'">'+tagLabel+'</span>'
+        +'<span class="acq-row-name">'+esc(item.cl.nom)+'</span>'
+      +'</div>'
+      +'<div class="acq-row-track">'+pctDisplay+'</div>'
+      +'<div class="acq-row-right">'
+        +'<span class="acq-row-lacunes '+lacColorCls+'">'+moyDisplay+'</span>'
+        +'<span class="acq-row-lacunes-lbl">lac./élève</span>'
+        +'<span class="acq-row-lacunes-sub">sur '+item.nbEleves+' élève'+(item.nbEleves>1?'s':'')+'</span>'
+      +'</div>'
+      +'</div>';
+  }).join('')+'</div>';
+
+  // Bloc légende + bloc synthèse (bas de carte, en 2 colonnes)
+  var legendHtml=
+    '<div class="acq-legend-block">'
+      +'<div class="acq-legend-title">Niveaux d\'acquisition</div>'
+      +'<div class="acq-legend-list">'
+        +'<div class="acq-legend-item"><span class="acq-legend-dot excellent"></span><span class="acq-legend-label">Excellent</span><span class="acq-legend-pct">≥ 80%</span></div>'
+        +'<div class="acq-legend-item"><span class="acq-legend-dot good"></span><span class="acq-legend-label">Satisfaisant</span><span class="acq-legend-pct">60-79%</span></div>'
+        +'<div class="acq-legend-item"><span class="acq-legend-dot mid"></span><span class="acq-legend-label">À surveiller</span><span class="acq-legend-pct">40-59%</span></div>'
+        +'<div class="acq-legend-item"><span class="acq-legend-dot bad"></span><span class="acq-legend-label">Critique</span><span class="acq-legend-pct">&lt; 40%</span></div>'
+      +'</div>'
+    +'</div>';
+
+  // Bloc synthèse : écart entre meilleure et plus fragile
+  var diagnostiquees=classes.filter(function(c){return c.pctAcq!==null;});
+  var synthHtml='';
+  if(diagnostiquees.length>=2){
+    var meilleure=diagnostiquees[0];
+    var plusFragile=diagnostiquees[diagnostiquees.length-1];
+    var diff=meilleure.pctAcq-plusFragile.pctAcq;
+    var cls='';
+    var verdict;
+    if(diff>=40){ cls='critical'; verdict='Écart important'; }
+    else if(diff>=20){ cls='notable'; verdict='Écart notable'; }
+    else { verdict='Écart modéré'; }
+    synthHtml=
+      '<div class="acq-footer-block">'
+        +'<div class="acq-footer-title">Écart de performance</div>'
+        +'<div class="acq-footer-metric">'
+          +'<span class="acq-footer-metric-val '+cls+'">'+diff+' pts</span>'
+          +'<span class="acq-footer-metric-lbl">· '+verdict+'</span>'
+        +'</div>'
+        +'<div class="acq-footer-content">Entre <strong>'+esc(meilleure.cl.nom)+'</strong> (meilleur taux) et <strong>'+esc(plusFragile.cl.nom)+'</strong> (le plus faible).</div>'
+      +'</div>';
+  } else if(diagnostiquees.length===1){
+    synthHtml=
+      '<div class="acq-footer-block">'
+        +'<div class="acq-footer-title">Synthèse</div>'
+        +'<div class="acq-footer-content">Seule <strong>'+esc(diagnostiquees[0].cl.nom)+'</strong> est diagnostiquée pour le moment. La comparaison inter-classes sera possible avec davantage de données.</div>'
+      +'</div>';
+  } else {
+    synthHtml=
+      '<div class="acq-footer-block">'
+        +'<div class="acq-footer-title">Synthèse</div>'
+        +'<div class="acq-footer-content">Aucune classe diagnostiquée pour le moment.</div>'
+      +'</div>';
+  }
+
+  var bottomHtml='<div class="acq-bottom-row">'+legendHtml+synthHtml+'</div>';
+
+  container.innerHTML='<div class="acq-container">'+headerHtml+rowsHtml+bottomHtml+'</div>';
+}
+
+function renderNaChartFiliere(){
+  var container=document.getElementById('na-chart-filiere');
+  if(!container) return;
+  var eleves=elevesUniques();
+  if(eleves.length===0 || DATA_EVAL.length===0){
+    container.innerHTML='<div class="global-empty">Aucune donnée de diagnostic disponible pour le moment.</div>';
+    return;
+  }
+  // Séparer par filière
+  var capEleves={}, bpEleves={};
+  DATA_EVAL.forEach(function(r){
+    var fil=getFiliereDeClasse(r.classe);
+    if(fil==='CAP') capEleves[r.email]=true;
+    else if(fil==='BACPRO') bpEleves[r.email]=true;
+  });
+  // Calculs par filière
+  function calculsFiliere(filId){
+    var lignes=DATA_EVAL.filter(function(r){return getFiliereDeClasse(r.classe)===filId;});
+    if(lignes.length===0) return null;
+    var totalNotions=lignes.length;
+    var acquises=lignes.filter(function(r){return r.assigne==='non';}).length;
+    var lacunes=totalNotions-acquises;
+    var pctAcq=totalNotions>0?Math.round(acquises/totalNotions*100):0;
+    var mapE={};
+    lignes.forEach(function(r){mapE[r.email]=true;});
+    var nbEleves=Object.keys(mapE).length;
+    var moyLacunes=nbEleves>0?(lacunes/nbEleves):0;
+    return {
+      totalNotions:totalNotions,
+      acquises:acquises,
+      lacunes:lacunes,
+      pctAcq:pctAcq,
+      nbEleves:nbEleves,
+      moyLacunes:moyLacunes
+    };
+  }
+  var dataCap=calculsFiliere('CAP');
+  var dataBp=calculsFiliere('BACPRO');
+
+  // Rendu d'un bloc
+  function renderBloc(data,filId){
+    var tagCls=filId==='CAP'?'cap':'bp';
+    var tagLabel=filId==='CAP'?'CAP':'Bac Pro';
+    var titleLabel=filId==='CAP'?'Filière professionnelle CAP':'Filière professionnelle Bac Pro';
+    if(!data || data.nbEleves===0){
+      return '<div class="filiere-block '+tagCls+'">'
+        +'<div class="filiere-identity '+tagCls+'">'
+          +'<div class="filiere-identity-left">'
+            +'<span class="filiere-badge '+tagCls+'">'+tagLabel+'</span>'
+            +'<span class="filiere-identity-title">'+titleLabel+'</span>'
+          +'</div>'
+        +'</div>'
+        +'<div class="filiere-block-body-wrap"><div class="filiere-empty-block">Aucun élève diagnostiqué dans cette filière pour le moment.</div></div>'
+        +'</div>';
+    }
+    var classeJauge;
+    if(data.pctAcq>=80) classeJauge=tagCls+'-excellent';
+    else if(data.pctAcq>=60) classeJauge=tagCls+'-good';
+    else if(data.pctAcq>=40) classeJauge=tagCls+'-mid';
+    else classeJauge=tagCls+'-bad';
+    var valCls=data.pctAcq>=60?tagCls:(data.pctAcq>=40?'mid':'bad');
+    var circ=2*Math.PI*54;
+    var offset=circ-(data.pctAcq/100)*circ;
+    return '<div class="filiere-block '+tagCls+'">'
+      +'<div class="filiere-identity '+tagCls+'">'
+        +'<div class="filiere-identity-left">'
+          +'<span class="filiere-badge '+tagCls+'">'+tagLabel+'</span>'
+          +'<span class="filiere-identity-title">'+titleLabel+'</span>'
+        +'</div>'
+        +'<div class="filiere-identity-right"><span class="filiere-identity-right-num">'+data.nbEleves+'</span> <span>élève'+(data.nbEleves>1?'s':'')+'</span></div>'
+      +'</div>'
+      +'<div class="filiere-block-body-wrap">'
+        +'<div class="filiere-body">'
+          +'<div class="filiere-gauge">'
+            +'<svg viewBox="0 0 130 130" width="130" height="130">'
+              +'<circle class="filiere-gauge-bg" cx="65" cy="65" r="54"/>'
+              +'<circle class="filiere-gauge-fill '+classeJauge+'" cx="65" cy="65" r="54" stroke-dasharray="'+circ.toFixed(2)+'" stroke-dashoffset="'+offset.toFixed(2)+'"/>'
+            +'</svg>'
+            +'<div class="filiere-gauge-inner">'
+              +'<div class="filiere-gauge-val '+valCls+'">'+data.pctAcq+'%</div>'
+              +'<div class="filiere-gauge-lbl">Acquis</div>'
+            +'</div>'
+          +'</div>'
+          +'<div class="filiere-stats">'
+            +'<div class="filiere-stat-row">'
+              +'<span class="filiere-stat-row-lbl">Notions acquises</span>'
+              +'<span class="filiere-stat-row-val">'+data.acquises+' / '+data.totalNotions+'</span>'
+            +'</div>'
+            +'<div class="filiere-stat-row">'
+              +'<span class="filiere-stat-row-lbl">Lacunes moy. / élève</span>'
+              +'<span class="filiere-stat-row-val amber">'+data.moyLacunes.toFixed(1).replace('.',',')+'</span>'
+              +'<span class="filiere-stat-row-sub">soit '+data.lacunes+' lacunes au total</span>'
+            +'</div>'
+          +'</div>'
+        +'</div>'
+      +'</div>'
+    +'</div>';
+  }
+
+  // Footer interprétatif (quand les 2 filières ont des données)
+  var footerHtml='';
+  if(dataCap && dataBp && dataCap.nbEleves>0 && dataBp.nbEleves>0){
+    var diff=Math.abs(dataCap.pctAcq-dataBp.pctAcq);
+    var meilleure=dataCap.pctAcq>dataBp.pctAcq?'CAP':'Bac Pro';
+    var cls='';
+    var msg;
+    if(diff<5){
+      msg='Les deux filières présentent un <strong>taux d\'acquisition très proche</strong> ('+diff+' points d\'écart).';
+    } else if(diff<15){
+      msg='La filière <strong>'+meilleure+'</strong> devance l\'autre de <strong>'+diff+' points</strong> sur le taux d\'acquisition.';
+    } else if(diff<30){
+      cls='notable';
+      msg='Écart notable : la filière <strong>'+meilleure+'</strong> maîtrise <strong>'+diff+' points de plus</strong> de notions que l\'autre filière.';
+    } else {
+      cls='critical';
+      msg='Écart important : la filière <strong>'+meilleure+'</strong> devance l\'autre de <strong>'+diff+' points</strong>. Une remédiation ciblée est à envisager.';
+    }
+    footerHtml='<div class="filiere-footer '+cls+'">'+msg+'</div>';
+  } else if((!dataCap || dataCap.nbEleves===0) && dataBp && dataBp.nbEleves>0){
+    footerHtml='<div class="filiere-footer">Seule la filière <strong>Bac Pro</strong> est diagnostiquée pour le moment. La comparaison sera possible dès les premières évaluations CAP.</div>';
+  } else if(dataCap && dataCap.nbEleves>0 && (!dataBp || dataBp.nbEleves===0)){
+    footerHtml='<div class="filiere-footer">Seule la filière <strong>CAP</strong> est diagnostiquée pour le moment. La comparaison sera possible dès les premières évaluations Bac Pro.</div>';
+  }
+
+  container.innerHTML=
+    '<div style="width:100%;">'
+      +'<div class="filiere-wrap">'
+        +renderBloc(dataCap,'CAP')
+        +renderBloc(dataBp,'BACPRO')
+      +'</div>'
+      +footerHtml
+    +'</div>';
+}
+
+function renderNaChartGlobal(){
+  var container=document.getElementById('na-chart-global');
+  if(!container) return;
+  var eleves=elevesUniques();
+  if(eleves.length===0 || DATA_EVAL.length===0){
+    container.innerHTML='<div class="global-empty">Aucune donnée de diagnostic disponible pour le moment.</div>';
+    return;
+  }
+  var totalNotions=DATA_EVAL.length;
+  var notionsAcquises=DATA_EVAL.filter(function(r){return r.assigne==='non';}).length;
+  var pctAcquises=totalNotions>0?Math.round(notionsAcquises/totalNotions*100):0;
+  var nbLacunesTotales=totalNotions-notionsAcquises;
+  var moyenneLacunes=eleves.length>0?(nbLacunesTotales/eleves.length):0;
+  var classeJauge;
+  if(pctAcquises>=80) classeJauge='excellent';
+  else if(pctAcquises>=60) classeJauge='good';
+  else if(pctAcquises>=40) classeJauge='mid';
+  else classeJauge='bad';
+  var circ=2*Math.PI*90;
+  var offset=circ-(pctAcquises/100)*circ;
+  // Verdict + icône
+  var verdictIco, verdictTitre, verdictMsg;
+  if(pctAcquises>=80){
+    verdictIco='✓';
+    verdictTitre='Excellent taux d\'acquisition';
+    verdictMsg='Les élèves de l\'établissement maîtrisent la grande majorité des notions évaluées.';
+  } else if(pctAcquises>=60){
+    verdictIco='i';
+    verdictTitre='Taux d\'acquisition satisfaisant';
+    verdictMsg='La remédiation permettra de consolider les notions encore fragiles.';
+  } else if(pctAcquises>=40){
+    verdictIco='!';
+    verdictTitre='Taux d\'acquisition mitigé';
+    verdictMsg='Un effort de remédiation structuré sera nécessaire pour combler les lacunes identifiées.';
+  } else {
+    verdictIco='⚠';
+    verdictTitre='Taux d\'acquisition préoccupant';
+    verdictMsg='Une stratégie de remédiation intensive est à mettre en place dès que possible.';
+  }
+
+  container.innerHTML=
+    '<div class="global-container">'
+      +'<div class="global-main">'
+        +'<div class="global-gauge">'
+          +'<svg viewBox="0 0 220 220" width="220" height="220">'
+            +'<circle class="global-gauge-bg" cx="110" cy="110" r="90"/>'
+            +'<circle class="global-gauge-fill '+classeJauge+'" cx="110" cy="110" r="90" stroke-dasharray="'+circ.toFixed(2)+'" stroke-dashoffset="'+offset.toFixed(2)+'"/>'
+          +'</svg>'
+          +'<div class="global-gauge-inner">'
+            +'<div class="global-gauge-val '+classeJauge+'">'+pctAcquises+'%</div>'
+            +'<div class="global-gauge-lbl">Notions acquises</div>'
+            +'<div class="global-gauge-sub">'+notionsAcquises+' / '+totalNotions+'</div>'
+          +'</div>'
+        +'</div>'
+        +'<div class="global-stats">'
+          +'<div class="global-stat-card">'
+            +'<div class="global-stat-ico eleves"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>'
+            +'<div class="global-stat-body">'
+              +'<div class="global-stat-val">'+eleves.length+'</div>'
+              +'<div class="global-stat-lbl">Élèves diagnostiqués</div>'
+              +'<div class="global-stat-detail">sur '+totalNotions+' notions évaluées au total</div>'
+            +'</div>'
+          +'</div>'
+          +'<div class="global-stat-card">'
+            +'<div class="global-stat-ico lacunes"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>'
+            +'<div class="global-stat-body">'
+              +'<div class="global-stat-val amber">'+moyenneLacunes.toFixed(1).replace('.',',')+'</div>'
+              +'<div class="global-stat-lbl">Lacunes par élève (moyenne)</div>'
+              +'<div class="global-stat-detail">soit '+nbLacunesTotales+' lacunes identifiées au total</div>'
+            +'</div>'
+          +'</div>'
+        +'</div>'
+      +'</div>'
+      +'<div class="global-verdict '+classeJauge+'">'
+        +'<div class="global-verdict-ico">'+verdictIco+'</div>'
+        +'<div class="global-verdict-body"><strong>'+verdictTitre+'.</strong> '+verdictMsg+'</div>'
+      +'</div>'
+    +'</div>';
+}
+
+function ouvrirVueLacunesComblees(){
+  alert('Vue "Lacunes comblées" — Graphiques à venir.\n\nCette vue affichera prochainement le détail des lacunes comblées grâce à la remédiation, la vitesse de progression par classe, et les élèves les plus engagés.');
 }
 
 function ouvrirVueDiagnostiques(){
@@ -1633,12 +2569,482 @@ function ouvrirVueDiagnostiques(){
     {label:'Accueil',onclick:'navVers(\'accueil\')'},
     {label:'Élèves diagnostiqués',current:true}
   ]);
-  renderChartFiliere();
-  renderChartLacunesParClasse();
-  renderChartComparaisonFiliere();
-  renderChartPodium();
-  renderChartDistribEtablissement();
-  renderChartDistribClasses();
+  // Réinitialise la sélection sur le mois courant (null = temps réel)
+  moisSelectionne=null;
+  // Afficher immédiatement l'écran de chargement
+  afficherLoaderDiag();
+  chargerSnapshotsEtRender();
+}
+
+function afficherLoaderDiag(){
+  // Squelette du sélecteur pendant le chargement
+  var wrapSel=document.getElementById('mois-selector-wrap');
+  if(wrapSel){ wrapSel.className='mois-selector-skeleton'; wrapSel.innerHTML=''; }
+  var wrapMeta=document.getElementById('mois-meta-wrap');
+  if(wrapMeta) wrapMeta.innerHTML='';
+  // Loader dans chaque zone de graphique encore présente
+  var loaderHtml=
+    '<div class="diag-loader-overlay">'
+      +'<div class="diag-loader-spinner"></div>'
+      +'<div class="diag-loader-title">Chargement des données<span class="diag-loader-dots"></span></div>'
+      +'<div class="diag-loader-sub">Récupération de l\'historique en cours</div>'
+    +'</div>';
+  ['chart-filiere','vol-chart-classes','dys-chart'].forEach(function(id){
+    var el=document.getElementById(id);
+    if(el) el.innerHTML=loaderHtml;
+  });
+  // Reset des KPIs volumétrie en attendant le chargement
+  ['vol-total','vol-cap','vol-bp'].forEach(function(id){
+    var el=document.getElementById(id);
+    if(el) el.textContent='—';
+  });
+  ['vol-total-sub','vol-cap-sub','vol-bp-sub'].forEach(function(id){
+    var el=document.getElementById(id);
+    if(el) el.textContent='—';
+  });
+}
+
+function chargerSnapshotsEtRender(){
+  // Charge les snapshots en arrière-plan puis rend tout
+  fetch(SCRIPT_URL+'?type=snapshots&etablissement='+encodeURIComponent(ETABLISSEMENT)+'&t='+Date.now())
+    .then(function(r){return r.json();})
+    .then(function(j){
+      SNAPSHOTS_HISTORIQUE=(j.status==='ok')?(j.data||[]):[];
+      renderVueDiagnostiquesComplete();
+    })
+    .catch(function(){
+      SNAPSHOTS_HISTORIQUE=[];
+      renderVueDiagnostiquesComplete();
+    });
+}
+
+function renderVueDiagnostiquesComplete(){
+  renderMoisSelector();
+  renderMoisMetaBar();
+  // Données à utiliser : si mois sélectionné, on prend le snapshot, sinon données temps réel
+  if(moisSelectionne===null || moisSelectionne===COURANT_KEY){
+    // Mode temps réel
+    renderVolKpis();
+    renderChartFiliere();
+    renderVolChartClasses();
+    renderDysChart();
+  } else {
+    // Mode archive : on rend depuis le snapshot
+    var snap=SNAPSHOTS_HISTORIQUE.find(function(s){return getMoisKey(s.mois)===moisSelectionne;});
+    if(snap){
+      renderVolKpisDepuisSnapshot(snap);
+      renderChartsDepuisSnapshot(snap);
+      renderVolChartClassesDepuisSnapshot(snap);
+      renderDysChartIndisponible();
+    }
+  }
+}
+
+function renderDysChartIndisponible(){
+  // En mode archive, le DYS n'est pas snapshoté (pas encore). On affiche un message neutre.
+  var container=document.getElementById('dys-chart');
+  if(!container) return;
+  container.innerHTML=
+    '<div class="dys-empty-big">'
+      +'<div class="dys-empty-big-ico">⏱</div>'
+      +'<div>Les données DYS ne sont pas encore incluses dans les archives mensuelles.<br>Elles sont uniquement disponibles en temps réel (mois courant).</div>'
+    +'</div>';
+}
+
+function renderDysChart(){
+  var container=document.getElementById('dys-chart');
+  if(!container) return;
+  var eleves=elevesUniques();
+  if(eleves.length===0){
+    container.innerHTML=
+      '<div class="dys-empty-big">'
+        +'<div class="dys-empty-big-ico">—</div>'
+        +'<div>Aucun élève diagnostiqué pour le moment.</div>'
+      +'</div>';
+    return;
+  }
+  // Détecter les élèves DYS
+  var elevesDys=eleves.filter(function(e){return estDys(e.email);});
+  var totalDys=elevesDys.length;
+  var pctDys=eleves.length>0?Math.round(totalDys/eleves.length*100):0;
+
+  // Split CAP / Bac Pro
+  var dysCap=0, dysBp=0;
+  var totalCap=0, totalBp=0;
+  eleves.forEach(function(e){
+    var fil=getFiliereDeClasse(e.classe);
+    var dys=estDys(e.email);
+    if(fil==='CAP'){ totalCap++; if(dys) dysCap++; }
+    else if(fil==='BACPRO'){ totalBp++; if(dys) dysBp++; }
+  });
+  var pctDysCap=totalCap>0?Math.round(dysCap/totalCap*100):0;
+  var pctDysBp=totalBp>0?Math.round(dysBp/totalBp*100):0;
+
+  // Hero
+  var heroHtml;
+  if(totalDys===0){
+    heroHtml=
+      '<div class="dys-hero">'
+        +'<div class="dys-hero-left">'
+          +'<div class="dys-hero-ico"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>'
+          +'<div class="dys-hero-num-block">'
+            +'<span class="dys-hero-num">0</span>'
+            +'<span class="dys-hero-lbl">Élève en mode DYS</span>'
+          +'</div>'
+        +'</div>'
+        +'<div class="dys-hero-right">'
+          +'<div class="dys-hero-title">Aucun élève en mode adapté</div>'
+          +'<div class="dys-hero-desc">Aucun élève diagnostiqué ne bénéficie actuellement du mode DYS. Ce mode peut être activé depuis la fiche élève pour adapter l\'affichage (police OpenDyslexic, espacements augmentés).</div>'
+        +'</div>'
+      +'</div>';
+  } else {
+    heroHtml=
+      '<div class="dys-hero">'
+        +'<div class="dys-hero-left">'
+          +'<div class="dys-hero-ico"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>'
+          +'<div class="dys-hero-num-block">'
+            +'<span class="dys-hero-num">'+totalDys+'</span>'
+            +'<span class="dys-hero-lbl">Élève'+(totalDys>1?'s':'')+' en mode DYS</span>'
+          +'</div>'
+        +'</div>'
+        +'<div class="dys-hero-right">'
+          +'<div class="dys-hero-title">Mode adapté activé pour '+totalDys+' élève'+(totalDys>1?'s':'')+'</div>'
+          +'<div class="dys-hero-desc">Soit <strong>'+pctDys+'%</strong> des élèves diagnostiqués dans l\'établissement. Ces élèves bénéficient d\'une police adaptée (OpenDyslexic), d\'espacements augmentés et de feedbacks prolongés pour faciliter la lecture.</div>'
+        +'</div>'
+      +'</div>';
+  }
+
+  // Split CAP / Bac Pro (2 cartes)
+  var splitHtml=
+    '<div class="dys-split">'
+      +'<div class="dys-split-card cap">'
+        +'<div class="dys-split-header"><span class="dys-split-tag cap">CAP</span><span class="dys-split-label">Filière CAP</span></div>'
+        +'<div class="dys-split-body">'
+          +'<span class="dys-split-num '+(dysCap>0?'cap':'zero')+'">'+dysCap+'</span>'
+          +'<span class="dys-split-sub">'+(totalCap>0?'sur <strong>'+totalCap+'</strong> élève'+(totalCap>1?'s':'')+' CAP · '+pctDysCap+'%':'aucun élève CAP diagnostiqué')+'</span>'
+        +'</div>'
+      +'</div>'
+      +'<div class="dys-split-card bp">'
+        +'<div class="dys-split-header"><span class="dys-split-tag bp">Bac Pro</span><span class="dys-split-label">Filière Bac Pro</span></div>'
+        +'<div class="dys-split-body">'
+          +'<span class="dys-split-num '+(dysBp>0?'bp':'zero')+'">'+dysBp+'</span>'
+          +'<span class="dys-split-sub">'+(totalBp>0?'sur <strong>'+totalBp+'</strong> élève'+(totalBp>1?'s':'')+' Bac Pro · '+pctDysBp+'%':'aucun élève Bac Pro diagnostiqué')+'</span>'
+        +'</div>'
+      +'</div>'
+    +'</div>';
+
+  // Détail par classe (uniquement pour les classes avec au moins 1 élève DYS)
+  var classesDys=[];
+  NIVEAUX.forEach(function(niv){
+    niv.classes.forEach(function(cl){
+      var elevesClasse=eleves.filter(function(e){return matchClasse(e.classe,cl.id);});
+      var dysClasse=elevesClasse.filter(function(e){return estDys(e.email);});
+      if(dysClasse.length>0){
+        classesDys.push({
+          niv:niv, cl:cl,
+          count:dysClasse.length,
+          total:elevesClasse.length
+        });
+      }
+    });
+  });
+  classesDys.sort(function(a,b){return b.count-a.count;});
+
+  var classesHtml='';
+  if(classesDys.length>0){
+    var maxDys=Math.max.apply(null,classesDys.map(function(c){return c.count;}).concat([1]));
+    classesHtml=
+      '<div class="dys-classes-title">Détail par classe concernée</div>'
+      +'<div class="dys-classes-list">'+classesDys.map(function(item){
+        var tagCls=item.niv.id==='CAP'?'cap':'bp';
+        var tagLabel=item.niv.id==='CAP'?'CAP':'BP';
+        var pctWidth=Math.max(6,Math.round(item.count/maxDys*100));
+        var countHtml;
+        if(pctWidth<15){
+          countHtml='<div class="dys-class-fill" style="width:'+pctWidth+'%;"></div><span class="dys-class-count outside" style="left:calc('+pctWidth+'% + 10px);">'+item.count+'</span>';
+        } else {
+          countHtml='<div class="dys-class-fill" style="width:'+pctWidth+'%;"><span class="dys-class-count">'+item.count+'</span></div>';
+        }
+        return '<div class="dys-class-row">'
+          +'<div class="dys-class-label"><span class="dys-class-tag '+tagCls+'">'+tagLabel+'</span><span class="dys-class-name">'+esc(item.cl.nom)+'</span></div>'
+          +'<div class="dys-class-track">'+countHtml+'</div>'
+          +'<div class="dys-class-right"><span class="dys-class-total">'+item.count+'/'+item.total+'</span><span class="dys-class-total-lbl">dys · total</span></div>'
+          +'</div>';
+      }).join('')+'</div>';
+  }
+
+  container.innerHTML='<div class="dys-container">'+heroHtml+splitHtml+classesHtml+'</div>';
+}
+
+function renderVolKpis(){
+  var eleves=elevesUniques();
+  var total=eleves.length;
+  var nCap=0, nBp=0;
+  eleves.forEach(function(e){
+    var fil=getFiliereDeClasse(e.classe);
+    if(fil==='CAP') nCap++;
+    else if(fil==='BACPRO') nBp++;
+  });
+  var pctCap=total>0?Math.round(nCap/total*100):0;
+  var pctBp=total>0?Math.round(nBp/total*100):0;
+
+  // DOM safety : on ne met à jour que si les éléments existent
+  var elTotal=document.getElementById('vol-total');
+  if(elTotal) elTotal.textContent=total;
+  var elTotalSub=document.getElementById('vol-total-sub');
+  if(elTotalSub) elTotalSub.textContent='élève'+(total>1?'s':'')+' évalué'+(total>1?'s':'');
+  var elCap=document.getElementById('vol-cap');
+  if(elCap) elCap.textContent=nCap;
+  var elCapSub=document.getElementById('vol-cap-sub');
+  if(elCapSub) elCapSub.textContent=pctCap+'% du total';
+  var elBp=document.getElementById('vol-bp');
+  if(elBp) elBp.textContent=nBp;
+  var elBpSub=document.getElementById('vol-bp-sub');
+  if(elBpSub) elBpSub.textContent=pctBp+'% du total';
+}
+
+function renderVolKpisDepuisSnapshot(snap){
+  var nCap=snap.nb_cap||0;
+  var nBp=snap.nb_bacpro||0;
+  var total=nCap+nBp;
+  var pctCap=total>0?Math.round(nCap/total*100):0;
+  var pctBp=total>0?Math.round(nBp/total*100):0;
+  var elTotal=document.getElementById('vol-total');
+  if(elTotal) elTotal.textContent=total;
+  var elTotalSub=document.getElementById('vol-total-sub');
+  if(elTotalSub) elTotalSub.textContent='élève'+(total>1?'s':'')+' évalué'+(total>1?'s':'');
+  var elCap=document.getElementById('vol-cap');
+  if(elCap) elCap.textContent=nCap;
+  var elCapSub=document.getElementById('vol-cap-sub');
+  if(elCapSub) elCapSub.textContent=pctCap+'% du total';
+  var elBp=document.getElementById('vol-bp');
+  if(elBp) elBp.textContent=nBp;
+  var elBpSub=document.getElementById('vol-bp-sub');
+  if(elBpSub) elBpSub.textContent=pctBp+'% du total';
+}
+
+function renderVolChartClasses(){
+  var container=document.getElementById('vol-chart-classes');
+  if(!container) return;
+  var eleves=elevesUniques();
+  if(eleves.length===0){
+    container.innerHTML='<div class="global-empty">Aucun élève diagnostiqué pour le moment.</div>';
+    return;
+  }
+  // Compter élèves uniques par classe
+  var classes=[];
+  NIVEAUX.forEach(function(niv){
+    niv.classes.forEach(function(cl){
+      var mapE={};
+      DATA_EVAL.forEach(function(r){if(matchClasse(r.classe,cl.id)) mapE[r.email]=true;});
+      classes.push({niv:niv,cl:cl,count:Object.keys(mapE).length});
+    });
+  });
+  // Tri : classes avec des élèves en premier (décroissant), puis classes vides
+  classes.sort(function(a,b){return b.count-a.count;});
+  var maxCount=Math.max.apply(null,classes.map(function(c){return c.count;}).concat([1]));
+  var totalEleves=classes.reduce(function(s,c){return s+c.count;},0);
+  var classesActives=classes.filter(function(c){return c.count>0;}).length;
+  var classesAttente=classes.length-classesActives;
+
+  var rowsHtml='<div class="vol-classes-list">'+classes.map(function(item){
+    var tagCls=item.niv.id==='CAP'?'cap':'bp';
+    var tagLabel=item.niv.id==='CAP'?'CAP':'BP';
+    if(item.count===0){
+      return '<div class="vol-class-row zero">'
+        +'<div class="vol-class-label"><span class="vol-class-tag '+tagCls+'">'+tagLabel+'</span><span class="vol-class-name">'+esc(item.cl.nom)+'</span></div>'
+        +'<div class="vol-class-track"><div class="vol-class-fill" style="width:0%;"></div></div>'
+        +'<div class="vol-class-right"><span class="vol-class-empty-val">—</span><span class="vol-class-empty">En attente</span></div>'
+        +'</div>';
+    }
+    var pctWidth=Math.max(4,Math.round(item.count/maxCount*100));
+    // Si la barre est trop courte pour contenir le nombre, on affiche à l'extérieur
+    var countHtml;
+    if(pctWidth<15){
+      countHtml='<div class="vol-class-fill '+tagCls+'" style="width:'+pctWidth+'%;"></div><span class="vol-class-count outside" style="left:calc('+pctWidth+'% + 10px);">'+item.count+'</span>';
+    } else {
+      countHtml='<div class="vol-class-fill '+tagCls+'" style="width:'+pctWidth+'%;"><span class="vol-class-count">'+item.count+'</span></div>';
+    }
+    return '<div class="vol-class-row">'
+      +'<div class="vol-class-label"><span class="vol-class-tag '+tagCls+'">'+tagLabel+'</span><span class="vol-class-name">'+esc(item.cl.nom)+'</span></div>'
+      +'<div class="vol-class-track">'+countHtml+'</div>'
+      +'<div class="vol-class-right"><span class="vol-class-total">'+item.count+'</span><span class="vol-class-total-lbl">élève'+(item.count>1?'s':'')+'</span></div>'
+      +'</div>';
+  }).join('')+'</div>';
+
+  // Footer de synthèse (répartition des classes)
+  var footerHtml=
+    '<div class="vol-footer">'
+      +'<div class="vol-footer-stat">'
+        +'<span class="vol-footer-stat-lbl">Classes actives</span>'
+        +'<span class="vol-footer-stat-val"><strong>'+classesActives+'</strong> / '+classes.length+' classes ont au moins un élève diagnostiqué</span>'
+      +'</div>'
+      +'<div class="vol-footer-stat">'
+        +'<span class="vol-footer-stat-lbl">Classes en attente</span>'
+        +'<span class="vol-footer-stat-val"><strong>'+classesAttente+'</strong> classe'+(classesAttente>1?'s':'')+' sans diagnostic pour le moment</span>'
+      +'</div>'
+    +'</div>';
+
+  container.innerHTML='<div class="vol-classes-container">'+rowsHtml+footerHtml+'</div>';
+}
+
+function renderVolChartClassesDepuisSnapshot(snap){
+  var container=document.getElementById('vol-chart-classes');
+  if(!container) return;
+  var lacunesParClasse=snap.lacunes_par_classe||[];
+  if(lacunesParClasse.length===0){
+    container.innerHTML='<div class="global-empty">Aucune donnée pour ce mois.</div>';
+    return;
+  }
+  var classes=lacunesParClasse.map(function(c){
+    // Trouver la structure NIVEAUX correspondante pour récupérer le nom d'affichage
+    return {
+      niv:{id:c.niveau},
+      cl:{id:c.classe_id,nom:c.classe_nom},
+      count:c.eleves||0
+    };
+  });
+  classes.sort(function(a,b){return b.count-a.count;});
+  var maxCount=Math.max.apply(null,classes.map(function(c){return c.count;}).concat([1]));
+  var classesActives=classes.filter(function(c){return c.count>0;}).length;
+  var classesAttente=classes.length-classesActives;
+
+  var rowsHtml='<div class="vol-classes-list">'+classes.map(function(item){
+    var tagCls=item.niv.id==='CAP'?'cap':'bp';
+    var tagLabel=item.niv.id==='CAP'?'CAP':'BP';
+    if(item.count===0){
+      return '<div class="vol-class-row zero">'
+        +'<div class="vol-class-label"><span class="vol-class-tag '+tagCls+'">'+tagLabel+'</span><span class="vol-class-name">'+esc(item.cl.nom)+'</span></div>'
+        +'<div class="vol-class-track"><div class="vol-class-fill" style="width:0%;"></div></div>'
+        +'<div class="vol-class-right"><span class="vol-class-empty-val">—</span><span class="vol-class-empty">En attente</span></div>'
+        +'</div>';
+    }
+    var pctWidth=Math.max(4,Math.round(item.count/maxCount*100));
+    var countHtml;
+    if(pctWidth<15){
+      countHtml='<div class="vol-class-fill '+tagCls+'" style="width:'+pctWidth+'%;"></div><span class="vol-class-count outside" style="left:calc('+pctWidth+'% + 10px);">'+item.count+'</span>';
+    } else {
+      countHtml='<div class="vol-class-fill '+tagCls+'" style="width:'+pctWidth+'%;"><span class="vol-class-count">'+item.count+'</span></div>';
+    }
+    return '<div class="vol-class-row">'
+      +'<div class="vol-class-label"><span class="vol-class-tag '+tagCls+'">'+tagLabel+'</span><span class="vol-class-name">'+esc(item.cl.nom)+'</span></div>'
+      +'<div class="vol-class-track">'+countHtml+'</div>'
+      +'<div class="vol-class-right"><span class="vol-class-total">'+item.count+'</span><span class="vol-class-total-lbl">élève'+(item.count>1?'s':'')+'</span></div>'
+      +'</div>';
+  }).join('')+'</div>';
+
+  var footerHtml=
+    '<div class="vol-footer">'
+      +'<div class="vol-footer-stat">'
+        +'<span class="vol-footer-stat-lbl">Classes actives</span>'
+        +'<span class="vol-footer-stat-val"><strong>'+classesActives+'</strong> / '+classes.length+' classes ont au moins un élève diagnostiqué</span>'
+      +'</div>'
+      +'<div class="vol-footer-stat">'
+        +'<span class="vol-footer-stat-lbl">Classes en attente</span>'
+        +'<span class="vol-footer-stat-val"><strong>'+classesAttente+'</strong> classe'+(classesAttente>1?'s':'')+' sans diagnostic pour le moment</span>'
+      +'</div>'
+    +'</div>';
+
+  container.innerHTML='<div class="vol-classes-container">'+rowsHtml+footerHtml+'</div>';
+}
+
+var COURANT_KEY='__courant__';
+
+function renderMoisSelector(){
+  var wrap=document.getElementById('mois-selector-wrap');
+  if(!wrap) return;
+  // Restaurer la classe normale au cas où on était en skeleton
+  wrap.className='mois-selector-wrap';
+  // Mois courant = temps réel
+  var now=new Date();
+  var mois=['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
+  var courantLabel=mois[now.getMonth()]+' '+now.getFullYear()+' (en cours)';
+  var html=
+    '<span class="mois-selector-label">'
+      +'<svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>'
+      +'Période'
+    +'</span>';
+  // Bouton "mois courant"
+  var keyCourant=(moisSelectionne===null||moisSelectionne===COURANT_KEY)?COURANT_KEY:null;
+  var clsCourant=(moisSelectionne===null||moisSelectionne===COURANT_KEY)?'mois-chip active courant':'mois-chip courant';
+  html+='<button class="'+clsCourant+'" onclick="selectionnerMoisDiag(\''+COURANT_KEY+'\')">'+courantLabel+'</button>';
+  // Boutons des snapshots (du plus récent au plus ancien)
+  if(SNAPSHOTS_HISTORIQUE && SNAPSHOTS_HISTORIQUE.length>0){
+    // On déduplique par mois au cas où plusieurs snapshots pour un même mois
+    var seen={};
+    SNAPSHOTS_HISTORIQUE.forEach(function(snap){
+      var key=getMoisKey(snap.mois);
+      if(seen[key]) return;
+      seen[key]=true;
+      var cls=moisSelectionne===key?'mois-chip active':'mois-chip';
+      html+='<button class="'+cls+'" onclick="selectionnerMoisDiag(\''+esc(key)+'\')">'+formatMoisDisplay(snap.mois)+'</button>';
+    });
+  }
+  wrap.innerHTML=html;
+}
+
+function renderMoisMetaBar(){
+  var wrap=document.getElementById('mois-meta-wrap');
+  if(!wrap) return;
+  if(moisSelectionne===null || moisSelectionne===COURANT_KEY){
+    wrap.innerHTML='';
+    return;
+  }
+  var snap=SNAPSHOTS_HISTORIQUE.find(function(s){return getMoisKey(s.mois)===moisSelectionne;});
+  if(!snap){ wrap.innerHTML=''; return; }
+  var dateFormat=formatTimestampJoli(snap.timestamp);
+  wrap.innerHTML=
+    '<div class="archive-banner">'
+      +'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>'
+      +'<div>Vous consultez un <strong>état archivé</strong> de <strong>'+formatMoisDisplay(snap.mois)+'</strong>'+(dateFormat?', figé le '+dateFormat:'')+'.</div>'
+    +'</div>';
+}
+
+function formatTimestampJoli(ts){
+  if(!ts) return '';
+  var s=String(ts);
+  var mois=['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
+  // Cas 1 : format "dd/MM/yyyy HH:mm" ou "dd/MM/yyyy HH:mm:ss"
+  var m1=s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})(?:\s+(\d{1,2}):(\d{2}))?/);
+  if(m1){
+    var j=parseInt(m1[1]);
+    var mNum=parseInt(m1[2])-1;
+    var a=m1[3];
+    var h=m1[4]?m1[4].padStart(2,'0'):null;
+    var mn=m1[5]||null;
+    var base=j+' '+mois[mNum]+' '+a;
+    if(h!==null) return base+' à '+h+'h'+mn;
+    return base;
+  }
+  // Cas 2 : Date object (ex: "Mon Apr 20 2026 19:49:00 GMT+0200 ...")
+  var d=new Date(s);
+  if(!isNaN(d.getTime())){
+    var jj=d.getDate();
+    var mm=mois[d.getMonth()];
+    var aa=d.getFullYear();
+    var hh=String(d.getHours()).padStart(2,'0');
+    var nn=String(d.getMinutes()).padStart(2,'0');
+    return jj+' '+mm+' '+aa+' à '+hh+'h'+nn;
+  }
+  return s;
+}
+
+function selectionnerMoisDiag(key){
+  moisSelectionne=key;
+  renderVueDiagnostiquesComplete();
+}
+
+function getSnapshotPrecedent(){
+  // Retourne le snapshot du mois précédent par rapport à moisSelectionne
+  if(!SNAPSHOTS_HISTORIQUE || SNAPSHOTS_HISTORIQUE.length===0) return null;
+  if(moisSelectionne===null || moisSelectionne===COURANT_KEY){
+    // Mois courant : le précédent est le dernier snapshot (qui est le plus récent)
+    return SNAPSHOTS_HISTORIQUE[0]||null;
+  }
+  // Sinon on trouve l'index du mois sélectionné et on prend le suivant dans la liste (triée du plus récent au plus ancien)
+  var idx=SNAPSHOTS_HISTORIQUE.findIndex(function(s){return getMoisKey(s.mois)===moisSelectionne;});
+  if(idx===-1) return null;
+  return SNAPSHOTS_HISTORIQUE[idx+1]||null;
 }
 
 function renderChartDistribClasses(){
@@ -2388,11 +3794,16 @@ function ouvrirClasseDepuisFlyout(nivId,classeId){
 function renderAccueil(){
   var totalEval=elevesUniques().length;
   var assignees=DATA_EVAL.filter(function(r){return r.assigne==='oui';}).length;
-  var avgLacunes=totalEval>0?Math.round(assignees/totalEval):0;
+  // Total des notions évaluées = nombre total de lignes dans DATA_EVAL (une ligne = une notion testée pour un élève)
+  var totalNotions=DATA_EVAL.length;
+  var notionsAcquises=DATA_EVAL.filter(function(r){return r.assigne==='non';}).length;
+  var pctAcquises=totalNotions>0?Math.round(notionsAcquises/totalNotions*100):0;
   var validees=DATA_REM.filter(function(r){return r.statut==='quiz_final_valide';}).length;
   var pctComblees=assignees>0?Math.round(validees/assignees*100):0;
   document.getElementById('kpi-evalues').textContent=totalEval||'0';
-  document.getElementById('kpi-lacunes-avg').textContent=avgLacunes;
+  document.getElementById('kpi-notions-acquises').textContent=pctAcquises+'%';
+  var subEl=document.getElementById('kpi-notions-acquises-sub');
+  if(subEl) subEl.textContent=notionsAcquises+' / '+totalNotions+' notions';
   document.getElementById('kpi-comblees').textContent=pctComblees+'%';
   setTimeout(function(){document.getElementById('kpi-comblees-fill').style.width=pctComblees+'%';},150);
   document.getElementById('kpi-comblees-sub').textContent=validees+' / '+assignees+' comblée'+(assignees>1?'s':'');
@@ -3113,6 +4524,248 @@ function exporterCSV(){
   document.body.removeChild(a);URL.revokeObjectURL(url);
 }
 
+// ═══ RENDU DES GRAPHIQUES DEPUIS UN SNAPSHOT ═══
+function renderChartsDepuisSnapshot(snap){
+  // Graphique 1 : filière (donut) — seul graphique de la vue "Élèves diagnostiqués"
+  renderChartFiliereDepuisSnapshot(snap);
+}
+
+function renderChartFiliereDepuisSnapshot(snap){
+  var container=document.getElementById('chart-filiere');
+  if(!container) return;
+  var nCap=snap.nb_cap||0, nBp=snap.nb_bacpro||0;
+  var total=nCap+nBp;
+  if(total===0){
+    container.innerHTML='<div class="donut-empty">Aucun élève classable à cette date.</div>';
+    return;
+  }
+  var pctCap=Math.round(nCap/total*100);
+  var pctBp=100-pctCap;
+  var circ=2*Math.PI*70;
+  var capLen=(nCap/total)*circ;
+  var bpLen=(nBp/total)*circ;
+  container.innerHTML=
+    '<div class="donut-wrap">'
+      +'<div class="donut-chart">'
+        +'<svg viewBox="0 0 180 180" width="180" height="180">'
+          +'<circle class="donut-seg cap" cx="90" cy="90" r="70" stroke-dasharray="'+capLen.toFixed(2)+' '+circ.toFixed(2)+'" stroke-dashoffset="0"/>'
+          +'<circle class="donut-seg bp" cx="90" cy="90" r="70" stroke-dasharray="'+bpLen.toFixed(2)+' '+circ.toFixed(2)+'" stroke-dashoffset="'+(-capLen).toFixed(2)+'"/>'
+        +'</svg>'
+        +'<div class="donut-center"><div class="donut-center-val">'+total+'</div><div class="donut-center-lbl">Élèves</div></div>'
+      +'</div>'
+      +'<div class="donut-legend">'
+        +'<div class="donut-leg-row"><div class="donut-leg-dot cap"></div><div class="donut-leg-name">CAP</div><div class="donut-leg-count">'+nCap+'</div><div class="donut-leg-pct">'+pctCap+'%</div></div>'
+        +'<div class="donut-leg-row"><div class="donut-leg-dot bp"></div><div class="donut-leg-name">Bac Pro</div><div class="donut-leg-count">'+nBp+'</div><div class="donut-leg-pct">'+pctBp+'%</div></div>'
+      +'</div>'
+    +'</div>';
+}
+
+function renderChartLacunesParClasseDepuisSnapshot(snap){
+  var container=document.getElementById('chart-lacunes-classe');
+  if(!container) return;
+  var classes=snap.lacunes_par_classe||[];
+  if(classes.length===0){
+    container.innerHTML='<div class="donut-empty">Aucune donnée de classe pour ce mois.</div>';
+    return;
+  }
+  var sorted=classes.slice().sort(function(a,b){
+    if(a.moyenne===null&&b.moyenne===null) return 0;
+    if(a.moyenne===null) return 1;
+    if(b.moyenne===null) return -1;
+    return a.moyenne-b.moyenne;
+  });
+  var maxAvg=0;
+  sorted.forEach(function(c){if(c.moyenne!==null&&c.moyenne>maxAvg) maxAvg=c.moyenne;});
+  if(maxAvg===0) maxAvg=1;
+  container.innerHTML='<div class="bars-classes">'+sorted.map(function(c){
+    var tagCls=c.niveau==='CAP'?'cap':'bp';
+    var tagLabel=c.niveau==='CAP'?'CAP':'BP';
+    if(c.moyenne===null){
+      return '<div class="bar-row-classe" style="opacity:.55;">'
+        +'<div class="bar-classe-label"><span class="bar-classe-tag '+tagCls+'">'+tagLabel+'</span><span class="bar-classe-name">'+esc(c.classe_nom)+'</span></div>'
+        +'<div class="bar-classe-track"><div class="bar-classe-fill-empty"><span class="bar-classe-meta">En attente</span></div></div>'
+        +'<div class="bar-classe-val empty">—</div>'
+        +'</div>';
+    }
+    var pctWidth=Math.max(3,Math.round(c.moyenne/maxAvg*100));
+    var colorCls=c.moyenne<=2?'ok':c.moyenne<=4?'mid':'bad';
+    var avgDisplay=c.moyenne.toFixed(1).replace('.',',');
+    return '<div class="bar-row-classe">'
+      +'<div class="bar-classe-label"><span class="bar-classe-tag '+tagCls+'">'+tagLabel+'</span><span class="bar-classe-name">'+esc(c.classe_nom)+'</span></div>'
+      +'<div class="bar-classe-track"><div class="bar-classe-fill '+colorCls+'" style="width:'+pctWidth+'%;"></div></div>'
+      +'<div class="bar-classe-val">'+avgDisplay+'</div>'
+      +'</div>';
+  }).join('')+'</div>';
+}
+
+function renderChartComparaisonFiliereDepuisSnapshot(snap){
+  var container=document.getElementById('chart-comparaison-filiere');
+  if(!container) return;
+  var c=snap.comparaison_filiere||{cap:{eleves:0,moyenne:null},bacpro:{eleves:0,moyenne:null}};
+  var avgCap=c.cap?c.cap.moyenne:null;
+  var avgBp=c.bacpro?c.bacpro.moyenne:null;
+  var capEl=c.cap?c.cap.eleves:0;
+  var bpEl=c.bacpro?c.bacpro.eleves:0;
+  if(capEl===0 && bpEl===0){
+    container.innerHTML='<div class="donut-empty">Aucun élève diagnostiqué à cette date.</div>';
+    return;
+  }
+  var maxVal=Math.max(avgCap||0,avgBp||0);
+  if(maxVal===0) maxVal=1;
+  var heightMax=160;
+  var hCap=avgCap!==null?Math.max(36,Math.round(avgCap/maxVal*heightMax)):0;
+  var hBp=avgBp!==null?Math.max(36,Math.round(avgBp/maxVal*heightMax)):0;
+  var capDisplay=avgCap!==null?avgCap.toFixed(1).replace('.',','):'—';
+  var bpDisplay=avgBp!==null?avgBp.toFixed(1).replace('.',','):'—';
+  var footerHtml='';
+  if(avgCap!==null && avgBp!==null){
+    var diff=Math.abs(avgCap-avgBp);
+    var diffRound=diff.toFixed(1).replace('.',',');
+    var worse=avgCap>avgBp?'CAP':'Bac Pro';
+    var diffCls='';
+    var msg;
+    if(diff<0.5) msg='Les deux filières présentent un niveau de lacunes très proche.';
+    else if(diff<1.5) msg='Les <strong>'+worse+'</strong> ont en moyenne <strong>'+diffRound+' lacune'+(diff>1?'s':'')+' de plus</strong> par élève.';
+    else if(diff<3){ diffCls=' diff-notable'; msg='Écart notable : les <strong>'+worse+'</strong> ont <strong>'+diffRound+' lacunes de plus</strong> par élève.';}
+    else { diffCls=' diff-critical'; msg='Écart important : les <strong>'+worse+'</strong> ont <strong>'+diffRound+' lacunes de plus</strong> par élève.';}
+    footerHtml='<div class="compare-footer'+diffCls+'">'+msg+'</div>';
+  }
+  var capCol=avgCap!==null
+    ? '<div class="compare-bar-area"><div class="compare-bar cap" style="height:'+hCap+'px;"><div class="compare-bar-value">'+capDisplay+'</div></div></div>'
+    : '<div class="compare-bar-area"><div class="compare-bar-empty"><span class="compare-bar-empty-txt">En attente</span></div></div>';
+  var bpCol=avgBp!==null
+    ? '<div class="compare-bar-area"><div class="compare-bar bp" style="height:'+hBp+'px;"><div class="compare-bar-value">'+bpDisplay+'</div></div></div>'
+    : '<div class="compare-bar-area"><div class="compare-bar-empty"><span class="compare-bar-empty-txt">En attente</span></div></div>';
+  container.innerHTML=
+    '<div style="width:100%;">'
+      +'<div class="compare-wrap">'
+        +'<div class="compare-col">'+capCol+'<div class="compare-label"><span class="compare-label-tag cap">CAP</span><span class="compare-label-meta">'+capEl+' élève'+(capEl>1?'s':'')+'</span></div></div>'
+        +'<div class="compare-col">'+bpCol+'<div class="compare-label"><span class="compare-label-tag bp">Bac Pro</span><span class="compare-label-meta">'+bpEl+' élève'+(bpEl>1?'s':'')+'</span></div></div>'
+      +'</div>'
+      +footerHtml
+    +'</div>';
+}
+
+function renderChartPodiumDepuisSnapshot(snap){
+  var container=document.getElementById('chart-podium');
+  if(!container) return;
+  var fragiles=snap.podium_fragiles||[];
+  var solides=snap.podium_solides||[];
+  if(fragiles.length===0 && solides.length===0){
+    container.innerHTML='<div class="donut-empty">Aucune classe diagnostiquée à cette date.</div>';
+    return;
+  }
+  function rowHtml(c,rank,type){
+    var tagCls=c.niveau==='CAP'?'cap':'bp';
+    var tagLabel=c.niveau==='CAP'?'CAP':'BP';
+    var avgDisplay=c.moyenne.toFixed(1).replace('.',',');
+    return '<div class="podium-row '+type+'">'
+      +'<div class="podium-rank r'+rank+' '+type+'">'+rank+'</div>'
+      +'<div class="podium-info"><span class="podium-tag '+tagCls+'">'+tagLabel+'</span><span class="podium-name">'+esc(c.classe_nom)+'</span></div>'
+      +'<div class="podium-val '+type+'">'+avgDisplay+'<span class="podium-val-unit">/élève</span></div>'
+      +'</div>';
+  }
+  function emptyRow(){ return '<div class="podium-empty-row">—</div>'; }
+  var fragilesHtml='';
+  for(var i=0;i<3;i++) fragilesHtml+=fragiles[i]?rowHtml(fragiles[i],i+1,'fragile'):emptyRow();
+  var solidesHtml='';
+  for(var j=0;j<3;j++) solidesHtml+=solides[j]?rowHtml(solides[j],j+1,'solide'):emptyRow();
+  container.innerHTML=
+    '<div class="podium-wrap">'
+      +'<div><div class="podium-block-title fragiles"><span class="podium-block-title-ico">⚠️</span><span>Les plus fragiles</span></div><div class="podium-list">'+fragilesHtml+'</div></div>'
+      +'<div><div class="podium-block-title solides"><span class="podium-block-title-ico">✓</span><span>Les plus solides</span></div><div class="podium-list">'+solidesHtml+'</div></div>'
+    +'</div>';
+}
+
+function renderChartDistribEtablissementDepuisSnapshot(snap){
+  var container=document.getElementById('chart-distrib-etablissement');
+  if(!container) return;
+  var d=snap.distribution_etablissement;
+  if(!d || !d.buckets){
+    container.innerHTML='<div class="distrib-empty">Aucune donnée à cette date.</div>';
+    return;
+  }
+  var buckets=d.buckets;
+  var maxBucket=0;
+  buckets.forEach(function(v){if(v>maxBucket) maxBucket=v;});
+  if(maxBucket===0) maxBucket=1;
+  var totalEleves=d.total||0;
+  var sansLacune=d.sans_lacune||0;
+  var aRisque=d.a_risque||0;
+  var totalLacunes=0;
+  buckets.forEach(function(count,n){totalLacunes+=count*n;});
+  var moyenne=totalEleves>0?(totalLacunes/totalEleves):0;
+  var summaryHtml=
+    '<div class="distrib-summary">'
+      +'<div class="distrib-summary-cell"><div class="distrib-summary-val">'+totalEleves+'</div><div class="distrib-summary-lbl">Élèves diagnostiqués</div></div>'
+      +'<div class="distrib-summary-cell"><div class="distrib-summary-val" style="color:var(--green-dark);">'+sansLacune+'</div><div class="distrib-summary-lbl">Sans lacune</div></div>'
+      +'<div class="distrib-summary-cell"><div class="distrib-summary-val">'+moyenne.toFixed(1).replace(".",",")+'</div><div class="distrib-summary-lbl">Moyenne</div></div>'
+      +'<div class="distrib-summary-cell"><div class="distrib-summary-val" style="color:'+(aRisque>0?"var(--red)":"var(--text3)")+';">'+aRisque+'</div><div class="distrib-summary-lbl">≥ 6 lacunes</div></div>'
+    +'</div>';
+  var barsHtml='<div class="distrib-chart">';
+  buckets.forEach(function(count,n){
+    var heightPct=Math.round(count/maxBucket*100);
+    var barCls;
+    if(n===0) barCls='zero'; else if(n<=2) barCls='low'; else if(n<=5) barCls='mid'; else barCls='high';
+    var hasValue=count>0?' has-value':'';
+    var zeroHighlight=n===0?' zero-highlight':'';
+    barsHtml+='<div class="distrib-bar-col'+hasValue+zeroHighlight+'"><div class="distrib-bar-val">'+count+'</div><div class="distrib-bar '+barCls+'" style="height:'+heightPct+'%;"></div><div class="distrib-bar-axis">'+n+'</div></div>';
+  });
+  barsHtml+='</div>';
+  var axisTitle='<div class="distrib-axis-title"><span>← Moins de lacunes</span><span>Nombre de lacunes par élève</span><span>Plus de lacunes →</span></div>';
+  var legend='<div class="distrib-legend"><div class="distrib-legend-item"><div class="distrib-legend-dot zero"></div><span>Aucune lacune</span></div><div class="distrib-legend-item"><div class="distrib-legend-dot low"></div><span>1-2 lacunes</span></div><div class="distrib-legend-item"><div class="distrib-legend-dot mid"></div><span>3-5 lacunes</span></div><div class="distrib-legend-item"><div class="distrib-legend-dot high"></div><span>6+ lacunes · à risque</span></div></div>';
+  container.innerHTML='<div class="distrib-wrap">'+summaryHtml+barsHtml+axisTitle+legend+'</div>';
+}
+
+function renderChartDistribClassesDepuisSnapshot(snap){
+  var container=document.getElementById('chart-distrib-classes');
+  if(!container) return;
+  var classes=snap.distribution_classes||[];
+  if(classes.length===0){
+    container.innerHTML='<div class="distrib-empty">Aucune donnée à cette date.</div>';
+    return;
+  }
+  var maxBucket=0;
+  classes.forEach(function(c){
+    if(c.buckets) c.buckets.forEach(function(v){if(v>maxBucket) maxBucket=v;});
+  });
+  if(maxBucket===0) maxBucket=1;
+  var sorted=classes.slice().sort(function(a,b){
+    if(a.moyenne===null&&b.moyenne===null) return 0;
+    if(a.moyenne===null) return 1;
+    if(b.moyenne===null) return -1;
+    return a.moyenne-b.moyenne;
+  });
+  var cardsHtml=sorted.map(function(item){
+    var tagCls=item.niveau==='CAP'?'cap':'bp';
+    var tagLabel=item.niveau==='CAP'?'CAP':'BP';
+    if(!item.buckets || item.eleves===0){
+      return '<div class="dc-mini-card empty"><div class="dc-mini-head"><div class="dc-mini-title"><span class="dc-mini-tag '+tagCls+'">'+tagLabel+'</span><span class="dc-mini-name">'+esc(item.classe_nom)+'</span></div></div><div class="dc-mini-empty">En attente</div><div class="dc-mini-stats"><span>—</span></div></div>';
+    }
+    var profileHtml='';
+    if(item.profile==='homogene') profileHtml='<span class="dc-mini-profile homogene">Homogène</span>';
+    else if(item.profile==='mixte') profileHtml='<span class="dc-mini-profile mixte">Mixte</span>';
+    else if(item.profile==='hetero') profileHtml='<span class="dc-mini-profile hetero">Hétérogène</span>';
+    var plageAffichage=Math.min(10,item.buckets.length-1);
+    var barsHtml='<div class="dc-mini-chart">';
+    for(var i=0;i<=plageAffichage;i++){
+      var count=item.buckets[i]||0;
+      var heightPct=Math.round(count/maxBucket*100);
+      var barCls;
+      if(i===0) barCls='zero'; else if(i<=2) barCls='low'; else if(i<=5) barCls='mid'; else barCls='high';
+      var axisLabel=(i===0||i===5||i===plageAffichage)?'<div class="dc-mini-bar-axis">'+i+'</div>':'';
+      barsHtml+='<div class="dc-mini-bar-col"><div class="dc-mini-bar '+barCls+'" style="height:'+heightPct+'%;"></div>'+axisLabel+'</div>';
+    }
+    barsHtml+='</div>';
+    var moyenneAff=(item.moyenne||0).toFixed(1).replace('.',',');
+    var ecartAff=(item.ecart_type||0).toFixed(1).replace('.',',');
+    var statsHtml='<div class="dc-mini-stats"><div class="dc-mini-stats-left"><div class="dc-mini-stat"><strong>'+item.eleves+'</strong>élève'+(item.eleves>1?'s':'')+'</div><div class="dc-mini-stat">moy. <strong>'+moyenneAff+'</strong></div></div><div class="dc-mini-stat">σ <strong>'+ecartAff+'</strong></div></div>';
+    return '<div class="dc-mini-card"><div class="dc-mini-head"><div class="dc-mini-title"><span class="dc-mini-tag '+tagCls+'">'+tagLabel+'</span><span class="dc-mini-name">'+esc(item.classe_nom)+'</span></div>'+profileHtml+'</div>'+barsHtml+statsHtml+'</div>';
+  }).join('');
+  var legendHtml='<div class="distrib-classes-legend"><div class="distrib-classes-legend-profile"><span class="distrib-classes-legend-profile-tag homogene">Homogène</span><span>élèves à niveau similaire</span></div><div class="distrib-classes-legend-profile"><span class="distrib-classes-legend-profile-tag mixte">Mixte</span><span>dispersion modérée</span></div><div class="distrib-classes-legend-profile"><span class="distrib-classes-legend-profile-tag hetero">Hétérogène</span><span>forte dispersion des niveaux</span></div></div>';
+  container.innerHTML='<div style="width:100%;">'+'<div class="distrib-classes-grid">'+cardsHtml+'</div>'+legendHtml+'</div>';
+}
+
 // ═══ HISTORIQUE MENSUEL ═══
 var SNAPSHOTS_HISTORIQUE=[];
 var moisSelectionne=null;
@@ -3147,11 +4800,12 @@ function renderHistoriqueMensuel(){
     return;
   }
   // SNAPSHOTS_HISTORIQUE est déjà trié du plus récent au plus ancien
-  if(!moisSelectionne) moisSelectionne=SNAPSHOTS_HISTORIQUE[0].mois;
+  if(!moisSelectionne) moisSelectionne=getMoisKey(SNAPSHOTS_HISTORIQUE[0].mois);
   // Construction du sélecteur de mois
   var chipsHtml=SNAPSHOTS_HISTORIQUE.map(function(snap){
-    var cls=snap.mois===moisSelectionne?'histo-chip active':'histo-chip';
-    return '<button class="'+cls+'" onclick="selectionnerMois(\''+esc(snap.mois)+'\')">'+formatMoisDisplay(snap.mois)+'</button>';
+    var key=getMoisKey(snap.mois);
+    var cls=key===moisSelectionne?'histo-chip active':'histo-chip';
+    return '<button class="'+cls+'" onclick="selectionnerMois(\''+esc(key)+'\')">'+formatMoisDisplay(snap.mois)+'</button>';
   }).join('');
   var selectorHtml=
     '<div class="histo-selector-wrap">'
@@ -3159,7 +4813,7 @@ function renderHistoriqueMensuel(){
       +chipsHtml
     +'</div>';
   // Snapshot courant et précédent
-  var snapIdx=SNAPSHOTS_HISTORIQUE.findIndex(function(s){return s.mois===moisSelectionne;});
+  var snapIdx=SNAPSHOTS_HISTORIQUE.findIndex(function(s){return getMoisKey(s.mois)===moisSelectionne;});
   var snap=SNAPSHOTS_HISTORIQUE[snapIdx];
   var snapPrev=SNAPSHOTS_HISTORIQUE[snapIdx+1]||null;
   // Meta info
@@ -3178,12 +4832,32 @@ function selectionnerMois(mois){
 
 function formatMoisDisplay(moisKey){
   if(!moisKey) return '—';
-  var parts=moisKey.split('-');
-  if(parts.length!==2) return moisKey;
-  var annee=parts[0];
-  var moisNum=parseInt(parts[1])-1;
+  var s=String(moisKey);
   var mois=['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
-  return mois[moisNum]+' '+annee;
+  // Cas normal : format "yyyy-MM"
+  if(/^\d{4}-\d{2}$/.test(s)){
+    var parts=s.split('-');
+    return mois[parseInt(parts[1])-1]+' '+parts[0];
+  }
+  // Cas où le mois est une Date object (ex: "Wed Apr 01 2026 ...")
+  var d=new Date(s);
+  if(!isNaN(d.getTime())){
+    return mois[d.getMonth()]+' '+d.getFullYear();
+  }
+  return s;
+}
+
+function getMoisKey(moisRaw){
+  // Normalise n\'importe quel format en "yyyy-MM" pour l\'identification
+  var s=String(moisRaw);
+  if(/^\d{4}-\d{2}$/.test(s)) return s;
+  var d=new Date(s);
+  if(!isNaN(d.getTime())){
+    var y=d.getFullYear();
+    var m=d.getMonth()+1;
+    return y+'-'+(m<10?'0':'')+m;
+  }
+  return s;
 }
 
 function renderHistoKpis(snap,snapPrev){
