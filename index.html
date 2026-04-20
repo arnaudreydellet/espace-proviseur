@@ -527,6 +527,184 @@ tr:hover td{background:#FDFCF9;}
 .impact-empty-view .title{font-size:16px;font-weight:700;color:var(--text);margin-bottom:.5rem;}
 .impact-empty-view .sub{font-size:13px;line-height:1.6;}
 
+/* ═══ KPI CARD CLICKABLE ═══ */
+.kpi-card.clickable{cursor:pointer;}
+.kpi-card.clickable:hover{border-color:var(--navy-mid);transform:translateY(-2px);box-shadow:0 8px 24px rgba(27,46,94,.08);}
+.kpi-cta{font-size:10.5px;font-weight:600;color:var(--accent);margin-top:.6rem;display:inline-flex;align-items:center;gap:4px;transition:gap .15s;}
+.kpi-card.clickable:hover .kpi-cta{gap:8px;}
+
+/* ═══ VUE DIAGNOSTIQUES : GRAPHIQUES ═══ */
+.charts-grid{column-count:2;column-gap:1.25rem;margin-bottom:1.5rem;}
+@media (max-width:900px){.charts-grid{column-count:1;}}
+.chart-card{background:var(--white);border:1px solid var(--border);border-radius:var(--rl);padding:1.5rem 1.75rem;position:relative;overflow:hidden;break-inside:avoid;page-break-inside:avoid;-webkit-column-break-inside:avoid;margin-bottom:1.25rem;display:block;}
+.chart-card.full{column-span:all;}
+.chart-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:1.25rem;}
+.chart-title{font-size:14px;font-weight:700;color:var(--text);letter-spacing:-.2px;margin-bottom:.25rem;}
+.chart-subtitle{font-size:11.5px;color:var(--text3);line-height:1.45;}
+.chart-body{min-height:220px;display:flex;align-items:center;justify-content:center;}
+.chart-placeholder{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;text-align:center;color:var(--text3);border:2px dashed var(--border-md);border-radius:var(--r);width:100%;min-height:200px;background:repeating-linear-gradient(45deg,transparent,transparent 12px,#FAF9F5 12px,#FAF9F5 24px);}
+.chart-placeholder-icon{font-size:28px;margin-bottom:.75rem;opacity:.5;}
+.chart-placeholder-title{font-size:12px;font-weight:600;color:var(--text2);margin-bottom:.35rem;}
+.chart-placeholder-sub{font-size:10.5px;color:var(--text3);max-width:280px;line-height:1.5;}
+
+/* ═══ DONUT CAP/BAC PRO ═══ */
+.donut-wrap{display:flex;align-items:center;gap:2rem;width:100%;padding:.5rem 0;}
+.donut-chart{position:relative;width:180px;height:180px;flex-shrink:0;}
+.donut-chart svg{transform:rotate(-90deg);}
+.donut-seg{fill:none;stroke-width:24;transition:stroke-dashoffset 1s cubic-bezier(.4,0,.2,1);}
+.donut-seg.cap{stroke:#15A362;}
+.donut-seg.bp{stroke:var(--navy-mid);}
+.donut-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;}
+.donut-center-val{font-size:28px;font-weight:800;color:var(--navy);line-height:1;letter-spacing:-1px;font-family:'Sora',sans-serif;}
+.donut-center-lbl{font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:.1em;color:var(--text3);margin-top:4px;}
+.donut-legend{flex:1;display:flex;flex-direction:column;gap:.875rem;}
+.donut-leg-row{display:grid;grid-template-columns:16px 1fr auto auto;align-items:center;gap:10px;padding:10px 12px;background:var(--bg);border-radius:var(--r);border:1px solid var(--border);}
+.donut-leg-dot{width:12px;height:12px;border-radius:3px;flex-shrink:0;}
+.donut-leg-dot.cap{background:#15A362;}
+.donut-leg-dot.bp{background:var(--navy-mid);}
+.donut-leg-name{font-size:12.5px;font-weight:600;color:var(--text);letter-spacing:-.2px;}
+.donut-leg-count{font-size:13px;font-weight:700;color:var(--navy);font-family:'JetBrains Mono',monospace;}
+.donut-leg-pct{font-size:11px;font-weight:600;color:var(--text3);font-family:'JetBrains Mono',monospace;min-width:42px;text-align:right;}
+.donut-empty{text-align:center;color:var(--text3);font-size:12.5px;padding:2rem;width:100%;}
+
+/* ═══ BARRES LACUNES PAR CLASSE ═══ */
+.bars-classes{display:flex;flex-direction:column;gap:10px;width:100%;padding:.25rem 0;}
+.bar-row-classe{display:grid;grid-template-columns:130px 1fr 56px;align-items:center;gap:12px;}
+.bar-classe-label{display:flex;align-items:center;gap:6px;min-width:0;}
+.bar-classe-tag{font-size:8.5px;font-weight:700;padding:2px 6px;border-radius:6px;letter-spacing:.05em;flex-shrink:0;font-family:'Sora',sans-serif;}
+.bar-classe-tag.cap{background:#EEF9F4;color:var(--green-dark);}
+.bar-classe-tag.bp{background:var(--navy-l);color:var(--navy);}
+.bar-classe-name{font-size:12px;font-weight:600;color:var(--text);letter-spacing:-.2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.bar-classe-track{position:relative;height:22px;background:var(--bg2);border-radius:6px;overflow:hidden;}
+.bar-classe-fill{height:100%;border-radius:6px;transition:width 1s cubic-bezier(.4,0,.2,1);display:flex;align-items:center;padding-left:10px;min-width:2px;}
+.bar-classe-fill.ok{background:linear-gradient(90deg,#15A362 0%,#22D37C 100%);}
+.bar-classe-fill.mid{background:linear-gradient(90deg,#D47B06 0%,#E89020 100%);}
+.bar-classe-fill.bad{background:linear-gradient(90deg,#D42626 0%,#E84545 100%);}
+.bar-classe-fill-empty{height:100%;width:100%;display:flex;align-items:center;padding-left:10px;}
+.bar-classe-val{font-size:11.5px;font-weight:700;color:var(--navy);font-family:'JetBrains Mono',monospace;text-align:right;}
+.bar-classe-val.empty{color:var(--text3);}
+.bar-classe-meta{font-size:9.5px;color:var(--text3);margin-left:3px;margin-top:3px;}
+
+/* ═══ COMPARAISON CAP vs BAC PRO ═══ */
+.compare-wrap{display:flex;align-items:flex-end;justify-content:center;gap:3rem;width:100%;padding:1rem 1rem 0;min-height:220px;}
+.compare-col{display:flex;flex-direction:column;align-items:center;gap:.75rem;flex:1;max-width:140px;}
+.compare-bar-area{position:relative;width:100%;height:180px;display:flex;align-items:flex-end;justify-content:center;}
+.compare-bar{width:80px;border-radius:10px 10px 0 0;position:relative;transition:height 1.2s cubic-bezier(.4,0,.2,1);display:flex;align-items:flex-start;justify-content:center;padding-top:10px;min-height:4px;box-shadow:0 -2px 8px rgba(0,0,0,.05);}
+.compare-bar.cap{background:linear-gradient(180deg,#22D37C 0%,#15A362 60%,#0E7348 100%);}
+.compare-bar.bp{background:linear-gradient(180deg,#4A90E2 0%,var(--navy-mid) 60%,var(--navy) 100%);}
+.compare-bar-value{font-size:20px;font-weight:800;color:#fff;letter-spacing:-.5px;font-family:'Sora',sans-serif;text-shadow:0 1px 3px rgba(0,0,0,.2);line-height:1;}
+.compare-bar-empty{width:80px;height:60px;border-radius:10px 10px 0 0;background:repeating-linear-gradient(45deg,var(--bg),var(--bg) 8px,var(--bg2) 8px,var(--bg2) 16px);border:1px dashed var(--border-md);display:flex;align-items:center;justify-content:center;}
+.compare-bar-empty-txt{font-size:10px;color:var(--text3);font-weight:600;letter-spacing:.05em;}
+.compare-label{display:flex;flex-direction:column;align-items:center;gap:4px;}
+.compare-label-tag{font-size:10px;font-weight:700;padding:3px 10px;border-radius:10px;letter-spacing:.05em;font-family:'Sora',sans-serif;}
+.compare-label-tag.cap{background:#EEF9F4;color:var(--green-dark);}
+.compare-label-tag.bp{background:var(--navy-l);color:var(--navy);}
+.compare-label-meta{font-size:10.5px;color:var(--text3);font-family:'JetBrains Mono',monospace;}
+.compare-yaxis{position:absolute;left:0;bottom:0;top:0;width:2px;background:var(--border);}
+.compare-gridline{position:absolute;left:-8px;right:-8px;height:1px;background:var(--border);opacity:.5;}
+.compare-gridline-label{position:absolute;left:-32px;font-size:9px;color:var(--text3);font-family:'JetBrains Mono',monospace;transform:translateY(-50%);}
+.compare-footer{margin-top:1rem;padding-top:1rem;border-top:1px solid var(--border);font-size:11px;color:var(--text2);text-align:center;line-height:1.55;}
+.compare-footer strong{color:var(--text);font-weight:700;}
+.compare-footer.diff-notable{color:var(--amber);}
+.compare-footer.diff-critical{color:var(--red);}
+
+/* ═══ PODIUM TOP 3 CLASSES ═══ */
+.podium-wrap{display:flex;flex-direction:column;gap:1.25rem;width:100%;}
+.podium-block-title{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.5rem;}
+.podium-block-title.fragiles{color:var(--red);}
+.podium-block-title.solides{color:var(--green-dark);}
+.podium-block-title-ico{font-size:13px;}
+.podium-list{display:flex;flex-direction:column;gap:6px;}
+.podium-row{display:grid;grid-template-columns:28px 1fr auto;align-items:center;gap:10px;padding:9px 12px;border-radius:8px;border:1px solid var(--border);background:var(--white);transition:all .15s;cursor:pointer;}
+.podium-row:hover{border-color:var(--navy-mid);transform:translateX(2px);}
+.podium-row.fragile{background:linear-gradient(90deg,#FEECEC 0%,#FFF6F6 60%,var(--white) 100%);}
+.podium-row.solide{background:linear-gradient(90deg,#E6F6EE 0%,#F0FAF4 60%,var(--white) 100%);}
+.podium-rank{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#fff;font-family:'Sora',sans-serif;flex-shrink:0;}
+.podium-rank.r1.fragile{background:linear-gradient(135deg,#E84545 0%,#B81F1F 100%);box-shadow:0 2px 6px rgba(184,31,31,.3);}
+.podium-rank.r2.fragile{background:linear-gradient(135deg,#E8755E 0%,#B84025 100%);box-shadow:0 2px 5px rgba(184,64,37,.25);}
+.podium-rank.r3.fragile{background:linear-gradient(135deg,#E8A47E 0%,#B87333 100%);box-shadow:0 2px 5px rgba(184,115,51,.2);}
+.podium-rank.r1.solide{background:linear-gradient(135deg,#22D37C 0%,#0E7348 100%);box-shadow:0 2px 6px rgba(14,115,72,.3);}
+.podium-rank.r2.solide{background:linear-gradient(135deg,#5FD89A 0%,#157340 100%);box-shadow:0 2px 5px rgba(21,115,64,.25);}
+.podium-rank.r3.solide{background:linear-gradient(135deg,#8FDFAF 0%,#25805A 100%);box-shadow:0 2px 5px rgba(37,128,90,.2);}
+.podium-info{display:flex;align-items:center;gap:7px;min-width:0;}
+.podium-tag{font-size:8.5px;font-weight:700;padding:2px 6px;border-radius:6px;letter-spacing:.05em;flex-shrink:0;font-family:'Sora',sans-serif;}
+.podium-tag.cap{background:#EEF9F4;color:var(--green-dark);}
+.podium-tag.bp{background:var(--navy-l);color:var(--navy);}
+.podium-name{font-size:12px;font-weight:600;color:var(--text);letter-spacing:-.2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.podium-val{font-size:14px;font-weight:800;letter-spacing:-.3px;font-family:'Sora',sans-serif;flex-shrink:0;}
+.podium-val.fragile{color:var(--red);}
+.podium-val.solide{color:var(--green-dark);}
+.podium-val-unit{font-size:9px;font-weight:600;color:var(--text3);margin-left:2px;letter-spacing:.03em;}
+.podium-sep{height:1px;background:var(--border);margin:.25rem 0;}
+.podium-empty-row{padding:10px 12px;border-radius:8px;background:var(--bg);border:1px dashed var(--border-md);font-size:11px;color:var(--text3);text-align:center;font-style:italic;}
+.podium-footer{font-size:10.5px;color:var(--text3);margin-top:.5rem;padding-top:.75rem;border-top:1px solid var(--border);line-height:1.5;text-align:center;}
+
+/* ═══ DISTRIBUTION ÉTABLISSEMENT ═══ */
+.distrib-wrap{width:100%;padding:.5rem 0;}
+.distrib-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:1.5rem;padding-bottom:1.25rem;border-bottom:1px solid var(--border);}
+.distrib-summary-cell{background:var(--bg);border-radius:var(--r);padding:.875rem 1rem;border:1px solid var(--border);}
+.distrib-summary-val{font-size:22px;font-weight:800;color:var(--navy);letter-spacing:-.6px;line-height:1;font-family:'Sora',sans-serif;}
+.distrib-summary-lbl{font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--text3);margin-top:4px;}
+.distrib-chart{position:relative;display:flex;align-items:flex-end;justify-content:space-between;gap:6px;height:220px;padding:0 .5rem 2.25rem;border-bottom:2px solid var(--border);}
+.distrib-bar-col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;position:relative;min-width:0;}
+.distrib-bar-val{font-size:11px;font-weight:700;color:var(--navy);font-family:'JetBrains Mono',monospace;margin-bottom:4px;opacity:0;transition:opacity .3s;}
+.distrib-bar-col.has-value .distrib-bar-val{opacity:1;}
+.distrib-bar{width:100%;max-width:60px;border-radius:6px 6px 0 0;transition:height 1s cubic-bezier(.4,0,.2,1);min-height:2px;position:relative;}
+.distrib-bar.zero{background:linear-gradient(180deg,#22D37C 0%,#15A362 100%);}
+.distrib-bar.low{background:linear-gradient(180deg,#7AB8F5 0%,var(--navy-mid) 100%);}
+.distrib-bar.mid{background:linear-gradient(180deg,#F5C97A 0%,#D47B06 100%);}
+.distrib-bar.high{background:linear-gradient(180deg,#F57A7A 0%,#D42626 100%);}
+.distrib-bar-axis{position:absolute;bottom:-1.75rem;left:0;right:0;text-align:center;font-size:10.5px;font-weight:600;color:var(--text2);font-family:'JetBrains Mono',monospace;}
+.distrib-bar-col.zero-highlight .distrib-bar-axis{color:var(--green-dark);font-weight:800;}
+.distrib-legend{display:flex;align-items:center;justify-content:center;gap:1.25rem;margin-top:1rem;padding-top:.75rem;border-top:1px solid var(--border);flex-wrap:wrap;}
+.distrib-legend-item{display:flex;align-items:center;gap:6px;font-size:10.5px;color:var(--text3);}
+.distrib-legend-dot{width:10px;height:10px;border-radius:3px;flex-shrink:0;}
+.distrib-legend-dot.zero{background:#15A362;}
+.distrib-legend-dot.low{background:var(--navy-mid);}
+.distrib-legend-dot.mid{background:#D47B06;}
+.distrib-legend-dot.high{background:var(--red);}
+.distrib-axis-title{display:flex;justify-content:space-between;margin-top:1.25rem;font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text3);}
+.distrib-empty{text-align:center;color:var(--text3);font-size:12.5px;padding:2.5rem;}
+
+/* ═══ DISTRIBUTION PAR CLASSE (GRILLE) ═══ */
+.distrib-classes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;width:100%;}
+@media (max-width:900px){.distrib-classes-grid{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:600px){.distrib-classes-grid{grid-template-columns:1fr;}}
+.dc-mini-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--r);padding:1rem 1.1rem;cursor:pointer;transition:all .18s;}
+.dc-mini-card:hover{border-color:var(--navy-mid);background:var(--white);transform:translateY(-1px);box-shadow:0 4px 14px rgba(27,46,94,.06);}
+.dc-mini-card.empty{cursor:default;opacity:.55;}
+.dc-mini-card.empty:hover{transform:none;box-shadow:none;border-color:var(--border);background:var(--bg);}
+.dc-mini-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem;}
+.dc-mini-title{display:flex;align-items:center;gap:6px;min-width:0;}
+.dc-mini-tag{font-size:8px;font-weight:700;padding:2px 5px;border-radius:5px;letter-spacing:.05em;flex-shrink:0;font-family:'Sora',sans-serif;}
+.dc-mini-tag.cap{background:#EEF9F4;color:var(--green-dark);}
+.dc-mini-tag.bp{background:var(--navy-l);color:var(--navy);}
+.dc-mini-name{font-size:11.5px;font-weight:700;color:var(--text);letter-spacing:-.2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.dc-mini-profile{font-size:8.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:2px 6px;border-radius:5px;flex-shrink:0;margin-left:6px;}
+.dc-mini-profile.homogene{background:var(--green-l);color:var(--green-dark);}
+.dc-mini-profile.mixte{background:var(--amber-l);color:var(--amber);}
+.dc-mini-profile.hetero{background:#EEEDFE;color:#3C3489;}
+.dc-mini-chart{display:flex;align-items:flex-end;justify-content:space-between;gap:2px;height:60px;padding-bottom:14px;border-bottom:1.5px solid var(--border-md);position:relative;margin-bottom:.5rem;}
+.dc-mini-bar-col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;position:relative;min-width:0;}
+.dc-mini-bar{width:100%;max-width:14px;border-radius:3px 3px 0 0;transition:height .9s cubic-bezier(.4,0,.2,1);min-height:1px;}
+.dc-mini-bar.zero{background:#15A362;}
+.dc-mini-bar.low{background:var(--navy-mid);}
+.dc-mini-bar.mid{background:#D47B06;}
+.dc-mini-bar.high{background:var(--red);}
+.dc-mini-bar-axis{position:absolute;bottom:-14px;font-size:8.5px;color:var(--text3);font-family:'JetBrains Mono',monospace;line-height:1;}
+.dc-mini-stats{display:flex;align-items:center;justify-content:space-between;font-size:10px;color:var(--text3);gap:6px;}
+.dc-mini-stats-left{display:flex;align-items:center;gap:8px;}
+.dc-mini-stat{display:flex;align-items:center;gap:3px;}
+.dc-mini-stat strong{color:var(--text);font-weight:700;font-family:'JetBrains Mono',monospace;}
+.dc-mini-empty{display:flex;align-items:center;justify-content:center;height:60px;font-size:10.5px;color:var(--text3);font-style:italic;background:repeating-linear-gradient(45deg,transparent,transparent 8px,rgba(0,0,0,.02) 8px,rgba(0,0,0,.02) 16px);border-radius:4px;margin-bottom:.5rem;}
+
+.distrib-classes-legend{display:flex;align-items:center;justify-content:center;gap:1rem;margin-top:1.25rem;padding-top:1rem;border-top:1px solid var(--border);flex-wrap:wrap;}
+.distrib-classes-legend-profile{display:flex;align-items:center;gap:5px;font-size:10px;color:var(--text3);}
+.distrib-classes-legend-profile-tag{font-size:8.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:2px 6px;border-radius:5px;}
+.distrib-classes-legend-profile-tag.homogene{background:var(--green-l);color:var(--green-dark);}
+.distrib-classes-legend-profile-tag.mixte{background:var(--amber-l);color:var(--amber);}
+.distrib-classes-legend-profile-tag.hetero{background:#EEEDFE;color:#3C3489;}
+
 /* ═══ EXPORT ═══ */
 .btn-export{display:inline-flex;align-items:center;gap:7px;font-size:11.5px;font-weight:600;color:var(--text2);background:var(--bg);border:1px solid var(--border-md);padding:6px 14px;border-radius:var(--r);cursor:pointer;transition:all .15s;font-family:'Sora',sans-serif;}
 .btn-export:hover{background:var(--white);border-color:var(--navy);color:var(--navy);}
@@ -619,7 +797,7 @@ tr:hover td{background:#FDFCF9;}
         <div class="sb-ico"><svg viewBox="0 0 24 24"><path d="M3 12l9-9 9 9M5 10v10h14V10"/></svg></div>
         <div class="sb-tooltip">Accueil</div>
       </div>
-      <div class="sb-item has-flyout" id="sb-classes" onclick="toggleFlyout()">
+      <div class="sb-item has-flyout" id="sb-classes" onclick="navVers('classes')">
         <div class="sb-ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
         <div class="sb-tooltip">Résultats par classe</div>
       </div>
@@ -701,12 +879,13 @@ tr:hover td{background:#FDFCF9;}
         </div>
 
         <div class="kpi-strip">
-          <div class="kpi-card">
+          <div class="kpi-card clickable" onclick="ouvrirVueDiagnostiques()">
             <div class="kpi-head">
               <div class="kpi-label">Élèves diagnostiqués</div>
               <div class="kpi-ico"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
             </div>
             <div class="kpi-value" id="kpi-evalues">—</div>
+            <div class="kpi-cta">Voir les graphiques détaillés →</div>
           </div>
           <div class="kpi-card amber">
             <div class="kpi-head">
@@ -732,6 +911,94 @@ tr:hover td{background:#FDFCF9;}
         </div>
       </div>
 
+      <!-- ══ VUE : Graphiques des élèves diagnostiqués ══ -->
+      <div class="section" id="section-diagnostiques">
+        <button class="back-btn" onclick="navVers('accueil')">← Retour à l'accueil</button>
+        <div class="page-header">
+          <div class="page-title">Vue d'ensemble des élèves diagnostiqués</div>
+          <div class="page-sub">Analyse quantitative et qualitative de la population évaluée dans votre établissement.</div>
+        </div>
+
+        <!-- Bloc quantitatif -->
+        <div class="themes-section-title" style="margin-top:.5rem;">Vue quantitative</div>
+        <div class="charts-grid">
+
+          <!-- 1. Camembert CAP / Bac Pro -->
+          <div class="chart-card">
+            <div class="chart-header">
+              <div>
+                <div class="chart-title">Répartition par filière</div>
+                <div class="chart-subtitle">Part des élèves diagnostiqués en CAP et en Bac Pro.</div>
+              </div>
+            </div>
+            <div class="chart-body" id="chart-filiere"></div>
+          </div>
+
+          <!-- 2. Barres lacunes moyennes par classe -->
+          <div class="chart-card">
+            <div class="chart-header">
+              <div>
+                <div class="chart-title">Nombre moyen de lacunes par classe</div>
+                <div class="chart-subtitle">Une barre par classe, triée par ordre croissant.</div>
+              </div>
+            </div>
+            <div class="chart-body" id="chart-lacunes-classe"></div>
+          </div>
+
+          <!-- 3. Comparaison CAP vs Bac Pro -->
+          <div class="chart-card">
+            <div class="chart-header">
+              <div>
+                <div class="chart-title">Lacunes moyennes : CAP vs Bac Pro</div>
+                <div class="chart-subtitle">Comparaison des deux filières sur le nombre moyen de lacunes par élève.</div>
+              </div>
+            </div>
+            <div class="chart-body" id="chart-comparaison-filiere"></div>
+          </div>
+
+          <!-- 4. Podium : classes les plus fragiles / les plus solides -->
+          <div class="chart-card">
+            <div class="chart-header">
+              <div>
+                <div class="chart-title">Top 3 des classes</div>
+                <div class="chart-subtitle">Les classes les plus fragiles et les plus solides en un coup d'œil.</div>
+              </div>
+            </div>
+            <div class="chart-body" id="chart-podium"></div>
+          </div>
+
+        </div>
+
+        <!-- Bloc qualitatif -->
+        <div class="themes-section-title" style="margin-top:1.5rem;">Vue qualitative</div>
+        <div class="charts-grid">
+
+          <!-- 5. Distribution globale des lacunes -->
+          <div class="chart-card full">
+            <div class="chart-header">
+              <div>
+                <div class="chart-title">Distribution des lacunes au niveau établissement</div>
+                <div class="chart-subtitle">Combien d'élèves ont 1 lacune, 2 lacunes, 3 lacunes, etc. — toutes classes confondues.</div>
+              </div>
+            </div>
+            <div class="chart-body" id="chart-distrib-etablissement"></div>
+          </div>
+
+          <!-- 6. Distribution par classe -->
+          <div class="chart-card full">
+            <div class="chart-header">
+              <div>
+                <div class="chart-title">Distribution des lacunes par classe</div>
+                <div class="chart-subtitle">Un mini-histogramme par classe pour voir l'homogénéité ou la dispersion des résultats.</div>
+              </div>
+            </div>
+            <div class="chart-body" id="chart-distrib-classes"></div>
+          </div>
+
+        </div>
+
+      </div>
+
       <div class="section" id="section-classes">
         <div id="view-niveaux">
           <div class="page-header">
@@ -751,7 +1018,7 @@ tr:hover td{background:#FDFCF9;}
         </div>
 
         <div id="view-detail-classe" style="display:none;">
-          <button class="back-btn" onclick="retourClasses()">← Retour aux classes</button>
+          <button class="back-btn" id="btn-back-detail-classe" onclick="retourDepuisDetailClasse()">← Retour aux classes</button>
           <div class="page-header">
             <div class="page-title" id="dc-title">—</div>
             <div class="page-sub" id="dc-sub">—</div>
@@ -1057,13 +1324,13 @@ var ETABLISSEMENT="Fourneyron";
 
 var NIVEAUX=[
   {id:"CAP",nom:"2nde CAP",type:"CAP",classes:[
-    {id:"2CAP Charpentier",nom:"Charpentier",prof:null},
-    {id:"2CAP Ebéniste",nom:"Ébéniste",prof:null},
-    {id:"2CAP MIS",nom:"MIS",prof:null},
-    {id:"2CAP EL",nom:"EL",prof:null}
+    {id:"2nde CAP Charpentier",nom:"Charpentier",prof:null},
+    {id:"2nde CAP Ebéniste",nom:"Ébéniste",prof:null},
+    {id:"2nde CAP MIS",nom:"MIS",prof:null},
+    {id:"2nde CAP EL",nom:"EL",prof:null}
   ]},
   {id:"BACPRO",nom:"2nde Bac Pro",type:"Bac Pro",classes:[
-    {id:"2nde OBPT",nom:"OBPT",prof:null},
+    {id:"2nde OBTP",nom:"OBTP",prof:null},
     {id:"2nde TEBE",nom:"TEBE",prof:"Reydellet"},
     {id:"2nde AMA",nom:"AMA",prof:"Reydellet"},
     {id:"2nde TCB",nom:"TCB",prof:null},
@@ -1096,6 +1363,7 @@ var NOMS_FICHES={
 var DATA_EVAL=[],DATA_REM=[],DATA_COMPTES=[];
 var currentNiveau=null,currentClasse=null,currentEleve=null;
 var currentImpactClasse="all";
+var provenanceDetailClasse=null; // null | "stats-classement"
 
 document.getElementById('login-id').addEventListener('keydown',function(e){if(e.key==='Enter')connexion();});
 document.getElementById('login-mdp').addEventListener('keydown',function(e){if(e.key==='Enter')connexion();});
@@ -1290,6 +1558,560 @@ function navVers(dest){
   }
 }
 
+function ouvrirVueDiagnostiques(){
+  closeFlyout();
+  document.querySelectorAll('.section').forEach(function(s){s.classList.remove('active');});
+  document.querySelectorAll('.sb-item').forEach(function(n){n.classList.remove('active');});
+  document.getElementById('section-diagnostiques').classList.add('active');
+  document.getElementById('sb-accueil').classList.add('active');
+  setBreadcrumb([
+    {label:'Accueil',onclick:'navVers(\'accueil\')'},
+    {label:'Élèves diagnostiqués',current:true}
+  ]);
+  renderChartFiliere();
+  renderChartLacunesParClasse();
+  renderChartComparaisonFiliere();
+  renderChartPodium();
+  renderChartDistribEtablissement();
+  renderChartDistribClasses();
+}
+
+function renderChartDistribClasses(){
+  var container=document.getElementById('chart-distrib-classes');
+  if(!container) return;
+  // Construire la liste de toutes les classes avec leur distribution
+  var allClasses=[];
+  NIVEAUX.forEach(function(niv){
+    niv.classes.forEach(function(cl){
+      var evalCl=evalParClasse(cl.id);
+      var eleves=elevesUniques(evalCl);
+      allClasses.push({niv:niv,cl:cl,eleves:eleves});
+    });
+  });
+  if(allClasses.length===0){
+    container.innerHTML='<div class="distrib-empty">Aucune classe à afficher.</div>';
+    return;
+  }
+  // Plage commune : de 0 à 10 (nombre de fiches actives pour fractions) — on étend si besoin
+  var maxLacunesGlobal=0;
+  allClasses.forEach(function(item){
+    item.eleves.forEach(function(e){
+      var n=e.fiches.filter(function(f){return f.assigne;}).length;
+      if(n>maxLacunesGlobal) maxLacunesGlobal=n;
+    });
+  });
+  var plage=Math.max(10,maxLacunesGlobal);
+  // Pour chaque classe, construire ses buckets et calculer son profil
+  allClasses.forEach(function(item){
+    if(item.eleves.length===0){
+      item.buckets=null;
+      item.profile=null;
+      item.moyenne=null;
+      item.ecartType=null;
+      return;
+    }
+    var lacunesParEleve=item.eleves.map(function(e){
+      return e.fiches.filter(function(f){return f.assigne;}).length;
+    });
+    var buckets=[];
+    for(var i=0;i<=plage;i++) buckets.push(0);
+    lacunesParEleve.forEach(function(n){if(n<=plage) buckets[n]++;});
+    // Calcul moyenne et écart-type
+    var somme=lacunesParEleve.reduce(function(s,n){return s+n;},0);
+    var moyenne=somme/lacunesParEleve.length;
+    var variance=lacunesParEleve.reduce(function(s,n){return s+Math.pow(n-moyenne,2);},0)/lacunesParEleve.length;
+    var ecartType=Math.sqrt(variance);
+    // Profil basé sur l'écart-type :
+    // - ≤ 1,2 : homogène
+    // - ≤ 2,5 : mixte
+    // - > 2,5 : hétérogène
+    var profile;
+    if(lacunesParEleve.length<3) profile=null; // pas assez de données
+    else if(ecartType<=1.2) profile='homogene';
+    else if(ecartType<=2.5) profile='mixte';
+    else profile='hetero';
+    item.buckets=buckets;
+    item.moyenne=moyenne;
+    item.ecartType=ecartType;
+    item.profile=profile;
+  });
+  // Déterminer la hauteur max pour harmoniser les échelles
+  var maxBucketGlobal=0;
+  allClasses.forEach(function(item){
+    if(item.buckets){
+      item.buckets.forEach(function(v){if(v>maxBucketGlobal) maxBucketGlobal=v;});
+    }
+  });
+  if(maxBucketGlobal===0) maxBucketGlobal=1;
+  // Tri : classes avec données d'abord (triées par moyenne croissante = meilleures en premier), puis classes en attente
+  allClasses.sort(function(a,b){
+    if(a.moyenne===null&&b.moyenne===null) return 0;
+    if(a.moyenne===null) return 1;
+    if(b.moyenne===null) return -1;
+    return a.moyenne-b.moyenne;
+  });
+  // Rendu de chaque mini-carte
+  var cardsHtml=allClasses.map(function(item){
+    var tagCls=item.niv.id==='CAP'?'cap':'bp';
+    var tagLabel=item.niv.id==='CAP'?'CAP':'BP';
+    if(!item.buckets || item.eleves.length===0){
+      return '<div class="dc-mini-card empty">'
+        +'<div class="dc-mini-head">'
+          +'<div class="dc-mini-title">'
+            +'<span class="dc-mini-tag '+tagCls+'">'+tagLabel+'</span>'
+            +'<span class="dc-mini-name">'+esc(item.cl.nom)+'</span>'
+          +'</div>'
+        +'</div>'
+        +'<div class="dc-mini-empty">En attente</div>'
+        +'<div class="dc-mini-stats"><span>—</span></div>'
+        +'</div>';
+    }
+    // Profil badge
+    var profileHtml='';
+    if(item.profile==='homogene') profileHtml='<span class="dc-mini-profile homogene">Homogène</span>';
+    else if(item.profile==='mixte') profileHtml='<span class="dc-mini-profile mixte">Mixte</span>';
+    else if(item.profile==='hetero') profileHtml='<span class="dc-mini-profile hetero">Hétérogène</span>';
+    // Barres : afficher uniquement les valeurs 0 à 10 (au-delà, on tronque pour garder la lisibilité)
+    var plageAffichage=Math.min(plage,10);
+    var barsHtml='<div class="dc-mini-chart">';
+    for(var i=0;i<=plageAffichage;i++){
+      var count=item.buckets[i]||0;
+      var heightPct=Math.round(count/maxBucketGlobal*100);
+      var barCls;
+      if(i===0) barCls='zero';
+      else if(i<=2) barCls='low';
+      else if(i<=5) barCls='mid';
+      else barCls='high';
+      // Affiche les graduations 0, 5, 10
+      var axisLabel=(i===0||i===5||i===plageAffichage)?'<div class="dc-mini-bar-axis">'+i+'</div>':'';
+      barsHtml+='<div class="dc-mini-bar-col">'
+        +'<div class="dc-mini-bar '+barCls+'" style="height:'+heightPct+'%;"></div>'
+        +axisLabel
+        +'</div>';
+    }
+    barsHtml+='</div>';
+    // Stats compactes
+    var moyenneAff=item.moyenne.toFixed(1).replace('.',',');
+    var ecartAff=item.ecartType.toFixed(1).replace('.',',');
+    var statsHtml=
+      '<div class="dc-mini-stats">'
+        +'<div class="dc-mini-stats-left">'
+          +'<div class="dc-mini-stat"><strong>'+item.eleves.length+'</strong>élève'+(item.eleves.length>1?'s':'')+'</div>'
+          +'<div class="dc-mini-stat">moy. <strong>'+moyenneAff+'</strong></div>'
+        +'</div>'
+        +'<div class="dc-mini-stat">σ <strong>'+ecartAff+'</strong></div>'
+      +'</div>';
+    return '<div class="dc-mini-card" onclick="ouvrirClasseDepuisStats(\''+item.niv.id+'\',\''+item.cl.id+'\')">'
+      +'<div class="dc-mini-head">'
+        +'<div class="dc-mini-title">'
+          +'<span class="dc-mini-tag '+tagCls+'">'+tagLabel+'</span>'
+          +'<span class="dc-mini-name">'+esc(item.cl.nom)+'</span>'
+        +'</div>'
+        +profileHtml
+      +'</div>'
+      +barsHtml
+      +statsHtml
+      +'</div>';
+  }).join('');
+
+  var legendHtml=
+    '<div class="distrib-classes-legend">'
+      +'<div class="distrib-classes-legend-profile">'
+        +'<span class="distrib-classes-legend-profile-tag homogene">Homogène</span>'
+        +'<span>élèves à niveau similaire</span>'
+      +'</div>'
+      +'<div class="distrib-classes-legend-profile">'
+        +'<span class="distrib-classes-legend-profile-tag mixte">Mixte</span>'
+        +'<span>dispersion modérée</span>'
+      +'</div>'
+      +'<div class="distrib-classes-legend-profile">'
+        +'<span class="distrib-classes-legend-profile-tag hetero">Hétérogène</span>'
+        +'<span>forte dispersion des niveaux</span>'
+      +'</div>'
+    +'</div>';
+
+  container.innerHTML=
+    '<div style="width:100%;">'
+      +'<div class="distrib-classes-grid">'+cardsHtml+'</div>'
+      +legendHtml
+    +'</div>';
+}
+
+function renderChartDistribEtablissement(){
+  var container=document.getElementById('chart-distrib-etablissement');
+  if(!container) return;
+  var eleves=elevesUniques();
+  if(eleves.length===0){
+    container.innerHTML='<div class="distrib-empty">Aucun élève diagnostiqué pour le moment.</div>';
+    return;
+  }
+  // Pour chaque élève : compter le nombre de fiches assignées (= lacunes)
+  var lacunesParEleve=eleves.map(function(e){
+    return e.fiches.filter(function(f){return f.assigne;}).length;
+  });
+  // Déterminer la plage : de 0 au max
+  var maxLacunes=0;
+  lacunesParEleve.forEach(function(n){if(n>maxLacunes) maxLacunes=n;});
+  // On va au minimum jusqu'à 10 pour avoir une échelle cohérente (nombre de fiches actives fractions = 10)
+  // Mais si le max est supérieur à 10, on étend
+  var plage=Math.max(10,maxLacunes);
+  // Construire les buckets : index = nombre de lacunes, valeur = nombre d'élèves
+  var buckets=[];
+  for(var i=0;i<=plage;i++) buckets.push(0);
+  lacunesParEleve.forEach(function(n){if(n<=plage) buckets[n]++;});
+  // Trouver le max pour calculer les hauteurs
+  var maxBucket=0;
+  buckets.forEach(function(v){if(v>maxBucket) maxBucket=v;});
+  if(maxBucket===0) maxBucket=1;
+  // Statistiques résumées
+  var totalEleves=eleves.length;
+  var sansLacune=buckets[0]||0;
+  var totalLacunes=lacunesParEleve.reduce(function(s,n){return s+n;},0);
+  var moyenne=totalEleves>0?(totalLacunes/totalEleves):0;
+  // Médiane
+  var sorted=lacunesParEleve.slice().sort(function(a,b){return a-b;});
+  var mid=Math.floor(sorted.length/2);
+  var mediane=sorted.length%2===0?(sorted[mid-1]+sorted[mid])/2:sorted[mid];
+  // Élèves à risque élevé (>=6 lacunes)
+  var aRisque=lacunesParEleve.filter(function(n){return n>=6;}).length;
+
+  // Construction du résumé
+  var summaryHtml=
+    '<div class="distrib-summary">'
+      +'<div class="distrib-summary-cell"><div class="distrib-summary-val">'+totalEleves+'</div><div class="distrib-summary-lbl">Élèves diagnostiqués</div></div>'
+      +'<div class="distrib-summary-cell"><div class="distrib-summary-val" style="color:var(--green-dark);">'+sansLacune+'</div><div class="distrib-summary-lbl">Sans lacune</div></div>'
+      +'<div class="distrib-summary-cell"><div class="distrib-summary-val">'+moyenne.toFixed(1).replace(".",",")+'</div><div class="distrib-summary-lbl">Moyenne</div></div>'
+      +'<div class="distrib-summary-cell"><div class="distrib-summary-val" style="color:'+(aRisque>0?"var(--red)":"var(--text3)")+';">'+aRisque+'</div><div class="distrib-summary-lbl">≥ 6 lacunes</div></div>'
+    +'</div>';
+
+  // Construction des barres
+  var barsHtml='<div class="distrib-chart">';
+  buckets.forEach(function(count,n){
+    var heightPct=Math.round(count/maxBucket*100);
+    var barCls;
+    if(n===0) barCls='zero';
+    else if(n<=2) barCls='low';
+    else if(n<=5) barCls='mid';
+    else barCls='high';
+    var hasValue=count>0?' has-value':'';
+    var zeroHighlight=n===0?' zero-highlight':'';
+    barsHtml+='<div class="distrib-bar-col'+hasValue+zeroHighlight+'">'
+      +'<div class="distrib-bar-val">'+count+'</div>'
+      +'<div class="distrib-bar '+barCls+'" style="height:'+heightPct+'%;"></div>'
+      +'<div class="distrib-bar-axis">'+n+'</div>'
+      +'</div>';
+  });
+  barsHtml+='</div>';
+
+  // Titres d'axes
+  var axisTitle=
+    '<div class="distrib-axis-title">'
+      +'<span>← Moins de lacunes</span>'
+      +'<span>Nombre de lacunes par élève</span>'
+      +'<span>Plus de lacunes →</span>'
+    +'</div>';
+
+  // Légende
+  var legend=
+    '<div class="distrib-legend">'
+      +'<div class="distrib-legend-item"><div class="distrib-legend-dot zero"></div><span>Aucune lacune</span></div>'
+      +'<div class="distrib-legend-item"><div class="distrib-legend-dot low"></div><span>1-2 lacunes</span></div>'
+      +'<div class="distrib-legend-item"><div class="distrib-legend-dot mid"></div><span>3-5 lacunes</span></div>'
+      +'<div class="distrib-legend-item"><div class="distrib-legend-dot high"></div><span>6+ lacunes · à risque</span></div>'
+    +'</div>';
+
+  container.innerHTML='<div class="distrib-wrap">'+summaryHtml+barsHtml+axisTitle+legend+'</div>';
+}
+
+function renderChartPodium(){
+  var container=document.getElementById('chart-podium');
+  if(!container) return;
+  // Récupère toutes les classes avec leur moyenne de lacunes (uniquement celles qui ont des élèves évalués)
+  var classes=[];
+  NIVEAUX.forEach(function(niv){
+    niv.classes.forEach(function(cl){
+      var evalCl=evalParClasse(cl.id);
+      var elevesCl=elevesUniques(evalCl).length;
+      if(elevesCl===0) return; // on exclut les classes en attente
+      var assignCl=evalCl.filter(function(r){return r.assigne==='oui';}).length;
+      var avg=assignCl/elevesCl;
+      classes.push({niv:niv,cl:cl,eleves:elevesCl,avg:avg});
+    });
+  });
+  if(classes.length===0){
+    container.innerHTML='<div class="donut-empty">Aucune classe diagnostiquée pour le moment.</div>';
+    return;
+  }
+  // Tri pour top 3 fragiles (max) et top 3 solides (min)
+  var parFragile=classes.slice().sort(function(a,b){return b.avg-a.avg;});
+  var parSolide=classes.slice().sort(function(a,b){return a.avg-b.avg;});
+  var top3Fragiles=parFragile.slice(0,3);
+  var top3Solides=parSolide.slice(0,3);
+
+  function rowHtml(c,rank,type){
+    var tagCls=c.niv.id==='CAP'?'cap':'bp';
+    var tagLabel=c.niv.id==='CAP'?'CAP':'BP';
+    var avgDisplay=c.avg.toFixed(1).replace('.',',');
+    return '<div class="podium-row '+type+'" onclick="ouvrirClasseDepuisStats(\''+c.niv.id+'\',\''+c.cl.id+'\')">'
+      +'<div class="podium-rank r'+rank+' '+type+'">'+rank+'</div>'
+      +'<div class="podium-info">'
+        +'<span class="podium-tag '+tagCls+'">'+tagLabel+'</span>'
+        +'<span class="podium-name">'+esc(c.cl.nom)+'</span>'
+      +'</div>'
+      +'<div class="podium-val '+type+'">'+avgDisplay+'<span class="podium-val-unit">/élève</span></div>'
+      +'</div>';
+  }
+  function emptyRow(msg){
+    return '<div class="podium-empty-row">'+msg+'</div>';
+  }
+
+  var fragilesHtml='';
+  for(var i=0;i<3;i++){
+    if(top3Fragiles[i]) fragilesHtml+=rowHtml(top3Fragiles[i],i+1,'fragile');
+    else fragilesHtml+=emptyRow('—');
+  }
+  var solidesHtml='';
+  for(var j=0;j<3;j++){
+    if(top3Solides[j]) solidesHtml+=rowHtml(top3Solides[j],j+1,'solide');
+    else solidesHtml+=emptyRow('—');
+  }
+
+  var footerNote=classes.length<6
+    ? '<div class="podium-footer">Affichage partiel — seulement '+classes.length+' classe'+(classes.length>1?'s':'')+' diagnostiquée'+(classes.length>1?'s':'')+' pour le moment.</div>'
+    : '';
+
+  container.innerHTML=
+    '<div class="podium-wrap">'
+      +'<div>'
+        +'<div class="podium-block-title fragiles">'
+          +'<span class="podium-block-title-ico">⚠️</span>'
+          +'<span>Les plus fragiles</span>'
+        +'</div>'
+        +'<div class="podium-list">'+fragilesHtml+'</div>'
+      +'</div>'
+      +'<div>'
+        +'<div class="podium-block-title solides">'
+          +'<span class="podium-block-title-ico">✓</span>'
+          +'<span>Les plus solides</span>'
+        +'</div>'
+        +'<div class="podium-list">'+solidesHtml+'</div>'
+      +'</div>'
+      +footerNote
+    +'</div>';
+}
+
+function renderChartComparaisonFiliere(){
+  var container=document.getElementById('chart-comparaison-filiere');
+  if(!container) return;
+  var eleves=elevesUniques();
+  if(eleves.length===0){
+    container.innerHTML='<div class="donut-empty">Aucun élève diagnostiqué pour le moment.</div>';
+    return;
+  }
+  // Calcul moyenne lacunes par élève, par filière
+  var capElevesCount=0, capLacunes=0;
+  var bpElevesCount=0, bpLacunes=0;
+  eleves.forEach(function(e){
+    var fil=getFiliereDeClasse(e.classe);
+    var lacunesEleve=e.fiches.filter(function(f){return f.assigne;}).length;
+    if(fil==='CAP'){capElevesCount++;capLacunes+=lacunesEleve;}
+    else if(fil==='BACPRO'){bpElevesCount++;bpLacunes+=lacunesEleve;}
+  });
+  var avgCap=capElevesCount>0?(capLacunes/capElevesCount):null;
+  var avgBp=bpElevesCount>0?(bpLacunes/bpElevesCount):null;
+  // Échelle : on prend la valeur max + un peu de marge pour calculer les hauteurs
+  var maxVal=Math.max(avgCap||0,avgBp||0);
+  if(maxVal===0) maxVal=1;
+  // Hauteur de la zone de barre : 180px. La plus grande barre fait 160px max (marge haut pour le nombre)
+  var heightMax=160;
+  var hCap=avgCap!==null?Math.max(36,Math.round(avgCap/maxVal*heightMax)):0;
+  var hBp=avgBp!==null?Math.max(36,Math.round(avgBp/maxVal*heightMax)):0;
+  var capDisplay=avgCap!==null?avgCap.toFixed(1).replace('.',','):'—';
+  var bpDisplay=avgBp!==null?avgBp.toFixed(1).replace('.',','):'—';
+  // Footer interprétatif
+  var footerHtml='';
+  if(avgCap!==null && avgBp!==null){
+    var diff=Math.abs(avgCap-avgBp);
+    var diffRound=diff.toFixed(1).replace('.',',');
+    var worse=avgCap>avgBp?'CAP':'Bac Pro';
+    var better=avgCap>avgBp?'Bac Pro':'CAP';
+    var diffCls='';
+    var msg;
+    if(diff<0.5){
+      msg='Les deux filières présentent un niveau de lacunes très proche.';
+    } else if(diff<1.5){
+      msg='Les <strong>'+worse+'</strong> ont en moyenne <strong>'+diffRound+' lacune'+(diff>1?'s':'')+' de plus</strong> par élève que les '+better+'.';
+    } else if(diff<3){
+      diffCls=' diff-notable';
+      msg='Écart notable : les <strong>'+worse+'</strong> ont <strong>'+diffRound+' lacunes de plus</strong> par élève en moyenne.';
+    } else {
+      diffCls=' diff-critical';
+      msg='Écart important : les <strong>'+worse+'</strong> ont <strong>'+diffRound+' lacunes de plus</strong> par élève — une remédiation ciblée est à envisager.';
+    }
+    footerHtml='<div class="compare-footer'+diffCls+'">'+msg+'</div>';
+  } else if(avgCap===null && avgBp===null){
+    footerHtml='<div class="compare-footer">Aucune filière encore diagnostiquée.</div>';
+  } else {
+    var present=avgCap!==null?'CAP':'Bac Pro';
+    var absent=avgCap!==null?'Bac Pro':'CAP';
+    footerHtml='<div class="compare-footer">Seuls les élèves <strong>'+present+'</strong> ont été diagnostiqués. Comparaison possible dès les premières évaluations '+absent+'.</div>';
+  }
+  // Rendu
+  var capCol=avgCap!==null
+    ? '<div class="compare-bar-area"><div class="compare-bar cap" style="height:'+hCap+'px;"><div class="compare-bar-value">'+capDisplay+'</div></div></div>'
+    : '<div class="compare-bar-area"><div class="compare-bar-empty"><span class="compare-bar-empty-txt">En attente</span></div></div>';
+  var bpCol=avgBp!==null
+    ? '<div class="compare-bar-area"><div class="compare-bar bp" style="height:'+hBp+'px;"><div class="compare-bar-value">'+bpDisplay+'</div></div></div>'
+    : '<div class="compare-bar-area"><div class="compare-bar-empty"><span class="compare-bar-empty-txt">En attente</span></div></div>';
+  container.innerHTML=
+    '<div style="width:100%;">'
+      +'<div class="compare-wrap">'
+        +'<div class="compare-col">'
+          +capCol
+          +'<div class="compare-label">'
+            +'<span class="compare-label-tag cap">CAP</span>'
+            +'<span class="compare-label-meta">'+capElevesCount+' élève'+(capElevesCount>1?'s':'')+'</span>'
+          +'</div>'
+        +'</div>'
+        +'<div class="compare-col">'
+          +bpCol
+          +'<div class="compare-label">'
+            +'<span class="compare-label-tag bp">Bac Pro</span>'
+            +'<span class="compare-label-meta">'+bpElevesCount+' élève'+(bpElevesCount>1?'s':'')+'</span>'
+          +'</div>'
+        +'</div>'
+      +'</div>'
+      +footerHtml
+    +'</div>';
+}
+
+function renderChartLacunesParClasse(){
+  var container=document.getElementById('chart-lacunes-classe');
+  if(!container) return;
+  var classes=[];
+  NIVEAUX.forEach(function(niv){
+    niv.classes.forEach(function(cl){
+      var evalCl=evalParClasse(cl.id);
+      var elevesCl=elevesUniques(evalCl).length;
+      var assignCl=evalCl.filter(function(r){return r.assigne==='oui';}).length;
+      var avg=elevesCl>0?(assignCl/elevesCl):null;
+      classes.push({niv:niv,cl:cl,eleves:elevesCl,avg:avg});
+    });
+  });
+  // Trier par moyenne croissante (classes qui vont le mieux en haut), les "en attente" à la fin
+  classes.sort(function(a,b){
+    if(a.avg===null&&b.avg===null) return 0;
+    if(a.avg===null) return 1;
+    if(b.avg===null) return -1;
+    return a.avg-b.avg;
+  });
+  var maxAvg=0;
+  classes.forEach(function(c){if(c.avg!==null&&c.avg>maxAvg) maxAvg=c.avg;});
+  if(maxAvg===0) maxAvg=1;
+  if(classes.length===0){
+    container.innerHTML='<div class="donut-empty">Aucune classe à afficher.</div>';
+    return;
+  }
+  container.innerHTML='<div class="bars-classes">'+classes.map(function(c){
+    var tagCls=c.niv.id==='CAP'?'cap':'bp';
+    var tagLabel=c.niv.id==='CAP'?'CAP':'BP';
+    if(c.avg===null){
+      return '<div class="bar-row-classe" style="opacity:.55;">'
+        +'<div class="bar-classe-label"><span class="bar-classe-tag '+tagCls+'">'+tagLabel+'</span><span class="bar-classe-name">'+esc(c.cl.nom)+'</span></div>'
+        +'<div class="bar-classe-track"><div class="bar-classe-fill-empty"><span class="bar-classe-meta">En attente</span></div></div>'
+        +'<div class="bar-classe-val empty">—</div>'
+        +'</div>';
+    }
+    var pctWidth=Math.max(3,Math.round(c.avg/maxAvg*100));
+    var colorCls=c.avg<=2?'ok':c.avg<=4?'mid':'bad';
+    var avgDisplay=c.avg.toFixed(1).replace('.',',');
+    return '<div class="bar-row-classe">'
+      +'<div class="bar-classe-label"><span class="bar-classe-tag '+tagCls+'">'+tagLabel+'</span><span class="bar-classe-name">'+esc(c.cl.nom)+'</span></div>'
+      +'<div class="bar-classe-track"><div class="bar-classe-fill '+colorCls+'" style="width:'+pctWidth+'%;"></div></div>'
+      +'<div class="bar-classe-val">'+avgDisplay+'</div>'
+      +'</div>';
+  }).join('')+'</div>';
+}
+
+function getFiliereDeClasse(classe){
+  // Détermine si une classe appartient à CAP ou BACPRO
+  if(!classe) return null;
+  for(var i=0;i<NIVEAUX.length;i++){
+    var niv=NIVEAUX[i];
+    for(var j=0;j<niv.classes.length;j++){
+      if(matchClasse(classe,niv.classes[j].id)) return niv.id;
+    }
+  }
+  return null;
+}
+
+function renderChartFiliere(){
+  var container=document.getElementById('chart-filiere');
+  if(!container) return;
+  var eleves=elevesUniques();
+  if(eleves.length===0){
+    container.innerHTML='<div class="donut-empty">Aucun élève diagnostiqué pour le moment.</div>';
+    return;
+  }
+  var nCap=0,nBp=0;
+  eleves.forEach(function(e){
+    var fil=getFiliereDeClasse(e.classe);
+    if(fil==='CAP') nCap++;
+    else if(fil==='BACPRO') nBp++;
+  });
+  var total=nCap+nBp;
+  if(total===0){
+    container.innerHTML='<div class="donut-empty">Aucun élève classable en CAP ou Bac Pro.</div>';
+    return;
+  }
+  var pctCap=Math.round(nCap/total*100);
+  var pctBp=100-pctCap;
+  // Circonférence d'un cercle de rayon 70 : 2*π*70 ≈ 439.82
+  var circ=2*Math.PI*70;
+  var capLen=(nCap/total)*circ;
+  var bpLen=(nBp/total)*circ;
+  // Le segment CAP commence à 0, le segment BP commence après CAP
+  // Avec stroke-dasharray "longueur_segment circonférence_totale" et rotation ad hoc
+  container.innerHTML=
+    '<div class="donut-wrap">'
+      +'<div class="donut-chart">'
+        +'<svg viewBox="0 0 180 180" width="180" height="180">'
+          +'<circle class="donut-seg cap" cx="90" cy="90" r="70" '
+            +'stroke-dasharray="'+capLen.toFixed(2)+' '+circ.toFixed(2)+'" '
+            +'stroke-dashoffset="0"/>'
+          +'<circle class="donut-seg bp" cx="90" cy="90" r="70" '
+            +'stroke-dasharray="'+bpLen.toFixed(2)+' '+circ.toFixed(2)+'" '
+            +'stroke-dashoffset="'+(-capLen).toFixed(2)+'"/>'
+        +'</svg>'
+        +'<div class="donut-center">'
+          +'<div class="donut-center-val">'+total+'</div>'
+          +'<div class="donut-center-lbl">Élèves</div>'
+        +'</div>'
+      +'</div>'
+      +'<div class="donut-legend">'
+        +'<div class="donut-leg-row">'
+          +'<div class="donut-leg-dot cap"></div>'
+          +'<div class="donut-leg-name">CAP</div>'
+          +'<div class="donut-leg-count">'+nCap+'</div>'
+          +'<div class="donut-leg-pct">'+pctCap+'%</div>'
+        +'</div>'
+        +'<div class="donut-leg-row">'
+          +'<div class="donut-leg-dot bp"></div>'
+          +'<div class="donut-leg-name">Bac Pro</div>'
+          +'<div class="donut-leg-count">'+nBp+'</div>'
+          +'<div class="donut-leg-pct">'+pctBp+'%</div>'
+        +'</div>'
+      +'</div>'
+    +'</div>';
+}
+
+function activerSectionClasses(){
+  document.querySelectorAll('.section').forEach(function(s){s.classList.remove('active');});
+  document.querySelectorAll('.sb-item').forEach(function(n){n.classList.remove('active');});
+  document.getElementById('section-classes').classList.add('active');
+  document.getElementById('sb-classes').classList.add('active');
+}
+
 function showStatsView(view){
   ['view-stats-menu','view-stats-classement','view-stats-lacunes','view-stats-lacunes-theme','view-stats-dys','view-stats-impact','view-stats-impact-scores','view-stats-impact-ecarts','view-stats-impact-difficultes','view-stats-engagement'].forEach(function(v){
     var el=document.getElementById(v);
@@ -1361,8 +2183,13 @@ function setBreadcrumb(parts){
   bc.innerHTML=html;
 }
 
-function retourNiveaux(){showSubView('niveaux');setBreadcrumb([{label:'Résultats par classe',current:true}]);}
+function retourNiveaux(){
+  activerSectionClasses();
+  showSubView('niveaux');
+  setBreadcrumb([{label:'Résultats par classe',current:true}]);
+}
 function retourClasses(){
+  activerSectionClasses();
   showSubView('classes');
   var niv=NIVEAUX.find(function(n){return n.id===currentNiveau;});
   setBreadcrumb([
@@ -1370,8 +2197,60 @@ function retourClasses(){
     {label:niv?niv.nom:'',current:true}
   ]);
 }
-function retourDetailClasse(){showSubView('detail-classe');}
-function retourDetailEleves(){showSubView('detail-eleves');}
+function retourDetailClasse(){
+  activerSectionClasses();
+  showSubView('detail-classe');
+  var niv=NIVEAUX.find(function(n){return n.id===currentNiveau;});
+  var cl=niv?niv.classes.find(function(c){return c.id===currentClasse;}):null;
+  setBreadcrumb([
+    {label:'Résultats par classe',onclick:'retourNiveaux()'},
+    {label:niv?niv.nom:'',onclick:'retourClasses()'},
+    {label:cl?cl.nom:currentClasse,current:true}
+  ]);
+}
+function retourDetailEleves(){
+  activerSectionClasses();
+  showSubView('detail-eleves');
+  var niv=NIVEAUX.find(function(n){return n.id===currentNiveau;});
+  var cl=niv?niv.classes.find(function(c){return c.id===currentClasse;}):null;
+  setBreadcrumb([
+    {label:'Résultats par classe',onclick:'retourNiveaux()'},
+    {label:niv?niv.nom:'',onclick:'retourClasses()'},
+    {label:cl?cl.nom:currentClasse,onclick:'retourDetailClasse()'},
+    {label:'Fractions',current:true}
+  ]);
+}
+
+function retourDepuisDetailClasse(){
+  // Bouton retour de la fiche classe : branche selon la provenance
+  if(provenanceDetailClasse==='stats-classement'){
+    retourVersClassement();
+  } else {
+    retourClasses();
+  }
+}
+
+function retourVersClassement(){
+  // Retour vers la vue Statistiques > Classement des classes
+  document.querySelectorAll('.section').forEach(function(s){s.classList.remove('active');});
+  document.querySelectorAll('.sb-item').forEach(function(n){n.classList.remove('active');});
+  document.getElementById('section-stats').classList.add('active');
+  document.getElementById('sb-stats').classList.add('active');
+  showStatsView('classement');
+  setBreadcrumb([
+    {label:'Statistiques',onclick:'retourVersStatsMenu()'},
+    {label:'Classement des classes',current:true}
+  ]);
+}
+
+function retourVersStatsMenu(){
+  document.querySelectorAll('.section').forEach(function(s){s.classList.remove('active');});
+  document.querySelectorAll('.sb-item').forEach(function(n){n.classList.remove('active');});
+  document.getElementById('section-stats').classList.add('active');
+  document.getElementById('sb-stats').classList.add('active');
+  showStatsView('menu');
+  setBreadcrumb([{label:'Statistiques',current:true}]);
+}
 
 var flyoutOpen=false;
 function toggleFlyout(){if(flyoutOpen)closeFlyout();else openFlyout();}
@@ -1435,10 +2314,8 @@ function toggleFlyoutGroup(id){
 
 function ouvrirClasseDepuisFlyout(nivId,classeId){
   currentNiveau=nivId;
-  document.querySelectorAll('.section').forEach(function(s){s.classList.remove('active');});
-  document.querySelectorAll('.sb-item').forEach(function(n){n.classList.remove('active');});
-  document.getElementById('section-classes').classList.add('active');
-  document.getElementById('sb-classes').classList.add('active');
+  provenanceDetailClasse=null;
+  activerSectionClasses();
   ouvrirDetailClasse(classeId);
   closeFlyout();
 }
@@ -1523,10 +2400,7 @@ function ouvrirEleveDepuisDys(email){
   NIVEAUX.forEach(function(n){n.classes.forEach(function(c){if(matchClasse(classe,c.id)){niv=n;cl=c;}});});
   if(!niv) return;
   currentNiveau=niv.id;currentClasse=cl.id;
-  document.querySelectorAll('.section').forEach(function(s){s.classList.remove('active');});
-  document.querySelectorAll('.sb-item').forEach(function(n){n.classList.remove('active');});
-  document.getElementById('section-classes').classList.add('active');
-  document.getElementById('sb-classes').classList.add('active');
+  activerSectionClasses();
   ouvrirUnEleve(email);
 }
 
@@ -1766,10 +2640,8 @@ function retourStatsLacunes(){
 
 function ouvrirClasseDepuisStats(nivId,classeId){
   currentNiveau=nivId;
-  document.querySelectorAll('.section').forEach(function(s){s.classList.remove('active');});
-  document.querySelectorAll('.sb-item').forEach(function(n){n.classList.remove('active');});
-  document.getElementById('section-classes').classList.add('active');
-  document.getElementById('sb-classes').classList.add('active');
+  provenanceDetailClasse='stats-classement';
+  activerSectionClasses();
   ouvrirDetailClasse(classeId);
 }
 
@@ -1807,6 +2679,7 @@ function renderNiveauxGrid(targetId){
 
 function ouvrirNiveauClasses(nivId){
   currentNiveau=nivId;
+  provenanceDetailClasse=null;
   var niv=NIVEAUX.find(function(n){return n.id===nivId;});
   document.getElementById('vclasses-title').textContent=niv.nom;
   document.getElementById('vclasses-sub').textContent=niv.classes.length+' classes';
@@ -1859,11 +2732,23 @@ function ouvrirDetailClasse(classeId){
   var valCl=remCl.filter(function(r){return r.statut==='quiz_final_valide';}).length;
   var pctProg=assignCl>0?Math.round(valCl/assignCl*100):0;
   var alertesCl=remCl.filter(function(r){return r.statut==='echec_3_tentatives'&&r.alerte_traitee==='non';}).length;
-  setBreadcrumb([
-    {label:'Résultats par classe',onclick:'retourNiveaux()'},
-    {label:niv?niv.nom:'',onclick:'retourClasses()'},
-    {label:cl?cl.nom:classeId,current:true}
-  ]);
+  if(provenanceDetailClasse==='stats-classement'){
+    setBreadcrumb([
+      {label:'Statistiques',onclick:'retourVersStatsMenu()'},
+      {label:'Classement des classes',onclick:'retourVersClassement()'},
+      {label:cl?cl.nom:classeId,current:true}
+    ]);
+    var btn=document.getElementById('btn-back-detail-classe');
+    if(btn) btn.textContent='← Retour au classement';
+  } else {
+    setBreadcrumb([
+      {label:'Résultats par classe',onclick:'retourNiveaux()'},
+      {label:niv?niv.nom:'',onclick:'retourClasses()'},
+      {label:cl?cl.nom:classeId,current:true}
+    ]);
+    var btn=document.getElementById('btn-back-detail-classe');
+    if(btn) btn.textContent='← Retour aux classes';
+  }
   document.getElementById('dc-title').textContent=cl?cl.nom:classeId;
   document.getElementById('dc-sub').textContent=(niv?niv.nom:'')+' · '+elevesCl+' élève'+(elevesCl>1?'s':'')+' évalué'+(elevesCl>1?'s':'');
   document.getElementById('dc-evalues').textContent=elevesCl;
@@ -2105,10 +2990,8 @@ function searchGoClasse(nivId,classeId){
   searchRes.classList.remove('visible');
   searchInp.value='';
   currentNiveau=nivId;
-  document.querySelectorAll('.section').forEach(function(s){s.classList.remove('active');});
-  document.querySelectorAll('.sb-item').forEach(function(n){n.classList.remove('active');});
-  document.getElementById('section-classes').classList.add('active');
-  document.getElementById('sb-classes').classList.add('active');
+  provenanceDetailClasse=null;
+  activerSectionClasses();
   ouvrirDetailClasse(classeId);
 }
 function searchGoEleve(email){
@@ -2121,10 +3004,7 @@ function searchGoEleve(email){
   NIVEAUX.forEach(function(n){n.classes.forEach(function(c){if(matchClasse(classe,c.id)){niv=n;cl=c;}});});
   if(!niv) return;
   currentNiveau=niv.id;currentClasse=cl.id;
-  document.querySelectorAll('.section').forEach(function(s){s.classList.remove('active');});
-  document.querySelectorAll('.sb-item').forEach(function(n){n.classList.remove('active');});
-  document.getElementById('section-classes').classList.add('active');
-  document.getElementById('sb-classes').classList.add('active');
+  activerSectionClasses();
   ouvrirUnEleve(email);
 }
 
