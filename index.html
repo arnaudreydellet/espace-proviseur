@@ -705,6 +705,44 @@ tr:hover td{background:#FDFCF9;}
 .distrib-classes-legend-profile-tag.mixte{background:var(--amber-l);color:var(--amber);}
 .distrib-classes-legend-profile-tag.hetero{background:#EEEDFE;color:#3C3489;}
 
+/* ═══ HISTORIQUE MENSUEL ═══ */
+.histo-hero{background:linear-gradient(135deg,#EEF1F9 0%,#F0F5FC 100%);border:1px solid rgba(74,144,226,.15);border-radius:var(--rl);padding:1.5rem 1.75rem;margin-bottom:1.5rem;display:flex;align-items:center;gap:1.25rem;}
+.histo-hero-ico{width:54px;height:54px;border-radius:14px;background:var(--white);border:1px solid rgba(74,144,226,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--accent);}
+.histo-hero-ico svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.histo-hero-body{flex:1;}
+.histo-hero-title{font-size:16px;font-weight:700;color:var(--text);letter-spacing:-.3px;margin-bottom:.35rem;}
+.histo-hero-desc{font-size:12.5px;color:var(--text2);line-height:1.55;}
+.histo-selector-wrap{display:flex;align-items:center;gap:.5rem;margin-bottom:1.5rem;flex-wrap:wrap;}
+.histo-selector-label{font-size:11.5px;font-weight:600;color:var(--text3);letter-spacing:.05em;text-transform:uppercase;margin-right:.25rem;}
+.histo-chip{font-size:12px;font-weight:600;padding:8px 14px;border-radius:20px;background:var(--white);border:1px solid var(--border-md);color:var(--text2);cursor:pointer;transition:all .15s;font-family:'Sora',sans-serif;display:inline-flex;align-items:center;gap:6px;}
+.histo-chip:hover{border-color:var(--navy-mid);color:var(--navy);}
+.histo-chip.active{background:var(--navy);color:#fff;border-color:var(--navy);}
+.histo-chip .histo-chip-delta{font-size:10px;opacity:.7;font-family:'JetBrains Mono',monospace;}
+.histo-kpi-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.75rem;}
+.histo-kpi-card{background:var(--white);border:1px solid var(--border);border-radius:var(--rl);padding:1.4rem 1.6rem;position:relative;overflow:hidden;}
+.histo-kpi-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:var(--navy);opacity:.1;}
+.histo-kpi-card.green::before{background:var(--green);opacity:.25;}
+.histo-kpi-card.amber::before{background:var(--amber);opacity:.25;}
+.histo-kpi-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;}
+.histo-kpi-label{font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--text3);}
+.histo-kpi-value{font-size:40px;font-weight:800;color:var(--navy);line-height:1;letter-spacing:-1.8px;margin-bottom:8px;}
+.histo-kpi-card.green .histo-kpi-value{color:var(--green-dark);}
+.histo-kpi-card.amber .histo-kpi-value{color:var(--amber);}
+.histo-kpi-delta{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:700;padding:3px 9px;border-radius:10px;}
+.histo-kpi-delta.up{color:var(--green-dark);background:var(--green-l);}
+.histo-kpi-delta.down{color:var(--red);background:var(--red-l);}
+.histo-kpi-delta.neutral{color:var(--text3);background:var(--bg);}
+.histo-kpi-delta.up-is-bad{color:var(--red);background:var(--red-l);}
+.histo-kpi-delta.down-is-good{color:var(--green-dark);background:var(--green-l);}
+.histo-empty{background:var(--white);border:1px solid var(--border);border-radius:var(--rl);padding:3rem 2rem;text-align:center;color:var(--text3);}
+.histo-empty-icon{font-size:38px;margin-bottom:1rem;opacity:.5;}
+.histo-empty-title{font-size:16px;font-weight:700;color:var(--text);margin-bottom:.5rem;}
+.histo-empty-sub{font-size:13px;line-height:1.6;max-width:480px;margin:0 auto;}
+.histo-section-title{font-size:13px;font-weight:700;color:var(--text2);letter-spacing:-.2px;margin:1.5rem 0 .75rem;display:flex;align-items:center;gap:8px;}
+.histo-section-title::before{content:'';width:3px;height:14px;background:var(--navy-mid);border-radius:2px;}
+.histo-meta{font-size:11px;color:var(--text3);margin-bottom:1rem;}
+.histo-meta strong{color:var(--text2);font-weight:600;}
+
 /* ═══ EXPORT ═══ */
 .btn-export{display:inline-flex;align-items:center;gap:7px;font-size:11.5px;font-weight:600;color:var(--text2);background:var(--bg);border:1px solid var(--border-md);padding:6px 14px;border-radius:var(--r);cursor:pointer;transition:all .15s;font-family:'Sora',sans-serif;}
 .btn-export:hover{background:var(--white);border-color:var(--navy);color:var(--navy);}
@@ -804,6 +842,10 @@ tr:hover td{background:#FDFCF9;}
       <div class="sb-item" id="sb-stats" onclick="navVers('stats')">
         <div class="sb-ico"><svg viewBox="0 0 24 24"><path d="M3 20h18M7 16V8m5 8V4m5 12v-6"/></svg></div>
         <div class="sb-tooltip">Statistiques</div>
+      </div>
+      <div class="sb-item" id="sb-historique" onclick="navVers('historique')">
+        <div class="sb-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div class="sb-tooltip">Historique mensuel</div>
       </div>
     </div>
     <div class="sb-bottom">
@@ -1314,6 +1356,24 @@ tr:hover td{background:#FDFCF9;}
 
       </div>
 
+      <!-- ══ SECTION HISTORIQUE MENSUEL ══ -->
+      <div class="section" id="section-historique">
+        <div class="page-header">
+          <div class="page-title">Historique mensuel</div>
+          <div class="page-sub">Retrouvez l\'état de vos indicateurs à chaque mois passé.</div>
+        </div>
+        <div class="histo-hero">
+          <div class="histo-hero-ico">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div class="histo-hero-body">
+            <div class="histo-hero-title">Photographie mensuelle de l\'établissement</div>
+            <div class="histo-hero-desc">Chaque 1er du mois, un instantané des indicateurs clés et des graphiques est automatiquement enregistré. Sélectionnez un mois ci-dessous pour voir l\'état à cette date, avec une comparaison automatique au mois précédent.</div>
+          </div>
+        </div>
+        <div id="histo-content"></div>
+      </div>
+
     </div>
   </div>
 </div>
@@ -1555,6 +1615,11 @@ function navVers(dest){
     document.getElementById('sb-stats').classList.add('active');
     showStatsView('menu');
     setBreadcrumb([{label:'Statistiques',current:true}]);
+  } else if(dest==='historique'){
+    document.getElementById('section-historique').classList.add('active');
+    document.getElementById('sb-historique').classList.add('active');
+    setBreadcrumb([{label:'Historique mensuel',current:true}]);
+    chargerHistoriqueMensuel();
   }
 }
 
@@ -3046,6 +3111,175 @@ function exporterCSV(){
   a.href=url;a.download=nomFichier;
   document.body.appendChild(a);a.click();
   document.body.removeChild(a);URL.revokeObjectURL(url);
+}
+
+// ═══ HISTORIQUE MENSUEL ═══
+var SNAPSHOTS_HISTORIQUE=[];
+var moisSelectionne=null;
+var chargementHistoriqueEnCours=false;
+
+function chargerHistoriqueMensuel(){
+  if(chargementHistoriqueEnCours) return;
+  chargementHistoriqueEnCours=true;
+  var container=document.getElementById('histo-content');
+  container.innerHTML='<div class="histo-empty"><div class="histo-empty-icon">⏳</div><div class="histo-empty-title">Chargement...</div></div>';
+  fetch(SCRIPT_URL+'?type=snapshots&etablissement='+encodeURIComponent(ETABLISSEMENT)+'&t='+Date.now())
+    .then(function(r){return r.json();})
+    .then(function(j){
+      chargementHistoriqueEnCours=false;
+      if(j.status==='ok'){
+        SNAPSHOTS_HISTORIQUE=j.data||[];
+        renderHistoriqueMensuel();
+      } else {
+        container.innerHTML='<div class="histo-empty"><div class="histo-empty-icon">⚠️</div><div class="histo-empty-title">Erreur de chargement</div><div class="histo-empty-sub">Impossible de récupérer l\'historique. Veuillez réessayer plus tard.</div></div>';
+      }
+    })
+    .catch(function(){
+      chargementHistoriqueEnCours=false;
+      container.innerHTML='<div class="histo-empty"><div class="histo-empty-icon">⚠️</div><div class="histo-empty-title">Erreur réseau</div><div class="histo-empty-sub">Connexion impossible. Vérifiez votre accès Internet et réessayez.</div></div>';
+    });
+}
+
+function renderHistoriqueMensuel(){
+  var container=document.getElementById('histo-content');
+  if(!SNAPSHOTS_HISTORIQUE || SNAPSHOTS_HISTORIQUE.length===0){
+    container.innerHTML='<div class="histo-empty"><div class="histo-empty-icon">📸</div><div class="histo-empty-title">Aucun snapshot pour le moment</div><div class="histo-empty-sub">Les snapshots mensuels sont enregistrés automatiquement le 1er de chaque mois à 02h00 du matin. Le premier snapshot apparaîtra après cette première exécution automatique.</div></div>';
+    return;
+  }
+  // SNAPSHOTS_HISTORIQUE est déjà trié du plus récent au plus ancien
+  if(!moisSelectionne) moisSelectionne=SNAPSHOTS_HISTORIQUE[0].mois;
+  // Construction du sélecteur de mois
+  var chipsHtml=SNAPSHOTS_HISTORIQUE.map(function(snap){
+    var cls=snap.mois===moisSelectionne?'histo-chip active':'histo-chip';
+    return '<button class="'+cls+'" onclick="selectionnerMois(\''+esc(snap.mois)+'\')">'+formatMoisDisplay(snap.mois)+'</button>';
+  }).join('');
+  var selectorHtml=
+    '<div class="histo-selector-wrap">'
+      +'<span class="histo-selector-label">Mois :</span>'
+      +chipsHtml
+    +'</div>';
+  // Snapshot courant et précédent
+  var snapIdx=SNAPSHOTS_HISTORIQUE.findIndex(function(s){return s.mois===moisSelectionne;});
+  var snap=SNAPSHOTS_HISTORIQUE[snapIdx];
+  var snapPrev=SNAPSHOTS_HISTORIQUE[snapIdx+1]||null;
+  // Meta info
+  var metaHtml='<div class="histo-meta">Snapshot du <strong>'+esc(snap.timestamp||formatMoisDisplay(snap.mois))+'</strong> · Établissement : <strong>'+esc(snap.etablissement)+'</strong></div>';
+  // KPIs avec deltas
+  var kpisHtml=renderHistoKpis(snap,snapPrev);
+  // Graphiques : pour l'instant on affiche un résumé textuel (on ajoutera les vrais graphiques après)
+  var graphsHtml=renderHistoSummary(snap,snapPrev);
+  container.innerHTML=selectorHtml+metaHtml+kpisHtml+graphsHtml;
+}
+
+function selectionnerMois(mois){
+  moisSelectionne=mois;
+  renderHistoriqueMensuel();
+}
+
+function formatMoisDisplay(moisKey){
+  if(!moisKey) return '—';
+  var parts=moisKey.split('-');
+  if(parts.length!==2) return moisKey;
+  var annee=parts[0];
+  var moisNum=parseInt(parts[1])-1;
+  var mois=['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
+  return mois[moisNum]+' '+annee;
+}
+
+function renderHistoKpis(snap,snapPrev){
+  function delta(current,previous,lowerIsBetter){
+    if(previous===null||previous===undefined||current===null||current===undefined) return '<span class="histo-kpi-delta neutral">—</span>';
+    var d=current-previous;
+    if(d===0) return '<span class="histo-kpi-delta neutral">= aucun changement</span>';
+    var cls,prefix;
+    if(lowerIsBetter){
+      cls=d<0?'down-is-good':'up-is-bad';
+      prefix=d>0?'+':'';
+    } else {
+      cls=d>0?'up':'down';
+      prefix=d>0?'+':'';
+    }
+    return '<span class="histo-kpi-delta '+cls+'">'+prefix+d+' vs mois préc.</span>';
+  }
+  function deltaPct(current,previous){
+    if(previous===null||previous===undefined||current===null||current===undefined) return '<span class="histo-kpi-delta neutral">—</span>';
+    var d=current-previous;
+    if(d===0) return '<span class="histo-kpi-delta neutral">= stable</span>';
+    var cls=d>0?'up':'down';
+    var prefix=d>0?'+':'';
+    return '<span class="histo-kpi-delta '+cls+'">'+prefix+d+' pts vs mois préc.</span>';
+  }
+  var prev=snapPrev;
+  return '<div class="histo-kpi-strip">'
+    +'<div class="histo-kpi-card">'
+      +'<div class="histo-kpi-head"><div class="histo-kpi-label">Élèves diagnostiqués</div></div>'
+      +'<div class="histo-kpi-value">'+(snap.eleves_diagnostiques||0)+'</div>'
+      +delta(snap.eleves_diagnostiques,prev?prev.eleves_diagnostiques:null,false)
+    +'</div>'
+    +'<div class="histo-kpi-card amber">'
+      +'<div class="histo-kpi-head"><div class="histo-kpi-label">Lacunes moy. / élève</div></div>'
+      +'<div class="histo-kpi-value">'+(snap.lacunes_moy_par_eleve||0)+'</div>'
+      +delta(snap.lacunes_moy_par_eleve,prev?prev.lacunes_moy_par_eleve:null,true)
+    +'</div>'
+    +'<div class="histo-kpi-card green">'
+      +'<div class="histo-kpi-head"><div class="histo-kpi-label">Lacunes comblées</div></div>'
+      +'<div class="histo-kpi-value">'+(snap.pct_lacunes_comblees||0)+'%</div>'
+      +deltaPct(snap.pct_lacunes_comblees,prev?prev.pct_lacunes_comblees:null)
+    +'</div>'
+  +'</div>';
+}
+
+function renderHistoSummary(snap,snapPrev){
+  var html='';
+  // Répartition filière
+  if(snap.nb_cap!==undefined && snap.nb_bacpro!==undefined){
+    var total=(snap.nb_cap||0)+(snap.nb_bacpro||0);
+    var pctCap=total>0?Math.round(snap.nb_cap/total*100):0;
+    var pctBp=total>0?100-pctCap:0;
+    html+='<div class="histo-section-title">Répartition par filière</div>';
+    html+='<div style="background:var(--white);border:1px solid var(--border);border-radius:var(--rl);padding:1.25rem 1.5rem;margin-bottom:1rem;">'
+      +'<div style="display:flex;gap:2rem;align-items:center;">'
+        +'<div style="flex:1;"><div style="font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;font-weight:600;margin-bottom:6px;">CAP</div><div style="font-size:24px;font-weight:800;color:var(--green-dark);letter-spacing:-.5px;">'+(snap.nb_cap||0)+' <span style="font-size:13px;font-weight:600;color:var(--text3);">élèves · '+pctCap+'%</span></div></div>'
+        +'<div style="flex:1;"><div style="font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;font-weight:600;margin-bottom:6px;">Bac Pro</div><div style="font-size:24px;font-weight:800;color:var(--navy);letter-spacing:-.5px;">'+(snap.nb_bacpro||0)+' <span style="font-size:13px;font-weight:600;color:var(--text3);">élèves · '+pctBp+'%</span></div></div>'
+      +'</div>'
+    +'</div>';
+  }
+  // Podium
+  if(snap.podium_fragiles && snap.podium_fragiles.length>0){
+    html+='<div class="histo-section-title">Classes les plus fragiles ce mois</div>';
+    html+='<div style="background:var(--white);border:1px solid var(--border);border-radius:var(--rl);padding:1rem 1.5rem;margin-bottom:1rem;">';
+    snap.podium_fragiles.forEach(function(c,i){
+      html+='<div style="display:flex;align-items:center;gap:12px;padding:8px 0;'+(i<snap.podium_fragiles.length-1?'border-bottom:1px solid var(--border);':'')+'">'
+        +'<span style="width:22px;height:22px;border-radius:50%;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:11px;">'+(i+1)+'</span>'
+        +'<span style="font-size:8.5px;font-weight:700;padding:2px 6px;border-radius:5px;background:'+(c.niveau==='CAP'?'#EEF9F4':'var(--navy-l)')+';color:'+(c.niveau==='CAP'?'var(--green-dark)':'var(--navy)')+';">'+(c.niveau==='CAP'?'CAP':'BP')+'</span>'
+        +'<span style="font-size:12.5px;font-weight:600;flex:1;">'+esc(c.classe_nom)+'</span>'
+        +'<span style="font-size:13px;font-weight:800;color:var(--red);">'+(c.moyenne||0).toFixed(1).replace('.',',')+' lac/élève</span>'
+      +'</div>';
+    });
+    html+='</div>';
+  }
+  // Lacunes classes
+  if(snap.lacunes_par_classe && snap.lacunes_par_classe.length>0){
+    var actives=snap.lacunes_par_classe.filter(function(c){return c.moyenne!==null;});
+    if(actives.length>0){
+      html+='<div class="histo-section-title">Moyenne de lacunes par classe</div>';
+      html+='<div style="background:var(--white);border:1px solid var(--border);border-radius:var(--rl);padding:1.25rem 1.5rem;margin-bottom:1rem;">';
+      actives.sort(function(a,b){return a.moyenne-b.moyenne;});
+      var maxMoy=Math.max.apply(null,actives.map(function(c){return c.moyenne;}));
+      if(maxMoy===0) maxMoy=1;
+      actives.forEach(function(c){
+        var pct=Math.round(c.moyenne/maxMoy*100);
+        var color=c.moyenne<=2?'var(--green)':c.moyenne<=4?'var(--amber)':'var(--red)';
+        html+='<div style="display:grid;grid-template-columns:120px 1fr 60px;align-items:center;gap:12px;padding:6px 0;">'
+          +'<div style="display:flex;align-items:center;gap:6px;"><span style="font-size:8.5px;font-weight:700;padding:2px 6px;border-radius:5px;background:'+(c.niveau==='CAP'?'#EEF9F4':'var(--navy-l)')+';color:'+(c.niveau==='CAP'?'var(--green-dark)':'var(--navy)')+';">'+(c.niveau==='CAP'?'CAP':'BP')+'</span><span style="font-size:11.5px;font-weight:600;">'+esc(c.classe_nom)+'</span></div>'
+          +'<div style="height:18px;background:var(--bg2);border-radius:5px;overflow:hidden;"><div style="height:100%;width:'+pct+'%;background:'+color+';border-radius:5px;"></div></div>'
+          +'<div style="font-size:11.5px;font-weight:700;color:var(--navy);font-family:\'JetBrains Mono\',monospace;text-align:right;">'+c.moyenne.toFixed(1).replace('.',',')+'</div>'
+        +'</div>';
+      });
+      html+='</div>';
+    }
+  }
+  return html;
 }
 
 setInterval(function(){
