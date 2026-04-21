@@ -709,6 +709,19 @@ tr:hover td{background:#FDFCF9;}
 .distrib-classes-legend-profile-tag.mixte{background:var(--amber-l);color:var(--amber);}
 .distrib-classes-legend-profile-tag.hetero{background:#EEEDFE;color:#3C3489;}
 
+/* ═══ OVERLAY DE CHARGEMENT PLEINE PAGE ═══ */
+.page-loader-overlay{position:fixed;inset:0;z-index:50;display:none;align-items:center;justify-content:center;background:rgba(251,249,243,.75);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);animation:pageLoaderFadeIn .2s ease-out;}
+.page-loader-overlay.active{display:flex;}
+@keyframes pageLoaderFadeIn{from{opacity:0;}to{opacity:1;}}
+.page-loader-card{background:var(--white);border:1px solid var(--border);border-radius:var(--rl);padding:2.25rem 2.75rem;display:flex;flex-direction:column;align-items:center;gap:1rem;box-shadow:0 20px 50px rgba(27,46,94,.1),0 6px 16px rgba(27,46,94,.06);min-width:300px;max-width:92%;}
+.page-loader-spinner{width:44px;height:44px;border-radius:50%;border:3px solid var(--bg2);border-top-color:var(--navy-mid);animation:pageLoaderSpin .8s linear infinite;}
+@keyframes pageLoaderSpin{to{transform:rotate(360deg);}}
+.page-loader-title{font-size:15px;font-weight:700;color:var(--text);letter-spacing:-.2px;font-family:'Sora',sans-serif;}
+.page-loader-sub{font-size:12px;color:var(--text3);text-align:center;}
+.page-loader-dots{display:inline-block;width:20px;text-align:left;}
+.page-loader-dots::after{content:'';animation:pageLoaderDots 1.4s infinite;}
+@keyframes pageLoaderDots{0%,20%{content:'';}40%{content:'.';}60%{content:'..';}80%,100%{content:'...';}}
+
 /* ═══ LOADER VUE DIAGNOSTIQUÉS ═══ */
 .diag-loader-overlay{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:4rem 2rem;background:var(--white);border:1px solid var(--border);border-radius:var(--rl);margin-bottom:1.5rem;}
 .diag-loader-spinner{width:44px;height:44px;border-radius:50%;border:3px solid var(--bg2);border-top-color:var(--navy-mid);animation:diagSpin .8s linear infinite;margin-bottom:1.25rem;}
@@ -1120,6 +1133,261 @@ tr:hover td{background:#FDFCF9;}
 .dys-empty-big{text-align:center;padding:2.5rem 1.5rem;color:var(--text3);font-size:12.5px;}
 .dys-empty-big-ico{font-size:32px;margin-bottom:.5rem;opacity:.5;}
 
+/* ═══ FILIÈRE HERO — NOUVEAU DESIGN RÉPARTITION ═══ */
+.fil-hero{display:grid;grid-template-columns:280px 1fr;gap:2rem;align-items:center;width:100%;padding:1rem .5rem;}
+@media (max-width:780px){.fil-hero{grid-template-columns:1fr;gap:1.5rem;}.fil-hero-donut{margin:0 auto;}}
+.fil-hero-donut{position:relative;width:220px;height:220px;flex-shrink:0;margin:0 auto;}
+.fil-hero-donut svg{transform:rotate(-90deg);}
+.fil-hero-donut-bg{fill:none;stroke:var(--bg2);stroke-width:22;}
+.fil-hero-donut-seg{fill:none;stroke-width:22;stroke-linecap:butt;transition:stroke-dasharray 1.4s cubic-bezier(.4,0,.2,1);}
+.fil-hero-donut-seg.cap{stroke:url(#filHeroCapGradient);stroke:#15A362;filter:drop-shadow(0 0 6px rgba(21,163,98,.15));}
+.fil-hero-donut-seg.bp{stroke:url(#filHeroBpGradient);stroke:var(--navy-mid);filter:drop-shadow(0 0 6px rgba(27,46,94,.15));}
+.fil-hero-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;}
+.fil-hero-center-val{font-size:58px;font-weight:800;color:var(--navy);letter-spacing:-3px;line-height:1;font-family:'Sora',sans-serif;}
+.fil-hero-center-lbl{font-size:11.5px;font-weight:700;color:var(--text2);text-transform:uppercase;letter-spacing:.12em;margin-top:6px;}
+.fil-hero-center-sub{font-size:10px;font-weight:500;color:var(--text3);margin-top:2px;}
+
+.fil-hero-cards{display:flex;flex-direction:column;gap:.75rem;}
+.fil-hero-card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--rl);padding:1.1rem 1.25rem;transition:all .2s;position:relative;overflow:hidden;}
+.fil-hero-card.cap{border-color:rgba(21,163,98,.18);}
+.fil-hero-card.bp{border-color:rgba(27,46,94,.15);}
+.fil-hero-card.cap:hover{border-color:#15A362;box-shadow:0 3px 14px rgba(21,163,98,.1);}
+.fil-hero-card.bp:hover{border-color:var(--navy-mid);box-shadow:0 3px 14px rgba(27,46,94,.1);}
+.fil-hero-card-header{display:flex;align-items:center;gap:12px;margin-bottom:.875rem;}
+.fil-hero-card-ico{width:42px;height:42px;border-radius:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.fil-hero-card-ico.cap{background:linear-gradient(135deg,#15A362 0%,#22D37C 100%);color:#fff;box-shadow:0 2px 8px rgba(21,163,98,.2);}
+.fil-hero-card-ico.bp{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 100%);color:#fff;box-shadow:0 2px 8px rgba(27,46,94,.2);}
+.fil-hero-card-ico svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.fil-hero-card-title-block{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px;}
+.fil-hero-card-tag{font-size:10.5px;font-weight:800;padding:3px 9px;border-radius:8px;letter-spacing:.05em;font-family:'Sora',sans-serif;width:fit-content;}
+.fil-hero-card-tag.cap{background:#EEF9F4;color:var(--green-dark);}
+.fil-hero-card-tag.bp{background:var(--navy-l);color:var(--navy);}
+.fil-hero-card-title{font-size:11px;font-weight:600;color:var(--text3);letter-spacing:-.1px;}
+.fil-hero-card-num{font-size:30px;font-weight:800;letter-spacing:-1px;line-height:1;font-family:'Sora',sans-serif;}
+.fil-hero-card-num.cap{color:var(--green-dark);}
+.fil-hero-card-num.bp{color:var(--navy);}
+.fil-hero-card-bar-wrap{display:flex;align-items:center;gap:12px;}
+.fil-hero-card-bar-track{flex:1;height:8px;background:var(--bg2);border-radius:5px;overflow:hidden;box-shadow:inset 0 1px 2px rgba(0,0,0,.04);}
+.fil-hero-card-bar-fill{height:100%;border-radius:5px;transition:width 1.4s cubic-bezier(.4,0,.2,1);}
+.fil-hero-card-bar-fill.cap{background:linear-gradient(90deg,#15A362 0%,#22D37C 100%);}
+.fil-hero-card-bar-fill.bp{background:linear-gradient(90deg,var(--navy-mid) 0%,#4A90E2 100%);}
+.fil-hero-card-pct{font-size:13px;font-weight:800;letter-spacing:-.3px;font-family:'Sora',sans-serif;flex-shrink:0;min-width:40px;text-align:right;}
+.fil-hero-card-pct.cap{color:var(--green-dark);}
+.fil-hero-card-pct.bp{color:var(--navy);}
+
+/* ═══ TAUX D'ENGAGEMENT ═══ */
+/* Hero global */
+.eng-hero-wrap{width:100%;max-width:900px;margin:0 auto 1.5rem;padding:.25rem 0;}
+.eng-hero-main{display:grid;grid-template-columns:240px 1fr;gap:2rem;align-items:center;padding:1.75rem 1.5rem;background:var(--bg);border:1px solid var(--border);border-radius:var(--rl);}
+@media (max-width:760px){.eng-hero-main{grid-template-columns:1fr;gap:1.5rem;padding:1.5rem 1.25rem;}}
+.eng-hero-gauge{position:relative;width:220px;height:220px;flex-shrink:0;margin:0 auto;}
+.eng-hero-gauge svg{transform:rotate(-90deg);}
+.eng-hero-gauge-bg{fill:none;stroke:var(--bg2);stroke-width:18;}
+.eng-hero-gauge-fill{fill:none;stroke-width:18;stroke-linecap:round;transition:stroke-dashoffset 1.4s cubic-bezier(.4,0,.2,1);}
+.eng-hero-gauge-fill.excellent{stroke:#15A362;filter:drop-shadow(0 0 8px rgba(21,163,98,.3));}
+.eng-hero-gauge-fill.good{stroke:#22D37C;}
+.eng-hero-gauge-fill.mid{stroke:#D47B06;}
+.eng-hero-gauge-fill.bad{stroke:#D42626;}
+.eng-hero-gauge-inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;}
+.eng-hero-gauge-val{font-size:50px;font-weight:800;color:var(--navy);letter-spacing:-2.5px;line-height:1;font-family:'Sora',sans-serif;}
+.eng-hero-gauge-val.excellent{color:var(--green-dark);}
+.eng-hero-gauge-val.good{color:#0E7348;}
+.eng-hero-gauge-val.mid{color:var(--amber);}
+.eng-hero-gauge-val.bad{color:var(--red);}
+.eng-hero-gauge-lbl{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--text3);margin-top:8px;}
+.eng-hero-gauge-sub{font-size:11px;color:var(--text3);margin-top:6px;font-family:'JetBrains Mono',monospace;}
+.eng-hero-stats{display:flex;flex-direction:column;gap:.875rem;}
+.eng-hero-stat-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:1.05rem 1.3rem;display:flex;align-items:center;gap:1rem;transition:all .15s;}
+.eng-hero-stat-card:hover{border-color:var(--border-md);}
+.eng-hero-stat-ico{width:42px;height:42px;border-radius:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.eng-hero-stat-ico.assignees{background:var(--navy-l);color:var(--navy);}
+.eng-hero-stat-ico.validees{background:#EEF9F4;color:var(--green-dark);}
+.eng-hero-stat-ico svg{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.eng-hero-stat-body{flex:1;min-width:0;}
+.eng-hero-stat-val{font-size:26px;font-weight:800;line-height:1;letter-spacing:-.8px;font-family:'Sora',sans-serif;color:var(--navy);}
+.eng-hero-stat-val.green{color:var(--green-dark);}
+.eng-hero-stat-lbl{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--text3);margin-top:4px;}
+.eng-hero-stat-detail{font-size:10.5px;color:var(--text3);margin-top:2px;}
+.eng-hero-verdict{margin-top:1rem;padding:1rem 1.3rem;border-radius:var(--r);display:flex;align-items:flex-start;gap:12px;border:1px solid;}
+.eng-hero-verdict.excellent{background:var(--green-l);border-color:rgba(21,163,98,.25);}
+.eng-hero-verdict.good{background:#EEF1F9;border-color:rgba(74,144,226,.2);}
+.eng-hero-verdict.mid{background:var(--amber-l);border-color:rgba(212,123,6,.2);}
+.eng-hero-verdict.bad{background:var(--red-l);border-color:rgba(212,38,38,.2);}
+.eng-hero-verdict-ico{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:15px;color:#fff;}
+.eng-hero-verdict.excellent .eng-hero-verdict-ico{background:#15A362;}
+.eng-hero-verdict.good .eng-hero-verdict-ico{background:var(--navy-mid);}
+.eng-hero-verdict.mid .eng-hero-verdict-ico{background:var(--amber);}
+.eng-hero-verdict.bad .eng-hero-verdict-ico{background:var(--red);}
+.eng-hero-verdict-body{flex:1;font-size:12px;line-height:1.55;color:var(--text2);padding-top:3px;}
+.eng-hero-verdict-body strong{font-weight:700;}
+
+/* Classement par classe */
+.eng-classement-wrap{width:100%;max-width:900px;margin:0 auto 1.5rem;padding:.25rem 0;}
+.eng-classement-title{font-size:13px;font-weight:700;color:var(--text);margin-bottom:.5rem;letter-spacing:-.3px;}
+.eng-classement-sub{font-size:11.5px;color:var(--text3);margin-bottom:1rem;}
+.eng-table-header{display:grid;grid-template-columns:220px 1fr 130px;align-items:center;gap:16px;padding:0 18px 10px;margin-bottom:4px;border-bottom:1px solid var(--border);}
+.eng-th{font-size:9.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);}
+.eng-th-right{text-align:right;}
+.eng-classes-list{display:flex;flex-direction:column;gap:6px;}
+.eng-row{display:grid;grid-template-columns:220px 1fr 130px;align-items:center;gap:16px;padding:12px 18px;background:var(--white);border:1px solid var(--border);border-radius:var(--r);transition:all .18s;}
+.eng-row:hover{border-color:var(--navy-mid);box-shadow:0 3px 12px rgba(27,46,94,.06);transform:translateX(2px);}
+.eng-row.inactive{background:repeating-linear-gradient(45deg,#FBF9F3,#FBF9F3 10px,var(--white) 10px,var(--white) 20px);opacity:.7;}
+.eng-row.inactive:hover{transform:none;box-shadow:none;border-color:var(--border);}
+.eng-row-label{display:flex;align-items:center;gap:8px;min-width:0;}
+.eng-row-rank{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:var(--text3);background:var(--bg);flex-shrink:0;font-family:'JetBrains Mono',monospace;}
+.eng-row-rank.top-1{background:linear-gradient(135deg,#FFD700 0%,#E6B800 100%);color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.15);box-shadow:0 2px 6px rgba(230,184,0,.3);}
+.eng-row-rank.top-2{background:linear-gradient(135deg,#E5E7EB 0%,#9CA3AF 100%);color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.1);box-shadow:0 2px 5px rgba(156,163,175,.25);}
+.eng-row-rank.top-3{background:linear-gradient(135deg,#D49664 0%,#B87333 100%);color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.1);box-shadow:0 2px 5px rgba(184,115,51,.25);}
+.eng-row-rank.last{background:var(--red-l);color:var(--red);}
+.eng-row-tag{font-size:8.5px;font-weight:700;padding:2px 7px;border-radius:6px;letter-spacing:.05em;flex-shrink:0;font-family:'Sora',sans-serif;}
+.eng-row-tag.cap{background:#EEF9F4;color:var(--green-dark);}
+.eng-row-tag.bp{background:var(--navy-l);color:var(--navy);}
+.eng-row-name{font-size:13px;font-weight:600;color:var(--text);letter-spacing:-.2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;min-width:0;}
+.eng-row-badge-retard{font-size:9px;font-weight:700;padding:2px 7px;border-radius:5px;background:var(--red-l);color:var(--red);letter-spacing:.03em;font-family:'Sora',sans-serif;flex-shrink:0;}
+.eng-row-track{position:relative;height:30px;background:var(--bg2);border-radius:8px;overflow:hidden;box-shadow:inset 0 1px 2px rgba(0,0,0,.04);}
+.eng-row-fill{height:100%;border-radius:8px;transition:width 1.2s cubic-bezier(.4,0,.2,1);display:flex;align-items:center;padding-left:12px;min-width:2px;position:relative;}
+.eng-row-fill::after{content:'';position:absolute;top:0;left:0;right:0;height:50%;background:linear-gradient(180deg,rgba(255,255,255,.18) 0%,rgba(255,255,255,0) 100%);border-radius:8px 8px 0 0;pointer-events:none;}
+.eng-row-fill.excellent{background:linear-gradient(90deg,#15A362 0%,#22D37C 100%);}
+.eng-row-fill.good{background:linear-gradient(90deg,#4A90E2 0%,#7AB8F5 100%);}
+.eng-row-fill.mid{background:linear-gradient(90deg,#D47B06 0%,#E89020 100%);}
+.eng-row-fill.bad{background:linear-gradient(90deg,#D42626 0%,#E84545 100%);}
+.eng-row-pct{font-size:13px;font-weight:800;color:#fff;letter-spacing:-.3px;text-shadow:0 1px 2px rgba(0,0,0,.18);font-family:'Sora',sans-serif;position:relative;z-index:1;}
+.eng-row-pct.outside{position:absolute;color:var(--text);text-shadow:none;top:50%;transform:translateY(-50%);white-space:nowrap;z-index:2;}
+.eng-row-right{display:flex;flex-direction:column;align-items:flex-end;gap:1px;}
+.eng-row-ratio{font-size:14px;font-weight:800;color:var(--navy);letter-spacing:-.3px;font-family:'Sora',sans-serif;line-height:1;}
+.eng-row-ratio.green{color:var(--green-dark);}
+.eng-row-ratio.red{color:var(--red);}
+.eng-row-ratio-lbl{font-size:9.5px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--text3);}
+.eng-row-empty{font-size:10.5px;color:var(--text3);font-style:italic;text-align:right;}
+.eng-row-empty-val{color:var(--text3);font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:700;text-align:right;}
+
+.eng-empty{text-align:center;color:var(--text3);font-size:12.5px;padding:3rem 2rem;background:var(--bg);border:1px dashed var(--border-md);border-radius:var(--rl);}
+
+/* Synthèse actionnable */
+.eng-synthese-wrap{width:100%;max-width:900px;margin:0 auto;padding:.25rem 0;display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;}
+@media (max-width:700px){.eng-synthese-wrap{grid-template-columns:1fr;}}
+.eng-synthese-card{background:var(--white);border:1px solid var(--border);border-radius:var(--rl);padding:1.3rem 1.5rem;position:relative;overflow:hidden;}
+.eng-synthese-card.best{border-left:4px solid #15A362;}
+.eng-synthese-card.worst{border-left:4px solid var(--red);}
+.eng-synthese-title{font-size:9.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);margin-bottom:.85rem;display:flex;align-items:center;gap:6px;}
+.eng-synthese-ico{font-size:14px;}
+.eng-synthese-class-line{display:flex;align-items:center;gap:10px;margin-bottom:.75rem;}
+.eng-synthese-class-tag{font-size:9px;font-weight:800;padding:3px 8px;border-radius:6px;letter-spacing:.04em;font-family:'Sora',sans-serif;}
+.eng-synthese-class-tag.cap{background:#EEF9F4;color:var(--green-dark);}
+.eng-synthese-class-tag.bp{background:var(--navy-l);color:var(--navy);}
+.eng-synthese-class-name{font-size:16px;font-weight:800;color:var(--text);letter-spacing:-.4px;font-family:'Sora',sans-serif;}
+.eng-synthese-metric{display:flex;align-items:baseline;gap:8px;margin-bottom:.6rem;}
+.eng-synthese-metric-val{font-size:34px;font-weight:800;letter-spacing:-1.2px;line-height:1;font-family:'Sora',sans-serif;}
+.eng-synthese-metric-val.good{color:var(--green-dark);}
+.eng-synthese-metric-val.bad{color:var(--red);}
+.eng-synthese-metric-lbl{font-size:11px;color:var(--text3);}
+.eng-synthese-detail{font-size:12px;color:var(--text2);line-height:1.55;}
+.eng-synthese-detail strong{color:var(--text);font-weight:700;}
+
+/* ═══ SCORES AVANT / APRÈS — IMPACT REMÉDIATION ═══ */
+
+/* Hero global */
+.sc-hero-wrap{width:100%;max-width:900px;margin:0 auto 1.5rem;padding:.25rem 0;}
+.sc-hero-main{display:grid;grid-template-columns:auto 1px 1fr;gap:2rem;align-items:center;padding:1.75rem 1.5rem;background:var(--bg);border:1px solid var(--border);border-radius:var(--rl);}
+@media (max-width:780px){.sc-hero-main{grid-template-columns:1fr;gap:1.5rem;}.sc-hero-sep{display:none;}}
+.sc-hero-gain-block{display:flex;flex-direction:column;align-items:center;text-align:center;min-width:220px;padding:0 1rem;}
+.sc-hero-gain-sign{font-size:60px;font-weight:800;letter-spacing:-3px;line-height:1;font-family:'Sora',sans-serif;display:flex;align-items:baseline;gap:2px;}
+.sc-hero-gain-sign.positive{color:var(--green-dark);}
+.sc-hero-gain-sign.negative{color:var(--red);}
+.sc-hero-gain-sign.neutral{color:var(--text3);}
+.sc-hero-gain-sign .plus{font-size:48px;}
+.sc-hero-gain-sign .unit{font-size:20px;font-weight:700;color:var(--text3);margin-left:4px;letter-spacing:-.3px;}
+.sc-hero-gain-lbl{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--text3);margin-top:8px;}
+.sc-hero-gain-sub{font-size:11px;color:var(--text3);margin-top:4px;font-family:'JetBrains Mono',monospace;}
+.sc-hero-sep{width:1px;background:var(--border);align-self:stretch;}
+.sc-hero-stats{display:flex;flex-direction:column;gap:.875rem;}
+.sc-hero-stat-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:1rem 1.25rem;display:flex;align-items:center;gap:1rem;}
+.sc-hero-stat-ico{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.sc-hero-stat-ico.avant{background:var(--amber-l);color:var(--amber);}
+.sc-hero-stat-ico.apres{background:#EEF9F4;color:var(--green-dark);}
+.sc-hero-stat-ico.eleves{background:var(--navy-l);color:var(--navy);}
+.sc-hero-stat-ico svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.sc-hero-stat-body{flex:1;min-width:0;}
+.sc-hero-stat-val{font-size:22px;font-weight:800;line-height:1;letter-spacing:-.6px;font-family:'Sora',sans-serif;color:var(--text);}
+.sc-hero-stat-val.amber{color:var(--amber);}
+.sc-hero-stat-val.green{color:var(--green-dark);}
+.sc-hero-stat-val.navy{color:var(--navy);}
+.sc-hero-stat-lbl{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--text3);margin-top:4px;}
+.sc-hero-verdict{margin-top:1rem;padding:1rem 1.3rem;border-radius:var(--r);display:flex;align-items:flex-start;gap:12px;border:1px solid;}
+.sc-hero-verdict.excellent{background:var(--green-l);border-color:rgba(21,163,98,.25);}
+.sc-hero-verdict.good{background:#EEF1F9;border-color:rgba(74,144,226,.2);}
+.sc-hero-verdict.mid{background:var(--amber-l);border-color:rgba(212,123,6,.2);}
+.sc-hero-verdict.bad{background:var(--red-l);border-color:rgba(212,38,38,.2);}
+.sc-hero-verdict-ico{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:15px;color:#fff;}
+.sc-hero-verdict.excellent .sc-hero-verdict-ico{background:#15A362;}
+.sc-hero-verdict.good .sc-hero-verdict-ico{background:var(--navy-mid);}
+.sc-hero-verdict.mid .sc-hero-verdict-ico{background:var(--amber);}
+.sc-hero-verdict.bad .sc-hero-verdict-ico{background:var(--red);}
+.sc-hero-verdict-body{flex:1;font-size:12px;line-height:1.55;color:var(--text2);padding-top:3px;}
+.sc-hero-verdict-body strong{font-weight:700;}
+
+/* Section title */
+.sc-section-title{font-size:13px;font-weight:700;color:var(--text);margin-bottom:.5rem;letter-spacing:-.3px;width:100%;max-width:900px;margin-left:auto;margin-right:auto;}
+.sc-section-sub{font-size:11.5px;color:var(--text3);margin-bottom:1rem;width:100%;max-width:900px;margin-left:auto;margin-right:auto;}
+
+/* Tableau élèves réévalués */
+.sc-eleves-wrap{width:100%;max-width:900px;margin:0 auto 1.5rem;padding:.25rem 0;}
+.sc-eleve-row{display:grid;grid-template-columns:220px 1fr 110px;align-items:center;gap:16px;padding:14px 18px;background:var(--white);border:1px solid var(--border);border-radius:var(--r);margin-bottom:6px;transition:all .18s;}
+.sc-eleve-row:hover{border-color:var(--navy-mid);box-shadow:0 3px 12px rgba(27,46,94,.06);}
+.sc-eleve-row-label{display:flex;align-items:center;gap:8px;min-width:0;}
+.sc-eleve-tag{font-size:8.5px;font-weight:700;padding:2px 7px;border-radius:6px;letter-spacing:.05em;flex-shrink:0;font-family:'Sora',sans-serif;}
+.sc-eleve-tag.cap{background:#EEF9F4;color:var(--green-dark);}
+.sc-eleve-tag.bp{background:var(--navy-l);color:var(--navy);}
+.sc-eleve-name-block{display:flex;flex-direction:column;min-width:0;}
+.sc-eleve-name{font-size:13px;font-weight:600;color:var(--text);letter-spacing:-.2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.sc-eleve-classe{font-size:10.5px;color:var(--text3);margin-top:1px;}
+.sc-eleve-scores{display:flex;align-items:center;justify-content:center;gap:12px;}
+.sc-eleve-score-pill{display:flex;flex-direction:column;align-items:center;padding:8px 14px;border-radius:10px;min-width:64px;}
+.sc-eleve-score-pill.avant{background:var(--amber-l);}
+.sc-eleve-score-pill.apres{background:#EEF9F4;}
+.sc-eleve-score-val{font-size:18px;font-weight:800;letter-spacing:-.5px;line-height:1;font-family:'Sora',sans-serif;}
+.sc-eleve-score-pill.avant .sc-eleve-score-val{color:var(--amber);}
+.sc-eleve-score-pill.apres .sc-eleve-score-val{color:var(--green-dark);}
+.sc-eleve-score-lbl{font-size:8.5px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text3);margin-top:3px;}
+.sc-eleve-arrow{color:var(--text3);font-size:18px;font-weight:700;line-height:1;}
+.sc-eleve-gain{display:flex;flex-direction:column;align-items:flex-end;gap:1px;}
+.sc-eleve-gain-val{font-size:18px;font-weight:800;letter-spacing:-.4px;font-family:'Sora',sans-serif;line-height:1;}
+.sc-eleve-gain-val.positive{color:var(--green-dark);}
+.sc-eleve-gain-val.negative{color:var(--red);}
+.sc-eleve-gain-val.neutral{color:var(--text3);}
+.sc-eleve-gain-lbl{font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--text3);}
+
+/* Thèmes */
+.sc-themes-wrap{width:100%;max-width:900px;margin:0 auto 1.5rem;padding:.25rem 0;}
+.sc-theme-row{display:grid;grid-template-columns:220px 1fr 110px;align-items:center;gap:16px;padding:14px 18px;background:var(--white);border:1px solid var(--border);border-radius:var(--r);margin-bottom:6px;}
+.sc-theme-row.inactive{background:repeating-linear-gradient(45deg,#FBF9F3,#FBF9F3 10px,var(--white) 10px,var(--white) 20px);opacity:.6;}
+.sc-theme-label{display:flex;align-items:center;gap:10px;min-width:0;}
+.sc-theme-ico{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+.sc-theme-name{font-size:13px;font-weight:700;color:var(--text);letter-spacing:-.2px;}
+.sc-theme-soon-badge{display:inline-flex;align-items:center;gap:5px;font-size:9.5px;font-weight:600;padding:2px 8px;border-radius:10px;background:var(--bg);color:var(--text3);border:1px solid var(--border-md);margin-top:2px;width:fit-content;}
+.sc-theme-soon-badge::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--text3);}
+.sc-theme-meta{font-size:10.5px;color:var(--text3);margin-top:1px;}
+.sc-theme-empty{text-align:right;font-size:10.5px;color:var(--text3);font-style:italic;}
+.sc-theme-empty-val{font-size:14px;color:var(--text3);font-family:'JetBrains Mono',monospace;font-weight:700;}
+
+/* Classement */
+.sc-class-wrap{width:100%;max-width:900px;margin:0 auto;padding:.25rem 0;}
+.sc-class-row{display:grid;grid-template-columns:220px 1fr 130px;align-items:center;gap:16px;padding:12px 18px;background:var(--white);border:1px solid var(--border);border-radius:var(--r);margin-bottom:6px;}
+.sc-class-rank{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:var(--text3);background:var(--bg);flex-shrink:0;font-family:'JetBrains Mono',monospace;}
+.sc-class-rank.top-1{background:linear-gradient(135deg,#FFD700 0%,#E6B800 100%);color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.15);box-shadow:0 2px 6px rgba(230,184,0,.3);}
+.sc-class-rank.top-2{background:linear-gradient(135deg,#E5E7EB 0%,#9CA3AF 100%);color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.1);}
+.sc-class-rank.top-3{background:linear-gradient(135deg,#D49664 0%,#B87333 100%);color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.1);}
+.sc-class-bar-wrap{position:relative;height:26px;background:var(--bg2);border-radius:7px;overflow:hidden;box-shadow:inset 0 1px 2px rgba(0,0,0,.04);}
+.sc-class-bar-fill{height:100%;border-radius:7px;background:linear-gradient(90deg,#15A362 0%,#22D37C 100%);transition:width 1.2s cubic-bezier(.4,0,.2,1);display:flex;align-items:center;padding-left:10px;min-width:2px;position:relative;}
+.sc-class-bar-fill.negative{background:linear-gradient(90deg,#D42626 0%,#E84545 100%);}
+.sc-class-bar-val{font-size:12px;font-weight:800;color:#fff;letter-spacing:-.2px;text-shadow:0 1px 2px rgba(0,0,0,.15);font-family:'Sora',sans-serif;position:relative;z-index:1;}
+
+/* Empty global */
+.sc-empty{width:100%;max-width:900px;margin:0 auto;padding:3rem 2rem;text-align:center;background:var(--bg);border:1px dashed var(--border-md);border-radius:var(--rl);}
+.sc-empty-ico{font-size:40px;margin-bottom:.75rem;opacity:.5;}
+.sc-empty-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:.5rem;}
+.sc-empty-sub{font-size:12px;color:var(--text3);line-height:1.6;max-width:500px;margin:0 auto;}
+
 /* ═══ EXPORT ═══ */
 .btn-export{display:inline-flex;align-items:center;gap:7px;font-size:11.5px;font-weight:600;color:var(--text2);background:var(--bg);border:1px solid var(--border-md);padding:6px 14px;border-radius:var(--r);cursor:pointer;transition:all .15s;font-family:'Sora',sans-serif;}
 .btn-export:hover{background:var(--white);border-color:var(--navy);color:var(--navy);}
@@ -1331,6 +1599,14 @@ tr:hover td{background:#FDFCF9;}
 
       <!-- ══ VUE : Graphiques des élèves diagnostiqués ══ -->
       <div class="section" id="section-diagnostiques">
+        <!-- Overlay de chargement global -->
+        <div class="page-loader-overlay" id="page-loader-diag">
+          <div class="page-loader-card">
+            <div class="page-loader-spinner"></div>
+            <div class="page-loader-title">Chargement des données</div>
+            <div class="page-loader-sub">Récupération de l'historique et des indicateurs<span class="page-loader-dots"></span></div>
+          </div>
+        </div>
         <button class="back-btn" onclick="navVers('accueil')">← Retour à l'accueil</button>
         <div class="page-header">
           <div class="page-title">Vue d'ensemble des élèves diagnostiqués</div>
@@ -1341,45 +1617,15 @@ tr:hover td{background:#FDFCF9;}
         <div id="mois-selector-wrap" class="mois-selector-wrap"></div>
         <div id="mois-meta-wrap"></div>
 
-        <!-- Volumétrie -->
-        <div class="themes-section-title" style="margin-top:.5rem;">Volumétrie</div>
-
-        <!-- KPIs volumétrie : 3 grosses tuiles en haut -->
-        <div class="vol-kpi-strip">
-          <div class="vol-kpi-card total">
-            <div class="vol-kpi-head">
-              <div class="vol-kpi-ico"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-              <div class="vol-kpi-label">Total diagnostiqués</div>
-            </div>
-            <div class="vol-kpi-value" id="vol-total">—</div>
-            <div class="vol-kpi-sub" id="vol-total-sub">—</div>
-          </div>
-          <div class="vol-kpi-card cap">
-            <div class="vol-kpi-head">
-              <div class="vol-kpi-ico cap"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
-              <div class="vol-kpi-label">Filière CAP</div>
-            </div>
-            <div class="vol-kpi-value" id="vol-cap">—</div>
-            <div class="vol-kpi-sub" id="vol-cap-sub">—</div>
-          </div>
-          <div class="vol-kpi-card bp">
-            <div class="vol-kpi-head">
-              <div class="vol-kpi-ico bp"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
-              <div class="vol-kpi-label">Filière Bac Pro</div>
-            </div>
-            <div class="vol-kpi-value" id="vol-bp">—</div>
-            <div class="vol-kpi-sub" id="vol-bp-sub">—</div>
-          </div>
-        </div>
-
+        <!-- Répartition par filière (hero) -->
+        <div class="themes-section-title" style="margin-top:.5rem;">Répartition par filière</div>
         <div class="charts-grid">
 
-          <!-- Camembert CAP / Bac Pro (conservé) -->
           <div class="chart-card full">
             <div class="chart-header">
               <div>
-                <div class="chart-title">Répartition par filière</div>
-                <div class="chart-subtitle">Part des élèves diagnostiqués en CAP et en Bac Pro.</div>
+                <div class="chart-title">Vue d'ensemble des élèves diagnostiqués</div>
+                <div class="chart-subtitle">Volumétrie globale et répartition entre les filières CAP et Bac Pro.</div>
               </div>
             </div>
             <div class="chart-body" id="chart-filiere"></div>
@@ -1748,13 +1994,20 @@ tr:hover td{background:#FDFCF9;}
           <button class="back-btn" onclick="retourImpactMenu()">← Retour à l'impact</button>
           <div class="page-header">
             <div class="page-title">Scores avant / après remédiation</div>
-            <div class="page-sub">Comparaison par thème et par classe.</div>
+            <div class="page-sub">Comparaison des scores à la 1ère et à la 2ème évaluation diagnostique, après le travail sur les fiches de remédiation.</div>
           </div>
-          <div class="impact-empty-view">
-            <div class="ico">📊</div>
-            <div class="title">Données à venir</div>
-            <div class="sub">Cette vue s'activera dès que les élèves auront repassé l'évaluation diagnostique après leurs fiches de remédiation.</div>
-          </div>
+
+          <!-- Étage 1 : Hero global -->
+          <div id="scores-hero"></div>
+
+          <!-- Étage 2 : Tableau par élève -->
+          <div id="scores-eleves"></div>
+
+          <!-- Étage 3 : Synthèse par thème -->
+          <div id="scores-themes"></div>
+
+          <!-- Étage 4 : Classement classes -->
+          <div id="scores-classement"></div>
         </div>
 
         <!-- Vue : Écart faibles / forts -->
@@ -1790,13 +2043,17 @@ tr:hover td{background:#FDFCF9;}
           <button class="back-btn" onclick="retourStatsMenu()">← Retour aux statistiques</button>
           <div class="page-header">
             <div class="page-title">Taux d'engagement</div>
-            <div class="page-sub">Nombre et proportion d'élèves qui utilisent activement l'outil.</div>
+            <div class="page-sub">Vitesse de progression des classes dans la remédiation : qui avance, qui stagne.</div>
           </div>
-          <div class="impact-empty-view">
-            <div class="ico">⏱️</div>
-            <div class="title">Données à venir</div>
-            <div class="sub">Cette vue affichera le nombre d'élèves ayant ouvert au moins une fiche après leur diagnostic, ainsi que leur niveau d'activité sur la plateforme.</div>
-          </div>
+
+          <!-- Étage 1 : Hero global -->
+          <div id="eng-hero"></div>
+
+          <!-- Étage 2 : Classement des classes -->
+          <div id="eng-classement"></div>
+
+          <!-- Étage 3 : Synthèse actionnable -->
+          <div id="eng-synthese"></div>
         </div>
 
       </div>
@@ -2577,31 +2834,15 @@ function ouvrirVueDiagnostiques(){
 }
 
 function afficherLoaderDiag(){
-  // Squelette du sélecteur pendant le chargement
-  var wrapSel=document.getElementById('mois-selector-wrap');
-  if(wrapSel){ wrapSel.className='mois-selector-skeleton'; wrapSel.innerHTML=''; }
-  var wrapMeta=document.getElementById('mois-meta-wrap');
-  if(wrapMeta) wrapMeta.innerHTML='';
-  // Loader dans chaque zone de graphique encore présente
-  var loaderHtml=
-    '<div class="diag-loader-overlay">'
-      +'<div class="diag-loader-spinner"></div>'
-      +'<div class="diag-loader-title">Chargement des données<span class="diag-loader-dots"></span></div>'
-      +'<div class="diag-loader-sub">Récupération de l\'historique en cours</div>'
-    +'</div>';
-  ['chart-filiere','vol-chart-classes','dys-chart'].forEach(function(id){
-    var el=document.getElementById(id);
-    if(el) el.innerHTML=loaderHtml;
-  });
-  // Reset des KPIs volumétrie en attendant le chargement
-  ['vol-total','vol-cap','vol-bp'].forEach(function(id){
-    var el=document.getElementById(id);
-    if(el) el.textContent='—';
-  });
-  ['vol-total-sub','vol-cap-sub','vol-bp-sub'].forEach(function(id){
-    var el=document.getElementById(id);
-    if(el) el.textContent='—';
-  });
+  // Active l'overlay pleine page
+  var overlay=document.getElementById('page-loader-diag');
+  if(overlay) overlay.classList.add('active');
+}
+
+function masquerLoaderDiag(){
+  // Désactive l'overlay pleine page
+  var overlay=document.getElementById('page-loader-diag');
+  if(overlay) overlay.classList.remove('active');
 }
 
 function chargerSnapshotsEtRender(){
@@ -2611,10 +2852,12 @@ function chargerSnapshotsEtRender(){
     .then(function(j){
       SNAPSHOTS_HISTORIQUE=(j.status==='ok')?(j.data||[]):[];
       renderVueDiagnostiquesComplete();
+      masquerLoaderDiag();
     })
     .catch(function(){
       SNAPSHOTS_HISTORIQUE=[];
       renderVueDiagnostiquesComplete();
+      masquerLoaderDiag();
     });
 }
 
@@ -2624,7 +2867,6 @@ function renderVueDiagnostiquesComplete(){
   // Données à utiliser : si mois sélectionné, on prend le snapshot, sinon données temps réel
   if(moisSelectionne===null || moisSelectionne===COURANT_KEY){
     // Mode temps réel
-    renderVolKpis();
     renderChartFiliere();
     renderVolChartClasses();
     renderDysChart();
@@ -2632,7 +2874,6 @@ function renderVueDiagnostiquesComplete(){
     // Mode archive : on rend depuis le snapshot
     var snap=SNAPSHOTS_HISTORIQUE.find(function(s){return getMoisKey(s.mois)===moisSelectionne;});
     if(snap){
-      renderVolKpisDepuisSnapshot(snap);
       renderChartsDepuisSnapshot(snap);
       renderVolChartClassesDepuisSnapshot(snap);
       renderDysChartIndisponible();
@@ -3535,42 +3776,54 @@ function renderChartFiliere(){
     container.innerHTML='<div class="donut-empty">Aucun élève classable en CAP ou Bac Pro.</div>';
     return;
   }
-  var pctCap=Math.round(nCap/total*100);
+  var pctCap=total>0?Math.round(nCap/total*100):0;
   var pctBp=100-pctCap;
-  // Circonférence d'un cercle de rayon 70 : 2*π*70 ≈ 439.82
-  var circ=2*Math.PI*70;
+  // Donut plus généreux : r=90
+  var circ=2*Math.PI*90;
   var capLen=(nCap/total)*circ;
   var bpLen=(nBp/total)*circ;
-  // Le segment CAP commence à 0, le segment BP commence après CAP
-  // Avec stroke-dasharray "longueur_segment circonférence_totale" et rotation ad hoc
   container.innerHTML=
-    '<div class="donut-wrap">'
-      +'<div class="donut-chart">'
-        +'<svg viewBox="0 0 180 180" width="180" height="180">'
-          +'<circle class="donut-seg cap" cx="90" cy="90" r="70" '
-            +'stroke-dasharray="'+capLen.toFixed(2)+' '+circ.toFixed(2)+'" '
-            +'stroke-dashoffset="0"/>'
-          +'<circle class="donut-seg bp" cx="90" cy="90" r="70" '
-            +'stroke-dasharray="'+bpLen.toFixed(2)+' '+circ.toFixed(2)+'" '
-            +'stroke-dashoffset="'+(-capLen).toFixed(2)+'"/>'
+    '<div class="fil-hero">'
+      +'<div class="fil-hero-donut">'
+        +'<svg viewBox="0 0 220 220" width="220" height="220">'
+          +'<circle class="fil-hero-donut-bg" cx="110" cy="110" r="90"/>'
+          +(nCap>0?'<circle class="fil-hero-donut-seg cap" cx="110" cy="110" r="90" stroke-dasharray="'+capLen.toFixed(2)+' '+circ.toFixed(2)+'" stroke-dashoffset="0"/>':'')
+          +(nBp>0?'<circle class="fil-hero-donut-seg bp" cx="110" cy="110" r="90" stroke-dasharray="'+bpLen.toFixed(2)+' '+circ.toFixed(2)+'" stroke-dashoffset="'+(-capLen).toFixed(2)+'"/>':'')
         +'</svg>'
-        +'<div class="donut-center">'
-          +'<div class="donut-center-val">'+total+'</div>'
-          +'<div class="donut-center-lbl">Élèves</div>'
+        +'<div class="fil-hero-center">'
+          +'<div class="fil-hero-center-val">'+total+'</div>'
+          +'<div class="fil-hero-center-lbl">élève'+(total>1?'s':'')+'</div>'
+          +'<div class="fil-hero-center-sub">diagnostiqué'+(total>1?'s':'')+'</div>'
         +'</div>'
       +'</div>'
-      +'<div class="donut-legend">'
-        +'<div class="donut-leg-row">'
-          +'<div class="donut-leg-dot cap"></div>'
-          +'<div class="donut-leg-name">CAP</div>'
-          +'<div class="donut-leg-count">'+nCap+'</div>'
-          +'<div class="donut-leg-pct">'+pctCap+'%</div>'
+      +'<div class="fil-hero-cards">'
+        +'<div class="fil-hero-card cap">'
+          +'<div class="fil-hero-card-header">'
+            +'<div class="fil-hero-card-ico cap"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>'
+            +'<div class="fil-hero-card-title-block">'
+              +'<div class="fil-hero-card-tag cap">CAP</div>'
+              +'<div class="fil-hero-card-title">Filière professionnelle</div>'
+            +'</div>'
+            +'<div class="fil-hero-card-num cap">'+nCap+'</div>'
+          +'</div>'
+          +'<div class="fil-hero-card-bar-wrap">'
+            +'<div class="fil-hero-card-bar-track"><div class="fil-hero-card-bar-fill cap" style="width:'+pctCap+'%;"></div></div>'
+            +'<div class="fil-hero-card-pct cap">'+pctCap+'%</div>'
+          +'</div>'
         +'</div>'
-        +'<div class="donut-leg-row">'
-          +'<div class="donut-leg-dot bp"></div>'
-          +'<div class="donut-leg-name">Bac Pro</div>'
-          +'<div class="donut-leg-count">'+nBp+'</div>'
-          +'<div class="donut-leg-pct">'+pctBp+'%</div>'
+        +'<div class="fil-hero-card bp">'
+          +'<div class="fil-hero-card-header">'
+            +'<div class="fil-hero-card-ico bp"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>'
+            +'<div class="fil-hero-card-title-block">'
+              +'<div class="fil-hero-card-tag bp">Bac Pro</div>'
+              +'<div class="fil-hero-card-title">Filière professionnelle</div>'
+            +'</div>'
+            +'<div class="fil-hero-card-num bp">'+nBp+'</div>'
+          +'</div>'
+          +'<div class="fil-hero-card-bar-wrap">'
+            +'<div class="fil-hero-card-bar-track"><div class="fil-hero-card-bar-fill bp" style="width:'+pctBp+'%;"></div></div>'
+            +'<div class="fil-hero-card-pct bp">'+pctBp+'%</div>'
+          +'</div>'
         +'</div>'
       +'</div>'
     +'</div>';
@@ -3607,6 +3860,7 @@ function ouvrirStatDetail(type){
     showStatsView('impact');
     setBreadcrumb([{label:'Statistiques',onclick:'retourStatsMenu()'},{label:'Impact de la remédiation',current:true}]);
   } else if(type==='engagement'){
+    renderEngagementView();
     showStatsView('engagement');
     setBreadcrumb([{label:'Statistiques',onclick:'retourStatsMenu()'},{label:'Taux d\'engagement',current:true}]);
   }
@@ -3618,6 +3872,7 @@ function retourStatsMenu(){
 }
 
 function ouvrirImpactDetail(type){
+  if(type==='scores') renderScoresView();
   showStatsView('impact-'+type);
   var labels={scores:'Scores avant / après',ecarts:'Hétérogénéité des résultats',difficultes:'Élèves en difficulté'};
   setBreadcrumb([
@@ -3680,6 +3935,12 @@ function retourDetailClasse(){
   ]);
 }
 function retourDetailEleves(){
+  // Si on est arrivé sur cette fiche depuis la vue DYS, retour à la liste DYS
+  if(provenanceDetailEleve==='stats-dys'){
+    retourDysDepuisEleve();
+    return;
+  }
+  // Comportement par défaut : retour à la liste d'élèves de la classe
   activerSectionClasses();
   showSubView('detail-eleves');
   var niv=NIVEAUX.find(function(n){return n.id===currentNiveau;});
@@ -3868,6 +4129,204 @@ function renderDysView(){
   }).join('');
 }
 
+function renderEngagementView(){
+  var heroEl=document.getElementById('eng-hero');
+  var classEl=document.getElementById('eng-classement');
+  var synthEl=document.getElementById('eng-synthese');
+  if(!heroEl || !classEl || !synthEl) return;
+
+  // Cas : aucune fiche assignée nulle part
+  var totalAssignees=DATA_EVAL.filter(function(r){return r.assigne==='oui';}).length;
+  if(totalAssignees===0){
+    heroEl.innerHTML='<div class="eng-empty">Aucune fiche assignée pour le moment.<br>Dès qu\'un élève aura des fiches à travailler, la progression s\'affichera ici.</div>';
+    classEl.innerHTML='';
+    synthEl.innerHTML='';
+    return;
+  }
+
+  // Calcul global établissement
+  var totalValidees=DATA_REM.filter(function(r){return r.statut==='quiz_final_valide';}).length;
+  var pctGlobal=totalAssignees>0?Math.round(totalValidees/totalAssignees*100):0;
+  var classeJauge;
+  if(pctGlobal>=80) classeJauge='excellent';
+  else if(pctGlobal>=60) classeJauge='good';
+  else if(pctGlobal>=40) classeJauge='mid';
+  else classeJauge='bad';
+  var circ=2*Math.PI*90;
+  var offset=circ-(pctGlobal/100)*circ;
+
+  // Verdict
+  var verdictIco, verdictTitre, verdictMsg;
+  if(pctGlobal>=80){
+    verdictIco='✓';verdictTitre='Excellente dynamique d\'avancement';
+    verdictMsg='La grande majorité des fiches assignées ont été validées. Les élèves s\'investissent fortement dans la remédiation.';
+  } else if(pctGlobal>=60){
+    verdictIco='i';verdictTitre='Dynamique satisfaisante';
+    verdictMsg='La remédiation avance à bon rythme. Quelques relances ciblées permettraient d\'accélérer la progression des classes en retrait.';
+  } else if(pctGlobal>=40){
+    verdictIco='!';verdictTitre='Dynamique à renforcer';
+    verdictMsg='La progression est mitigée. Un plan de relance par les professeurs est à envisager pour mobiliser les classes les moins investies.';
+  } else {
+    verdictIco='⚠';verdictTitre='Dynamique préoccupante';
+    verdictMsg='Peu de fiches sont validées à ce jour. Une action forte de mobilisation est nécessaire auprès des élèves et des équipes pédagogiques.';
+  }
+
+  heroEl.innerHTML=
+    '<div class="eng-hero-wrap">'
+      +'<div class="eng-hero-main">'
+        +'<div class="eng-hero-gauge">'
+          +'<svg viewBox="0 0 220 220" width="220" height="220">'
+            +'<circle class="eng-hero-gauge-bg" cx="110" cy="110" r="90"/>'
+            +'<circle class="eng-hero-gauge-fill '+classeJauge+'" cx="110" cy="110" r="90" stroke-dasharray="'+circ.toFixed(2)+'" stroke-dashoffset="'+offset.toFixed(2)+'"/>'
+          +'</svg>'
+          +'<div class="eng-hero-gauge-inner">'
+            +'<div class="eng-hero-gauge-val '+classeJauge+'">'+pctGlobal+'%</div>'
+            +'<div class="eng-hero-gauge-lbl">de progression</div>'
+            +'<div class="eng-hero-gauge-sub">'+totalValidees+' / '+totalAssignees+'</div>'
+          +'</div>'
+        +'</div>'
+        +'<div class="eng-hero-stats">'
+          +'<div class="eng-hero-stat-card">'
+            +'<div class="eng-hero-stat-ico assignees"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>'
+            +'<div class="eng-hero-stat-body">'
+              +'<div class="eng-hero-stat-val">'+totalAssignees+'</div>'
+              +'<div class="eng-hero-stat-lbl">Fiches assignées</div>'
+              +'<div class="eng-hero-stat-detail">à travailler par les élèves diagnostiqués</div>'
+            +'</div>'
+          +'</div>'
+          +'<div class="eng-hero-stat-card">'
+            +'<div class="eng-hero-stat-ico validees"><svg viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>'
+            +'<div class="eng-hero-stat-body">'
+              +'<div class="eng-hero-stat-val green">'+totalValidees+'</div>'
+              +'<div class="eng-hero-stat-lbl">Fiches validées</div>'
+              +'<div class="eng-hero-stat-detail">soit '+(totalAssignees-totalValidees)+' fiches encore à valider</div>'
+            +'</div>'
+          +'</div>'
+        +'</div>'
+      +'</div>'
+      +'<div class="eng-hero-verdict '+classeJauge+'">'
+        +'<div class="eng-hero-verdict-ico">'+verdictIco+'</div>'
+        +'<div class="eng-hero-verdict-body"><strong>'+verdictTitre+'.</strong> '+verdictMsg+'</div>'
+      +'</div>'
+    +'</div>';
+
+  // Calcul par classe
+  var classes=[];
+  NIVEAUX.forEach(function(niv){
+    niv.classes.forEach(function(cl){
+      var assigneesCl=DATA_EVAL.filter(function(r){return matchClasse(r.classe,cl.id)&&r.assigne==='oui';}).length;
+      if(assigneesCl===0){
+        classes.push({niv:niv,cl:cl,assignees:0,validees:0,pct:null});
+        return;
+      }
+      var validCl=DATA_REM.filter(function(r){return matchClasse(r.classe,cl.id)&&r.statut==='quiz_final_valide';}).length;
+      classes.push({
+        niv:niv,cl:cl,
+        assignees:assigneesCl,
+        validees:validCl,
+        pct:Math.round(validCl/assigneesCl*100)
+      });
+    });
+  });
+  // Tri : classes avec progression d'abord (décroissant), puis classes sans fiches assignées
+  classes.sort(function(a,b){
+    if(a.pct===null && b.pct===null) return 0;
+    if(a.pct===null) return 1;
+    if(b.pct===null) return -1;
+    return b.pct-a.pct;
+  });
+
+  // Construction des lignes
+  var diagnostiquees=classes.filter(function(c){return c.pct!==null;});
+  var lastIdx=diagnostiquees.length-1;
+  var rankCount=0;
+  var rowsHtml='<div class="eng-classement-wrap">'
+    +'<div class="eng-classement-title">Classement par vitesse de progression</div>'
+    +'<div class="eng-classement-sub">Classes triées par pourcentage de fiches validées sur le nombre de fiches assignées.</div>'
+    +'<div class="eng-table-header">'
+      +'<div class="eng-th">Classe</div>'
+      +'<div class="eng-th">% de fiches validées</div>'
+      +'<div class="eng-th eng-th-right">Ratio</div>'
+    +'</div>'
+    +'<div class="eng-classes-list">'+classes.map(function(item,i){
+      var tagCls=item.niv.id==='CAP'?'cap':'bp';
+      var tagLabel=item.niv.id==='CAP'?'CAP':'BP';
+      if(item.pct===null){
+        return '<div class="eng-row inactive">'
+          +'<div class="eng-row-label"><span class="eng-row-rank">—</span><span class="eng-row-tag '+tagCls+'">'+tagLabel+'</span><span class="eng-row-name">'+esc(item.cl.nom)+'</span></div>'
+          +'<div class="eng-row-track"><div class="eng-row-fill" style="width:0%;"></div></div>'
+          +'<div class="eng-row-right"><span class="eng-row-empty-val">—</span><span class="eng-row-empty">Pas de fiche</span></div>'
+          +'</div>';
+      }
+      rankCount++;
+      var rankCls='';
+      if(rankCount===1) rankCls=' top-1';
+      else if(rankCount===2) rankCls=' top-2';
+      else if(rankCount===3) rankCls=' top-3';
+      else if(rankCount===diagnostiquees.length && diagnostiquees.length>=4 && item.pct<40) rankCls=' last';
+      var fillCls;
+      if(item.pct>=80) fillCls='excellent';
+      else if(item.pct>=60) fillCls='good';
+      else if(item.pct>=40) fillCls='mid';
+      else fillCls='bad';
+      var pctHtml;
+      if(item.pct<15){
+        pctHtml='<div class="eng-row-fill '+fillCls+'" style="width:'+Math.max(4,item.pct)+'%;"></div><span class="eng-row-pct outside" style="left:calc('+Math.max(4,item.pct)+'% + 10px);">'+item.pct+'%</span>';
+      } else {
+        pctHtml='<div class="eng-row-fill '+fillCls+'" style="width:'+item.pct+'%;"><span class="eng-row-pct">'+item.pct+'%</span></div>';
+      }
+      var ratioCls=item.pct>=60?'green':(item.pct<40?'red':'');
+      var badgeRetard=(rankCount===diagnostiquees.length && diagnostiquees.length>=3 && item.pct<40)?'<span class="eng-row-badge-retard">En retard</span>':'';
+      return '<div class="eng-row">'
+        +'<div class="eng-row-label"><span class="eng-row-rank'+rankCls+'">'+rankCount+'</span><span class="eng-row-tag '+tagCls+'">'+tagLabel+'</span><span class="eng-row-name">'+esc(item.cl.nom)+'</span>'+badgeRetard+'</div>'
+        +'<div class="eng-row-track">'+pctHtml+'</div>'
+        +'<div class="eng-row-right"><span class="eng-row-ratio '+ratioCls+'">'+item.validees+' / '+item.assignees+'</span><span class="eng-row-ratio-lbl">fiches</span></div>'
+        +'</div>';
+    }).join('')+'</div>'
+    +'</div>';
+  classEl.innerHTML=rowsHtml;
+
+  // Synthèse actionnable : meilleure vs pire (uniquement si 2+ classes diagnostiquées)
+  if(diagnostiquees.length>=2){
+    var best=diagnostiquees[0];
+    var worst=diagnostiquees[diagnostiquees.length-1];
+    var bestTag=best.niv.id==='CAP'?'cap':'bp';
+    var worstTag=worst.niv.id==='CAP'?'cap':'bp';
+    var bestTagLabel=best.niv.id==='CAP'?'CAP':'Bac Pro';
+    var worstTagLabel=worst.niv.id==='CAP'?'CAP':'Bac Pro';
+    synthEl.innerHTML=
+      '<div class="eng-synthese-wrap">'
+        +'<div class="eng-synthese-card best">'
+          +'<div class="eng-synthese-title"><span class="eng-synthese-ico">🚀</span>Classe la plus investie</div>'
+          +'<div class="eng-synthese-class-line"><span class="eng-synthese-class-tag '+bestTag+'">'+bestTagLabel+'</span><span class="eng-synthese-class-name">'+esc(best.cl.nom)+'</span></div>'
+          +'<div class="eng-synthese-metric"><span class="eng-synthese-metric-val good">'+best.pct+'%</span><span class="eng-synthese-metric-lbl">de fiches validées</span></div>'
+          +'<div class="eng-synthese-detail"><strong>'+best.validees+'</strong> fiche'+(best.validees>1?'s':'')+' validée'+(best.validees>1?'s':'')+' sur <strong>'+best.assignees+'</strong> assignée'+(best.assignees>1?'s':'')+'. Cette classe donne le rythme à l\'établissement.</div>'
+        +'</div>'
+        +'<div class="eng-synthese-card worst">'
+          +'<div class="eng-synthese-title"><span class="eng-synthese-ico">⏸️</span>Classe à mobiliser</div>'
+          +'<div class="eng-synthese-class-line"><span class="eng-synthese-class-tag '+worstTag+'">'+worstTagLabel+'</span><span class="eng-synthese-class-name">'+esc(worst.cl.nom)+'</span></div>'
+          +'<div class="eng-synthese-metric"><span class="eng-synthese-metric-val bad">'+worst.pct+'%</span><span class="eng-synthese-metric-lbl">de fiches validées</span></div>'
+          +'<div class="eng-synthese-detail">Seulement <strong>'+worst.validees+'</strong> fiche'+(worst.validees>1?'s':'')+' validée'+(worst.validees>1?'s':'')+' sur <strong>'+worst.assignees+'</strong>. Une action de relance auprès du professeur serait utile.</div>'
+        +'</div>'
+      +'</div>';
+  } else if(diagnostiquees.length===1){
+    var seul=diagnostiquees[0];
+    var seulTag=seul.niv.id==='CAP'?'cap':'bp';
+    var seulTagLabel=seul.niv.id==='CAP'?'CAP':'Bac Pro';
+    synthEl.innerHTML=
+      '<div class="eng-synthese-wrap" style="grid-template-columns:1fr;">'
+        +'<div class="eng-synthese-card best">'
+          +'<div class="eng-synthese-title"><span class="eng-synthese-ico">📍</span>Seule classe avec des fiches assignées</div>'
+          +'<div class="eng-synthese-class-line"><span class="eng-synthese-class-tag '+seulTag+'">'+seulTagLabel+'</span><span class="eng-synthese-class-name">'+esc(seul.cl.nom)+'</span></div>'
+          +'<div class="eng-synthese-metric"><span class="eng-synthese-metric-val" style="color:var(--navy);">'+seul.pct+'%</span><span class="eng-synthese-metric-lbl">de fiches validées</span></div>'
+          +'<div class="eng-synthese-detail"><strong>'+seul.validees+'</strong> fiche'+(seul.validees>1?'s':'')+' validée'+(seul.validees>1?'s':'')+' sur <strong>'+seul.assignees+'</strong>. Le classement inter-classes sera possible dès que d\'autres classes auront démarré la remédiation.</div>'
+        +'</div>'
+      +'</div>';
+  } else {
+    synthEl.innerHTML='';
+  }
+}
+
 function ouvrirEleveDepuisDys(email){
   var evalEl=DATA_EVAL.filter(function(r){return String(r.email).toLowerCase()===email.toLowerCase();});
   if(evalEl.length===0) return;
@@ -3876,12 +4335,323 @@ function ouvrirEleveDepuisDys(email){
   NIVEAUX.forEach(function(n){n.classes.forEach(function(c){if(matchClasse(classe,c.id)){niv=n;cl=c;}});});
   if(!niv) return;
   currentNiveau=niv.id;currentClasse=cl.id;
+  // Mémoriser qu'on vient de la vue DYS pour pouvoir y revenir
+  provenanceDetailEleve='stats-dys';
   activerSectionClasses();
   ouvrirUnEleve(email);
+  // Écraser le breadcrumb avec le bon chemin de navigation
+  var nom=evalEl[0].nom||email;
+  setBreadcrumb([
+    {label:'Statistiques',onclick:'retourStatsDepuisEleve()'},
+    {label:'Élèves en mode adapté',onclick:'retourDysDepuisEleve()'},
+    {label:nom,current:true}
+  ]);
+}
+
+function retourStatsDepuisEleve(){
+  // Retour au menu principal des statistiques
+  provenanceDetailEleve=null;
+  // On remet la section stats active
+  document.querySelectorAll('.section').forEach(function(s){s.classList.remove('active');});
+  document.querySelectorAll('.sb-item').forEach(function(n){n.classList.remove('active');});
+  document.getElementById('section-stats').classList.add('active');
+  document.getElementById('sb-stats').classList.add('active');
+  // Revenir au menu stats (pas à la sous-vue DYS)
+  if(typeof retourStatsMenu==='function') retourStatsMenu();
+  else if(typeof showStatsView==='function'){ showStatsView('menu'); setBreadcrumb([{label:'Statistiques',current:true}]); }
+}
+
+function retourDysDepuisEleve(){
+  // Retour à la liste DYS
+  provenanceDetailEleve=null;
+  document.querySelectorAll('.section').forEach(function(s){s.classList.remove('active');});
+  document.querySelectorAll('.sb-item').forEach(function(n){n.classList.remove('active');});
+  document.getElementById('section-stats').classList.add('active');
+  document.getElementById('sb-stats').classList.add('active');
+  renderDysView();
+  showStatsView('dys');
+  setBreadcrumb([
+    {label:'Statistiques',onclick:'retourStatsMenu()'},
+    {label:'Élèves en mode adapté',current:true}
+  ]);
 }
 
 function renderImpactView(){
   // Le sous-menu ne contient plus de chips ni de barres — rien à rendre
+}
+
+function renderScoresView(){
+  var heroEl=document.getElementById('scores-hero');
+  var elevesEl=document.getElementById('scores-eleves');
+  var themesEl=document.getElementById('scores-themes');
+  var classEl=document.getElementById('scores-classement');
+  if(!heroEl||!elevesEl||!themesEl||!classEl) return;
+
+  // Récupérer les élèves ayant passé les 2 évaluations
+  // Hypothèse de structure : chaque ligne DATA_EVAL a un champ numero_eval (1, 2, ...)
+  // Si le champ n'existe pas, on considère numero_eval=1
+  function getNumEval(r){
+    var n=parseInt(r.numero_eval);
+    return isNaN(n)?1:n;
+  }
+
+  // Pour chaque élève, calculer score avant (eval 1) et score après (eval 2)
+  // Le "score" global à une éval = % de notions acquises = (nb lignes non assignées / nb lignes totales) * 100
+  var scoresParEleve={};
+  DATA_EVAL.forEach(function(r){
+    var email=String(r.email||'').toLowerCase();
+    if(!email) return;
+    var numEval=getNumEval(r);
+    if(!scoresParEleve[email]) scoresParEleve[email]={nom:r.nom,classe:r.classe,eval1:{total:0,acquises:0,themes:{}},eval2:{total:0,acquises:0,themes:{}}};
+    var bucket=numEval===2?scoresParEleve[email].eval2:scoresParEleve[email].eval1;
+    bucket.total++;
+    if(r.assigne==='non') bucket.acquises++;
+    // Thème de la fiche
+    var theme=themeDeFicheId(r.fiche_id);
+    if(theme){
+      if(!bucket.themes[theme]) bucket.themes[theme]={total:0,acquises:0};
+      bucket.themes[theme].total++;
+      if(r.assigne==='non') bucket.themes[theme].acquises++;
+    }
+  });
+
+  // Filtrer les élèves qui ont bien les 2 évaluations
+  var elevesAvecLesDeux=[];
+  var elevesAvecSeulement1=0;
+  Object.keys(scoresParEleve).forEach(function(email){
+    var e=scoresParEleve[email];
+    if(e.eval1.total>0 && e.eval2.total>0){
+      var scoreAvant=Math.round(e.eval1.acquises/e.eval1.total*100);
+      var scoreApres=Math.round(e.eval2.acquises/e.eval2.total*100);
+      elevesAvecLesDeux.push({
+        email:email,
+        nom:e.nom,
+        classe:e.classe,
+        scoreAvant:scoreAvant,
+        scoreApres:scoreApres,
+        gain:scoreApres-scoreAvant,
+        themes:{eval1:e.eval1.themes,eval2:e.eval2.themes}
+      });
+    } else if(e.eval1.total>0){
+      elevesAvecSeulement1++;
+    }
+  });
+
+  // Cas : personne n'a encore passé la 2e eval
+  if(elevesAvecLesDeux.length===0){
+    heroEl.innerHTML=
+      '<div class="sc-empty">'
+        +'<div class="sc-empty-ico">⏱</div>'
+        +'<div class="sc-empty-title">En attente de la deuxième évaluation diagnostique</div>'
+        +'<div class="sc-empty-sub">Cette vue s\'activera dès qu\'un élève aura repassé l\'évaluation diagnostique après avoir travaillé ses fiches de remédiation.'
+        +(elevesAvecSeulement1>0?'<br><br><strong>'+elevesAvecSeulement1+' élève'+(elevesAvecSeulement1>1?'s ont':' a')+' passé'+(elevesAvecSeulement1>1?'':'')+' la première évaluation</strong> — en attente qu\'ils repassent l\'évaluation pour mesurer l\'impact.':'')
+        +'</div>'
+      +'</div>';
+    elevesEl.innerHTML='';
+    themesEl.innerHTML='';
+    classEl.innerHTML='';
+    return;
+  }
+
+  // Calcul du gain moyen
+  var totalGain=0;
+  var totalAvant=0, totalApres=0;
+  elevesAvecLesDeux.forEach(function(e){
+    totalGain+=e.gain;
+    totalAvant+=e.scoreAvant;
+    totalApres+=e.scoreApres;
+  });
+  var gainMoyen=Math.round(totalGain/elevesAvecLesDeux.length);
+  var moyAvant=Math.round(totalAvant/elevesAvecLesDeux.length);
+  var moyApres=Math.round(totalApres/elevesAvecLesDeux.length);
+
+  // Verdict selon l'ampleur du gain
+  var gainCls, verdictCls, verdictIco, verdictTitre, verdictMsg;
+  if(gainMoyen>=30){
+    gainCls='positive';verdictCls='excellent';verdictIco='✓';
+    verdictTitre='Impact remarquable de la remédiation';
+    verdictMsg='Les élèves réévalués montrent une progression majeure. La remédiation a un effet très fort sur l\'acquisition des notions.';
+  } else if(gainMoyen>=15){
+    gainCls='positive';verdictCls='good';verdictIco='i';
+    verdictTitre='Impact positif de la remédiation';
+    verdictMsg='La progression moyenne est significative. Les fiches produisent un gain d\'apprentissage mesurable.';
+  } else if(gainMoyen>=5){
+    gainCls='positive';verdictCls='mid';verdictIco='!';
+    verdictTitre='Impact modéré de la remédiation';
+    verdictMsg='La progression est réelle mais faible. Les fiches pourraient être enrichies ou mieux accompagnées en classe.';
+  } else if(gainMoyen>=0){
+    gainCls='neutral';verdictCls='mid';verdictIco='!';
+    verdictTitre='Impact quasi nul de la remédiation';
+    verdictMsg='Aucun gain significatif mesuré. Un ajustement pédagogique des fiches ou du dispositif semble nécessaire.';
+  } else {
+    gainCls='negative';verdictCls='bad';verdictIco='⚠';
+    verdictTitre='Régression constatée';
+    verdictMsg='Les élèves ont en moyenne de moins bons résultats à la 2ème évaluation. À investiguer (conditions de passation, fatigue, etc.).';
+  }
+
+  var signeGain=gainMoyen>0?'+':(gainMoyen<0?'':'');
+  heroEl.innerHTML=
+    '<div class="sc-hero-wrap">'
+      +'<div class="sc-hero-main">'
+        +'<div class="sc-hero-gain-block">'
+          +'<div class="sc-hero-gain-sign '+gainCls+'">'
+            +(gainMoyen>0?'<span class="plus">+</span>':'')+gainMoyen
+            +'<span class="unit">pts</span>'
+          +'</div>'
+          +'<div class="sc-hero-gain-lbl">Gain moyen</div>'
+          +'<div class="sc-hero-gain-sub">après remédiation</div>'
+        +'</div>'
+        +'<div class="sc-hero-sep"></div>'
+        +'<div class="sc-hero-stats">'
+          +'<div class="sc-hero-stat-card">'
+            +'<div class="sc-hero-stat-ico avant"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>'
+            +'<div class="sc-hero-stat-body">'
+              +'<div class="sc-hero-stat-val amber">'+moyAvant+'%</div>'
+              +'<div class="sc-hero-stat-lbl">Score moyen avant remédiation</div>'
+            +'</div>'
+          +'</div>'
+          +'<div class="sc-hero-stat-card">'
+            +'<div class="sc-hero-stat-ico apres"><svg viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>'
+            +'<div class="sc-hero-stat-body">'
+              +'<div class="sc-hero-stat-val green">'+moyApres+'%</div>'
+              +'<div class="sc-hero-stat-lbl">Score moyen après remédiation</div>'
+            +'</div>'
+          +'</div>'
+          +'<div class="sc-hero-stat-card">'
+            +'<div class="sc-hero-stat-ico eleves"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>'
+            +'<div class="sc-hero-stat-body">'
+              +'<div class="sc-hero-stat-val navy">'+elevesAvecLesDeux.length+'</div>'
+              +'<div class="sc-hero-stat-lbl">Élèves réévalués</div>'
+              +(elevesAvecSeulement1>0?'<div class="sc-eleve-classe" style="margin-top:2px;">+ '+elevesAvecSeulement1+' en attente de réévaluation</div>':'')
+            +'</div>'
+          +'</div>'
+        +'</div>'
+      +'</div>'
+      +'<div class="sc-hero-verdict '+verdictCls+'">'
+        +'<div class="sc-hero-verdict-ico">'+verdictIco+'</div>'
+        +'<div class="sc-hero-verdict-body"><strong>'+verdictTitre+'.</strong> '+verdictMsg+'</div>'
+      +'</div>'
+    +'</div>';
+
+  // Étage 2 : Tableau par élève (tri par gain décroissant)
+  elevesAvecLesDeux.sort(function(a,b){return b.gain-a.gain;});
+  var elevesHtml=
+    '<div class="sc-section-title">Progression individuelle des élèves réévalués</div>'
+    +'<div class="sc-section-sub">Détail par élève : score à la 1ère évaluation, à la 2ème, et gain réalisé. Tri par gain décroissant.</div>'
+    +'<div class="sc-eleves-wrap">'+elevesAvecLesDeux.map(function(e){
+      var fil=getFiliereDeClasse(e.classe);
+      var tagCls=fil==='CAP'?'cap':'bp';
+      var tagLabel=fil==='CAP'?'CAP':'BP';
+      var gainCls2=e.gain>0?'positive':(e.gain<0?'negative':'neutral');
+      var gainSigne=e.gain>0?'+':'';
+      return '<div class="sc-eleve-row">'
+        +'<div class="sc-eleve-row-label"><span class="sc-eleve-tag '+tagCls+'">'+tagLabel+'</span><div class="sc-eleve-name-block"><span class="sc-eleve-name">'+esc(e.nom||e.email)+'</span><span class="sc-eleve-classe">'+esc(e.classe||'')+'</span></div></div>'
+        +'<div class="sc-eleve-scores">'
+          +'<div class="sc-eleve-score-pill avant"><span class="sc-eleve-score-val">'+e.scoreAvant+'%</span><span class="sc-eleve-score-lbl">Avant</span></div>'
+          +'<span class="sc-eleve-arrow">→</span>'
+          +'<div class="sc-eleve-score-pill apres"><span class="sc-eleve-score-val">'+e.scoreApres+'%</span><span class="sc-eleve-score-lbl">Après</span></div>'
+        +'</div>'
+        +'<div class="sc-eleve-gain"><span class="sc-eleve-gain-val '+gainCls2+'">'+gainSigne+e.gain+' pts</span><span class="sc-eleve-gain-lbl">Gain</span></div>'
+        +'</div>';
+    }).join('')+'</div>';
+  elevesEl.innerHTML=elevesHtml;
+
+  // Étage 3 : Synthèse par thème
+  // On calcule le score moyen avant/après PAR THÈME sur les élèves réévalués
+  var scoresParTheme={};
+  THEMES_CONFIG.forEach(function(th){
+    scoresParTheme[th.id]={th:th,nbEleves:0,sumAvant:0,sumApres:0};
+  });
+  elevesAvecLesDeux.forEach(function(e){
+    Object.keys(e.themes.eval1).forEach(function(themeId){
+      var t1=e.themes.eval1[themeId];
+      var t2=e.themes.eval2[themeId];
+      if(t1 && t2 && t1.total>0 && t2.total>0){
+        var spa=scoresParTheme[themeId];
+        if(!spa) return;
+        spa.nbEleves++;
+        spa.sumAvant+=Math.round(t1.acquises/t1.total*100);
+        spa.sumApres+=Math.round(t2.acquises/t2.total*100);
+      }
+    });
+  });
+
+  var themesHtml=
+    '<div class="sc-section-title">Impact par thème mathématique</div>'
+    +'<div class="sc-section-sub">Évolution du score moyen par thème, calculé sur les élèves réévalués.</div>'
+    +'<div class="sc-themes-wrap">'+THEMES_CONFIG.map(function(th){
+      var spa=scoresParTheme[th.id];
+      if(!spa || spa.nbEleves===0){
+        return '<div class="sc-theme-row inactive">'
+          +'<div class="sc-theme-label"><div class="sc-theme-ico" style="background:'+th.bg+';">'+th.icon+'</div><div><div class="sc-theme-name">'+esc(th.nom)+'</div>'
+          +(th.actif?'<div class="sc-theme-meta">Aucun élève réévalué sur ce thème</div>':'<span class="sc-theme-soon-badge">À venir</span>')
+          +'</div></div>'
+          +'<div></div>'
+          +'<div class="sc-theme-empty"><div class="sc-theme-empty-val">—</div><div>En attente</div></div>'
+          +'</div>';
+      }
+      var moyAv=Math.round(spa.sumAvant/spa.nbEleves);
+      var moyAp=Math.round(spa.sumApres/spa.nbEleves);
+      var gainTh=moyAp-moyAv;
+      var gainThCls=gainTh>0?'positive':(gainTh<0?'negative':'neutral');
+      var gainThSigne=gainTh>0?'+':'';
+      return '<div class="sc-theme-row">'
+        +'<div class="sc-theme-label"><div class="sc-theme-ico" style="background:'+th.bg+';">'+th.icon+'</div><div><div class="sc-theme-name">'+esc(th.nom)+'</div><div class="sc-theme-meta">'+spa.nbEleves+' élève'+(spa.nbEleves>1?'s':'')+' réévalué'+(spa.nbEleves>1?'s':'')+'</div></div></div>'
+        +'<div class="sc-eleve-scores">'
+          +'<div class="sc-eleve-score-pill avant"><span class="sc-eleve-score-val">'+moyAv+'%</span><span class="sc-eleve-score-lbl">Avant</span></div>'
+          +'<span class="sc-eleve-arrow">→</span>'
+          +'<div class="sc-eleve-score-pill apres"><span class="sc-eleve-score-val">'+moyAp+'%</span><span class="sc-eleve-score-lbl">Après</span></div>'
+        +'</div>'
+        +'<div class="sc-eleve-gain"><span class="sc-eleve-gain-val '+gainThCls+'">'+gainThSigne+gainTh+' pts</span><span class="sc-eleve-gain-lbl">Gain</span></div>'
+        +'</div>';
+    }).join('')+'</div>';
+  themesEl.innerHTML=themesHtml;
+
+  // Étage 4 : Classement par classe (gain moyen par classe)
+  var scoresParClasse={};
+  elevesAvecLesDeux.forEach(function(e){
+    var classeId=null;
+    NIVEAUX.forEach(function(niv){niv.classes.forEach(function(cl){if(matchClasse(e.classe,cl.id)){classeId=cl.id;}});});
+    if(!classeId) classeId=e.classe;
+    if(!scoresParClasse[classeId]){
+      var niv=null, cl=null;
+      NIVEAUX.forEach(function(n){n.classes.forEach(function(c){if(c.id===classeId){niv=n;cl=c;}});});
+      scoresParClasse[classeId]={niv:niv,cl:cl,classeId:classeId,nbEleves:0,sumGain:0};
+    }
+    scoresParClasse[classeId].nbEleves++;
+    scoresParClasse[classeId].sumGain+=e.gain;
+  });
+  var classesArr=Object.keys(scoresParClasse).map(function(k){
+    var c=scoresParClasse[k];
+    c.gainMoyen=Math.round(c.sumGain/c.nbEleves);
+    return c;
+  });
+  classesArr.sort(function(a,b){return b.gainMoyen-a.gainMoyen;});
+
+  var maxGain=Math.max.apply(null,classesArr.map(function(c){return Math.abs(c.gainMoyen);}).concat([1]));
+
+  var classHtml=
+    '<div class="sc-section-title">Classement des classes par gain moyen</div>'
+    +'<div class="sc-section-sub">Classes triées par progression moyenne entre les deux évaluations.</div>'
+    +'<div class="sc-class-wrap">'+classesArr.map(function(item,i){
+      var tagCls=item.niv && item.niv.id==='CAP'?'cap':'bp';
+      var tagLabel=item.niv && item.niv.id==='CAP'?'CAP':'BP';
+      var rank=i+1;
+      var rankCls='';
+      if(rank===1) rankCls=' top-1';
+      else if(rank===2) rankCls=' top-2';
+      else if(rank===3) rankCls=' top-3';
+      var nomClasse=item.cl?item.cl.nom:item.classeId;
+      var pctWidth=Math.max(4,Math.round(Math.abs(item.gainMoyen)/maxGain*100));
+      var fillCls=item.gainMoyen<0?'negative':'';
+      var gainSigne=item.gainMoyen>0?'+':'';
+      return '<div class="sc-class-row">'
+        +'<div class="sc-eleve-row-label"><span class="sc-class-rank'+rankCls+'">'+rank+'</span><span class="sc-eleve-tag '+tagCls+'">'+tagLabel+'</span><div class="sc-eleve-name-block"><span class="sc-eleve-name">'+esc(nomClasse)+'</span><span class="sc-eleve-classe">'+item.nbEleves+' élève'+(item.nbEleves>1?'s':'')+' réévalué'+(item.nbEleves>1?'s':'')+'</span></div></div>'
+        +'<div class="sc-class-bar-wrap"><div class="sc-class-bar-fill '+fillCls+'" style="width:'+pctWidth+'%;"><span class="sc-class-bar-val">'+gainSigne+item.gainMoyen+' pts</span></div></div>'
+        +'<div class="sc-eleve-gain"><span class="sc-eleve-gain-val '+(item.gainMoyen>0?'positive':(item.gainMoyen<0?'negative':'neutral'))+'">'+gainSigne+item.gainMoyen+'</span><span class="sc-eleve-gain-lbl">points</span></div>'
+        +'</div>';
+    }).join('')+'</div>';
+  classEl.innerHTML=classHtml;
 }
 
 function selectImpactClasse(el,classeId){
@@ -4395,6 +5165,12 @@ function ouvrirUnEleve(email){
         +(r?'<div class="fr-sub">Tentative '+r.tentative_num+' · Score : '+(r.score_quiz||'—')+'%</div>':'')
         +'</div>'+pill+'</div>';
     }).join('');
+  // Ajuster le texte du bouton retour selon la provenance
+  var btnRetour=document.querySelector('#view-detail-eleve .back-btn');
+  if(btnRetour){
+    if(provenanceDetailEleve==='stats-dys') btnRetour.textContent='← Retour à la liste des élèves DYS';
+    else btnRetour.textContent='← Retour à la liste';
+  }
   showSubView('detail-eleve');
 }
 
@@ -4541,21 +5317,52 @@ function renderChartFiliereDepuisSnapshot(snap){
   }
   var pctCap=Math.round(nCap/total*100);
   var pctBp=100-pctCap;
-  var circ=2*Math.PI*70;
+  var circ=2*Math.PI*90;
   var capLen=(nCap/total)*circ;
   var bpLen=(nBp/total)*circ;
   container.innerHTML=
-    '<div class="donut-wrap">'
-      +'<div class="donut-chart">'
-        +'<svg viewBox="0 0 180 180" width="180" height="180">'
-          +'<circle class="donut-seg cap" cx="90" cy="90" r="70" stroke-dasharray="'+capLen.toFixed(2)+' '+circ.toFixed(2)+'" stroke-dashoffset="0"/>'
-          +'<circle class="donut-seg bp" cx="90" cy="90" r="70" stroke-dasharray="'+bpLen.toFixed(2)+' '+circ.toFixed(2)+'" stroke-dashoffset="'+(-capLen).toFixed(2)+'"/>'
+    '<div class="fil-hero">'
+      +'<div class="fil-hero-donut">'
+        +'<svg viewBox="0 0 220 220" width="220" height="220">'
+          +'<circle class="fil-hero-donut-bg" cx="110" cy="110" r="90"/>'
+          +(nCap>0?'<circle class="fil-hero-donut-seg cap" cx="110" cy="110" r="90" stroke-dasharray="'+capLen.toFixed(2)+' '+circ.toFixed(2)+'" stroke-dashoffset="0"/>':'')
+          +(nBp>0?'<circle class="fil-hero-donut-seg bp" cx="110" cy="110" r="90" stroke-dasharray="'+bpLen.toFixed(2)+' '+circ.toFixed(2)+'" stroke-dashoffset="'+(-capLen).toFixed(2)+'"/>':'')
         +'</svg>'
-        +'<div class="donut-center"><div class="donut-center-val">'+total+'</div><div class="donut-center-lbl">Élèves</div></div>'
+        +'<div class="fil-hero-center">'
+          +'<div class="fil-hero-center-val">'+total+'</div>'
+          +'<div class="fil-hero-center-lbl">élève'+(total>1?'s':'')+'</div>'
+          +'<div class="fil-hero-center-sub">diagnostiqué'+(total>1?'s':'')+'</div>'
+        +'</div>'
       +'</div>'
-      +'<div class="donut-legend">'
-        +'<div class="donut-leg-row"><div class="donut-leg-dot cap"></div><div class="donut-leg-name">CAP</div><div class="donut-leg-count">'+nCap+'</div><div class="donut-leg-pct">'+pctCap+'%</div></div>'
-        +'<div class="donut-leg-row"><div class="donut-leg-dot bp"></div><div class="donut-leg-name">Bac Pro</div><div class="donut-leg-count">'+nBp+'</div><div class="donut-leg-pct">'+pctBp+'%</div></div>'
+      +'<div class="fil-hero-cards">'
+        +'<div class="fil-hero-card cap">'
+          +'<div class="fil-hero-card-header">'
+            +'<div class="fil-hero-card-ico cap"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>'
+            +'<div class="fil-hero-card-title-block">'
+              +'<div class="fil-hero-card-tag cap">CAP</div>'
+              +'<div class="fil-hero-card-title">Filière professionnelle</div>'
+            +'</div>'
+            +'<div class="fil-hero-card-num cap">'+nCap+'</div>'
+          +'</div>'
+          +'<div class="fil-hero-card-bar-wrap">'
+            +'<div class="fil-hero-card-bar-track"><div class="fil-hero-card-bar-fill cap" style="width:'+pctCap+'%;"></div></div>'
+            +'<div class="fil-hero-card-pct cap">'+pctCap+'%</div>'
+          +'</div>'
+        +'</div>'
+        +'<div class="fil-hero-card bp">'
+          +'<div class="fil-hero-card-header">'
+            +'<div class="fil-hero-card-ico bp"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>'
+            +'<div class="fil-hero-card-title-block">'
+              +'<div class="fil-hero-card-tag bp">Bac Pro</div>'
+              +'<div class="fil-hero-card-title">Filière professionnelle</div>'
+            +'</div>'
+            +'<div class="fil-hero-card-num bp">'+nBp+'</div>'
+          +'</div>'
+          +'<div class="fil-hero-card-bar-wrap">'
+            +'<div class="fil-hero-card-bar-track"><div class="fil-hero-card-bar-fill bp" style="width:'+pctBp+'%;"></div></div>'
+            +'<div class="fil-hero-card-pct bp">'+pctBp+'%</div>'
+          +'</div>'
+        +'</div>'
       +'</div>'
     +'</div>';
 }
