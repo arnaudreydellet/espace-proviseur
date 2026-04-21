@@ -6,6 +6,8 @@
 <title>Académie des Maths · Espace Proviseur</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <style>
 :root {
   --bg: #F7F6F3;
@@ -1392,6 +1394,128 @@ tr:hover td{background:#FDFCF9;}
 .btn-export{display:inline-flex;align-items:center;gap:7px;font-size:11.5px;font-weight:600;color:var(--text2);background:var(--bg);border:1px solid var(--border-md);padding:6px 14px;border-radius:var(--r);cursor:pointer;transition:all .15s;font-family:'Sora',sans-serif;}
 .btn-export:hover{background:var(--white);border-color:var(--navy);color:var(--navy);}
 .btn-export svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+
+/* ═══ RAPPORTS ═══ */
+.rapport-wrap{display:grid;grid-template-columns:1fr 300px;gap:2rem;align-items:start;}
+@media(max-width:1050px){.rapport-wrap{grid-template-columns:1fr;}}
+.rapport-preview-wrap{min-width:0;}
+.rapport-controls{position:sticky;top:calc(var(--header-h) + 1.5rem);background:var(--white);border:1px solid var(--border);border-radius:var(--rl);padding:1.5rem;}
+.rapport-controls-title{font-size:13px;font-weight:700;color:var(--text);margin-bottom:.75rem;letter-spacing:-.2px;}
+.rapport-controls-desc{font-size:11.5px;color:var(--text3);line-height:1.5;margin-bottom:1.25rem;}
+.rapport-field{margin-bottom:1rem;}
+.rapport-field-lbl{font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--text3);margin-bottom:.45rem;display:block;}
+.rapport-field-input,.rapport-field-textarea{width:100%;border:1px solid var(--border-md);border-radius:var(--r);background:var(--bg);padding:10px 12px;font-family:'Sora',sans-serif;font-size:12.5px;color:var(--text);outline:none;transition:all .15s;resize:none;}
+.rapport-field-input:focus,.rapport-field-textarea:focus{border-color:var(--navy);background:var(--white);}
+.rapport-field-textarea{min-height:90px;line-height:1.5;}
+.rapport-field-help{font-size:10.5px;color:var(--text3);margin-top:.3rem;line-height:1.4;}
+.btn-generer{width:100%;background:var(--navy);color:#fff;border:none;padding:14px;border-radius:var(--r);font-family:'Sora',sans-serif;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:.5rem;}
+.btn-generer:hover{background:var(--navy-mid);transform:translateY(-1px);box-shadow:0 6px 18px rgba(27,46,94,.25);}
+.btn-generer:disabled{background:var(--text3);cursor:not-allowed;transform:none;box-shadow:none;}
+.btn-generer svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.rapport-info{margin-top:1rem;padding:10px 12px;background:var(--bg);border-radius:var(--r);font-size:11px;color:var(--text3);line-height:1.5;}
+.rapport-info strong{color:var(--text2);font-weight:600;}
+
+/* Aperçu PDF — façon page A4 */
+.rapport-preview{background:var(--white);border-radius:var(--rl);box-shadow:0 4px 24px rgba(0,0,0,.06);overflow:hidden;}
+.rapport-pages{padding:0;}
+.rapport-page{background:#fff;padding:48px 56px;border-bottom:1px solid var(--border);position:relative;min-height:560px;page-break-after:always;font-family:'Sora',sans-serif;color:#1A1A1A;}
+.rapport-page:last-child{border-bottom:none;}
+.rapport-page.cover{min-height:720px;background:linear-gradient(180deg,#fff 0%,#FAF9F5 100%);display:flex;flex-direction:column;justify-content:space-between;}
+
+/* En-tête couverture */
+.rp-cover-top{display:flex;align-items:flex-start;justify-content:space-between;gap:2rem;}
+.rp-cover-brand{display:flex;align-items:center;gap:10px;}
+.rp-cover-logo{width:42px;height:42px;border-radius:10px;background:#1B2E5E;color:#fff;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;letter-spacing:-.5px;}
+.rp-cover-brandname{font-size:13px;font-weight:700;color:#1B2E5E;letter-spacing:-.3px;}
+.rp-cover-brandsub{font-size:10.5px;color:#6C6C6C;margin-top:2px;}
+.rp-cover-dateblock{text-align:right;}
+.rp-cover-datelbl{font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#9A9A9A;margin-bottom:4px;}
+.rp-cover-dateval{font-size:12px;font-weight:600;color:#1A1A1A;}
+
+.rp-cover-center{flex:1;display:flex;flex-direction:column;justify-content:center;padding:3rem 0;}
+.rp-cover-kicker{font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:#4A90E2;margin-bottom:1.25rem;display:inline-flex;align-items:center;gap:10px;}
+.rp-cover-kicker::before{content:'';display:inline-block;width:28px;height:2px;background:#4A90E2;}
+.rp-cover-title{font-size:46px;font-weight:800;color:#1B2E5E;letter-spacing:-1.8px;line-height:1.05;margin-bottom:1rem;}
+.rp-cover-sub{font-size:17px;color:#4A4A4A;line-height:1.5;max-width:480px;}
+.rp-cover-etab{margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid rgba(0,0,0,.08);}
+.rp-cover-etab-lbl{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#9A9A9A;margin-bottom:.35rem;}
+.rp-cover-etab-name{font-size:22px;font-weight:700;color:#1A1A1A;letter-spacing:-.5px;}
+
+.rp-cover-bottom{margin-top:auto;padding-top:2rem;border-top:1px solid rgba(0,0,0,.08);display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;}
+.rp-cover-mot{flex:1;max-width:400px;}
+.rp-cover-mot-lbl{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#9A9A9A;margin-bottom:.5rem;}
+.rp-cover-mot-txt{font-size:13px;line-height:1.65;color:#4A4A4A;font-style:italic;padding:0 0 0 12px;border-left:2px solid #4A90E2;}
+.rp-cover-signature{text-align:right;font-size:11px;color:#6C6C6C;}
+.rp-cover-signature strong{display:block;color:#1A1A1A;font-weight:700;font-size:12px;margin-bottom:2px;}
+
+/* Pages intérieures */
+.rp-page-header{display:flex;align-items:center;justify-content:space-between;padding-bottom:1.25rem;border-bottom:1px solid #E5E5E5;margin-bottom:2rem;}
+.rp-page-section{font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#4A90E2;}
+.rp-page-pagenum{font-size:10px;color:#9A9A9A;font-family:'JetBrains Mono',monospace;}
+.rp-page-title{font-size:30px;font-weight:800;color:#1B2E5E;letter-spacing:-1px;line-height:1.15;margin-bottom:.5rem;}
+.rp-page-sub{font-size:13px;color:#6C6C6C;line-height:1.55;margin-bottom:2rem;}
+
+/* KPI résumé exécutif */
+.rp-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#E5E5E5;border:1px solid #E5E5E5;border-radius:10px;overflow:hidden;margin-bottom:2rem;}
+.rp-kpi{background:#fff;padding:1.25rem 1rem;text-align:center;}
+.rp-kpi-val{font-size:28px;font-weight:800;color:#1B2E5E;letter-spacing:-1px;line-height:1;margin-bottom:.35rem;}
+.rp-kpi.green .rp-kpi-val{color:#0E7348;}
+.rp-kpi.amber .rp-kpi-val{color:#D47B06;}
+.rp-kpi.red .rp-kpi-val{color:#D42626;}
+.rp-kpi-lbl{font-size:9.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:#9A9A9A;line-height:1.25;}
+
+/* Sous-titres section */
+.rp-h2{font-size:15px;font-weight:700;color:#1A1A1A;letter-spacing:-.2px;margin:2rem 0 1rem;padding-bottom:.5rem;border-bottom:1px solid #F0F0F0;}
+.rp-h2:first-child{margin-top:0;}
+.rp-h3{font-size:12.5px;font-weight:700;color:#1A1A1A;margin:1.25rem 0 .5rem;}
+
+/* Tableaux rapport */
+.rp-table{width:100%;border-collapse:collapse;margin-bottom:1rem;font-size:11.5px;}
+.rp-table th{text-align:left;padding:9px 12px;background:#F7F6F3;font-weight:700;font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;color:#6C6C6C;border-bottom:1.5px solid #E5E5E5;}
+.rp-table td{padding:10px 12px;border-bottom:1px solid #F0F0F0;color:#4A4A4A;}
+.rp-table tr:last-child td{border-bottom:none;}
+.rp-table td.rp-td-name{color:#1A1A1A;font-weight:600;}
+.rp-table td.rp-td-mono{font-family:'JetBrains Mono',monospace;font-size:11px;}
+.rp-table td.rp-td-right{text-align:right;}
+
+/* Barres de remplissage inline */
+.rp-bar{display:inline-flex;align-items:center;gap:8px;}
+.rp-bar-track{width:80px;height:5px;background:#F0F0F0;border-radius:3px;overflow:hidden;}
+.rp-bar-fill{height:100%;background:#0E7348;border-radius:3px;}
+.rp-bar-fill.amber{background:#D47B06;}
+.rp-bar-fill.red{background:#D42626;}
+.rp-bar-val{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#6C6C6C;font-weight:500;}
+
+/* Pills rapport */
+.rp-pill{display:inline-flex;align-items:center;font-size:9.5px;font-weight:700;padding:2px 8px;border-radius:10px;letter-spacing:.02em;}
+.rp-pill.green{background:#E6F6EE;color:#0E7348;}
+.rp-pill.amber{background:#FEF5E2;color:#D47B06;}
+.rp-pill.red{background:#FEECEC;color:#D42626;}
+.rp-pill.gray{background:#F0F0F0;color:#6C6C6C;}
+
+/* Pied de page */
+.rp-footer{margin-top:2rem;padding-top:1rem;border-top:1px solid #F0F0F0;display:flex;align-items:center;justify-content:space-between;font-size:9.5px;color:#9A9A9A;}
+.rp-footer-left{display:flex;align-items:center;gap:8px;}
+.rp-footer-logo{width:16px;height:16px;border-radius:4px;background:#1B2E5E;color:#fff;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:800;}
+
+/* Notes / encadrés */
+.rp-note{background:#F7F6F3;border-left:3px solid #4A90E2;border-radius:0 8px 8px 0;padding:14px 16px;font-size:11.5px;color:#4A4A4A;line-height:1.6;margin:1rem 0;}
+.rp-note strong{color:#1A1A1A;font-weight:700;}
+.rp-note.amber{border-left-color:#D47B06;background:#FEF9F0;}
+.rp-note.placeholder{background:repeating-linear-gradient(45deg,#FAF9F5,#FAF9F5 10px,#F5F3EC 10px,#F5F3EC 20px);border-left-color:#9A9A9A;color:#6C6C6C;font-style:italic;}
+
+/* Liste à puces stylée */
+.rp-list{margin:.5rem 0 1rem;padding:0;list-style:none;}
+.rp-list li{padding:5px 0 5px 20px;position:relative;font-size:12px;color:#4A4A4A;line-height:1.55;}
+.rp-list li::before{content:'';position:absolute;left:0;top:12px;width:8px;height:8px;border:1.5px solid #4A90E2;border-radius:50%;}
+
+/* Overlay de génération */
+.rapport-generating{position:fixed;inset:0;background:rgba(15,23,41,.92);z-index:500;display:none;align-items:center;justify-content:center;flex-direction:column;gap:1.25rem;}
+.rapport-generating.visible{display:flex;}
+.rapport-gen-spinner{width:44px;height:44px;border:3px solid rgba(255,255,255,.15);border-top-color:#7AB8F5;border-radius:50%;animation:spin 0.8s linear infinite;}
+.rapport-gen-text{color:#fff;font-size:14px;font-weight:500;}
+.rapport-gen-sub{color:rgba(255,255,255,.5);font-size:11.5px;}
+@keyframes spin{to{transform:rotate(360deg);}}
 </style>
 </head>
 <body>
@@ -1487,6 +1611,10 @@ tr:hover td{background:#FDFCF9;}
       <div class="sb-item" id="sb-stats" onclick="navVers('stats')">
         <div class="sb-ico"><svg viewBox="0 0 24 24"><path d="M3 20h18M7 16V8m5 8V4m5 12v-6"/></svg></div>
         <div class="sb-tooltip">Statistiques</div>
+      </div>
+      <div class="sb-item" id="sb-rapports" onclick="navVers('rapports')">
+        <div class="sb-ico"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div>
+        <div class="sb-tooltip">Rapports</div>
       </div>
     </div>
     <div class="sb-bottom">
@@ -2058,6 +2186,56 @@ tr:hover td{background:#FDFCF9;}
 
       </div>
 
+      <!-- ══ RAPPORTS ══ -->
+      <div class="section" id="section-rapports">
+        <div class="page-header">
+          <div class="page-title">Rapports institutionnels</div>
+          <div class="page-sub">Générez un bilan PDF complet de l'établissement — destiné au rectorat, aux inspections ou à vos archives.</div>
+        </div>
+
+        <div class="rapport-wrap">
+
+          <!-- Aperçu du rapport (colonne principale) -->
+          <div class="rapport-preview-wrap">
+            <div class="rapport-preview">
+              <div class="rapport-pages" id="rapport-pages">
+                <!-- Les pages seront générées par renderRapport() -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Panneau de contrôle (colonne latérale sticky) -->
+          <div class="rapport-controls">
+            <div class="rapport-controls-title">Options du rapport</div>
+            <div class="rapport-controls-desc">Personnalisez l'introduction et téléchargez le bilan au format PDF.</div>
+
+            <div class="rapport-field">
+              <label class="rapport-field-lbl">Mot du proviseur</label>
+              <textarea class="rapport-field-textarea" id="rapport-mot" placeholder="Ex : À l'attention de Madame l'Inspectrice, je vous transmets ci-joint le bilan de la remédiation mathématiques mise en place dans l'établissement..." oninput="renderRapport()"></textarea>
+              <div class="rapport-field-help">Optionnel — ce texte apparaîtra sur la page de couverture en italique.</div>
+            </div>
+
+            <button class="btn-generer" id="btn-generer-pdf" onclick="genererRapportPdf()">
+              <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              <span>Télécharger en PDF</span>
+            </button>
+
+            <div class="rapport-info">
+              <strong>📄 Format :</strong> PDF A4, plusieurs pages, inclut couverture, résumé exécutif, volumes, diagnostic et remédiation.<br><br>
+              <strong>🔒 Confidentialité :</strong> le fichier est généré localement dans votre navigateur — aucune donnée n'est envoyée à un serveur externe.
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Overlay de génération PDF -->
+      <div class="rapport-generating" id="rapport-generating">
+        <div class="rapport-gen-spinner"></div>
+        <div class="rapport-gen-text">Génération du PDF en cours…</div>
+        <div class="rapport-gen-sub">Cela peut prendre quelques secondes.</div>
+      </div>
+
     </div>
   </div>
 </div>
@@ -2299,6 +2477,11 @@ function navVers(dest){
     document.getElementById('sb-stats').classList.add('active');
     showStatsView('menu');
     setBreadcrumb([{label:'Statistiques',current:true}]);
+  } else if(dest==='rapports'){
+    document.getElementById('section-rapports').classList.add('active');
+    document.getElementById('sb-rapports').classList.add('active');
+    renderRapport();
+    setBreadcrumb([{label:'Rapports institutionnels',current:true}]);
   }
 }
 
@@ -5761,6 +5944,349 @@ function renderHistoSummary(snap,snapPrev){
     }
   }
   return html;
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// RAPPORTS INSTITUTIONNELS — génération d'un bilan PDF à destination du rectorat
+// ═══════════════════════════════════════════════════════════════════════════
+
+// Calcule les indicateurs globaux de l'établissement
+function rapportComputeStats(){
+  var total_classes=0, classes_evaluees=0;
+  var details_classes=[]; // {id, nom, type, nb_eleves, assignees, maitrisees, validees, alertes, engage, couverture}
+  NIVEAUX.forEach(function(niv){
+    niv.classes.forEach(function(cl){
+      total_classes++;
+      var evData=evalParClasse(cl.id);
+      var remData=remParClasse(cl.id);
+      var eleves=elevesUniques(evData);
+      var nb_eleves=eleves.length;
+      if(nb_eleves>0) classes_evaluees++;
+      // Lacunes / maîtrises
+      var assignees=evData.filter(function(r){return r.assigne==='oui';}).length;
+      var maitrisees=evData.filter(function(r){return r.assigne==='non';}).length;
+      // Remédiation
+      var eleves_remed=new Set();
+      remData.forEach(function(r){eleves_remed.add(String(r.eleve_id||'').toLowerCase());});
+      var validees=remData.filter(function(r){return r.statut==='quiz_final_valide';}).length;
+      var alertes=remData.filter(function(r){return r.statut==='echec_3_tentatives'&&r.alerte_traitee==='non';}).length;
+      var couverture=(assignees+maitrisees)>0?Math.round(maitrisees/(assignees+maitrisees)*100):null;
+      var engage=nb_eleves>0?Math.round(eleves_remed.size/nb_eleves*100):null;
+      details_classes.push({
+        id:cl.id, nom:cl.id, type:niv.type,
+        nb_eleves:nb_eleves,
+        assignees:assignees, maitrisees:maitrisees,
+        validees:validees, alertes:alertes,
+        couverture:couverture, engage:engage
+      });
+    });
+  });
+
+  // Totaux établissement
+  var tot_ev=elevesUniques(DATA_EVAL).length;
+  var tot_ass=DATA_EVAL.filter(function(r){return r.assigne==='oui';}).length;
+  var tot_mai=DATA_EVAL.filter(function(r){return r.assigne==='non';}).length;
+  var tot_val=DATA_REM.filter(function(r){return r.statut==='quiz_final_valide';}).length;
+  var tot_alt=DATA_REM.filter(function(r){return r.statut==='echec_3_tentatives'&&r.alerte_traitee==='non';}).length;
+  var couv_etab=(tot_ass+tot_mai)>0?Math.round(tot_mai/(tot_ass+tot_mai)*100):0;
+  var elvs_remed=new Set(); DATA_REM.forEach(function(r){elvs_remed.add(String(r.eleve_id||'').toLowerCase());});
+  var eng_etab=tot_ev>0?Math.round(elvs_remed.size/tot_ev*100):0;
+  var pct_valid_fiches=tot_ass>0?Math.round(tot_val/tot_ass*100):0;
+
+  // Top notions fragiles (fréquence d'assignation)
+  var freqByFiche={};
+  DATA_EVAL.forEach(function(r){
+    if(r.assigne==='oui'){
+      freqByFiche[r.fiche_id]=(freqByFiche[r.fiche_id]||0)+1;
+    }
+  });
+  var top_notions=Object.keys(freqByFiche).map(function(fid){
+    return {fiche_id:fid, nom:NOMS_FICHES[fid]||fid, nb:freqByFiche[fid], pct:tot_ev>0?Math.round(freqByFiche[fid]/tot_ev*100):0};
+  }).sort(function(a,b){return b.nb-a.nb;});
+
+  // Mode DYS : nombre d'élèves
+  var eleves_dys=new Set();
+  DATA_COMPTES.forEach(function(c){if(c.dys==='oui') eleves_dys.add(String(c.email||'').toLowerCase());});
+  var nb_dys=eleves_dys.size;
+
+  // Élèves bloqués uniques (alertes non traitées)
+  var bloques_uniques=new Set();
+  DATA_REM.forEach(function(r){if(r.statut==='echec_3_tentatives'&&r.alerte_traitee==='non'){bloques_uniques.add(String(r.eleve_id||'').toLowerCase());}});
+
+  return {
+    total_classes:total_classes,
+    classes_evaluees:classes_evaluees,
+    tot_ev:tot_ev,
+    tot_ass:tot_ass,
+    tot_mai:tot_mai,
+    tot_val:tot_val,
+    tot_alt:tot_alt,
+    couv_etab:couv_etab,
+    eng_etab:eng_etab,
+    pct_valid_fiches:pct_valid_fiches,
+    nb_dys:nb_dys,
+    nb_eleves_bloques:bloques_uniques.size,
+    details_classes:details_classes,
+    top_notions:top_notions
+  };
+}
+
+// Formate une date complète en français
+function rapportDateLongue(d){
+  var jours=['dimanche','lundi','mardi','mercredi','jeudi','vendredi','samedi'];
+  var mois=['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
+  return jours[d.getDay()]+' '+d.getDate()+' '+mois[d.getMonth()]+' '+d.getFullYear();
+}
+
+// Génère et affiche l'aperçu du rapport
+function renderRapport(){
+  var s=rapportComputeStats();
+  var now=new Date();
+  var dateLongue=rapportDateLongue(now);
+  var dateCourte=now.getDate().toString().padStart(2,'0')+'/'+(now.getMonth()+1).toString().padStart(2,'0')+'/'+now.getFullYear();
+  var mot=(document.getElementById('rapport-mot')||{}).value||'';
+
+  // ── PAGE 1 : COUVERTURE
+  var p1='<div class="rapport-page cover">'
+    +'<div class="rp-cover-top">'
+      +'<div class="rp-cover-brand">'
+        +'<div class="rp-cover-logo">AM</div>'
+        +'<div>'
+          +'<div class="rp-cover-brandname">L\'Académie des Maths</div>'
+          +'<div class="rp-cover-brandsub">Diagnostic &amp; remédiation mathématiques</div>'
+        +'</div>'
+      +'</div>'
+      +'<div class="rp-cover-dateblock">'
+        +'<div class="rp-cover-datelbl">Rapport généré le</div>'
+        +'<div class="rp-cover-dateval">'+dateLongue+'</div>'
+      +'</div>'
+    +'</div>'
+    +'<div class="rp-cover-center">'
+      +'<div class="rp-cover-kicker">Bilan institutionnel</div>'
+      +'<div class="rp-cover-title">Remédiation<br/>mathématiques</div>'
+      +'<div class="rp-cover-sub">Bilan complet du dispositif de diagnostic et de remédiation mis en place auprès des classes de seconde.</div>'
+      +'<div class="rp-cover-etab">'
+        +'<div class="rp-cover-etab-lbl">Établissement</div>'
+        +'<div class="rp-cover-etab-name">Lycée Benoît Fourneyron</div>'
+      +'</div>'
+    +'</div>'
+    +'<div class="rp-cover-bottom">'
+      +'<div class="rp-cover-mot">'
+        +(mot.trim()?'<div class="rp-cover-mot-lbl">Mot du proviseur</div><div class="rp-cover-mot-txt">'+esc(mot).replace(/\n/g,'<br/>')+'</div>':'')
+      +'</div>'
+      +'<div class="rp-cover-signature">'
+        +'<strong>L\'Académie des Maths</strong>'
+        +'Rapport généré automatiquement'
+      +'</div>'
+    +'</div>'
+  +'</div>';
+
+  // ── PAGE 2 : RÉSUMÉ EXÉCUTIF
+  var p2='<div class="rapport-page">'
+    +'<div class="rp-page-header">'
+      +'<div class="rp-page-section">1 · Résumé exécutif</div>'
+      +'<div class="rp-page-pagenum">Page 2</div>'
+    +'</div>'
+    +'<div class="rp-page-title">Vue d\'ensemble</div>'
+    +'<div class="rp-page-sub">Indicateurs clés de la remédiation au '+dateCourte+'.</div>'
+    +'<div class="rp-kpis">'
+      +'<div class="rp-kpi"><div class="rp-kpi-val">'+s.tot_ev+'</div><div class="rp-kpi-lbl">Élèves<br/>diagnostiqués</div></div>'
+      +'<div class="rp-kpi green"><div class="rp-kpi-val">'+s.couv_etab+'%</div><div class="rp-kpi-lbl">Notions<br/>maîtrisées</div></div>'
+      +'<div class="rp-kpi amber"><div class="rp-kpi-val">'+s.pct_valid_fiches+'%</div><div class="rp-kpi-lbl">Fiches<br/>validées</div></div>'
+      +'<div class="rp-kpi '+(s.tot_alt>0?'red':'')+'"><div class="rp-kpi-val">'+s.tot_alt+'</div><div class="rp-kpi-lbl">Alertes<br/>actives</div></div>'
+    +'</div>'
+    +'<div class="rp-note"><strong>Synthèse.</strong> '
+      +'L\'établissement compte <strong>'+s.total_classes+' classes de seconde</strong> suivies, dont <strong>'+s.classes_evaluees+' évaluées</strong> à ce jour. '
+      +'Au total, <strong>'+s.tot_ev+' élèves</strong> ont passé l\'évaluation diagnostique. '
+      +'Parmi les notions évaluées, <strong>'+s.couv_etab+'%</strong> sont déjà maîtrisées avant remédiation. '
+      +(s.eng_etab>0?'Le taux d\'engagement dans la remédiation s\'élève à <strong>'+s.eng_etab+'%</strong>. ':'')
+      +(s.tot_alt>0?'<strong>'+s.tot_alt+' alertes</strong> requièrent une intervention pédagogique.':'Aucune alerte n\'est actuellement active — tous les élèves progressent normalement.')
+    +'</div>'
+    +'<div class="rp-h2">Périmètre du rapport</div>'
+    +'<ul class="rp-list">'
+      +'<li><strong>Établissement :</strong> Lycée Benoît Fourneyron</li>'
+      +'<li><strong>Filières couvertes :</strong> Seconde CAP &amp; Seconde Bac Pro</li>'
+      +'<li><strong>Domaine évalué :</strong> Fractions (thématique prioritaire)</li>'
+      +'<li><strong>Date du rapport :</strong> '+dateLongue+'</li>'
+    +'</ul>'
+    +buildFooter(2)
+  +'</div>';
+
+  // ── PAGE 3 : VOLUMES & ENGAGEMENT
+  var cl_evaluees=s.details_classes.filter(function(c){return c.nb_eleves>0;});
+  var rowsVol=s.details_classes.map(function(c){
+    if(c.nb_eleves===0){
+      return '<tr><td class="rp-td-name">'+esc(c.nom)+'</td><td>'+esc(c.type)+'</td><td class="rp-td-mono rp-td-right">—</td><td class="rp-td-right"><span class="rp-pill gray">Non évaluée</span></td><td class="rp-td-right">—</td></tr>';
+    }
+    var engPill=c.engage===null?'<span class="rp-pill gray">—</span>':(c.engage>=70?'<span class="rp-pill green">'+c.engage+'%</span>':c.engage>=40?'<span class="rp-pill amber">'+c.engage+'%</span>':'<span class="rp-pill red">'+c.engage+'%</span>');
+    var couvBar=c.couverture===null?'—':'<div class="rp-bar"><div class="rp-bar-track"><div class="rp-bar-fill '+(c.couverture>=70?'':(c.couverture>=40?'amber':'red'))+'" style="width:'+c.couverture+'%"></div></div><span class="rp-bar-val">'+c.couverture+'%</span></div>';
+    return '<tr><td class="rp-td-name">'+esc(c.nom)+'</td><td>'+esc(c.type)+'</td><td class="rp-td-mono rp-td-right">'+c.nb_eleves+'</td><td class="rp-td-right">'+engPill+'</td><td class="rp-td-right">'+couvBar+'</td></tr>';
+  }).join('');
+
+  var p3='<div class="rapport-page">'
+    +'<div class="rp-page-header">'
+      +'<div class="rp-page-section">2 · Volumes &amp; engagement</div>'
+      +'<div class="rp-page-pagenum">Page 3</div>'
+    +'</div>'
+    +'<div class="rp-page-title">Volumes traités</div>'
+    +'<div class="rp-page-sub">Nombre d\'élèves diagnostiqués par classe et niveau d\'engagement dans la remédiation.</div>'
+    +'<div class="rp-h2">Indicateurs volumétriques</div>'
+    +'<table class="rp-table">'
+      +'<thead><tr><th>Classe</th><th>Filière</th><th class="rp-td-right">Élèves évalués</th><th class="rp-td-right">Engagement</th><th class="rp-td-right">Couverture (notions maîtrisées)</th></tr></thead>'
+      +'<tbody>'+rowsVol+'</tbody>'
+    +'</table>'
+    +'<div class="rp-note"><strong>Lecture.</strong> '
+      +'La <strong>couverture</strong> représente la proportion de notions déjà maîtrisées avant remédiation. '
+      +'L\'<strong>engagement</strong> mesure la part des élèves évalués ayant au moins commencé une fiche de remédiation. '
+      +'Un taux d\'engagement de <strong>100%</strong> signifie que tous les élèves diagnostiqués ont travaillé au moins une fiche.'
+    +'</div>'
+    +buildFooter(3)
+  +'</div>';
+
+  // ── PAGE 4 : DIAGNOSTIC
+  var rowsNotions=s.top_notions.slice(0,10).map(function(n,i){
+    var niveau=n.pct>=50?'<span class="rp-pill red">Critique</span>':(n.pct>=25?'<span class="rp-pill amber">À travailler</span>':'<span class="rp-pill green">Bien maîtrisée</span>');
+    return '<tr><td class="rp-td-mono">#'+(i+1)+'</td><td class="rp-td-name">'+esc(n.nom)+'</td><td class="rp-td-mono rp-td-right">'+n.nb+'</td><td class="rp-td-right">'+n.pct+'%</td><td class="rp-td-right">'+niveau+'</td></tr>';
+  }).join('') || '<tr><td colspan="5" style="text-align:center;color:#9A9A9A;padding:1.5rem;font-style:italic;">Aucune donnée d\'évaluation disponible.</td></tr>';
+
+  // Classes à risque (couverture <40%)
+  var classes_risque=s.details_classes.filter(function(c){return c.nb_eleves>0 && c.couverture!==null && c.couverture<40;}).sort(function(a,b){return a.couverture-b.couverture;});
+
+  var p4='<div class="rapport-page">'
+    +'<div class="rp-page-header">'
+      +'<div class="rp-page-section">3 · Diagnostic</div>'
+      +'<div class="rp-page-pagenum">Page 4</div>'
+    +'</div>'
+    +'<div class="rp-page-title">Notions fragiles</div>'
+    +'<div class="rp-page-sub">Classement des notions mathématiques posant le plus de difficultés à l\'échelle de l\'établissement.</div>'
+    +'<div class="rp-h2">Top 10 des notions à retravailler</div>'
+    +'<table class="rp-table">'
+      +'<thead><tr><th>Rang</th><th>Notion</th><th class="rp-td-right">Nb élèves concernés</th><th class="rp-td-right">% de l\'effectif</th><th class="rp-td-right">Niveau d\'alerte</th></tr></thead>'
+      +'<tbody>'+rowsNotions+'</tbody>'
+    +'</table>'
+    +'<div class="rp-h2">Classes nécessitant une attention particulière</div>'
+    +(classes_risque.length===0
+      ? '<div class="rp-note"><strong>Aucune classe à risque identifiée.</strong> Toutes les classes évaluées présentent un taux de maîtrise supérieur à 40%.</div>'
+      : '<table class="rp-table">'
+        +'<thead><tr><th>Classe</th><th class="rp-td-right">Couverture</th><th class="rp-td-right">Lacunes identifiées</th></tr></thead>'
+        +'<tbody>'+classes_risque.map(function(c){
+          return '<tr><td class="rp-td-name">'+esc(c.nom)+'</td><td class="rp-td-right"><span class="rp-pill red">'+c.couverture+'%</span></td><td class="rp-td-mono rp-td-right">'+c.assignees+' lacunes</td></tr>';
+        }).join('')+'</tbody>'
+      +'</table>')
+    +'<div class="rp-h2">Accessibilité — Mode adapté DYS</div>'
+    +(s.nb_dys===0
+      ? '<div class="rp-note placeholder">Aucun élève n\'a activé le mode DYS à ce jour.</div>'
+      : '<div class="rp-note"><strong>'+s.nb_dys+' élève'+(s.nb_dys>1?'s':'')+'</strong> utilise'+(s.nb_dys>1?'nt':'')+' actuellement le mode adapté (police OpenDyslexic, espacement accru, temps de lecture rallongé). Ce dispositif est activé de manière autonome par l\'élève lors de la création de son compte.</div>')
+    +buildFooter(4)
+  +'</div>';
+
+  // ── PAGE 5 : REMÉDIATION
+  // Tableau d'avancement par classe
+  var rowsRemed=s.details_classes.filter(function(c){return c.assignees>0;}).map(function(c){
+    var pctVal=c.assignees>0?Math.round(c.validees/c.assignees*100):0;
+    var bar='<div class="rp-bar"><div class="rp-bar-track"><div class="rp-bar-fill '+(pctVal>=70?'':(pctVal>=40?'amber':'red'))+'" style="width:'+pctVal+'%"></div></div><span class="rp-bar-val">'+pctVal+'%</span></div>';
+    var altPill=c.alertes>0?'<span class="rp-pill red">'+c.alertes+'</span>':'<span class="rp-pill gray">0</span>';
+    return '<tr><td class="rp-td-name">'+esc(c.nom)+'</td><td class="rp-td-mono rp-td-right">'+c.assignees+'</td><td class="rp-td-mono rp-td-right">'+c.validees+'</td><td class="rp-td-right">'+bar+'</td><td class="rp-td-right">'+altPill+'</td></tr>';
+  }).join('') || '<tr><td colspan="5" style="text-align:center;color:#9A9A9A;padding:1.5rem;font-style:italic;">La remédiation n\'a pas encore démarré.</td></tr>';
+
+  // Détection éval 2 disponible
+  var aDesReevals=DATA_EVAL.some(function(r){return (parseInt(r.numero_eval)||1)>=2;});
+
+  var p5='<div class="rapport-page">'
+    +'<div class="rp-page-header">'
+      +'<div class="rp-page-section">4 · Remédiation</div>'
+      +'<div class="rp-page-pagenum">Page 5</div>'
+    +'</div>'
+    +'<div class="rp-page-title">Avancement de la remédiation</div>'
+    +'<div class="rp-page-sub">État d\'avancement des fiches de remédiation et détection des blocages persistants.</div>'
+    +'<div class="rp-h2">Avancement par classe</div>'
+    +'<table class="rp-table">'
+      +'<thead><tr><th>Classe</th><th class="rp-td-right">Fiches assignées</th><th class="rp-td-right">Validées</th><th class="rp-td-right">Taux de réussite</th><th class="rp-td-right">Alertes</th></tr></thead>'
+      +'<tbody>'+rowsRemed+'</tbody>'
+    +'</table>'
+    +'<div class="rp-h2">Élèves bloqués</div>'
+    +(s.nb_eleves_bloques===0
+      ? '<div class="rp-note"><strong>Aucun élève n\'est actuellement bloqué.</strong> L\'ensemble des élèves engagés dans la remédiation progresse sans blocage persistant.</div>'
+      : '<div class="rp-note amber"><strong>'+s.nb_eleves_bloques+' élève'+(s.nb_eleves_bloques>1?'s':'')+' en difficulté persistante</strong> (échec après 3 tentatives sur au moins une fiche). '
+        +'Ces élèves nécessitent une intervention pédagogique ciblée de la part de l\'enseignant. Les détails sont consultables dans l\'espace professeur.</div>')
+    +'<div class="rp-h2">Mesure d\'impact — scores avant / après</div>'
+    +(aDesReevals
+      ? '<div class="rp-note"><strong>Des élèves ont repassé l\'évaluation diagnostique</strong> après remédiation. La comparaison avant/après est consultable dans l\'espace proviseur (section Statistiques &rarr; Impact de la remédiation).</div>'
+      : '<div class="rp-note placeholder">Les données d\'impact (scores à la seconde évaluation, après remédiation) seront disponibles dès qu\'un nombre suffisant d\'élèves auront repassé l\'évaluation diagnostique. Cette mesure permettra de quantifier précisément l\'efficacité du dispositif.</div>')
+    +buildFooter(5)
+  +'</div>';
+
+  document.getElementById('rapport-pages').innerHTML=p1+p2+p3+p4+p5;
+
+  function buildFooter(pageNum){
+    return '<div class="rp-footer">'
+      +'<div class="rp-footer-left"><div class="rp-footer-logo">AM</div><span>L\'Académie des Maths · Lycée Benoît Fourneyron</span></div>'
+      +'<div>Page '+pageNum+' / 5 · '+dateCourte+'</div>'
+    +'</div>';
+  }
+}
+
+// Génère le PDF à partir des pages rendues
+function genererRapportPdf(){
+  var overlay=document.getElementById('rapport-generating');
+  var btn=document.getElementById('btn-generer-pdf');
+  overlay.classList.add('visible');
+  btn.disabled=true;
+
+  // S'assurer que l'aperçu est à jour avant capture
+  renderRapport();
+
+  // On laisse un tick au navigateur pour rendre le DOM
+  setTimeout(function(){
+    var pages=document.querySelectorAll('#rapport-pages .rapport-page');
+    if(pages.length===0){
+      overlay.classList.remove('visible'); btn.disabled=false;
+      alert('Aucune page à exporter.'); return;
+    }
+
+    // Détection des libs
+    if(typeof window.jspdf==='undefined' && typeof window.jsPDF==='undefined'){
+      overlay.classList.remove('visible'); btn.disabled=false;
+      alert('La librairie jsPDF n\'est pas chargée. Vérifiez votre connexion et réessayez.'); return;
+    }
+    if(typeof html2canvas==='undefined'){
+      overlay.classList.remove('visible'); btn.disabled=false;
+      alert('La librairie html2canvas n\'est pas chargée. Vérifiez votre connexion et réessayez.'); return;
+    }
+
+    var jsPDFClass=(window.jspdf && window.jspdf.jsPDF) || window.jsPDF;
+    var pdf=new jsPDFClass({orientation:'portrait',unit:'mm',format:'a4'});
+    var pdfW=pdf.internal.pageSize.getWidth();
+    var pdfH=pdf.internal.pageSize.getHeight();
+
+    var idx=0;
+    function capturerPage(){
+      if(idx>=pages.length){
+        var now=new Date();
+        var stamp=now.getFullYear()+'-'+(now.getMonth()+1).toString().padStart(2,'0')+'-'+now.getDate().toString().padStart(2,'0');
+        pdf.save('Rapport-Fourneyron-'+stamp+'.pdf');
+        overlay.classList.remove('visible'); btn.disabled=false;
+        return;
+      }
+      var page=pages[idx];
+      html2canvas(page,{scale:2,backgroundColor:'#ffffff',useCORS:true,logging:false}).then(function(canvas){
+        var imgData=canvas.toDataURL('image/jpeg',0.95);
+        // Calcul des dimensions pour s'adapter à la page A4 tout en respectant le ratio
+        var imgW=pdfW, imgH=canvas.height*pdfW/canvas.width;
+        // Si trop haute, on clamp à la hauteur A4 (l'image sera scalée vers le bas)
+        if(imgH>pdfH) imgH=pdfH;
+        if(idx>0) pdf.addPage();
+        pdf.addImage(imgData,'JPEG',0,0,imgW,imgH);
+        idx++;
+        setTimeout(capturerPage,50);
+      }).catch(function(err){
+        console.error('Erreur capture page '+idx+':',err);
+        idx++;
+        setTimeout(capturerPage,50);
+      });
+    }
+    capturerPage();
+  },200);
 }
 
 setInterval(function(){
