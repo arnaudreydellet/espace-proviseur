@@ -115,18 +115,26 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
 .login-kicker { display: none; }
 .login-headline {
   font-family: 'Inter Tight', sans-serif;
-  font-size: 56px; font-weight: 800; letter-spacing: -2.8px;
-  color: #1A2C4F; line-height: 1; margin-bottom: .75rem; text-align: center;
+  font-size: 46px; font-weight: 800;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: #1A2C4F; line-height: 1.1;
+  margin-bottom: .9rem; text-align: center;
 }
 .login-headline .serif {
-  font-style: normal; font-weight: 300; color: #9A9588;
-  font-size: 46px; letter-spacing: -2px;
+  font-family: 'Fraunces', 'Georgia', serif;
+  font-style: italic; font-weight: 300;
+  color: #9A9588; letter-spacing: .14em;
+  font-size: .78em; text-transform: uppercase;
   -webkit-text-fill-color: unset; background: none;
-  margin-right: .1em; display: inline; font-family: 'Inter Tight', sans-serif;
+  display: block; margin-bottom: .08em;
+  margin-right: 0;
 }
 .login-headline .sans {
-  display: inline; font-family: 'Inter Tight', sans-serif;
-  font-weight: 800; color: #1A2C4F; letter-spacing: -2.8px;
+  display: block;
+  font-family: 'Inter Tight', sans-serif;
+  font-weight: 800; color: #1A2C4F;
+  letter-spacing: .22em; text-transform: uppercase;
 }
 .login-tagline {
   font-size: 15px; color: #7A7568; font-weight: 400; letter-spacing: -.1px;
@@ -236,8 +244,8 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
   font-size: 10px; color: #C8C2B3; font-family: 'JetBrains Mono', monospace; letter-spacing: .05em;
 }
 @media (max-width:960px) {
-  .login-headline { font-size: 38px; letter-spacing: -2px; }
-  .login-headline .serif { font-size: 32px; }
+  .login-headline { font-size: 30px; letter-spacing: .14em; }
+  .login-headline .serif { font-size: .78em; }
   .login-signature, .login-version { display: none; }
 }
 
@@ -687,6 +695,8 @@ tr:hover td{background:#FDFCF9;}
 /* ═══ VUE DIAGNOSTIQUES : GRAPHIQUES ═══ */
 .charts-grid{column-count:2;column-gap:1.25rem;margin-bottom:1.5rem;}
 @media (max-width:900px){.charts-grid{column-count:1;}}
+.charts-grid-2col{column-count:initial;display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;}
+@media (max-width:900px){.charts-grid-2col{grid-template-columns:1fr;}}
 .chart-card{background:var(--white);border:1px solid var(--border);border-radius:var(--rl);padding:1.5rem 1.75rem;position:relative;overflow:hidden;break-inside:avoid;page-break-inside:avoid;-webkit-column-break-inside:avoid;margin-bottom:1.25rem;display:block;}
 .chart-card.full{column-span:all;}
 .chart-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:1.25rem;}
@@ -697,6 +707,157 @@ tr:hover td{background:#FDFCF9;}
 .chart-placeholder-icon{font-size:28px;margin-bottom:.75rem;opacity:.5;}
 .chart-placeholder-title{font-size:12px;font-weight:600;color:var(--text2);margin-bottom:.35rem;}
 .chart-placeholder-sub{font-size:10.5px;color:var(--text3);max-width:280px;line-height:1.5;}
+
+/* Carte cliquable (pour drill-down vers une vue détail) */
+.chart-card-clickable{cursor:pointer;transition:border-color .2s,box-shadow .2s,transform .2s;}
+.chart-card-clickable:hover{border-color:var(--navy-mid);box-shadow:0 6px 22px rgba(27,46,94,.08);transform:translateY(-1px);}
+.chart-card-cta{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:999px;background:var(--navy-l);color:var(--navy);font-family:'Inter Tight',sans-serif;font-size:11.5px;font-weight:700;letter-spacing:.01em;flex-shrink:0;transition:all .2s;}
+.chart-card-clickable:hover .chart-card-cta{background:var(--navy);color:#fff;}
+.chart-card-cta-arrow{font-size:13px;transition:transform .2s;}
+.chart-card-clickable:hover .chart-card-cta-arrow{transform:translateX(3px);}
+
+/* Variante "hero" : header centré, titre grand, kicker éditorial */
+.chart-card-hero{padding-top:1.85rem;padding-bottom:1.85rem;position:relative;}
+.chart-card-cta-floating{position:absolute;top:1.4rem;right:1.5rem;z-index:2;}
+.chart-header-centered{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;text-align:center;margin-bottom:1.5rem;gap:0;}
+.chart-header-kicker{display:inline-flex;align-items:center;gap:12px;margin-bottom:.85rem;}
+.chart-header-kicker-line{display:block;width:32px;height:1px;background:linear-gradient(90deg,transparent,var(--text4),transparent);}
+.chart-header-kicker-text{font-family:'Inter Tight',sans-serif;font-size:10.5px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--text3);}
+.chart-title-hero{font-family:'Sora',sans-serif;font-size:26px;font-weight:800;color:var(--text);letter-spacing:-.8px;line-height:1.2;margin-bottom:.4rem;}
+.chart-title-hero .chart-title-accent{font-family:'Sora',sans-serif;font-style:normal;font-weight:800;color:var(--text);letter-spacing:-.8px;}
+.chart-subtitle-hero{font-family:'Sora',sans-serif;font-size:13px;font-weight:400;color:var(--text3);line-height:1.55;max-width:560px;margin:0 auto;}
+@media (max-width:760px){
+  .chart-card-cta-floating{position:static;margin:0 auto 1rem auto;}
+  .chart-card-hero{padding-top:1.5rem;}
+}
+
+/* ═══ Lacunes par niveau du collège (6e/5e/4e/3e) ═══ */
+.niveaux-container{width:100%;display:flex;flex-direction:column;gap:1.25rem;padding:.25rem 0;}
+.niveaux-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;width:100%;}
+@media (max-width:780px){.niveaux-summary{grid-template-columns:repeat(2,1fr);}}
+.niveaux-sum-card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--r);padding:1rem 1.1rem;display:flex;flex-direction:column;gap:6px;position:relative;overflow:hidden;}
+.niveaux-sum-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;}
+.niveaux-sum-card.lvl-good::before{background:#15A362;}
+.niveaux-sum-card.lvl-mid::before{background:var(--amber);}
+.niveaux-sum-card.lvl-bad::before{background:var(--red);}
+.niveaux-sum-card.lvl-na::before{background:var(--text4);}
+.niveaux-sum-tag{font-family:'Inter Tight',sans-serif;font-size:9.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--text3);}
+.niveaux-sum-val{font-family:'Sora',sans-serif;font-size:30px;font-weight:800;letter-spacing:-1px;line-height:1;color:var(--navy);}
+.niveaux-sum-card.lvl-good .niveaux-sum-val{color:var(--green-dark);}
+.niveaux-sum-card.lvl-mid .niveaux-sum-val{color:#8B5500;}
+.niveaux-sum-card.lvl-bad .niveaux-sum-val{color:var(--red);}
+.niveaux-sum-lbl{font-family:'Inter Tight',sans-serif;font-size:10.5px;font-weight:500;color:var(--text3);line-height:1.35;}
+
+.niveaux-bars{background:var(--bg);border:1px solid var(--border);border-radius:var(--rl);padding:1.5rem 1.5rem 1.25rem;display:flex;flex-direction:column;gap:1.25rem;}
+.niveaux-bars-title{font-family:'Sora',sans-serif;font-size:13px;font-weight:700;color:var(--text);letter-spacing:-.2px;margin-bottom:.25rem;}
+.niveaux-bar-block{display:flex;flex-direction:column;gap:6px;}
+.niveaux-bar-row{display:grid;grid-template-columns:64px 1fr 90px;align-items:center;gap:14px;}
+.niveaux-bar-lbl{font-family:'Sora',sans-serif;font-size:14px;font-weight:700;color:var(--text);letter-spacing:-.3px;}
+.niveaux-bar-track{position:relative;height:28px;background:var(--white);border:1px solid var(--border);border-radius:8px;overflow:hidden;}
+.niveaux-bar-fill{position:absolute;left:0;top:0;bottom:0;border-radius:8px 0 0 8px;transition:width 1.2s cubic-bezier(.4,0,.2,1);}
+.niveaux-bar-fill.lvl-good{background:linear-gradient(90deg,#22D37C 0%,#15A362 100%);}
+.niveaux-bar-fill.lvl-mid{background:linear-gradient(90deg,#F0A030 0%,var(--amber) 100%);}
+.niveaux-bar-fill.lvl-bad{background:linear-gradient(90deg,#E64545 0%,var(--red) 100%);}
+.niveaux-bar-fill.lvl-na{background:var(--text4);}
+.niveaux-bar-val{font-family:'Sora',sans-serif;font-size:14px;font-weight:700;text-align:right;letter-spacing:-.3px;}
+.niveaux-bar-val.lvl-good{color:var(--green-dark);}
+.niveaux-bar-val.lvl-mid{color:#8B5500;}
+.niveaux-bar-val.lvl-bad{color:var(--red);}
+.niveaux-bar-val.lvl-na{color:var(--text3);}
+.niveaux-bar-val .small{font-size:10.5px;font-weight:500;color:var(--text3);font-family:'Inter Tight',sans-serif;letter-spacing:0;display:block;margin-top:1px;}
+
+/* Sous-lignes CAP / Bac Pro (sous chaque niveau) */
+.niveaux-bar-row.sub{padding-left:24px;}
+.niveaux-bar-row.sub.muted{opacity:.4;}
+.niveaux-bar-lbl-sub{font-family:'Inter Tight',sans-serif;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);}
+.niveaux-bar-track-sub{position:relative;height:14px;background:var(--white);border:1px solid var(--border);border-radius:5px;overflow:hidden;}
+.niveaux-bar-fill-sub{position:absolute;left:0;top:0;bottom:0;border-radius:5px 0 0 5px;transition:width 1.2s cubic-bezier(.4,0,.2,1);}
+.niveaux-bar-fill-sub.cap{background:linear-gradient(90deg,#E0B97A 0%,#9A6315 100%);}
+.niveaux-bar-fill-sub.bp{background:linear-gradient(90deg,#4A90E2 0%,var(--navy) 100%);}
+.niveaux-bar-val-sub{font-family:'Sora',sans-serif;font-size:12px;font-weight:700;letter-spacing:-.2px;text-align:right;}
+.niveaux-bar-val-sub.cap{color:#9A6315;}
+.niveaux-bar-val-sub.bp{color:var(--navy);}
+.niveaux-bar-val-sub.muted{font-size:10.5px;font-weight:500;font-style:italic;color:var(--text3);}
+
+.niveaux-note{background:var(--white);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:var(--r);padding:14px 18px;font-family:'Inter Tight',sans-serif;font-size:12px;line-height:1.55;color:var(--text2);}
+.niveaux-note strong{color:var(--text);font-weight:600;}
+
+/* Bouton CTA "Comparer CAP vs Bac Pro" en haut de la vue niveaux */
+.niveaux-cta-row{display:flex;justify-content:flex-end;margin-bottom:.25rem;}
+.niveaux-cta-btn{display:inline-flex;align-items:center;gap:10px;padding:10px 20px;border-radius:999px;background:var(--white);border:1.5px solid var(--navy-mid);color:var(--navy);font-family:'Inter Tight',sans-serif;font-size:12.5px;font-weight:700;letter-spacing:.01em;cursor:pointer;transition:all .2s;}
+.niveaux-cta-btn:hover{background:var(--navy);color:#fff;transform:translateY(-1px);box-shadow:0 6px 20px rgba(27,46,94,.15);}
+.niveaux-cta-btn-arrow{font-size:14px;transition:transform .2s;}
+.niveaux-cta-btn:hover .niveaux-cta-btn-arrow{transform:translateX(4px);}
+
+/* ═══ Comparaison CAP vs Bac Pro par niveau collège ═══ */
+.niveaux-fil-legend{display:flex;justify-content:center;gap:1.5rem;margin-bottom:1.25rem;flex-wrap:wrap;}
+.niveaux-fil-leg{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;background:var(--white);border:1px solid var(--border);font-family:'Inter Tight',sans-serif;font-size:11px;font-weight:600;letter-spacing:.04em;}
+.niveaux-fil-leg-swatch{width:14px;height:14px;border-radius:4px;flex-shrink:0;}
+.niveaux-fil-leg-swatch.cap{background:linear-gradient(135deg,#D4A464 0%,#9A6315 100%);}
+.niveaux-fil-leg-swatch.bp{background:linear-gradient(135deg,var(--navy-mid) 0%,var(--navy) 100%);}
+.niveaux-fil-leg-lbl{color:var(--text2);}
+
+.niveaux-fil-bars{background:var(--bg);border:1px solid var(--border);border-radius:var(--rl);padding:1.5rem 1.5rem 1.25rem;display:flex;flex-direction:column;gap:1.5rem;}
+.niveaux-fil-bars-title{font-family:'Sora',sans-serif;font-size:13px;font-weight:700;color:var(--text);letter-spacing:-.2px;margin-bottom:.25rem;}
+.niveaux-fil-group{display:grid;grid-template-columns:64px 1fr;align-items:start;gap:14px;}
+.niveaux-fil-group-lbl{font-family:'Sora',sans-serif;font-size:14px;font-weight:700;color:var(--text);letter-spacing:-.3px;padding-top:6px;}
+.niveaux-fil-group-bars{display:flex;flex-direction:column;gap:8px;}
+.niveaux-fil-bar-row{display:grid;grid-template-columns:64px 1fr 110px;align-items:center;gap:12px;}
+.niveaux-fil-bar-tag{font-family:'Inter Tight',sans-serif;font-size:9.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-align:center;padding:4px 8px;border-radius:6px;}
+.niveaux-fil-bar-tag.cap{background:rgba(154,99,21,0.10);color:#9A6315;}
+.niveaux-fil-bar-tag.bp{background:var(--navy-l);color:var(--navy);}
+.niveaux-fil-bar-track{position:relative;height:24px;background:var(--white);border:1px solid var(--border);border-radius:7px;overflow:hidden;}
+.niveaux-fil-bar-fill{position:absolute;left:0;top:0;bottom:0;border-radius:7px 0 0 7px;transition:width 1.2s cubic-bezier(.4,0,.2,1);}
+.niveaux-fil-bar-fill.cap{background:linear-gradient(90deg,#E0B97A 0%,#9A6315 100%);}
+.niveaux-fil-bar-fill.bp{background:linear-gradient(90deg,#4A90E2 0%,var(--navy) 100%);}
+.niveaux-fil-bar-fill.empty{background:var(--text4);opacity:.3;}
+.niveaux-fil-bar-val{font-family:'Sora',sans-serif;font-size:13px;font-weight:700;letter-spacing:-.2px;line-height:1.1;}
+.niveaux-fil-bar-val.cap{color:#9A6315;}
+.niveaux-fil-bar-val.bp{color:var(--navy);}
+.niveaux-fil-bar-val .small{font-size:10px;font-weight:500;color:var(--text3);font-family:'Inter Tight',sans-serif;letter-spacing:0;display:block;margin-top:1px;}
+.niveaux-fil-bar-val.muted{color:var(--text3);font-style:italic;font-weight:500;}
+
+.niveaux-fil-insight{background:var(--white);border:1px solid var(--border);border-left:3px solid var(--amber);border-radius:var(--r);padding:14px 18px;font-family:'Inter Tight',sans-serif;font-size:12px;line-height:1.55;color:var(--text2);}
+.niveaux-fil-insight.good{border-left-color:#15A362;}
+.niveaux-fil-insight.bad{border-left-color:var(--red);}
+.niveaux-fil-insight strong{color:var(--text);font-weight:700;}
+.niveaux-fil-insight-title{font-family:'Sora',sans-serif;font-size:13px;font-weight:700;color:var(--text);margin-bottom:.4rem;letter-spacing:-.1px;}
+
+/* ═══ Diagramme à barres : lacunes moyennes par thème ═══ */
+.theme-bars{background:var(--bg);border:1px solid var(--border);border-radius:var(--rl);padding:1.5rem 1.5rem 1.25rem;display:flex;flex-direction:column;gap:1.25rem;}
+.theme-bar-block{display:flex;flex-direction:column;gap:6px;}
+.theme-bar-row{display:grid;grid-template-columns:140px 1fr 80px;align-items:center;gap:14px;}
+.theme-bar-row.inactive{opacity:.4;}
+.theme-bar-lbl{font-family:'Sora',sans-serif;font-size:13.5px;font-weight:700;color:var(--text);letter-spacing:-.2px;}
+.theme-bar-track{position:relative;height:28px;background:var(--white);border:1px solid var(--border);border-radius:8px;overflow:hidden;}
+.theme-bar-fill{position:absolute;left:0;top:0;bottom:0;border-radius:8px 0 0 8px;transition:width 1.2s cubic-bezier(.4,0,.2,1);}
+.theme-bar-fill.lvl-good{background:linear-gradient(90deg,#22D37C 0%,#15A362 100%);}
+.theme-bar-fill.lvl-mid{background:linear-gradient(90deg,#F0A030 0%,var(--amber) 100%);}
+.theme-bar-fill.lvl-bad{background:linear-gradient(90deg,#E64545 0%,var(--red) 100%);}
+.theme-bar-val{font-family:'Sora',sans-serif;font-size:15px;font-weight:800;letter-spacing:-.3px;text-align:right;}
+.theme-bar-val.lvl-good{color:var(--green-dark);}
+.theme-bar-val.lvl-mid{color:#8B5500;}
+.theme-bar-val.lvl-bad{color:var(--red);}
+.theme-bar-val.muted{font-size:11px;font-weight:500;font-style:italic;color:var(--text3);}
+
+/* Sous-lignes CAP / Bac Pro */
+.theme-bar-row.sub{padding-left:24px;}
+.theme-bar-row.sub.muted{opacity:.4;}
+.theme-bar-lbl-sub{font-family:'Inter Tight',sans-serif;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text3);}
+.theme-bar-track-sub{position:relative;height:14px;background:var(--white);border:1px solid var(--border);border-radius:5px;overflow:hidden;}
+.theme-bar-fill-sub{position:absolute;left:0;top:0;bottom:0;border-radius:5px 0 0 5px;transition:width 1.2s cubic-bezier(.4,0,.2,1);}
+.theme-bar-fill-sub.cap{background:linear-gradient(90deg,#E0B97A 0%,#9A6315 100%);}
+.theme-bar-fill-sub.bp{background:linear-gradient(90deg,#4A90E2 0%,var(--navy) 100%);}
+.theme-bar-val-sub{font-family:'Sora',sans-serif;font-size:12px;font-weight:700;letter-spacing:-.2px;text-align:right;}
+.theme-bar-val-sub.cap{color:#9A6315;}
+.theme-bar-val-sub.bp{color:var(--navy);}
+.theme-bar-val-sub.muted{font-size:10.5px;font-weight:500;font-style:italic;color:var(--text3);}
+
+@media (max-width:680px){
+  .theme-bar-row{grid-template-columns:1fr;gap:6px;}
+  .theme-bar-val,.theme-bar-val-sub{text-align:left;}
+  .theme-bar-row.sub{padding-left:0;}
+}
 
 /* ═══ DONUT CAP/BAC PRO ═══ */
 .donut-wrap{display:flex;align-items:center;gap:2rem;width:100%;padding:.5rem 0;}
@@ -1002,6 +1163,24 @@ tr:hover td{background:#FDFCF9;}
 .global-verdict.good .global-verdict-body strong{color:var(--navy);}
 .global-verdict.mid .global-verdict-body strong{color:#8B5500;}
 .global-verdict.bad .global-verdict-body strong{color:var(--red);}
+
+/* Panneau d'explication pédagogique à droite du donut (remplace les stat-cards) */
+.global-explain{display:flex;flex-direction:column;gap:.65rem;padding:1.25rem 1.4rem;background:var(--white);border:1px solid var(--border);border-left:3px solid var(--text3);border-radius:var(--r);}
+.global-explain.excellent{border-left-color:#15A362;background:linear-gradient(135deg,#FAFDFB 0%,var(--white) 60%);}
+.global-explain.good{border-left-color:var(--accent);background:linear-gradient(135deg,#FAFCFE 0%,var(--white) 60%);}
+.global-explain.mid{border-left-color:var(--amber);background:linear-gradient(135deg,#FEFBF5 0%,var(--white) 60%);}
+.global-explain.bad{border-left-color:var(--red);background:linear-gradient(135deg,#FEF8F8 0%,var(--white) 60%);}
+.global-explain-title{font-family:'Sora',sans-serif;font-size:14px;font-weight:700;letter-spacing:-.3px;color:var(--text);margin-bottom:.15rem;line-height:1.3;}
+.global-explain.excellent .global-explain-title{color:var(--green-dark);}
+.global-explain.good .global-explain-title{color:var(--navy);}
+.global-explain.mid .global-explain-title{color:#8B5500;}
+.global-explain.bad .global-explain-title{color:var(--red);}
+.global-explain-p{font-family:'Inter Tight',sans-serif;font-size:12.5px;line-height:1.55;color:var(--text2);margin:0;}
+.global-explain-p strong{font-weight:700;color:var(--text);}
+.global-explain.excellent .global-explain-p strong{color:var(--green-dark);}
+.global-explain.good .global-explain-p strong{color:var(--navy);}
+.global-explain.mid .global-explain-p strong{color:#8B5500;}
+.global-explain.bad .global-explain-p strong{color:var(--red);}
 
 /* ═══ COMPARAISON PAR FILIÈRE — NOTIONS ACQUISES ═══ */
 .filiere-wrap{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;width:100%;padding:.25rem 0;}
@@ -1310,6 +1489,9 @@ tr:hover td{background:#FDFCF9;}
 .fil-hero-card-tag.cap{background:#EEF9F4;color:var(--green-dark);}
 .fil-hero-card-tag.bp{background:var(--navy-l);color:var(--navy);}
 .fil-hero-card-title{font-size:11px;font-weight:600;color:var(--text3);letter-spacing:-.1px;}
+.fil-hero-card-dys{font-family:'Inter Tight',sans-serif;font-size:10.5px;font-weight:500;color:#6D28D9;letter-spacing:.01em;line-height:1;margin-top:5px;display:inline-flex;align-items:center;gap:5px;}
+.fil-hero-card-dys::before{content:'';width:5px;height:5px;border-radius:50%;background:#7C3AED;flex-shrink:0;}
+.fil-hero-card-dys strong{font-weight:700;color:#5B21B6;}
 .fil-hero-card-num{font-size:30px;font-weight:800;letter-spacing:-1px;line-height:1;font-family:'Sora',sans-serif;}
 .fil-hero-card-num.cap{color:var(--green-dark);}
 .fil-hero-card-num.bp{color:var(--navy);}
@@ -1321,6 +1503,36 @@ tr:hover td{background:#FDFCF9;}
 .fil-hero-card-pct{font-size:13px;font-weight:800;letter-spacing:-.3px;font-family:'Sora',sans-serif;flex-shrink:0;min-width:40px;text-align:right;}
 .fil-hero-card-pct.cap{color:var(--green-dark);}
 .fil-hero-card-pct.bp{color:var(--navy);}
+
+/* Version compacte (sans barre) — pour layout 50/50 */
+.fil-hero-card.compact{padding:.85rem 1rem;margin-bottom:.5rem;}
+.fil-hero-card.compact .fil-hero-card-header{margin-bottom:0;gap:10px;}
+.fil-hero-card.compact .fil-hero-card-ico{width:36px;height:36px;border-radius:9px;}
+.fil-hero-card.compact .fil-hero-card-ico svg{width:17px;height:17px;}
+.fil-hero-card.compact .fil-hero-card-num{font-size:24px;letter-spacing:-.6px;}
+.fil-hero-card.compact .fil-hero-card-tag{font-size:9.5px;padding:2px 8px;}
+.fil-hero-card-pct-inline{font-size:11px;font-weight:600;color:var(--text3);}
+.fil-hero-card-pct-inline.cap{color:rgba(15,110,86,.65);}
+.fil-hero-card-pct-inline.bp{color:rgba(27,46,94,.55);}
+
+/* Adaptation fil-hero pour layout 50/50 (donut au-dessus, cards en dessous) */
+.charts-grid-2col .fil-hero{grid-template-columns:1fr;gap:1rem;padding:.5rem 0;}
+.charts-grid-2col .fil-hero-donut{width:170px;height:170px;}
+.charts-grid-2col .fil-hero-center-val{font-size:42px;letter-spacing:-2px;}
+.charts-grid-2col .fil-hero-center-lbl{font-size:10px;}
+.charts-grid-2col .fil-hero-center-sub{font-size:9px;}
+
+/* Liste classes compacte (mode 2col) */
+.vol-classes-list.compact{gap:5px;max-height:340px;overflow-y:auto;padding-right:4px;}
+.vol-class-row.compact{display:grid;grid-template-columns:auto 1fr auto;gap:10px;padding:7px 11px;background:var(--white);border:1px solid var(--border);border-radius:8px;align-items:center;transition:all .15s;font-size:12px;}
+.vol-class-row.compact:hover{border-color:var(--border-md);background:#FDFCF9;}
+.vol-class-row.compact.zero{opacity:.5;}
+.vol-class-row.compact .vol-class-tag{font-size:9px;font-weight:700;padding:2px 6px;border-radius:5px;letter-spacing:.04em;font-family:'Sora',sans-serif;}
+.vol-class-row.compact .vol-class-tag.cap{background:#EEF9F4;color:var(--green-dark);}
+.vol-class-row.compact .vol-class-tag.bp{background:var(--navy-l);color:var(--navy);}
+.vol-class-row.compact .vol-class-name{font-size:12px;font-weight:600;color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.vol-class-count-compact{font-size:14px;font-weight:800;color:var(--navy);font-family:'Sora',sans-serif;letter-spacing:-.3px;}
+.vol-class-count-compact.zero{color:var(--text3);font-weight:500;}
 
 /* ═══ TAUX D'ENGAGEMENT ═══ */
 /* Hero global */
@@ -3569,10 +3781,6 @@ body:has(#section-accueil.active) {
           </div>
         </div>
         <button class="back-btn" onclick="navVers('accueil')">← Retour à l'accueil</button>
-        <div class="page-header">
-          <div class="page-title">Vue d'ensemble des élèves diagnostiqués</div>
-          <div class="page-sub">Analyse quantitative et qualitative de la population évaluée dans votre établissement.</div>
-        </div>
 
         <!-- Sélecteur de mois + bandeau snapshot -->
         <div id="mois-selector-wrap" class="mois-selector-wrap"></div>
@@ -3580,12 +3788,12 @@ body:has(#section-accueil.active) {
 
         <!-- Répartition par filière (hero) -->
         <div class="themes-section-title" style="margin-top:.5rem;">Répartition par filière</div>
-        <div class="charts-grid">
+        <div class="charts-grid charts-grid-2col">
 
-          <div class="chart-card full">
+          <div class="chart-card">
             <div class="chart-header">
               <div>
-                <div class="chart-title">Vue d'ensemble des élèves diagnostiqués</div>
+                <div class="chart-title">Vue d'ensemble</div>
                 <div class="chart-subtitle">Volumétrie globale et répartition entre les filières CAP et Bac Pro.</div>
               </div>
             </div>
@@ -3593,30 +3801,14 @@ body:has(#section-accueil.active) {
           </div>
 
           <!-- Répartition par classe -->
-          <div class="chart-card full">
+          <div class="chart-card">
             <div class="chart-header">
               <div>
-                <div class="chart-title">Nombre d'élèves diagnostiqués par classe</div>
-                <div class="chart-subtitle">Volumétrie par classe pour suivre le déploiement de l'évaluation dans l'établissement.</div>
+                <div class="chart-title">Élèves par classe</div>
+                <div class="chart-subtitle">Volumétrie par classe pour suivre le déploiement.</div>
               </div>
             </div>
             <div class="chart-body" id="vol-chart-classes"></div>
-          </div>
-
-        </div>
-
-        <!-- Mode adapté (DYS) -->
-        <div class="themes-section-title" style="margin-top:1.5rem;">Mode adapté (DYS)</div>
-        <div class="charts-grid">
-
-          <div class="chart-card full">
-            <div class="chart-header">
-              <div>
-                <div class="chart-title">Élèves en mode adapté DYS</div>
-                <div class="chart-subtitle">Suivi des élèves bénéficiant d'un mode adapté (police OpenDyslexic, espacements augmentés, feedbacks prolongés).</div>
-              </div>
-            </div>
-            <div class="chart-body" id="dys-chart"></div>
           </div>
 
         </div>
@@ -3625,69 +3817,104 @@ body:has(#section-accueil.active) {
 
       <!-- ══ VUE : Graphiques des notions acquises ══ -->
       <div class="section" id="section-notions-acquises">
-        <button class="back-btn" onclick="navVers('accueil')">← Retour à l'accueil</button>
-        <div class="page-header">
-          <div class="page-title">Vue d'ensemble des notions acquises</div>
-          <div class="page-sub">Analyse des notions maîtrisées par vos élèves, de la vue globale au détail par thème.</div>
-        </div>
 
-        <!-- Sélecteur de mois + bandeau snapshot -->
-        <div id="na-mois-selector-wrap" class="mois-selector-wrap"></div>
-        <div id="na-mois-meta-wrap"></div>
+        <!-- ── Sous-vue principale : tableau de bord notions acquises ── -->
+        <div id="view-na-main">
+          <button class="back-btn" onclick="navVers('accueil')">← Retour à l'accueil</button>
 
-        <!-- Graphique 1 : vue globale établissement (pleine largeur en haut) -->
-        <div class="themes-section-title" style="margin-top:.5rem;">Vue d'ensemble de l'établissement</div>
-        <div class="charts-grid">
-          <div class="chart-card full">
-            <div class="chart-header">
-              <div>
-                <div class="chart-title">Taux d'acquisition global de l'établissement</div>
-                <div class="chart-subtitle">Pourcentage de notions maîtrisées et nombre moyen de lacunes par élève, tous niveaux confondus.</div>
+          <!-- Sélecteur de mois + bandeau snapshot -->
+          <div id="na-mois-selector-wrap" class="mois-selector-wrap"></div>
+          <div id="na-mois-meta-wrap"></div>
+
+          <!-- Graphique 1 : vue globale établissement (pleine largeur en haut) -->
+          <div class="themes-section-title" style="margin-top:.5rem;">Vue d'ensemble de l'établissement</div>
+          <div class="charts-grid">
+            <div class="chart-card full chart-card-clickable chart-card-hero" onclick="ouvrirVueNiveauxCollege()">
+              <div class="chart-card-cta chart-card-cta-floating">
+                <span>Voir le détail par niveau collège</span>
+                <span class="chart-card-cta-arrow">→</span>
               </div>
+              <div class="chart-header chart-header-centered">
+                <div class="chart-header-kicker">
+                  <span class="chart-header-kicker-line"></span>
+                  <span class="chart-header-kicker-text">Diagnostic établissement</span>
+                  <span class="chart-header-kicker-line"></span>
+                </div>
+                <div class="chart-title chart-title-hero">Taux d'acquisition <span class="chart-title-accent">des prérequis</span></div>
+                <div class="chart-subtitle chart-subtitle-hero">Quelle proportion des notions du collège vos élèves maîtrisent-ils à l'entrée du lycée&nbsp;?</div>
+              </div>
+              <div class="chart-body" id="na-chart-global"></div>
             </div>
-            <div class="chart-body" id="na-chart-global"></div>
+          </div>
+
+          <!-- Graphique 2 : par filière (2 cartes côte à côte) -->
+          <div class="themes-section-title" style="margin-top:1.5rem;">Comparaison par filière</div>
+          <div class="charts-grid">
+            <div class="chart-card full">
+              <div class="chart-header">
+                <div>
+                  <div class="chart-title">Taux d'acquisition par filière</div>
+                  <div class="chart-subtitle">Comparaison CAP vs Bac Pro sur le % de notions acquises et le nombre moyen de lacunes par élève.</div>
+                </div>
+              </div>
+              <div class="chart-body" id="na-chart-filiere"></div>
+            </div>
+          </div>
+
+          <!-- Graphique 3 : par classes -->
+          <div class="themes-section-title" style="margin-top:1.5rem;">Détail par classe</div>
+          <div class="charts-grid">
+            <div class="chart-card full">
+              <div class="chart-header">
+                <div>
+                  <div class="chart-title">Taux d'acquisition par classe</div>
+                  <div class="chart-subtitle">Classement des classes par % de notions acquises, avec le nombre moyen de lacunes par élève.</div>
+                </div>
+              </div>
+              <div class="chart-body" id="na-chart-classes"></div>
+            </div>
+          </div>
+
+          <!-- Graphique 4 : par thème mathématique -->
+          <div class="themes-section-title" style="margin-top:1.5rem;">Détail par thème mathématique</div>
+          <div class="charts-grid">
+            <div class="chart-card full">
+              <div class="chart-header">
+                <div>
+                  <div class="chart-title">Taux d'acquisition par thème</div>
+                  <div class="chart-subtitle">Identifier les thèmes mathématiques les mieux maîtrisés et ceux qui posent le plus de difficultés.</div>
+                </div>
+              </div>
+              <div class="chart-body" id="na-chart-themes"></div>
+            </div>
           </div>
         </div>
 
-        <!-- Graphique 2 : par filière (2 cartes côte à côte) -->
-        <div class="themes-section-title" style="margin-top:1.5rem;">Comparaison par filière</div>
-        <div class="charts-grid">
-          <div class="chart-card full">
-            <div class="chart-header">
-              <div>
-                <div class="chart-title">Taux d'acquisition par filière</div>
-                <div class="chart-subtitle">Comparaison CAP vs Bac Pro sur le % de notions acquises et le nombre moyen de lacunes par élève.</div>
-              </div>
+        <!-- ── Sous-vue : Lacunes par niveau du collège ── -->
+        <div id="view-na-niveaux" style="display:none;">
+          <button class="back-btn" onclick="retourNaMain()">← Retour aux notions acquises</button>
+          <div class="page-header">
+            <div class="page-title">Lacunes par niveau du collège</div>
+            <div class="page-sub">Nombre moyen de lacunes par élève, réparti selon le niveau de complexité des notions évaluées (6e à 3e).</div>
+          </div>
+          <div class="charts-grid">
+            <div class="chart-card full">
+              <div class="chart-body" id="na-chart-niveaux"></div>
             </div>
-            <div class="chart-body" id="na-chart-filiere"></div>
           </div>
         </div>
 
-        <!-- Graphique 3 : par classes -->
-        <div class="themes-section-title" style="margin-top:1.5rem;">Détail par classe</div>
-        <div class="charts-grid">
-          <div class="chart-card full">
-            <div class="chart-header">
-              <div>
-                <div class="chart-title">Taux d'acquisition par classe</div>
-                <div class="chart-subtitle">Classement des classes par % de notions acquises, avec le nombre moyen de lacunes par élève.</div>
-              </div>
-            </div>
-            <div class="chart-body" id="na-chart-classes"></div>
+        <!-- ── Sous-vue : Classement des thèmes mathématiques par lacunes ── -->
+        <div id="view-na-themes-classement" style="display:none;">
+          <button class="back-btn" onclick="retourNaNiveaux()">← Retour aux niveaux du collège</button>
+          <div class="page-header">
+            <div class="page-title">Classement des thèmes mathématiques</div>
+            <div class="page-sub">Identifier les thèmes où les élèves rencontrent le plus de difficultés, pour prioriser la remédiation.</div>
           </div>
-        </div>
-
-        <!-- Graphique 4 : par thème mathématique -->
-        <div class="themes-section-title" style="margin-top:1.5rem;">Détail par thème mathématique</div>
-        <div class="charts-grid">
-          <div class="chart-card full">
-            <div class="chart-header">
-              <div>
-                <div class="chart-title">Taux d'acquisition par thème</div>
-                <div class="chart-subtitle">Identifier les thèmes mathématiques les mieux maîtrisés et ceux qui posent le plus de difficultés.</div>
-              </div>
+          <div class="charts-grid">
+            <div class="chart-card full">
+              <div class="chart-body" id="na-chart-themes-classement"></div>
             </div>
-            <div class="chart-body" id="na-chart-themes"></div>
           </div>
         </div>
 
@@ -4363,6 +4590,10 @@ function ouvrirVueNotionsAcquises(){
   document.querySelectorAll('.sb-item').forEach(function(n){n.classList.remove('active');});
   document.getElementById('section-notions-acquises').classList.add('active');
   document.getElementById('sb-accueil').classList.add('active');
+  // Toujours réafficher la vue principale (et masquer les vues détail)
+  document.getElementById('view-na-main').style.display='block';
+  document.getElementById('view-na-niveaux').style.display='none';
+  document.getElementById('view-na-themes-classement').style.display='none';
   setBreadcrumb([
     {label:'Accueil',onclick:'navVers(\'accueil\')'},
     {label:'Notions acquises',current:true}
@@ -4798,8 +5029,6 @@ function renderNaChartGlobal(){
   var totalNotions=DATA_EVAL.length;
   var notionsAcquises=DATA_EVAL.filter(function(r){return r.assigne==='non';}).length;
   var pctAcquises=totalNotions>0?Math.round(notionsAcquises/totalNotions*100):0;
-  var nbLacunesTotales=totalNotions-notionsAcquises;
-  var moyenneLacunes=eleves.length>0?(nbLacunesTotales/eleves.length):0;
   var classeJauge;
   if(pctAcquises>=80) classeJauge='excellent';
   else if(pctAcquises>=60) classeJauge='good';
@@ -4807,24 +5036,25 @@ function renderNaChartGlobal(){
   else classeJauge='bad';
   var circ=2*Math.PI*90;
   var offset=circ-(pctAcquises/100)*circ;
-  // Verdict + icône
-  var verdictIco, verdictTitre, verdictMsg;
+
+  // Panneau d'explication dynamique : interprétation pédagogique + appel à l'action
+  var explainTitre, explainP1, explainP2;
   if(pctAcquises>=80){
-    verdictIco='✓';
-    verdictTitre='Excellent taux d\'acquisition';
-    verdictMsg='Les élèves de l\'établissement maîtrisent la grande majorité des notions évaluées.';
+    explainTitre='Niveau solide à l\'entrée du lycée';
+    explainP1='Les élèves de l\'établissement maîtrisent <strong>'+pctAcquises+'%</strong> des prérequis attendus à la sortie du collège. La base est là pour aborder les programmes de seconde dans de bonnes conditions.';
+    explainP2='Les fiches de remédiation permettent de consolider les <strong>'+(100-pctAcquises)+'%</strong> de notions encore fragiles, pour ne pas laisser de zones d\'ombre s\'installer durant l\'année.';
   } else if(pctAcquises>=60){
-    verdictIco='i';
-    verdictTitre='Taux d\'acquisition satisfaisant';
-    verdictMsg='La remédiation permettra de consolider les notions encore fragiles.';
+    explainTitre='Des bases correctes, mais des fragilités à travailler';
+    explainP1='Les élèves maîtrisent <strong>'+pctAcquises+'%</strong> des prérequis du collège. C\'est un socle exploitable, mais il reste des notions clés non acquises qui peuvent freiner les apprentissages de seconde.';
+    explainP2='Pour combler ces lacunes, il est important que les élèves <strong>fassent leurs fiches de remédiation</strong> dans les semaines qui viennent. C\'est le levier principal pour stabiliser leur niveau.';
   } else if(pctAcquises>=40){
-    verdictIco='!';
-    verdictTitre='Taux d\'acquisition mitigé';
-    verdictMsg='Un effort de remédiation structuré sera nécessaire pour combler les lacunes identifiées.';
+    explainTitre='Prérequis du collège partiellement acquis';
+    explainP1='Avec <strong>'+pctAcquises+'%</strong> seulement, les élèves de l\'établissement n\'ont pas réellement consolidé les notions du collège. Cela compromet leur capacité à suivre les programmes de seconde sans aide.';
+    explainP2='Il est essentiel que <strong>chaque élève réalise ses fiches de remédiation</strong> sans attendre. C\'est le moyen le plus direct de combler les écarts avant que les nouveaux apprentissages ne s\'empilent dessus.';
   } else {
-    verdictIco='⚠';
-    verdictTitre='Taux d\'acquisition préoccupant';
-    verdictMsg='Une stratégie de remédiation intensive est à mettre en place dès que possible.';
+    explainTitre='Prérequis du collège non maîtrisés';
+    explainP1='Avec <strong>'+pctAcquises+'%</strong> de notions acquises, les élèves arrivent en seconde sans les bases nécessaires pour suivre le programme. Les fondamentaux du collège n\'ont pas été consolidés.';
+    explainP2='La priorité absolue est que <strong>chaque élève fasse ses fiches de remédiation</strong>. Sans ce travail de fond, les difficultés rencontrées en classe vont se cumuler tout au long de l\'année.';
   }
 
   container.innerHTML=
@@ -4838,33 +5068,397 @@ function renderNaChartGlobal(){
           +'<div class="global-gauge-inner">'
             +'<div class="global-gauge-val '+classeJauge+'">'+pctAcquises+'%</div>'
             +'<div class="global-gauge-lbl">Notions acquises</div>'
-            +'<div class="global-gauge-sub">'+notionsAcquises+' / '+totalNotions+'</div>'
           +'</div>'
         +'</div>'
-        +'<div class="global-stats">'
-          +'<div class="global-stat-card">'
-            +'<div class="global-stat-ico eleves"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>'
-            +'<div class="global-stat-body">'
-              +'<div class="global-stat-val">'+eleves.length+'</div>'
-              +'<div class="global-stat-lbl">Élèves diagnostiqués</div>'
-              +'<div class="global-stat-detail">sur '+totalNotions+' notions évaluées au total</div>'
-            +'</div>'
-          +'</div>'
-          +'<div class="global-stat-card">'
-            +'<div class="global-stat-ico lacunes"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>'
-            +'<div class="global-stat-body">'
-              +'<div class="global-stat-val amber">'+moyenneLacunes.toFixed(1).replace('.',',')+'</div>'
-              +'<div class="global-stat-lbl">Lacunes par élève (moyenne)</div>'
-              +'<div class="global-stat-detail">soit '+nbLacunesTotales+' lacunes identifiées au total</div>'
-            +'</div>'
-          +'</div>'
+        +'<div class="global-explain '+classeJauge+'">'
+          +'<div class="global-explain-title">'+explainTitre+'</div>'
+          +'<p class="global-explain-p">'+explainP1+'</p>'
+          +'<p class="global-explain-p">'+explainP2+'</p>'
         +'</div>'
-      +'</div>'
-      +'<div class="global-verdict '+classeJauge+'">'
-        +'<div class="global-verdict-ico">'+verdictIco+'</div>'
-        +'<div class="global-verdict-body"><strong>'+verdictTitre+'.</strong> '+verdictMsg+'</div>'
       +'</div>'
     +'</div>';
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// Vue détail : Lacunes par niveau du collège (6e / 5e / 4e / 3e)
+// ═══════════════════════════════════════════════════════════════════
+//
+// Mapping fiche → niveau collège, basé sur l'ordre de complexité progressive
+// des questions de l'évaluation diagnostique (27 questions ÷ 4 ≈ 7 par niveau).
+// Sera affiné quand les autres thèmes (proportionnalité, calcul littéral, etc.)
+// seront ajoutés.
+var FICHE_VERS_NIVEAU = {
+  // Fractions
+  'fractions_comprendre':         '6e',
+  'fractions_reconnaitre_egales': '6e',
+  'fractions_irreductible':       '5e',
+  'fractions_add_meme_denom':     '5e',
+  'fractions_denom_commun_1':     '5e',
+  'fractions_denom_commun_2':     '4e',
+  'fractions_mult_entier':        '4e',
+  'fractions_mult_fractions':     '3e',
+  'fractions_inverse':            '3e',
+  'fractions_division':           '3e'
+};
+
+function niveauDeFiche(fid){
+  return FICHE_VERS_NIVEAU[String(fid||'')] || null;
+}
+
+function ouvrirVueNiveauxCollege(){
+  document.getElementById('view-na-main').style.display='none';
+  document.getElementById('view-na-niveaux').style.display='block';
+  setBreadcrumb([
+    {label:'Accueil',onclick:'navVers(\'accueil\')'},
+    {label:'Notions acquises',onclick:'retourNaMain()'},
+    {label:'Lacunes par niveau du collège',current:true}
+  ]);
+  renderNaChartNiveaux();
+  // Remonter en haut de la page pour que le proviseur voie immédiatement le titre
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function retourNaMain(){
+  document.getElementById('view-na-niveaux').style.display='none';
+  document.getElementById('view-na-themes-classement').style.display='none';
+  document.getElementById('view-na-main').style.display='block';
+  setBreadcrumb([
+    {label:'Accueil',onclick:'navVers(\'accueil\')'},
+    {label:'Notions acquises',current:true}
+  ]);
+}
+
+function renderNaChartNiveaux(){
+  var container=document.getElementById('na-chart-niveaux');
+  if(!container) return;
+  var eleves=elevesUniques();
+  if(eleves.length===0 || DATA_EVAL.length===0){
+    container.innerHTML='<div class="global-empty">Aucune donnée de diagnostic disponible pour le moment.</div>';
+    return;
+  }
+  var nbEleves=eleves.length;
+
+  // Index : email → filière
+  var filiereByEmail={};
+  eleves.forEach(function(e){
+    filiereByEmail[String(e.email||'').toLowerCase()]=getFiliereDeClasse(e.classe);
+  });
+  // Effectifs par filière
+  var nbCap=0, nbBp=0;
+  eleves.forEach(function(e){
+    var f=getFiliereDeClasse(e.classe);
+    if(f==='CAP') nbCap++;
+    else if(f==='BACPRO') nbBp++;
+  });
+
+  // Stats par niveau (global + décomposition CAP/BP)
+  var stats={
+    '6e':{lacunes:0,total:0,lacCap:0,lacBp:0},
+    '5e':{lacunes:0,total:0,lacCap:0,lacBp:0},
+    '4e':{lacunes:0,total:0,lacCap:0,lacBp:0},
+    '3e':{lacunes:0,total:0,lacCap:0,lacBp:0}
+  };
+  DATA_EVAL.forEach(function(r){
+    var niv=niveauDeFiche(r.fiche_id);
+    if(!niv || !stats[niv]) return;
+    stats[niv].total++;
+    if(r.assigne==='oui'){
+      stats[niv].lacunes++;
+      var fil=filiereByEmail[String(r.email||'').toLowerCase()];
+      if(fil==='CAP') stats[niv].lacCap++;
+      else if(fil==='BACPRO') stats[niv].lacBp++;
+    }
+  });
+
+  var niveaux=['6e','5e','4e','3e'];
+  var data=niveaux.map(function(niv){
+    var s=stats[niv];
+    var moyenne=nbEleves>0 ? (s.lacunes/nbEleves) : 0;
+    var classe;
+    if(s.total===0) classe='lvl-na';
+    else if(moyenne<1.5) classe='lvl-good';
+    else if(moyenne<3) classe='lvl-mid';
+    else classe='lvl-bad';
+    var moyCap=(nbCap>0 && s.total>0) ? (s.lacCap/nbCap) : null;
+    var moyBp=(nbBp>0 && s.total>0) ? (s.lacBp/nbBp) : null;
+    return {
+      niv:niv,
+      moyenne:moyenne,
+      total:s.total,
+      classe:classe,
+      moyCap:moyCap,
+      moyBp:moyBp,
+      hasCapData:nbCap>0 && s.total>0,
+      hasBpData:nbBp>0 && s.total>0
+    };
+  });
+
+  // Échelle commune : max entre la moy globale et les moy CAP/BP de tous les niveaux
+  var maxBarValue=0;
+  data.forEach(function(d){
+    if(d.total>0){
+      if(d.moyenne>maxBarValue) maxBarValue=d.moyenne;
+      if(d.hasCapData && d.moyCap>maxBarValue) maxBarValue=d.moyCap;
+      if(d.hasBpData && d.moyBp>maxBarValue) maxBarValue=d.moyBp;
+    }
+    // On garde aussi le total / élève comme borne minimale pour ne pas que la barre déborde
+    var maxParEleve=nbEleves>0 ? (d.total/nbEleves) : 0;
+    if(maxParEleve>maxBarValue) maxBarValue=maxParEleve;
+  });
+  maxBarValue=maxBarValue*1.1;
+  if(maxBarValue<1) maxBarValue=1;
+
+  // Construction des barres : pour chaque niveau, ligne principale + sous-lignes CAP/BP
+  var barsHtml='<div class="niveaux-bars">'
+    +'<div class="niveaux-bars-title">Nombre moyen de lacunes par élève · par niveau du collège</div>';
+  data.forEach(function(d){
+    var widthPct=d.total===0 ? 0 : Math.min(100,(d.moyenne/maxBarValue)*100);
+    var valStr=d.total===0
+      ? '<span class="lvl-na">—</span>'
+      : '<span class="'+d.classe+'">'+d.moyenne.toFixed(1).replace('.',',')+'</span><span class="small">sur '+(d.total/nbEleves).toFixed(1).replace('.',',')+' notions</span>';
+
+    barsHtml+='<div class="niveaux-bar-block">'
+      +'<div class="niveaux-bar-row">'
+        +'<div class="niveaux-bar-lbl">'+d.niv+'</div>'
+        +'<div class="niveaux-bar-track">'
+          +(d.total===0 ? '' : '<div class="niveaux-bar-fill '+d.classe+'" style="width:'+widthPct.toFixed(2)+'%"></div>')
+        +'</div>'
+        +'<div class="niveaux-bar-val">'+valStr+'</div>'
+      +'</div>';
+
+    // Sous-lignes uniquement si on a des données pour ce niveau
+    if(d.total>0){
+      // Sous-ligne CAP
+      if(d.hasCapData){
+        var capWidth=Math.min(100,(d.moyCap/maxBarValue)*100);
+        barsHtml+='<div class="niveaux-bar-row sub">'
+          +'<div class="niveaux-bar-lbl-sub">CAP</div>'
+          +'<div class="niveaux-bar-track-sub">'
+            +'<div class="niveaux-bar-fill-sub cap" style="width:'+capWidth.toFixed(2)+'%"></div>'
+          +'</div>'
+          +'<div class="niveaux-bar-val-sub cap">'+d.moyCap.toFixed(1).replace('.',',')+'</div>'
+        +'</div>';
+      } else {
+        barsHtml+='<div class="niveaux-bar-row sub muted">'
+          +'<div class="niveaux-bar-lbl-sub">CAP</div>'
+          +'<div class="niveaux-bar-track-sub"></div>'
+          +'<div class="niveaux-bar-val-sub muted">—</div>'
+        +'</div>';
+      }
+      // Sous-ligne Bac Pro
+      if(d.hasBpData){
+        var bpWidth=Math.min(100,(d.moyBp/maxBarValue)*100);
+        barsHtml+='<div class="niveaux-bar-row sub">'
+          +'<div class="niveaux-bar-lbl-sub">Bac Pro</div>'
+          +'<div class="niveaux-bar-track-sub">'
+            +'<div class="niveaux-bar-fill-sub bp" style="width:'+bpWidth.toFixed(2)+'%"></div>'
+          +'</div>'
+          +'<div class="niveaux-bar-val-sub bp">'+d.moyBp.toFixed(1).replace('.',',')+'</div>'
+        +'</div>';
+      } else {
+        barsHtml+='<div class="niveaux-bar-row sub muted">'
+          +'<div class="niveaux-bar-lbl-sub">Bac Pro</div>'
+          +'<div class="niveaux-bar-track-sub"></div>'
+          +'<div class="niveaux-bar-val-sub muted">—</div>'
+        +'</div>';
+      }
+    }
+    barsHtml+='</div>';
+  });
+  barsHtml+='</div>';
+
+  // Note explicative
+  var noteHtml='<div class="niveaux-note">'
+    +'<strong>Lecture du diagramme.</strong> Le niveau attribué à chaque notion est basé sur le programme officiel du collège (cycles 3 et 4). '
+    +'Une lacune correspond à une notion non maîtrisée lors de l\'évaluation diagnostique. '
+    +'Les sous-lignes CAP et Bac Pro montrent comment chaque filière contribue à la moyenne globale.'
+  +'</div>';
+
+  // Bouton vers le classement par thème
+  var ctaHtml='<div class="niveaux-cta-row">'
+    +'<button class="niveaux-cta-btn" onclick="ouvrirVueThemesClassement()">'
+      +'<span>Voir le classement par thème</span>'
+      +'<span class="niveaux-cta-btn-arrow">→</span>'
+    +'</button>'
+  +'</div>';
+
+  container.innerHTML='<div class="niveaux-container">'+ctaHtml+barsHtml+noteHtml+'</div>';
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// Sous-vue : Classement des thèmes mathématiques par lacunes
+// ═══════════════════════════════════════════════════════════════════
+
+function retourNaNiveaux(){
+  document.getElementById('view-na-themes-classement').style.display='none';
+  document.getElementById('view-na-niveaux').style.display='block';
+  setBreadcrumb([
+    {label:'Accueil',onclick:'navVers(\'accueil\')'},
+    {label:'Notions acquises',onclick:'retourNaMain()'},
+    {label:'Lacunes par niveau du collège',current:true}
+  ]);
+}
+
+function ouvrirVueThemesClassement(){
+  document.getElementById('view-na-main').style.display='none';
+  document.getElementById('view-na-niveaux').style.display='none';
+  document.getElementById('view-na-themes-classement').style.display='block';
+  setBreadcrumb([
+    {label:'Accueil',onclick:'navVers(\'accueil\')'},
+    {label:'Notions acquises',onclick:'retourNaMain()'},
+    {label:'Lacunes par niveau du collège',onclick:'retourNaNiveaux()'},
+    {label:'Classement par thème',current:true}
+  ]);
+  renderNaChartThemesClassement();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function renderNaChartThemesClassement(){
+  var container=document.getElementById('na-chart-themes-classement');
+  if(!container) return;
+  var eleves=elevesUniques();
+  if(eleves.length===0 || DATA_EVAL.length===0){
+    container.innerHTML='<div class="global-empty">Aucune donnée de diagnostic disponible pour le moment.</div>';
+    return;
+  }
+  var nbEleves=eleves.length;
+
+  // Index : email → filière
+  var filiereByEmail={};
+  eleves.forEach(function(e){
+    filiereByEmail[String(e.email||'').toLowerCase()]=getFiliereDeClasse(e.classe);
+  });
+  // Effectifs par filière
+  var nbCap=0, nbBp=0;
+  eleves.forEach(function(e){
+    var f=getFiliereDeClasse(e.classe);
+    if(f==='CAP') nbCap++;
+    else if(f==='BACPRO') nbBp++;
+  });
+
+  // Pour chaque thème : moyennes globale, CAP et BP
+  var themesData=THEMES_CONFIG.map(function(th){
+    var lignes=DATA_EVAL.filter(function(r){return themeDeFicheId(r.fiche_id)===th.id;});
+    var totalNotions=lignes.length;
+    var lacunes=lignes.filter(function(r){return r.assigne==='oui';}).length;
+    var moyLacunes=(totalNotions>0 && nbEleves>0) ? (lacunes/nbEleves) : null;
+    var pctAcq=totalNotions>0 ? Math.round((totalNotions-lacunes)/totalNotions*100) : null;
+    // Décomposition CAP / BP
+    var lacCap=0, lacBp=0;
+    lignes.forEach(function(r){
+      if(r.assigne!=='oui') return;
+      var fil=filiereByEmail[String(r.email||'').toLowerCase()];
+      if(fil==='CAP') lacCap++;
+      else if(fil==='BACPRO') lacBp++;
+    });
+    var moyCap=nbCap>0 && totalNotions>0 ? (lacCap/nbCap) : null;
+    var moyBp=nbBp>0 && totalNotions>0 ? (lacBp/nbBp) : null;
+    return {
+      nom:th.nom,
+      moyLacunes:moyLacunes,
+      moyCap:moyCap,
+      moyBp:moyBp,
+      hasCapData:nbCap>0 && totalNotions>0,
+      hasBpData:nbBp>0 && totalNotions>0,
+      pctAcq:pctAcq,
+      hasData:totalNotions>0
+    };
+  });
+
+  // Tri : thèmes avec données en haut, du plus de lacunes au moins
+  themesData.sort(function(a,b){
+    if(a.hasData && !b.hasData) return -1;
+    if(!a.hasData && b.hasData) return 1;
+    if(a.hasData && b.hasData) return b.moyLacunes - a.moyLacunes;
+    return 0;
+  });
+
+  // Échelle commune : on prend le max entre la moy globale et les moy CAP/BP
+  var maxMoy=0;
+  themesData.forEach(function(t){
+    if(t.hasData){
+      if(t.moyLacunes>maxMoy) maxMoy=t.moyLacunes;
+      if(t.hasCapData && t.moyCap>maxMoy) maxMoy=t.moyCap;
+      if(t.hasBpData && t.moyBp>maxMoy) maxMoy=t.moyBp;
+    }
+  });
+  maxMoy=maxMoy*1.15;
+  if(maxMoy<1) maxMoy=1;
+
+  // Construction
+  var barsHtml='<div class="theme-bars">';
+  themesData.forEach(function(t){
+    if(t.hasData){
+      var classe;
+      if(t.pctAcq>=80) classe='lvl-good';
+      else if(t.pctAcq>=50) classe='lvl-mid';
+      else classe='lvl-bad';
+      var widthPct=Math.min(100,(t.moyLacunes/maxMoy)*100);
+
+      // Ligne principale (thème global)
+      barsHtml+='<div class="theme-bar-block">'
+        +'<div class="theme-bar-row">'
+          +'<div class="theme-bar-lbl">'+t.nom+'</div>'
+          +'<div class="theme-bar-track">'
+            +'<div class="theme-bar-fill '+classe+'" style="width:'+widthPct.toFixed(2)+'%"></div>'
+          +'</div>'
+          +'<div class="theme-bar-val '+classe+'">'+t.moyLacunes.toFixed(1).replace('.',',')+'</div>'
+        +'</div>';
+
+      // Sous-ligne CAP
+      var capHtml='';
+      if(t.hasCapData){
+        var capWidth=Math.min(100,(t.moyCap/maxMoy)*100);
+        capHtml='<div class="theme-bar-row sub">'
+          +'<div class="theme-bar-lbl-sub">CAP</div>'
+          +'<div class="theme-bar-track-sub">'
+            +'<div class="theme-bar-fill-sub cap" style="width:'+capWidth.toFixed(2)+'%"></div>'
+          +'</div>'
+          +'<div class="theme-bar-val-sub cap">'+t.moyCap.toFixed(1).replace('.',',')+'</div>'
+        +'</div>';
+      } else {
+        capHtml='<div class="theme-bar-row sub muted">'
+          +'<div class="theme-bar-lbl-sub">CAP</div>'
+          +'<div class="theme-bar-track-sub"></div>'
+          +'<div class="theme-bar-val-sub muted">—</div>'
+        +'</div>';
+      }
+      barsHtml+=capHtml;
+
+      // Sous-ligne Bac Pro
+      var bpHtml='';
+      if(t.hasBpData){
+        var bpWidth=Math.min(100,(t.moyBp/maxMoy)*100);
+        bpHtml='<div class="theme-bar-row sub">'
+          +'<div class="theme-bar-lbl-sub">Bac Pro</div>'
+          +'<div class="theme-bar-track-sub">'
+            +'<div class="theme-bar-fill-sub bp" style="width:'+bpWidth.toFixed(2)+'%"></div>'
+          +'</div>'
+          +'<div class="theme-bar-val-sub bp">'+t.moyBp.toFixed(1).replace('.',',')+'</div>'
+        +'</div>';
+      } else {
+        bpHtml='<div class="theme-bar-row sub muted">'
+          +'<div class="theme-bar-lbl-sub">Bac Pro</div>'
+          +'<div class="theme-bar-track-sub"></div>'
+          +'<div class="theme-bar-val-sub muted">—</div>'
+        +'</div>';
+      }
+      barsHtml+=bpHtml;
+
+      barsHtml+='</div>';
+    } else {
+      barsHtml+='<div class="theme-bar-block">'
+        +'<div class="theme-bar-row inactive">'
+          +'<div class="theme-bar-lbl">'+t.nom+'</div>'
+          +'<div class="theme-bar-track"></div>'
+          +'<div class="theme-bar-val muted">en attente</div>'
+        +'</div>'
+      +'</div>';
+    }
+  });
+  barsHtml+='</div>';
+
+  container.innerHTML='<div class="niveaux-container">'+barsHtml+'</div>';
 }
 
 function ouvrirVueLacunesComblees(){
@@ -5143,45 +5737,24 @@ function renderVolChartClasses(){
   var classesActives=classes.filter(function(c){return c.count>0;}).length;
   var classesAttente=classes.length-classesActives;
 
-  var rowsHtml='<div class="vol-classes-list">'+classes.map(function(item){
+  var rowsHtml='<div class="vol-classes-list compact">'+classes.map(function(item){
     var tagCls=item.niv.id==='CAP'?'cap':'bp';
     var tagLabel=item.niv.id==='CAP'?'CAP':'BP';
     if(item.count===0){
-      return '<div class="vol-class-row zero">'
-        +'<div class="vol-class-label"><span class="vol-class-tag '+tagCls+'">'+tagLabel+'</span><span class="vol-class-name">'+esc(item.cl.nom)+'</span></div>'
-        +'<div class="vol-class-track"><div class="vol-class-fill" style="width:0%;"></div></div>'
-        +'<div class="vol-class-right"><span class="vol-class-empty-val">—</span><span class="vol-class-empty">En attente</span></div>'
+      return '<div class="vol-class-row compact zero">'
+        +'<span class="vol-class-tag '+tagCls+'">'+tagLabel+'</span>'
+        +'<span class="vol-class-name">'+esc(item.cl.nom)+'</span>'
+        +'<span class="vol-class-count-compact zero">—</span>'
         +'</div>';
     }
-    var pctWidth=Math.max(4,Math.round(item.count/maxCount*100));
-    // Si la barre est trop courte pour contenir le nombre, on affiche à l'extérieur
-    var countHtml;
-    if(pctWidth<15){
-      countHtml='<div class="vol-class-fill '+tagCls+'" style="width:'+pctWidth+'%;"></div><span class="vol-class-count outside" style="left:calc('+pctWidth+'% + 10px);">'+item.count+'</span>';
-    } else {
-      countHtml='<div class="vol-class-fill '+tagCls+'" style="width:'+pctWidth+'%;"><span class="vol-class-count">'+item.count+'</span></div>';
-    }
-    return '<div class="vol-class-row">'
-      +'<div class="vol-class-label"><span class="vol-class-tag '+tagCls+'">'+tagLabel+'</span><span class="vol-class-name">'+esc(item.cl.nom)+'</span></div>'
-      +'<div class="vol-class-track">'+countHtml+'</div>'
-      +'<div class="vol-class-right"><span class="vol-class-total">'+item.count+'</span><span class="vol-class-total-lbl">élève'+(item.count>1?'s':'')+'</span></div>'
+    return '<div class="vol-class-row compact">'
+      +'<span class="vol-class-tag '+tagCls+'">'+tagLabel+'</span>'
+      +'<span class="vol-class-name">'+esc(item.cl.nom)+'</span>'
+      +'<span class="vol-class-count-compact">'+item.count+'</span>'
       +'</div>';
   }).join('')+'</div>';
 
-  // Footer de synthèse (répartition des classes)
-  var footerHtml=
-    '<div class="vol-footer">'
-      +'<div class="vol-footer-stat">'
-        +'<span class="vol-footer-stat-lbl">Classes actives</span>'
-        +'<span class="vol-footer-stat-val"><strong>'+classesActives+'</strong> / '+classes.length+' classes ont au moins un élève diagnostiqué</span>'
-      +'</div>'
-      +'<div class="vol-footer-stat">'
-        +'<span class="vol-footer-stat-lbl">Classes en attente</span>'
-        +'<span class="vol-footer-stat-val"><strong>'+classesAttente+'</strong> classe'+(classesAttente>1?'s':'')+' sans diagnostic pour le moment</span>'
-      +'</div>'
-    +'</div>';
-
-  container.innerHTML='<div class="vol-classes-container">'+rowsHtml+footerHtml+'</div>';
+  container.innerHTML='<div class="vol-classes-container">'+rowsHtml+'</div>';
 }
 
 function renderVolChartClassesDepuisSnapshot(snap){
@@ -5820,11 +6393,12 @@ function renderChartFiliere(){
     container.innerHTML='<div class="donut-empty">Aucun élève diagnostiqué pour le moment.</div>';
     return;
   }
-  var nCap=0,nBp=0;
+  var nCap=0,nBp=0,nCapDys=0,nBpDys=0;
   eleves.forEach(function(e){
     var fil=getFiliereDeClasse(e.classe);
-    if(fil==='CAP') nCap++;
-    else if(fil==='BACPRO') nBp++;
+    var dys=estDys(e.email);
+    if(fil==='CAP'){ nCap++; if(dys) nCapDys++; }
+    else if(fil==='BACPRO'){ nBp++; if(dys) nBpDys++; }
   });
   var total=nCap+nBp;
   if(total===0){
@@ -5840,7 +6414,7 @@ function renderChartFiliere(){
   container.innerHTML=
     '<div class="fil-hero">'
       +'<div class="fil-hero-donut">'
-        +'<svg viewBox="0 0 220 220" width="220" height="220">'
+        +'<svg viewBox="0 0 220 220" width="180" height="180">'
           +'<circle class="fil-hero-donut-bg" cx="110" cy="110" r="90"/>'
           +(nCap>0?'<circle class="fil-hero-donut-seg cap" cx="110" cy="110" r="90" stroke-dasharray="'+capLen.toFixed(2)+' '+circ.toFixed(2)+'" stroke-dashoffset="0"/>':'')
           +(nBp>0?'<circle class="fil-hero-donut-seg bp" cx="110" cy="110" r="90" stroke-dasharray="'+bpLen.toFixed(2)+' '+circ.toFixed(2)+'" stroke-dashoffset="'+(-capLen).toFixed(2)+'"/>':'')
@@ -5852,32 +6426,26 @@ function renderChartFiliere(){
         +'</div>'
       +'</div>'
       +'<div class="fil-hero-cards">'
-        +'<div class="fil-hero-card cap">'
+        +'<div class="fil-hero-card cap compact">'
           +'<div class="fil-hero-card-header">'
             +'<div class="fil-hero-card-ico cap"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>'
             +'<div class="fil-hero-card-title-block">'
               +'<div class="fil-hero-card-tag cap">CAP</div>'
-              +'<div class="fil-hero-card-title">Filière professionnelle</div>'
+              +'<div class="fil-hero-card-pct-inline cap">'+pctCap+'%</div>'
+              +(nCapDys>0?'<div class="fil-hero-card-dys">dont <strong>'+nCapDys+'</strong>&nbsp;en mode DYS</div>':'')
             +'</div>'
             +'<div class="fil-hero-card-num cap">'+nCap+'</div>'
           +'</div>'
-          +'<div class="fil-hero-card-bar-wrap">'
-            +'<div class="fil-hero-card-bar-track"><div class="fil-hero-card-bar-fill cap" style="width:'+pctCap+'%;"></div></div>'
-            +'<div class="fil-hero-card-pct cap">'+pctCap+'%</div>'
-          +'</div>'
         +'</div>'
-        +'<div class="fil-hero-card bp">'
+        +'<div class="fil-hero-card bp compact">'
           +'<div class="fil-hero-card-header">'
             +'<div class="fil-hero-card-ico bp"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>'
             +'<div class="fil-hero-card-title-block">'
               +'<div class="fil-hero-card-tag bp">Bac Pro</div>'
-              +'<div class="fil-hero-card-title">Filière professionnelle</div>'
+              +'<div class="fil-hero-card-pct-inline bp">'+pctBp+'%</div>'
+              +(nBpDys>0?'<div class="fil-hero-card-dys">dont <strong>'+nBpDys+'</strong>&nbsp;en mode DYS</div>':'')
             +'</div>'
             +'<div class="fil-hero-card-num bp">'+nBp+'</div>'
-          +'</div>'
-          +'<div class="fil-hero-card-bar-wrap">'
-            +'<div class="fil-hero-card-bar-track"><div class="fil-hero-card-bar-fill bp" style="width:'+pctBp+'%;"></div></div>'
-            +'<div class="fil-hero-card-pct bp">'+pctBp+'%</div>'
           +'</div>'
         +'</div>'
       +'</div>'
