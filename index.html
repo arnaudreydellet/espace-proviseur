@@ -493,6 +493,18 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
 .prog-fill{height:100%;background:var(--green);border-radius:4px;transition:width 1s;}
 .prog-note{font-size:11px;color:var(--text3);margin-top:.3rem;}
 .themes-section-title{font-size:13px;font-weight:600;color:var(--text);margin-bottom:1rem;}
+
+/* Titre de section marqué (en-tête de partie principale dans une vue) */
+.section-title-bloc{margin:.5rem 0 1.5rem 0;display:flex;flex-direction:column;gap:.5rem;}
+.section-title-kicker{font-family:'Inter Tight',sans-serif;font-size:10.5px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--navy-mid);}
+.section-title-main{font-family:'Sora',sans-serif;font-size:24px;font-weight:800;letter-spacing:-.7px;color:var(--text);line-height:1.15;margin:0;}
+.section-title-rule{height:3px;width:48px;background:var(--navy);border-radius:2px;margin-top:.25rem;}
+
+/* Connecteur visuel entre la carte hero (33%) et le détail par niveau */
+.drilldown-connector{display:flex;align-items:center;gap:14px;margin:1.5rem 0;padding:0 1rem;}
+.drilldown-connector-line{flex:1;height:1.5px;background:linear-gradient(90deg,transparent 0%,var(--text4) 30%,var(--text4) 70%,transparent 100%);}
+.drilldown-connector-pill{display:inline-flex;align-items:center;gap:8px;padding:8px 18px;border-radius:999px;background:var(--navy-l);color:var(--navy);font-family:'Inter Tight',sans-serif;font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;flex-shrink:0;}
+.drilldown-connector-arrow{font-size:14px;line-height:1;}
 .themes-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-bottom:1.5rem;}
 .theme-card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--rl);padding:1.2rem;cursor:pointer;transition:all .18s;}
 .theme-card:hover{border-color:var(--navy-mid);transform:translateY(-2px);box-shadow:0 5px 16px rgba(27,46,94,.09);}
@@ -749,7 +761,8 @@ tr:hover td{background:#FDFCF9;}
 .niveaux-sum-lbl{font-family:'Inter Tight',sans-serif;font-size:10.5px;font-weight:500;color:var(--text3);line-height:1.35;}
 
 .niveaux-bars{background:var(--bg);border:1px solid var(--border);border-radius:var(--rl);padding:1.5rem 1.5rem 1.25rem;display:flex;flex-direction:column;gap:1.25rem;}
-.niveaux-bars-title{font-family:'Sora',sans-serif;font-size:13px;font-weight:700;color:var(--text);letter-spacing:-.2px;margin-bottom:.25rem;}
+.niveaux-bars-header{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:.25rem;}
+.niveaux-bars-title{font-family:'Sora',sans-serif;font-size:13px;font-weight:700;color:var(--text);letter-spacing:-.2px;}
 .niveaux-bar-block{display:flex;flex-direction:column;gap:6px;}
 .niveaux-bar-row{display:grid;grid-template-columns:64px 1fr 90px;align-items:center;gap:14px;}
 .niveaux-bar-lbl{font-family:'Sora',sans-serif;font-size:14px;font-weight:700;color:var(--text);letter-spacing:-.3px;}
@@ -778,6 +791,127 @@ tr:hover td{background:#FDFCF9;}
 .niveaux-bar-val-sub.cap{color:#9A6315;}
 .niveaux-bar-val-sub.bp{color:var(--navy);}
 .niveaux-bar-val-sub.muted{font-size:10.5px;font-weight:500;font-style:italic;color:var(--text3);}
+
+/* ═══ Diagramme à barres verticales groupées (CAP × Bac Pro × niveaux collège) ═══ */
+.vbars-legend{display:flex;justify-content:center;gap:1.5rem;margin:.25rem 0 1rem 0;flex-wrap:wrap;}
+.vbars-leg{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;background:var(--white);border:1px solid var(--border);font-family:'Inter Tight',sans-serif;font-size:11px;font-weight:600;letter-spacing:.04em;color:var(--text2);}
+.vbars-leg-swatch{width:14px;height:14px;border-radius:4px;flex-shrink:0;}
+.vbars-leg-swatch.global{background:linear-gradient(180deg,#5B7AB8 0%,#2C3E6B 100%);}
+.vbars-leg-swatch.cap{background:linear-gradient(180deg,#D4A464 0%,#9A6315 100%);}
+.vbars-leg-swatch.bp{background:linear-gradient(180deg,var(--navy-mid) 0%,var(--navy) 100%);}
+.vbars-leg-global{border-color:var(--navy-mid);}
+.vbars-leg-global .vbars-leg-lbl{color:var(--navy);font-weight:700;}
+
+.vbars-svg{display:block;width:100%;height:auto;max-height:340px;background:transparent;}
+
+/* Grille des 5 cartes-chiffres (Vue d'ensemble + 4 niveaux) */
+.vbars-grid-5{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;width:100%;}
+@media (max-width:1100px){.vbars-grid-5{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:480px){.vbars-grid-5{grid-template-columns:1fr;}}
+
+/* Grille des 6 cartes-donuts par thème mathématique */
+.vbars-grid-6{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;width:100%;}
+@media (min-width:1500px){.vbars-grid-6{grid-template-columns:repeat(6,1fr);}}
+@media (max-width:900px){.vbars-grid-6{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:480px){.vbars-grid-6{grid-template-columns:1fr;}}
+
+/* Phrase de synthèse en bas de section (constat factuel sur le niveau d'arrivée en seconde) */
+.niveaux-synthese{margin-top:2rem;padding:22px 26px;background:linear-gradient(135deg,var(--navy) 0%,#0F1B3D 100%);border-radius:var(--rl);display:flex;align-items:flex-start;gap:18px;flex-wrap:wrap;color:#fff;box-shadow:0 8px 28px rgba(27,46,94,.18);position:relative;overflow:hidden;}
+.niveaux-synthese::before{content:'';position:absolute;top:0;right:0;width:160px;height:160px;background:radial-gradient(circle,rgba(255,255,255,.08) 0%,transparent 70%);pointer-events:none;}
+.niveaux-synthese-kicker{font-family:'Inter Tight',sans-serif;font-size:10.5px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--navy);background:#fff;padding:6px 14px;border-radius:999px;flex-shrink:0;line-height:1.4;align-self:flex-start;margin-top:2px;box-shadow:0 2px 8px rgba(0,0,0,.08);}
+.niveaux-synthese-text{font-family:'Sora',sans-serif;font-size:16px;font-weight:500;line-height:1.55;color:#fff;flex:1;min-width:200px;letter-spacing:-.1px;position:relative;z-index:1;}
+.niveaux-synthese-text strong{font-weight:800;color:#FBBF24;letter-spacing:-.2px;}
+
+/* Titre spécifique pour les thèmes (icône + nom) */
+.kpi-title-theme{font-size:18px;display:inline-flex;align-items:center;justify-content:center;gap:6px;flex-wrap:wrap;}
+.kpi-title-icon{font-size:18px;line-height:1;}
+
+/* ═══ Cartes-chiffres (KPI cards) ═══ */
+.kpi-card{background:var(--white);border:1.5px solid var(--border);border-radius:var(--rl);padding:16px 16px 14px;display:flex;flex-direction:column;gap:10px;position:relative;overflow:hidden;transition:border-color .2s,box-shadow .2s,transform .2s;}
+.kpi-card:hover{transform:translateY(-2px);box-shadow:0 6px 22px rgba(0,0,0,.05);}
+.kpi-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--text4);}
+.kpi-card.lvl-good::before{background:linear-gradient(180deg,#34D399,#059669);}
+.kpi-card.lvl-mid::before{background:linear-gradient(180deg,#FBBF24,#D97706);}
+.kpi-card.lvl-bad::before{background:linear-gradient(180deg,#F87171,#DC2626);}
+.kpi-card.lvl-good{border-color:rgba(5,150,105,.25);}
+.kpi-card.lvl-mid{border-color:rgba(217,119,6,.25);}
+.kpi-card.lvl-bad{border-color:rgba(220,38,38,.25);}
+.kpi-hero{background:linear-gradient(180deg,#FAFCFE 0%,var(--white) 100%);border-width:2px;box-shadow:0 4px 16px rgba(27,46,94,.08);}
+.kpi-empty{opacity:.55;}
+.kpi-empty::before{background:var(--text4);}
+
+.kpi-titre-bloc{display:flex;flex-direction:column;align-items:center;gap:4px;margin-bottom:4px;}
+.kpi-kicker{font-family:'Inter Tight',sans-serif;font-size:9.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--text3);line-height:1;}
+.kpi-title{font-family:'Sora',sans-serif;font-size:22px;font-weight:800;color:var(--text);letter-spacing:-1px;line-height:1;text-align:center;}
+.kpi-title-rule{height:3px;width:32px;border-radius:2px;background:var(--text4);transition:background .2s,width .3s;}
+.kpi-title-rule.lvl-good{background:#059669;}
+.kpi-title-rule.lvl-mid{background:#D97706;}
+.kpi-title-rule.lvl-bad{background:#DC2626;}
+.kpi-card:hover .kpi-title-rule{width:48px;}
+.kpi-hero .kpi-title{color:var(--navy);}
+.kpi-hero .kpi-kicker{color:var(--navy-mid);}
+
+/* Donut central */
+.kpi-donut-wrap{position:relative;display:flex;justify-content:center;align-items:center;margin:4px 0;}
+.donut-svg{display:block;}
+.donut-bg{fill:none;stroke:var(--bg2);}
+.donut-fill{fill:none;stroke-linecap:round;transition:stroke-dashoffset 1.4s cubic-bezier(.4,0,.2,1);}
+.donut-fill.lvl-good{stroke:#059669;}
+.donut-fill.lvl-mid{stroke:#D97706;}
+.donut-fill.lvl-bad{stroke:#DC2626;}
+.donut-fill.lvl-na{stroke:var(--text4);}
+.kpi-donut-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;line-height:1;display:flex;flex-direction:column;align-items:center;gap:4px;}
+.kpi-donut-pct{font-family:'Sora',sans-serif;font-size:30px;font-weight:800;letter-spacing:-1.5px;line-height:1;}
+.kpi-hero .kpi-donut-pct{font-size:36px;}
+.kpi-donut-pct.lvl-good{color:#059669;}
+.kpi-donut-pct.lvl-mid{color:#B45309;}
+.kpi-donut-pct.lvl-bad{color:#DC2626;}
+.kpi-donut-lbl{font-family:'Inter Tight',sans-serif;font-size:9.5px;font-weight:600;color:var(--text3);letter-spacing:.12em;text-transform:uppercase;}
+
+.kpi-filieres{display:flex;flex-direction:column;gap:5px;margin-top:6px;padding-top:8px;border-top:1px dashed var(--border);}
+.kpi-fil-row{display:grid;grid-template-columns:30px 1fr 32px;align-items:center;gap:8px;}
+.kpi-fil-row.muted{opacity:.45;}
+.kpi-fil-lbl{font-family:'Inter Tight',sans-serif;font-size:9.5px;font-weight:700;letter-spacing:.1em;color:var(--text3);text-transform:uppercase;}
+.kpi-fil-bar{position:relative;height:5px;background:var(--bg2);border-radius:3px;overflow:hidden;}
+.kpi-fil-fill{position:absolute;left:0;top:0;bottom:0;border-radius:3px;transition:width 1.2s cubic-bezier(.4,0,.2,1);}
+.kpi-fil-fill.lvl-good{background:#059669;}
+.kpi-fil-fill.lvl-mid{background:#D97706;}
+.kpi-fil-fill.lvl-bad{background:#DC2626;}
+.kpi-fil-val{font-family:'Sora',sans-serif;font-size:11.5px;font-weight:800;text-align:right;letter-spacing:-.2px;}
+.kpi-fil-val.lvl-good{color:#059669;}
+.kpi-fil-val.lvl-mid{color:#B45309;}
+.kpi-fil-val.lvl-bad{color:#DC2626;}
+.kpi-fil-val.muted{color:var(--text4);font-weight:500;}
+
+.kpi-empty-msg{font-family:'Inter Tight',sans-serif;font-size:12px;font-style:italic;color:var(--text3);text-align:center;padding:32px 0;}
+
+/* Commentaire dynamique sous chaque carte */
+.kpi-comment{font-family:'Inter Tight',sans-serif;font-size:11.5px;font-weight:500;line-height:1.5;text-align:left;padding-top:10px;margin-top:2px;border-top:1px dashed var(--border);color:var(--text2);letter-spacing:.005em;}
+.kpi-comment.lvl-good{color:#047857;}
+.kpi-comment.lvl-mid{color:#92400E;}
+.kpi-comment.lvl-bad{color:#991B1B;}
+.vbars-grid{stroke:var(--border);stroke-width:1;stroke-dasharray:3 3;}
+.vbars-axis-x-line{stroke:var(--text3);stroke-width:1.5;}
+.vbars-axis-y{font-family:'Inter Tight',sans-serif;font-size:11px;font-weight:500;fill:var(--text3);}
+.vbars-axis-y-title{font-family:'Inter Tight',sans-serif;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;fill:var(--text3);}
+.vbars-axis-x{font-family:'Sora',sans-serif;font-size:15px;font-weight:800;fill:var(--text);letter-spacing:-.3px;}
+.vbars-axis-x-sub{font-family:'Inter Tight',sans-serif;font-size:10.5px;font-weight:600;letter-spacing:.04em;}
+.vbars-axis-x-sub.lvl-good{fill:var(--green-dark);}
+.vbars-axis-x-sub.lvl-mid{fill:#8B5500;}
+.vbars-axis-x-sub.lvl-bad{fill:var(--red);}
+.vbars-axis-x-sub.lvl-na,.vbars-axis-x-sub.muted{fill:var(--text3);font-style:italic;}
+
+.vbars-bar{transition:opacity .2s;}
+.vbars-bar:hover{opacity:.85;}
+.vbars-bar-val{font-family:'Sora',sans-serif;font-size:13px;font-weight:800;letter-spacing:-.3px;}
+.vbars-bar-val.lvl-good{fill:#059669;}
+.vbars-bar-val.lvl-mid{fill:#B45309;}
+.vbars-bar-val.lvl-bad{fill:#DC2626;}
+.vbars-bar-empty{stroke:var(--text4);stroke-width:1.5;stroke-dasharray:2 2;}
+.vbars-bar-empty-lbl{font-family:'Inter Tight',sans-serif;font-size:11px;font-weight:500;fill:var(--text4);}
+
+/* Libellés sous chaque barre (Globale · CAP · BP) — neutres */
+.vbars-bar-tick{font-family:'Inter Tight',sans-serif;font-size:10.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;fill:var(--text3);}
 
 .niveaux-note{background:var(--white);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:var(--r);padding:14px 18px;font-family:'Inter Tight',sans-serif;font-size:12px;line-height:1.55;color:var(--text2);}
 .niveaux-note strong{color:var(--text);font-weight:600;}
@@ -2715,6 +2849,470 @@ body:has(#section-accueil.active) {
   z-index: 1;
   flex-shrink: 0;
 }
+.ap-kpi-row-2col {
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  align-items: stretch;
+}
+
+/* ═══ Bloc Élèves diagnostiqués — composition centrée éditoriale ═══ */
+.ap-diag {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  padding: 28px 28px 22px;
+  background: #FFFFFF;
+  border: 1px solid rgba(20, 19, 16, 0.06);
+  border-radius: 18px;
+  box-shadow:
+    0 1px 3px rgba(20, 19, 16, 0.02),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+/* Tout le contenu reste au-dessus (z-index 1 conservé pour compat) */
+.ap-diag > * { position: relative; z-index: 1; }
+.ap-diag:hover {
+  border-color: rgba(20, 19, 16, 0.1);
+  box-shadow:
+    0 8px 24px rgba(27, 46, 94, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  transform: translateY(-1px);
+}
+.ap-diag-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.ap-diag-kicker {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text3);
+}
+.ap-diag-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #047857;
+  background: rgba(5, 150, 105, 0.08);
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+.ap-diag-live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10B981;
+  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5);
+  animation: apDiagPulse 2s infinite;
+}
+@keyframes apDiagPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5); }
+  70%  { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+/* Donut grand format avec chiffre central */
+.ap-diag-donut-stage {
+  position: relative;
+  width: 240px;
+  height: 240px;
+}
+.ap-diag-donut {
+  width: 240px;
+  height: 240px;
+  display: block;
+}
+.ap-diag-donut-bg { stroke: rgba(27, 46, 94, 0.08); }
+.ap-diag-donut-cap {
+  stroke: url(#apDiagCapGrad);
+  transition: stroke-dasharray 1.4s cubic-bezier(.4,0,.2,1);
+  stroke-linecap: butt;
+}
+.ap-diag-donut-bp {
+  stroke: url(#apDiagBpGrad);
+  transition: stroke-dasharray 1.4s cubic-bezier(.4,0,.2,1), stroke-dashoffset 1.4s cubic-bezier(.4,0,.2,1);
+  stroke-linecap: butt;
+}
+.ap-diag-donut-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  pointer-events: none;
+}
+.ap-diag-num {
+  font-family: 'Sora', sans-serif;
+  font-size: 96px;
+  font-weight: 800;
+  line-height: 0.85;
+  letter-spacing: -5px;
+  font-variant-numeric: tabular-nums;
+  /* Dégradé typographique subtil : navy clair en haut → navy profond en bas */
+  background: linear-gradient(180deg, #2C4A96 0%, #1B2E5E 70%, #0F1B3D 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: var(--navy); /* fallback pour vieux navigateurs */
+}
+.ap-diag-num-lbl {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text3);
+  margin-top: 4px;
+}
+
+/* Légende CAP / Bac Pro en bas */
+.ap-diag-legend {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+  gap: 12px;
+  width: 100%;
+  max-width: 360px;
+}
+.ap-diag-leg {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 14px;
+  background: var(--bg);
+  border: 1px solid rgba(20, 19, 16, 0.10);
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.ap-diag-leg:hover {
+  transform: translateY(-1px);
+  border-color: rgba(20, 19, 16, 0.16);
+  box-shadow: 0 4px 12px rgba(20, 19, 16, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+/* Barre verticale colorée à gauche de chaque mini-carte */
+.ap-diag-leg::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+}
+.ap-diag-leg.ap-diag-leg-cap::before {
+  background: linear-gradient(180deg, #2C4A96, #1B2E5E);
+}
+.ap-diag-leg.ap-diag-leg-bp::before {
+  background: linear-gradient(180deg, #6FA8E8, #4A90E2);
+}
+.ap-diag-leg-swatch {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  position: relative;
+}
+.ap-diag-leg-swatch-cap { background: #1B2E5E; }
+.ap-diag-leg-swatch-bp  { background: #4A90E2; }
+.ap-diag-leg-swatch::after { display: none; }
+
+.ap-diag-leg-info {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+  justify-content: space-between;
+}
+.ap-diag-leg-tag {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text3);
+  line-height: 1;
+}
+.ap-diag-leg-num {
+  font-family: 'Instrument Serif', 'Fraunces', Georgia, serif;
+  font-size: 26px;
+  font-weight: 400;
+  letter-spacing: -0.5px;
+  color: var(--navy);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'lnum' 1;
+}
+
+.ap-diag-foot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+@media (max-width: 980px) {
+  .ap-kpi-row-2col {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .ap-diag-donut-stage,
+  .ap-diag-donut { width: 200px; height: 200px; }
+  .ap-diag-num { font-size: 80px; letter-spacing: -4px; }
+}
+
+/* ═══ Bloc Notions acquises — variante du bloc Élèves ═══ */
+.ap-diag-sublabel {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--text3);
+  font-style: italic;
+}
+.ap-notions-num {
+  font-family: 'Sora', sans-serif;
+  font-size: 76px;
+  font-weight: 800;
+  line-height: 0.85;
+  letter-spacing: -4px;
+  font-variant-numeric: tabular-nums;
+  display: inline-flex;
+  align-items: baseline;
+}
+.ap-notions-num-pct {
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  margin-left: 2px;
+}
+/* Couleurs dynamiques injectées par JS via la classe parent */
+.ap-diag-notions.lvl-good .ap-notions-num,
+.ap-diag-notions.lvl-good .ap-notions-num-pct { color: #059669; }
+.ap-diag-notions.lvl-mid .ap-notions-num,
+.ap-diag-notions.lvl-mid .ap-notions-num-pct { color: #B45309; }
+.ap-diag-notions.lvl-bad .ap-notions-num,
+.ap-diag-notions.lvl-bad .ap-notions-num-pct { color: #DC2626; }
+.ap-diag-notions:not(.lvl-good):not(.lvl-mid):not(.lvl-bad) .ap-notions-num,
+.ap-diag-notions:not(.lvl-good):not(.lvl-mid):not(.lvl-bad) .ap-notions-num-pct { color: var(--navy); }
+
+.ap-notions-donut-fill {
+  transition: stroke-dasharray 1.4s cubic-bezier(.4,0,.2,1), stroke 0.3s ease;
+}
+.ap-diag-notions.lvl-good .ap-notions-donut-fill { stroke: url(#apNotionsGoodGrad); }
+.ap-diag-notions.lvl-mid  .ap-notions-donut-fill { stroke: url(#apNotionsMidGrad); }
+.ap-diag-notions.lvl-bad  .ap-notions-donut-fill { stroke: url(#apNotionsBadGrad); }
+
+/* Verdict (badge sous le donut) */
+.ap-notions-verdict-wrap {
+  display: flex;
+  justify-content: center;
+}
+.ap-notions-verdict {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 999px;
+  line-height: 1.3;
+}
+.ap-diag-notions.lvl-good .ap-notions-verdict { color: #047857; background: rgba(5,150,105,0.10); }
+.ap-diag-notions.lvl-mid  .ap-notions-verdict { color: #92400E; background: rgba(217,119,6,0.10); }
+.ap-diag-notions.lvl-bad  .ap-notions-verdict { color: #991B1B; background: rgba(220,38,38,0.10); }
+.ap-diag-notions:not(.lvl-good):not(.lvl-mid):not(.lvl-bad) .ap-notions-verdict {
+  color: var(--text3); background: rgba(20,19,16,0.05);
+}
+
+/* Commentaire */
+.ap-notions-comment {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--text);
+  text-align: center;
+  max-width: 360px;
+  margin: 0 auto;
+}
+.ap-notions-comment strong { font-weight: 700; }
+.ap-diag-notions.lvl-good .ap-notions-comment strong { color: #047857; }
+.ap-diag-notions.lvl-mid  .ap-notions-comment strong { color: #B45309; }
+.ap-diag-notions.lvl-bad  .ap-notions-comment strong { color: #DC2626; }
+
+/* ═══ Blocs sans encadré (style "bare") — partagés par les 2 colonnes ═══ */
+.ap-kpi-bare {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 14px 4px;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+}
+.ap-kpi-bare-label {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text3);
+  line-height: 1.3;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.ap-kpi-bare-sublabel {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--text3);
+  font-style: italic;
+}
+
+/* GAUCHE : grand chiffre simple */
+.ap-kpi-bare-value {
+  font-family: 'Sora', sans-serif;
+  font-size: 88px;
+  font-weight: 800;
+  line-height: 0.92;
+  letter-spacing: -4.5px;
+  color: var(--text);
+}
+
+/* GAUCHE : split CAP / BP en ligne sous le chiffre */
+.ap-kpi-bare-split {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+.ap-kpi-bare-fil {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.ap-kpi-bare-fil-tag {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text3);
+}
+.ap-kpi-bare-fil-num {
+  font-family: 'Sora', sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: var(--text);
+  line-height: 1;
+}
+.ap-kpi-bare-fil-lbl {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text2);
+}
+.ap-kpi-bare-fil-sep {
+  width: 1px;
+  height: 18px;
+  background: var(--border);
+}
+
+/* DROITE : grand chiffre + unité + verdict + bandeau commentaire */
+.ap-kpi-bare-value-wrap {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+.ap-kpi-bare-value-pct {
+  font-family: 'Sora', sans-serif;
+  font-size: 88px;
+  font-weight: 800;
+  line-height: 0.92;
+  letter-spacing: -4.5px;
+  color: #DC2626;
+}
+.ap-kpi-bare-unit {
+  font-family: 'Sora', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: #DC2626;
+  letter-spacing: -1px;
+  margin-left: -8px;
+}
+.ap-kpi-bare-verdict {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #DC2626;
+  background: rgba(220, 38, 38, 0.08);
+  padding: 6px 12px;
+  border-radius: 999px;
+  align-self: center;
+}
+.ap-kpi-bare-comment {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--text);
+  padding: 14px 18px;
+  background: rgba(220, 38, 38, 0.04);
+  border-left: 3px solid #DC2626;
+  border-radius: 6px;
+}
+.ap-kpi-bare-comment strong { font-weight: 700; color: #DC2626; }
+
+/* Pied commun : Explorer → */
+.ap-kpi-bare-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 8px;
+}
+.ap-kpi-bare:hover .ap-kpi-cta-arrow {
+  transform: translateX(4px);
+}
+
+@media (max-width: 980px) {
+  .ap-kpi-row-2col {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .ap-kpi-bare-value,
+  .ap-kpi-bare-value-pct { font-size: 72px; letter-spacing: -3.5px; }
+  .ap-kpi-bare-unit { font-size: 26px; }
+}
 .ap-kpi {
   background: #FFFFFF !important;
   border: 1px solid rgba(20,19,16,0.05) !important;
@@ -3092,15 +3690,33 @@ body:has(#section-accueil.active) {
 .ap-kpi-cta {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  font-size: 11.5px;
-  font-weight: 500;
-  color: #1A2C4F;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--navy);
   font-family: 'Inter Tight', 'Sora', sans-serif;
+  letter-spacing: 0.04em;
+  padding: 10px 22px;
+  background: rgba(27, 46, 94, 0.04);
+  border: 1px solid rgba(27, 46, 94, 0.10);
+  border-radius: 999px;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+}
+.ap-diag:hover .ap-kpi-cta {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: #FFFFFF;
+  box-shadow: 0 4px 14px rgba(27, 46, 94, 0.18);
 }
 .ap-kpi-cta-arrow {
-  font-family: 'Fraunces', serif;
-  font-size: 13px;
+  font-family: 'Inter Tight', 'Sora', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+.ap-diag:hover .ap-kpi-cta-arrow {
+  transform: translateX(3px);
 }
 .ap-kpi-badge {
   display: inline-flex !important;
@@ -3630,144 +4246,144 @@ body:has(#section-accueil.active) {
           </div>
         </div>
 
-        <!-- KPI informés -->
-        <div class="ap-kpi-row">
+        <!-- Disposition 2 colonnes pleine largeur, sans encadré -->
+        <div class="ap-kpi-row ap-kpi-row-2col">
 
-          <div class="ap-kpi neutral" onclick="ouvrirVueDiagnostiques()">
-            <div class="ap-kpi-head">
-              <div class="ap-kpi-label-block">
-                <span class="ap-kpi-label">Élèves diagnostiqués</span>
+          <!-- GAUCHE : Élèves diagnostiqués -->
+          <div class="ap-diag" onclick="ouvrirVueDiagnostiques()">
+            <div class="ap-diag-head">
+              <span class="ap-diag-kicker">Élèves diagnostiqués</span>
+              <span class="ap-diag-live"><span class="ap-diag-live-dot"></span>live</span>
+            </div>
+
+            <!-- Donut grand format avec chiffre central -->
+            <div class="ap-diag-donut-stage">
+              <svg class="ap-diag-donut" viewBox="0 0 240 240" aria-hidden="true">
+                <defs>
+                  <linearGradient id="apDiagCapGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#2C4A96"/>
+                    <stop offset="100%" stop-color="#1B2E5E"/>
+                  </linearGradient>
+                  <linearGradient id="apDiagBpGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#6FA8E8"/>
+                    <stop offset="100%" stop-color="#4A90E2"/>
+                  </linearGradient>
+                  <filter id="apDiagShadow" x="-20%" y="-20%" width="140%" height="140%">
+                    <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+                    <feOffset dx="0" dy="2" result="offsetblur"/>
+                    <feComponentTransfer><feFuncA type="linear" slope="0.15"/></feComponentTransfer>
+                    <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+                  </filter>
+                </defs>
+                <circle class="ap-diag-donut-bg" cx="120" cy="120" r="100" stroke-width="20" fill="none"/>
+                <circle class="ap-diag-donut-cap" cx="120" cy="120" r="100" stroke-width="20" fill="none"
+                        stroke-dasharray="0 628.32" stroke-dashoffset="0" transform="rotate(-90 120 120)"
+                        filter="url(#apDiagShadow)"/>
+                <circle class="ap-diag-donut-bp" cx="120" cy="120" r="100" stroke-width="20" fill="none"
+                        stroke-dasharray="0 628.32" stroke-dashoffset="0" transform="rotate(-90 120 120)"
+                        filter="url(#apDiagShadow)"/>
+              </svg>
+              <div class="ap-diag-donut-center">
+                <span class="ap-diag-num" id="kpi-evalues">—</span>
+                <span class="ap-diag-num-lbl">élèves au total</span>
               </div>
             </div>
-            <div class="ap-kpi-main">
-              <div class="ap-kpi-value-wrap">
-                <span class="ap-kpi-value" id="kpi-evalues">—</span>
+
+            <!-- Légende CAP / BP en bas -->
+            <div class="ap-diag-legend">
+              <div class="ap-diag-leg ap-diag-leg-cap">
+                <span class="ap-diag-leg-swatch ap-diag-leg-swatch-cap"></span>
+                <div class="ap-diag-leg-info">
+                  <span class="ap-diag-leg-tag">CAP</span>
+                  <span class="ap-diag-leg-num" id="kpi-eval-cap">—</span>
+                </div>
+              </div>
+              <div class="ap-diag-leg ap-diag-leg-bp">
+                <span class="ap-diag-leg-swatch ap-diag-leg-swatch-bp"></span>
+                <div class="ap-diag-leg-info">
+                  <span class="ap-diag-leg-tag">Bac Pro</span>
+                  <span class="ap-diag-leg-num" id="kpi-eval-bp">—</span>
+                </div>
               </div>
             </div>
-            <div class="ap-filiere-split">
-              <div class="ap-filiere ap-filiere-cap">
-                <span class="ap-filiere-tag">CAP</span>
-                <span class="ap-filiere-num" id="kpi-eval-cap">—</span>
-                <span class="ap-filiere-lbl">élève<span class="ap-filiere-plural">s</span></span>
-              </div>
-              <div class="ap-filiere-sep"></div>
-              <div class="ap-filiere ap-filiere-bp">
-                <span class="ap-filiere-tag">Bac Pro</span>
-                <span class="ap-filiere-num" id="kpi-eval-bp">—</span>
-                <span class="ap-filiere-lbl">élève<span class="ap-filiere-plural">s</span></span>
-              </div>
-            </div>
-            <div class="ap-kpi-foot">
+
+            <div class="ap-diag-foot">
               <span class="ap-kpi-cta">Explorer <span class="ap-kpi-cta-arrow">→</span></span>
-              <span class="ap-kpi-badge"><span class="ap-kpi-badge-dot"></span>live</span>
             </div>
           </div>
 
-          <div class="ap-kpi green" onclick="ouvrirVueNotionsAcquises()">
-            <div class="ap-kpi-head">
-              <div class="ap-kpi-label-block">
-                <span class="ap-kpi-label">Notions acquises</span>
-                <span class="ap-kpi-sublabel">Prérequis de seconde</span>
+          <!-- DROITE : Notions acquises -->
+          <div class="ap-diag ap-diag-notions" onclick="ouvrirVueNotionsAcquises()">
+            <div class="ap-diag-head">
+              <span class="ap-diag-kicker">Notions acquises</span>
+              <span class="ap-diag-sublabel">Prérequis de seconde</span>
+            </div>
+
+            <!-- Donut grand format avec % central -->
+            <div class="ap-diag-donut-stage">
+              <svg class="ap-diag-donut" viewBox="0 0 240 240" aria-hidden="true">
+                <defs>
+                  <linearGradient id="apNotionsGoodGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#34D399"/>
+                    <stop offset="100%" stop-color="#059669"/>
+                  </linearGradient>
+                  <linearGradient id="apNotionsMidGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#FBBF24"/>
+                    <stop offset="100%" stop-color="#D97706"/>
+                  </linearGradient>
+                  <linearGradient id="apNotionsBadGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#F87171"/>
+                    <stop offset="100%" stop-color="#DC2626"/>
+                  </linearGradient>
+                </defs>
+                <circle class="ap-diag-donut-bg" cx="120" cy="120" r="100" stroke-width="20" fill="none"/>
+                <circle class="ap-notions-donut-fill" cx="120" cy="120" r="100" stroke-width="20" fill="none"
+                        stroke-dasharray="0 628.32" stroke-dashoffset="0" transform="rotate(-90 120 120)"
+                        stroke-linecap="round" filter="url(#apDiagShadow)"/>
+              </svg>
+              <div class="ap-diag-donut-center">
+                <span class="ap-notions-num"><span id="kpi-notions-acquises">—</span><span class="ap-notions-num-pct">%</span></span>
+                <span class="ap-diag-num-lbl">notions acquises</span>
               </div>
             </div>
-            <div class="ap-kpi-main">
-              <div class="ap-kpi-value-wrap">
-                <span class="ap-kpi-value" id="kpi-notions-acquises">—</span>
-                <span class="ap-kpi-unit" id="kpi-notions-unit">%</span>
-                <span class="ap-kpi-verdict" id="kpi-notions-verdict">—</span>
-              </div>
+
+            <!-- Verdict + commentaire -->
+            <div class="ap-notions-verdict-wrap">
+              <span class="ap-notions-verdict" id="kpi-notions-verdict">—</span>
             </div>
-            <div class="ap-kpi-comment" id="kpi-notions-comment">
+            <div class="ap-notions-comment" id="kpi-notions-comment">
               Analyse en cours…
             </div>
-            <div class="ap-kpi-foot">
+
+            <div class="ap-diag-foot">
               <span class="ap-kpi-cta">Explorer <span class="ap-kpi-cta-arrow">→</span></span>
             </div>
+
             <!-- IDs conservés pour compat JS -->
+            <span id="kpi-notions-unit" style="display:none;">%</span>
             <span id="kpi-notions-ratio" style="display:none;">— / —</span>
             <span id="kpi-notions-reste" style="display:none;">—</span>
             <span id="kpi-notions-acquises-sub" style="display:none;"></span>
           </div>
 
-          <div class="ap-kpi amber" onclick="ouvrirVueLacunesComblees()">
-            <div class="ap-kpi-head">
-              <div class="ap-kpi-label-block">
-                <span class="ap-kpi-label">Lacunes comblées</span>
-                <span class="ap-kpi-sublabel">Progression remédiation</span>
-              </div>
-            </div>
-            <div class="ap-kpi-main">
-              <div class="ap-kpi-value-wrap">
-                <span class="ap-kpi-value" id="kpi-comblees">—</span>
-                <span class="ap-kpi-unit">%</span>
-              </div>
-              <div class="ap-kpi-inline-bar">
-                <div class="ap-kpi-inline-bar-fill" id="kpi-comblees-bar-fill"></div>
-              </div>
-            </div>
-            <div class="ap-kpi-comment ap-kpi-comment-amber" id="kpi-comblees-comment">
-              Analyse en cours…
-            </div>
-            <div class="ap-kpi-foot">
-              <span class="ap-kpi-cta">Explorer <span class="ap-kpi-cta-arrow">→</span></span>
-            </div>
-            <!-- IDs conservés pour compat JS -->
-            <span id="kpi-comblees-sub" style="display:none;">—</span>
-            <span id="kpi-comblees-fill" style="display:none;"></span>
-            <span id="kpi-comblees-delta" style="display:none;"></span>
-          </div>
-
         </div>
 
-        <!-- 2ème rang : classes à surveiller + profil établissement -->
-        <div class="ap-row2">
-
-          <div class="ap-panel">
-            <div class="ap-panel-head">
-              <div class="ap-panel-title-block">
-                <div class="ap-panel-title">Classes à surveiller</div>
-                <span class="ap-panel-sub">Top 3 des classes avec le plus de lacunes par élève</span>
-              </div>
-              <span class="ap-panel-link" onclick="navVers('stats')">Voir le classement <span class="ap-panel-link-arrow">→</span></span>
-            </div>
-            <div class="ap-class-list" id="ap-class-list">
-              <div class="ap-class-empty">Chargement des classes…</div>
-            </div>
-          </div>
-
-          <div class="ap-snap">
-            <div class="ap-snap-title">Profil de l'établissement</div>
-            <div class="ap-snap-sub">Distribution des lacunes par élève</div>
-            <div class="ap-snap-metric">
-              <span class="ap-snap-metric-val" id="ap-snap-moy">—</span>
-              <span class="ap-snap-metric-lbl">lacunes en moyenne par élève</span>
-            </div>
-            <div class="ap-snap-dist">
-              <div class="ap-snap-dist-row">
-                <span class="ap-snap-dist-dot ok"></span>
-                <span class="ap-snap-dist-lbl">0 – 2 lacunes</span>
-                <div class="ap-snap-dist-track"><div class="ap-snap-dist-fill ok" id="ap-snap-fill-ok" style="width:0%"></div></div>
-                <span class="ap-snap-dist-val" id="ap-snap-val-ok">0</span>
-              </div>
-              <div class="ap-snap-dist-row">
-                <span class="ap-snap-dist-dot warn"></span>
-                <span class="ap-snap-dist-lbl">3 – 5 lacunes</span>
-                <div class="ap-snap-dist-track"><div class="ap-snap-dist-fill warn" id="ap-snap-fill-warn" style="width:0%"></div></div>
-                <span class="ap-snap-dist-val" id="ap-snap-val-warn">0</span>
-              </div>
-              <div class="ap-snap-dist-row">
-                <span class="ap-snap-dist-dot bad"></span>
-                <span class="ap-snap-dist-lbl">6+ lacunes</span>
-                <div class="ap-snap-dist-track"><div class="ap-snap-dist-fill bad" id="ap-snap-fill-bad" style="width:0%"></div></div>
-                <span class="ap-snap-dist-val" id="ap-snap-val-bad">0</span>
-              </div>
-            </div>
-            <div class="ap-snap-note" id="ap-snap-note">
-              Données en cours d'analyse…
-            </div>
-          </div>
-
-        </div>
+        <!-- IDs gardés invisibles pour conserver la compatibilité avec le JS -->
+        <span id="kpi-comblees" style="display:none;">—</span>
+        <span id="kpi-comblees-bar-fill" style="display:none;"></span>
+        <span id="kpi-comblees-comment" style="display:none;"></span>
+        <span id="kpi-comblees-sub" style="display:none;"></span>
+        <span id="kpi-comblees-fill" style="display:none;"></span>
+        <span id="kpi-comblees-delta" style="display:none;"></span>
+        <span id="ap-snap-moy" style="display:none;"></span>
+        <span id="ap-snap-fill-ok" style="display:none;"></span>
+        <span id="ap-snap-fill-warn" style="display:none;"></span>
+        <span id="ap-snap-fill-bad" style="display:none;"></span>
+        <span id="ap-snap-val-ok" style="display:none;"></span>
+        <span id="ap-snap-val-warn" style="display:none;"></span>
+        <span id="ap-snap-val-bad" style="display:none;"></span>
+        <span id="ap-snap-note" style="display:none;"></span>
+        <span id="ap-class-list" style="display:none;"></span>
       </div>
 
       <!-- ══ VUE : Graphiques des élèves diagnostiqués ══ -->
@@ -3822,18 +4438,9 @@ body:has(#section-accueil.active) {
         <div id="view-na-main">
           <button class="back-btn" onclick="navVers('accueil')">← Retour à l'accueil</button>
 
-          <!-- Sélecteur de mois + bandeau snapshot -->
-          <div id="na-mois-selector-wrap" class="mois-selector-wrap"></div>
-          <div id="na-mois-meta-wrap"></div>
-
           <!-- Graphique 1 : vue globale établissement (pleine largeur en haut) -->
-          <div class="themes-section-title" style="margin-top:.5rem;">Vue d'ensemble de l'établissement</div>
           <div class="charts-grid">
-            <div class="chart-card full chart-card-clickable chart-card-hero" onclick="ouvrirVueNiveauxCollege()">
-              <div class="chart-card-cta chart-card-cta-floating">
-                <span>Voir le détail par niveau collège</span>
-                <span class="chart-card-cta-arrow">→</span>
-              </div>
+            <div class="chart-card full chart-card-hero">
               <div class="chart-header chart-header-centered">
                 <div class="chart-header-kicker">
                   <span class="chart-header-kicker-line"></span>
@@ -3847,66 +4454,42 @@ body:has(#section-accueil.active) {
             </div>
           </div>
 
-          <!-- Graphique 2 : par filière (2 cartes côte à côte) -->
-          <div class="themes-section-title" style="margin-top:1.5rem;">Comparaison par filière</div>
+          <!-- Section : 4 cartes par niveau (le détail du 33%) -->
           <div class="charts-grid">
             <div class="chart-card full">
-              <div class="chart-header">
-                <div>
-                  <div class="chart-title">Taux d'acquisition par filière</div>
-                  <div class="chart-subtitle">Comparaison CAP vs Bac Pro sur le % de notions acquises et le nombre moyen de lacunes par élève.</div>
+              <div class="chart-header chart-header-centered" style="margin-bottom:1.5rem;">
+                <div class="chart-header-kicker">
+                  <span class="chart-header-kicker-line"></span>
+                  <span class="chart-header-kicker-text">Détail par niveau du collège</span>
+                  <span class="chart-header-kicker-line"></span>
                 </div>
+                <div class="chart-title chart-title-hero">Pourcentage de <span class="chart-title-accent">notions acquises</span></div>
+                <div class="chart-subtitle chart-subtitle-hero">À quel niveau du collège vos élèves maîtrisent-ils déjà les prérequis, et où sont les fragilités&nbsp;?</div>
               </div>
-              <div class="chart-body" id="na-chart-filiere"></div>
+              <div class="chart-body" id="na-chart-niveaux"></div>
             </div>
           </div>
 
-          <!-- Graphique 3 : par classes -->
-          <div class="themes-section-title" style="margin-top:1.5rem;">Détail par classe</div>
+          <!-- Section : 6 cartes par thème mathématique -->
           <div class="charts-grid">
             <div class="chart-card full">
-              <div class="chart-header">
-                <div>
-                  <div class="chart-title">Taux d'acquisition par classe</div>
-                  <div class="chart-subtitle">Classement des classes par % de notions acquises, avec le nombre moyen de lacunes par élève.</div>
+              <div class="chart-header chart-header-centered" style="margin-bottom:1.5rem;">
+                <div class="chart-header-kicker">
+                  <span class="chart-header-kicker-line"></span>
+                  <span class="chart-header-kicker-text">Détail par thème mathématique</span>
+                  <span class="chart-header-kicker-line"></span>
                 </div>
-              </div>
-              <div class="chart-body" id="na-chart-classes"></div>
-            </div>
-          </div>
-
-          <!-- Graphique 4 : par thème mathématique -->
-          <div class="themes-section-title" style="margin-top:1.5rem;">Détail par thème mathématique</div>
-          <div class="charts-grid">
-            <div class="chart-card full">
-              <div class="chart-header">
-                <div>
-                  <div class="chart-title">Taux d'acquisition par thème</div>
-                  <div class="chart-subtitle">Identifier les thèmes mathématiques les mieux maîtrisés et ceux qui posent le plus de difficultés.</div>
-                </div>
+                <div class="chart-title chart-title-hero">Acquisition par <span class="chart-title-accent">domaine de compétence</span></div>
+                <div class="chart-subtitle chart-subtitle-hero">Sur quels thèmes mathématiques vos élèves rencontrent-ils le plus de difficultés&nbsp;?</div>
               </div>
               <div class="chart-body" id="na-chart-themes"></div>
             </div>
           </div>
         </div>
 
-        <!-- ── Sous-vue : Lacunes par niveau du collège ── -->
-        <div id="view-na-niveaux" style="display:none;">
-          <button class="back-btn" onclick="retourNaMain()">← Retour aux notions acquises</button>
-          <div class="page-header">
-            <div class="page-title">Lacunes par niveau du collège</div>
-            <div class="page-sub">Nombre moyen de lacunes par élève, réparti selon le niveau de complexité des notions évaluées (6e à 3e).</div>
-          </div>
-          <div class="charts-grid">
-            <div class="chart-card full">
-              <div class="chart-body" id="na-chart-niveaux"></div>
-            </div>
-          </div>
-        </div>
-
         <!-- ── Sous-vue : Classement des thèmes mathématiques par lacunes ── -->
         <div id="view-na-themes-classement" style="display:none;">
-          <button class="back-btn" onclick="retourNaNiveaux()">← Retour aux niveaux du collège</button>
+          <button class="back-btn" onclick="retourNaMain()">← Retour aux notions acquises</button>
           <div class="page-header">
             <div class="page-title">Classement des thèmes mathématiques</div>
             <div class="page-sub">Identifier les thèmes où les élèves rencontrent le plus de difficultés, pour prioriser la remédiation.</div>
@@ -4590,17 +5173,15 @@ function ouvrirVueNotionsAcquises(){
   document.querySelectorAll('.sb-item').forEach(function(n){n.classList.remove('active');});
   document.getElementById('section-notions-acquises').classList.add('active');
   document.getElementById('sb-accueil').classList.add('active');
-  // Toujours réafficher la vue principale (et masquer les vues détail)
+  // Toujours réafficher la vue principale (et masquer la sous-vue thèmes)
   document.getElementById('view-na-main').style.display='block';
-  document.getElementById('view-na-niveaux').style.display='none';
   document.getElementById('view-na-themes-classement').style.display='none';
   setBreadcrumb([
     {label:'Accueil',onclick:'navVers(\'accueil\')'},
     {label:'Notions acquises',current:true}
   ]);
   renderNaChartGlobal();
-  renderNaChartFiliere();
-  renderNaChartClasses();
+  renderNaChartNiveaux();
   renderNaChartThemes();
 }
 
@@ -4616,7 +5197,7 @@ function themeDeFicheId(fid){
   return null;
 }
 
-function renderNaChartThemes(){
+function renderNaChartThemesLegacy(){
   var container=document.getElementById('na-chart-themes');
   if(!container) return;
   if(DATA_EVAL.length===0){
@@ -5105,21 +5686,7 @@ function niveauDeFiche(fid){
   return FICHE_VERS_NIVEAU[String(fid||'')] || null;
 }
 
-function ouvrirVueNiveauxCollege(){
-  document.getElementById('view-na-main').style.display='none';
-  document.getElementById('view-na-niveaux').style.display='block';
-  setBreadcrumb([
-    {label:'Accueil',onclick:'navVers(\'accueil\')'},
-    {label:'Notions acquises',onclick:'retourNaMain()'},
-    {label:'Lacunes par niveau du collège',current:true}
-  ]);
-  renderNaChartNiveaux();
-  // Remonter en haut de la page pour que le proviseur voie immédiatement le titre
-  window.scrollTo({top:0,behavior:'smooth'});
-}
-
 function retourNaMain(){
-  document.getElementById('view-na-niveaux').style.display='none';
   document.getElementById('view-na-themes-classement').style.display='none';
   document.getElementById('view-na-main').style.display='block';
   setBreadcrumb([
@@ -5151,162 +5718,436 @@ function renderNaChartNiveaux(){
     else if(f==='BACPRO') nbBp++;
   });
 
-  // Stats par niveau (global + décomposition CAP/BP)
+  // Stats par niveau (global + décomposition CAP/BP) + total établissement
   var stats={
-    '6e':{lacunes:0,total:0,lacCap:0,lacBp:0},
-    '5e':{lacunes:0,total:0,lacCap:0,lacBp:0},
-    '4e':{lacunes:0,total:0,lacCap:0,lacBp:0},
-    '3e':{lacunes:0,total:0,lacCap:0,lacBp:0}
+    'all':{lacunes:0,total:0,lacCap:0,lacBp:0,totalCap:0,totalBp:0},
+    '6e':{lacunes:0,total:0,lacCap:0,lacBp:0,totalCap:0,totalBp:0},
+    '5e':{lacunes:0,total:0,lacCap:0,lacBp:0,totalCap:0,totalBp:0},
+    '4e':{lacunes:0,total:0,lacCap:0,lacBp:0,totalCap:0,totalBp:0},
+    '3e':{lacunes:0,total:0,lacCap:0,lacBp:0,totalCap:0,totalBp:0}
   };
   DATA_EVAL.forEach(function(r){
     var niv=niveauDeFiche(r.fiche_id);
+    var fil=filiereByEmail[String(r.email||'').toLowerCase()];
+    // Toutes les lignes (avec ou sans niveau identifié) comptent dans 'all'
+    stats['all'].total++;
+    if(fil==='CAP') stats['all'].totalCap++;
+    else if(fil==='BACPRO') stats['all'].totalBp++;
+    if(r.assigne==='oui'){
+      stats['all'].lacunes++;
+      if(fil==='CAP') stats['all'].lacCap++;
+      else if(fil==='BACPRO') stats['all'].lacBp++;
+    }
     if(!niv || !stats[niv]) return;
     stats[niv].total++;
+    if(fil==='CAP') stats[niv].totalCap++;
+    else if(fil==='BACPRO') stats[niv].totalBp++;
     if(r.assigne==='oui'){
       stats[niv].lacunes++;
-      var fil=filiereByEmail[String(r.email||'').toLowerCase()];
       if(fil==='CAP') stats[niv].lacCap++;
       else if(fil==='BACPRO') stats[niv].lacBp++;
     }
   });
 
-  var niveaux=['6e','5e','4e','3e'];
-  var data=niveaux.map(function(niv){
-    var s=stats[niv];
-    var moyenne=nbEleves>0 ? (s.lacunes/nbEleves) : 0;
-    var classe;
-    if(s.total===0) classe='lvl-na';
-    else if(moyenne<1.5) classe='lvl-good';
-    else if(moyenne<3) classe='lvl-mid';
-    else classe='lvl-bad';
-    var moyCap=(nbCap>0 && s.total>0) ? (s.lacCap/nbCap) : null;
-    var moyBp=(nbBp>0 && s.total>0) ? (s.lacBp/nbBp) : null;
+  // Helper : transformer stats[clé] en objet exploitable
+  function buildBlock(label, key){
+    var s=stats[key];
+    // % de notions acquises (= notions non assignées en remédiation)
+    var pctAcq = s.total>0 ? Math.round(((s.total-s.lacunes)/s.total)*100) : null;
+    var pctCap = s.totalCap>0 ? Math.round(((s.totalCap-s.lacCap)/s.totalCap)*100) : null;
+    var pctBp  = s.totalBp>0  ? Math.round(((s.totalBp -s.lacBp )/s.totalBp )*100) : null;
     return {
-      niv:niv,
-      moyenne:moyenne,
+      label:label,
       total:s.total,
-      classe:classe,
-      moyCap:moyCap,
-      moyBp:moyBp,
-      hasCapData:nbCap>0 && s.total>0,
-      hasBpData:nbBp>0 && s.total>0
+      lacunes:s.lacunes,
+      pctAcq:pctAcq,
+      pctCap:pctCap,
+      pctBp:pctBp,
+      hasCapData:s.totalCap>0,
+      hasBpData:s.totalBp>0
     };
-  });
+  }
 
-  // Échelle commune : max entre la moy globale et les moy CAP/BP de tous les niveaux
-  var maxBarValue=0;
-  data.forEach(function(d){
-    if(d.total>0){
-      if(d.moyenne>maxBarValue) maxBarValue=d.moyenne;
-      if(d.hasCapData && d.moyCap>maxBarValue) maxBarValue=d.moyCap;
-      if(d.hasBpData && d.moyBp>maxBarValue) maxBarValue=d.moyBp;
-    }
-    // On garde aussi le total / élève comme borne minimale pour ne pas que la barre déborde
-    var maxParEleve=nbEleves>0 ? (d.total/nbEleves) : 0;
-    if(maxParEleve>maxBarValue) maxBarValue=maxParEleve;
-  });
-  maxBarValue=maxBarValue*1.1;
-  if(maxBarValue<1) maxBarValue=1;
+  var blocs=[
+    buildBlock('6e', '6e'),
+    buildBlock('5e', '5e'),
+    buildBlock('4e', '4e'),
+    buildBlock('3e', '3e')
+  ];
 
-  // Construction des barres : pour chaque niveau, ligne principale + sous-lignes CAP/BP
-  var barsHtml='<div class="niveaux-bars">'
-    +'<div class="niveaux-bars-title">Nombre moyen de lacunes par élève · par niveau du collège</div>';
-  data.forEach(function(d){
-    var widthPct=d.total===0 ? 0 : Math.min(100,(d.moyenne/maxBarValue)*100);
-    var valStr=d.total===0
-      ? '<span class="lvl-na">—</span>'
-      : '<span class="'+d.classe+'">'+d.moyenne.toFixed(1).replace('.',',')+'</span><span class="small">sur '+(d.total/nbEleves).toFixed(1).replace('.',',')+' notions</span>';
+  // Helper : sévérité d'un % d'acquisition (vert : ≥80, ambre : 50-79, rouge : <50)
+  function classeSeverite(pct){
+    if(pct===null) return 'lvl-na';
+    if(pct>=80) return 'lvl-good';
+    if(pct>=50) return 'lvl-mid';
+    return 'lvl-bad';
+  }
 
-    barsHtml+='<div class="niveaux-bar-block">'
-      +'<div class="niveaux-bar-row">'
-        +'<div class="niveaux-bar-lbl">'+d.niv+'</div>'
-        +'<div class="niveaux-bar-track">'
-          +(d.total===0 ? '' : '<div class="niveaux-bar-fill '+d.classe+'" style="width:'+widthPct.toFixed(2)+'%"></div>')
+  // Construction de la grille des 5 cartes-donuts
+  var barsHtml='<div class="niveaux-bars">';
+
+  // Génère une carte-chiffre pour un bloc
+  // Génère un donut SVG (rayon, %, classe de couleur)
+  function renderDonut(pct, cls, size, strokeW){
+    var r=(size-strokeW)/2;
+    var cx=size/2, cy=size/2;
+    var circ=2*Math.PI*r;
+    var dashOffset=circ-(pct/100)*circ;
+    return '<svg class="donut-svg" viewBox="0 0 '+size+' '+size+'" width="'+size+'" height="'+size+'">'
+      +'<circle class="donut-bg" cx="'+cx+'" cy="'+cy+'" r="'+r+'" stroke-width="'+strokeW+'"/>'
+      +'<circle class="donut-fill '+cls+'" cx="'+cx+'" cy="'+cy+'" r="'+r+'" stroke-width="'+strokeW+'" stroke-dasharray="'+circ.toFixed(2)+'" stroke-dashoffset="'+dashOffset.toFixed(2)+'" transform="rotate(-90 '+cx+' '+cy+')"/>'
+    +'</svg>';
+  }
+
+  function renderKpiCard(b, isGlobal){
+    if(b.total===0){
+      return '<div class="kpi-card kpi-empty">'
+        +'<div class="kpi-titre-bloc">'
+          +'<div class="kpi-kicker">Niveau</div>'
+          +'<div class="kpi-title">'+b.label+'</div>'
+          +'<div class="kpi-title-rule"></div>'
         +'</div>'
-        +'<div class="niveaux-bar-val">'+valStr+'</div>'
+        +'<div class="kpi-empty-msg">non évalué</div>'
       +'</div>';
-
-    // Sous-lignes uniquement si on a des données pour ce niveau
-    if(d.total>0){
-      // Sous-ligne CAP
-      if(d.hasCapData){
-        var capWidth=Math.min(100,(d.moyCap/maxBarValue)*100);
-        barsHtml+='<div class="niveaux-bar-row sub">'
-          +'<div class="niveaux-bar-lbl-sub">CAP</div>'
-          +'<div class="niveaux-bar-track-sub">'
-            +'<div class="niveaux-bar-fill-sub cap" style="width:'+capWidth.toFixed(2)+'%"></div>'
-          +'</div>'
-          +'<div class="niveaux-bar-val-sub cap">'+d.moyCap.toFixed(1).replace('.',',')+'</div>'
-        +'</div>';
-      } else {
-        barsHtml+='<div class="niveaux-bar-row sub muted">'
-          +'<div class="niveaux-bar-lbl-sub">CAP</div>'
-          +'<div class="niveaux-bar-track-sub"></div>'
-          +'<div class="niveaux-bar-val-sub muted">—</div>'
-        +'</div>';
-      }
-      // Sous-ligne Bac Pro
-      if(d.hasBpData){
-        var bpWidth=Math.min(100,(d.moyBp/maxBarValue)*100);
-        barsHtml+='<div class="niveaux-bar-row sub">'
-          +'<div class="niveaux-bar-lbl-sub">Bac Pro</div>'
-          +'<div class="niveaux-bar-track-sub">'
-            +'<div class="niveaux-bar-fill-sub bp" style="width:'+bpWidth.toFixed(2)+'%"></div>'
-          +'</div>'
-          +'<div class="niveaux-bar-val-sub bp">'+d.moyBp.toFixed(1).replace('.',',')+'</div>'
-        +'</div>';
-      } else {
-        barsHtml+='<div class="niveaux-bar-row sub muted">'
-          +'<div class="niveaux-bar-lbl-sub">Bac Pro</div>'
-          +'<div class="niveaux-bar-track-sub"></div>'
-          +'<div class="niveaux-bar-val-sub muted">—</div>'
-        +'</div>';
-      }
     }
-    barsHtml+='</div>';
+    var globalCls=classeSeverite(b.pctAcq);
+    var donutSize=isGlobal?160:140;
+    var strokeW=isGlobal?14:12;
+
+    // Lignes filière (CAP / BP)
+    var filieresHtml='<div class="kpi-filieres">';
+    // CAP
+    if(b.hasCapData){
+      var capCls=classeSeverite(b.pctCap);
+      filieresHtml+='<div class="kpi-fil-row">'
+        +'<span class="kpi-fil-lbl">CAP</span>'
+        +'<div class="kpi-fil-bar"><div class="kpi-fil-fill '+capCls+'" style="width:'+b.pctCap+'%"></div></div>'
+        +'<span class="kpi-fil-val '+capCls+'">'+b.pctCap+'%</span>'
+      +'</div>';
+    } else {
+      filieresHtml+='<div class="kpi-fil-row muted">'
+        +'<span class="kpi-fil-lbl">CAP</span>'
+        +'<div class="kpi-fil-bar"></div>'
+        +'<span class="kpi-fil-val muted">—</span>'
+      +'</div>';
+    }
+    // BP
+    if(b.hasBpData){
+      var bpCls=classeSeverite(b.pctBp);
+      filieresHtml+='<div class="kpi-fil-row">'
+        +'<span class="kpi-fil-lbl">BP</span>'
+        +'<div class="kpi-fil-bar"><div class="kpi-fil-fill '+bpCls+'" style="width:'+b.pctBp+'%"></div></div>'
+        +'<span class="kpi-fil-val '+bpCls+'">'+b.pctBp+'%</span>'
+      +'</div>';
+    } else {
+      filieresHtml+='<div class="kpi-fil-row muted">'
+        +'<span class="kpi-fil-lbl">BP</span>'
+        +'<div class="kpi-fil-bar"></div>'
+        +'<span class="kpi-fil-val muted">—</span>'
+      +'</div>';
+    }
+    filieresHtml+='</div>';
+
+    // Commentaire dynamique : phrase 1 (constat + niveau), phrase 2 (écart CAP/BP si significatif)
+    function buildCommentaire(b){
+      // Caractérisation du niveau
+      var contexte;
+      if(b.label==='6e') contexte='Tout début de collège';
+      else if(b.label==='5e') contexte='Bases du collège';
+      else if(b.label==='4e') contexte='Notions intermédiaires';
+      else if(b.label==='3e') contexte='Notions de fin de collège, prérequis directs du lycée';
+      else contexte='Notions évaluées';
+
+      // Verdict sur la sévérité
+      var verdict;
+      if(b.pctAcq>=80) verdict=' : bien maîtrisées.';
+      else if(b.pctAcq>=50) verdict=' : partiellement maîtrisées.';
+      else verdict=' : très peu acquises.';
+
+      var phrase1=contexte+verdict;
+
+      // Écart filières
+      var phrase2='';
+      if(b.hasCapData && b.hasBpData){
+        var ecart=Math.abs(b.pctCap-b.pctBp);
+        if(ecart>=15){
+          var devance=b.pctCap>b.pctBp ? 'CAP' : 'Bac Pro';
+          var derriere=b.pctCap>b.pctBp ? 'Bac Pro' : 'CAP';
+          phrase2=' Écart marqué entre filières : '+devance+' devance '+derriere+' de '+ecart+' points.';
+        } else {
+          phrase2=' Niveau homogène entre CAP et Bac Pro.';
+        }
+      }
+
+      return phrase1+phrase2;
+    }
+    var commentaire=buildCommentaire(b);
+
+    return '<div class="kpi-card '+globalCls+(isGlobal?' kpi-hero':'')+'">'
+      +'<div class="kpi-titre-bloc">'
+        +'<div class="kpi-kicker">Niveau</div>'
+        +'<div class="kpi-title">'+b.label+'</div>'
+        +'<div class="kpi-title-rule '+globalCls+'"></div>'
+      +'</div>'
+      +'<div class="kpi-donut-wrap">'
+        +renderDonut(b.pctAcq, globalCls, donutSize, strokeW)
+        +'<div class="kpi-donut-center">'
+          +'<div class="kpi-donut-pct '+globalCls+'">'+b.pctAcq+'%</div>'
+          +'<div class="kpi-donut-lbl">acquises</div>'
+        +'</div>'
+      +'</div>'
+      +filieresHtml
+      +'<div class="kpi-comment '+globalCls+'">'+commentaire+'</div>'
+    +'</div>';
+  }
+
+  barsHtml+='<div class="vbars-grid-5">';
+  blocs.forEach(function(b, i){
+    barsHtml+=renderKpiCard(b, false);
   });
   barsHtml+='</div>';
 
-  // Note explicative
-  var noteHtml='<div class="niveaux-note">'
-    +'<strong>Lecture du diagramme.</strong> Le niveau attribué à chaque notion est basé sur le programme officiel du collège (cycles 3 et 4). '
-    +'Une lacune correspond à une notion non maîtrisée lors de l\'évaluation diagnostique. '
-    +'Les sous-lignes CAP et Bac Pro montrent comment chaque filière contribue à la moyenne globale.'
-  +'</div>';
+  // Phrase de synthèse factuelle sur le niveau d'arrivée en seconde
+  function buildSynthese(blocs){
+    var bons=[], moyens=[], faibles=[];
+    blocs.forEach(function(b){
+      if(b.total===0) return;
+      if(b.pctAcq>=80) bons.push(b.label);
+      else if(b.pctAcq>=50) moyens.push(b.label);
+      else faibles.push(b.label);
+    });
+    function joinNiveaux(arr){
+      if(arr.length===0) return '';
+      if(arr.length===1) return arr[0];
+      if(arr.length===2) return arr[0]+' et '+arr[1];
+      return arr.slice(0,-1).join(', ')+' et '+arr[arr.length-1];
+    }
+    var nbEvalues=bons.length+moyens.length+faibles.length;
+    if(nbEvalues===0) return '';
 
-  // Bouton vers le classement par thème
-  var ctaHtml='<div class="niveaux-cta-row">'
-    +'<button class="niveaux-cta-btn" onclick="ouvrirVueThemesClassement()">'
-      +'<span>Voir le classement par thème</span>'
-      +'<span class="niveaux-cta-btn-arrow">→</span>'
-    +'</button>'
-  +'</div>';
+    var parties=[];
+    if(bons.length>0){
+      parties.push('une bonne maîtrise des notions de <strong>'+joinNiveaux(bons)+'</strong>');
+    }
+    if(moyens.length>0){
+      parties.push('une maîtrise partielle des notions de <strong>'+joinNiveaux(moyens)+'</strong>');
+    }
+    if(faibles.length>0){
+      parties.push('des fragilités sur les notions de <strong>'+joinNiveaux(faibles)+'</strong>');
+    }
 
-  container.innerHTML='<div class="niveaux-container">'+ctaHtml+barsHtml+noteHtml+'</div>';
+    var corps;
+    if(parties.length===1) corps=parties[0]+'.';
+    else if(parties.length===2) corps=parties[0]+', et '+parties[1]+'.';
+    else corps=parties.slice(0,-1).join(', ')+', et '+parties[parties.length-1]+'.';
+
+    return 'À l\'arrivée en seconde, les élèves présentent '+corps;
+  }
+  var phraseSynth=buildSynthese(blocs);
+  if(phraseSynth){
+    barsHtml+='<div class="niveaux-synthese">'
+      +'<span class="niveaux-synthese-kicker">En résumé</span>'
+      +'<span class="niveaux-synthese-text">'+phraseSynth+'</span>'
+    +'</div>';
+  }
+
+  barsHtml+='</div>';
+
+  container.innerHTML='<div class="niveaux-container">'+barsHtml+'</div>';
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// Section principale : Cartes-donuts par thème mathématique
+// ═══════════════════════════════════════════════════════════════════
+
+function renderNaChartThemes(){
+  var container=document.getElementById('na-chart-themes');
+  if(!container) return;
+  var eleves=elevesUniques();
+  if(eleves.length===0 || DATA_EVAL.length===0){
+    container.innerHTML='<div class="global-empty">Aucune donnée de diagnostic disponible pour le moment.</div>';
+    return;
+  }
+
+  // Index : email → filière
+  var filiereByEmail={};
+  eleves.forEach(function(e){
+    filiereByEmail[String(e.email||'').toLowerCase()]=getFiliereDeClasse(e.classe);
+  });
+
+  // Helper : sévérité d'un % d'acquisition
+  function classeSeverite(pct){
+    if(pct===null) return 'lvl-na';
+    if(pct>=80) return 'lvl-good';
+    if(pct>=50) return 'lvl-mid';
+    return 'lvl-bad';
+  }
+
+  // Calcul des stats par thème
+  var blocs=THEMES_CONFIG.map(function(th){
+    var lignes=DATA_EVAL.filter(function(r){return themeDeFicheId(r.fiche_id)===th.id;});
+    var total=lignes.length;
+    var lacunes=0, totalCap=0, lacCap=0, totalBp=0, lacBp=0;
+    lignes.forEach(function(r){
+      var fil=filiereByEmail[String(r.email||'').toLowerCase()];
+      if(fil==='CAP') totalCap++;
+      else if(fil==='BACPRO') totalBp++;
+      if(r.assigne==='oui'){
+        lacunes++;
+        if(fil==='CAP') lacCap++;
+        else if(fil==='BACPRO') lacBp++;
+      }
+    });
+    var pctAcq = total>0 ? Math.round(((total-lacunes)/total)*100) : null;
+    var pctCap = totalCap>0 ? Math.round(((totalCap-lacCap)/totalCap)*100) : null;
+    var pctBp  = totalBp>0  ? Math.round(((totalBp -lacBp )/totalBp )*100) : null;
+    return {
+      id:th.id,
+      label:th.nom,
+      icon:th.icon,
+      total:total,
+      pctAcq:pctAcq,
+      pctCap:pctCap,
+      pctBp:pctBp,
+      hasCapData:totalCap>0,
+      hasBpData:totalBp>0
+    };
+  });
+
+  // Tri : du plus difficile (% acquises faible) au moins difficile (% acquises élevé)
+  // Les non évalués (pctAcq===null) vont à la fin
+  blocs.sort(function(a,b){
+    if(a.pctAcq===null && b.pctAcq===null) return 0;
+    if(a.pctAcq===null) return 1;
+    if(b.pctAcq===null) return -1;
+    return a.pctAcq - b.pctAcq;
+  });
+
+  // Donut SVG
+  function renderDonut(pct, cls, size, strokeW){
+    var r=(size-strokeW)/2;
+    var cx=size/2, cy=size/2;
+    var circ=2*Math.PI*r;
+    var dashOffset=circ-(pct/100)*circ;
+    return '<svg class="donut-svg" viewBox="0 0 '+size+' '+size+'" width="'+size+'" height="'+size+'">'
+      +'<circle class="donut-bg" cx="'+cx+'" cy="'+cy+'" r="'+r+'" stroke-width="'+strokeW+'"/>'
+      +'<circle class="donut-fill '+cls+'" cx="'+cx+'" cy="'+cy+'" r="'+r+'" stroke-width="'+strokeW+'" stroke-dasharray="'+circ.toFixed(2)+'" stroke-dashoffset="'+dashOffset.toFixed(2)+'" transform="rotate(-90 '+cx+' '+cy+')"/>'
+    +'</svg>';
+  }
+
+  // Construit le commentaire pour un thème
+  function buildCommentaireTheme(b){
+    // Caractérisation pédagogique du thème
+    var contexte;
+    if(b.id==='fractions') contexte='Compétence transversale, base de tout calcul numérique';
+    else if(b.id==='proportionnalite') contexte='Outil clé pour les sciences et la vie quotidienne';
+    else if(b.id==='calcul_litteral') contexte='Passage à l\'abstraction algébrique, prérequis du lycée';
+    else if(b.id==='fonctions') contexte='Notion centrale du programme de seconde';
+    else if(b.id==='geometrie') contexte='Raisonnement déductif et lecture de figures';
+    else if(b.id==='stats') contexte='Lecture de données, indicateurs et probabilités';
+    else contexte='Domaine évalué';
+
+    // Verdict
+    var verdict;
+    if(b.pctAcq>=80) verdict=' : bien maîtrisé.';
+    else if(b.pctAcq>=50) verdict=' : partiellement maîtrisé.';
+    else verdict=' : très peu acquis.';
+
+    var phrase1=contexte+verdict;
+
+    // Écart filières
+    var phrase2='';
+    if(b.hasCapData && b.hasBpData){
+      var ecart=Math.abs(b.pctCap-b.pctBp);
+      if(ecart>=15){
+        var devance=b.pctCap>b.pctBp ? 'CAP' : 'Bac Pro';
+        var derriere=b.pctCap>b.pctBp ? 'Bac Pro' : 'CAP';
+        phrase2=' Écart marqué entre filières : '+devance+' devance '+derriere+' de '+ecart+' points.';
+      } else {
+        phrase2=' Niveau homogène entre CAP et Bac Pro.';
+      }
+    }
+    return phrase1+phrase2;
+  }
+
+  // Génère une carte par thème
+  function renderThemeCard(b){
+    if(b.total===0){
+      return '<div class="kpi-card kpi-empty">'
+        +'<div class="kpi-titre-bloc">'
+          +'<div class="kpi-kicker">Thème</div>'
+          +'<div class="kpi-title kpi-title-theme"><span class="kpi-title-icon">'+b.icon+'</span>'+b.label+'</div>'
+          +'<div class="kpi-title-rule"></div>'
+        +'</div>'
+        +'<div class="kpi-empty-msg">Pas encore évalué</div>'
+      +'</div>';
+    }
+    var globalCls=classeSeverite(b.pctAcq);
+
+    // Lignes filière
+    var filieresHtml='<div class="kpi-filieres">';
+    if(b.hasCapData){
+      var capCls=classeSeverite(b.pctCap);
+      filieresHtml+='<div class="kpi-fil-row">'
+        +'<span class="kpi-fil-lbl">CAP</span>'
+        +'<div class="kpi-fil-bar"><div class="kpi-fil-fill '+capCls+'" style="width:'+b.pctCap+'%"></div></div>'
+        +'<span class="kpi-fil-val '+capCls+'">'+b.pctCap+'%</span>'
+      +'</div>';
+    } else {
+      filieresHtml+='<div class="kpi-fil-row muted"><span class="kpi-fil-lbl">CAP</span><div class="kpi-fil-bar"></div><span class="kpi-fil-val muted">—</span></div>';
+    }
+    if(b.hasBpData){
+      var bpCls=classeSeverite(b.pctBp);
+      filieresHtml+='<div class="kpi-fil-row">'
+        +'<span class="kpi-fil-lbl">BP</span>'
+        +'<div class="kpi-fil-bar"><div class="kpi-fil-fill '+bpCls+'" style="width:'+b.pctBp+'%"></div></div>'
+        +'<span class="kpi-fil-val '+bpCls+'">'+b.pctBp+'%</span>'
+      +'</div>';
+    } else {
+      filieresHtml+='<div class="kpi-fil-row muted"><span class="kpi-fil-lbl">BP</span><div class="kpi-fil-bar"></div><span class="kpi-fil-val muted">—</span></div>';
+    }
+    filieresHtml+='</div>';
+
+    var commentaire=buildCommentaireTheme(b);
+
+    return '<div class="kpi-card '+globalCls+'">'
+      +'<div class="kpi-titre-bloc">'
+        +'<div class="kpi-kicker">Thème</div>'
+        +'<div class="kpi-title kpi-title-theme"><span class="kpi-title-icon">'+b.icon+'</span>'+b.label+'</div>'
+        +'<div class="kpi-title-rule '+globalCls+'"></div>'
+      +'</div>'
+      +'<div class="kpi-donut-wrap">'
+        +renderDonut(b.pctAcq, globalCls, 140, 12)
+        +'<div class="kpi-donut-center">'
+          +'<div class="kpi-donut-pct '+globalCls+'">'+b.pctAcq+'%</div>'
+          +'<div class="kpi-donut-lbl">acquis</div>'
+        +'</div>'
+      +'</div>'
+      +filieresHtml
+      +'<div class="kpi-comment '+globalCls+'">'+commentaire+'</div>'
+    +'</div>';
+  }
+
+  // Construction de la grille (6 colonnes max, responsive)
+  var html='<div class="niveaux-bars"><div class="vbars-grid-6">';
+  blocs.forEach(function(b){
+    html+=renderThemeCard(b);
+  });
+  html+='</div></div>';
+
+  container.innerHTML='<div class="niveaux-container">'+html+'</div>';
 }
 
 // ═══════════════════════════════════════════════════════════════════
 // Sous-vue : Classement des thèmes mathématiques par lacunes
 // ═══════════════════════════════════════════════════════════════════
 
-function retourNaNiveaux(){
-  document.getElementById('view-na-themes-classement').style.display='none';
-  document.getElementById('view-na-niveaux').style.display='block';
-  setBreadcrumb([
-    {label:'Accueil',onclick:'navVers(\'accueil\')'},
-    {label:'Notions acquises',onclick:'retourNaMain()'},
-    {label:'Lacunes par niveau du collège',current:true}
-  ]);
-}
-
 function ouvrirVueThemesClassement(){
   document.getElementById('view-na-main').style.display='none';
-  document.getElementById('view-na-niveaux').style.display='none';
   document.getElementById('view-na-themes-classement').style.display='block';
   setBreadcrumb([
     {label:'Accueil',onclick:'navVers(\'accueil\')'},
     {label:'Notions acquises',onclick:'retourNaMain()'},
-    {label:'Lacunes par niveau du collège',onclick:'retourNaNiveaux()'},
     {label:'Classement par thème',current:true}
   ]);
   renderNaChartThemesClassement();
@@ -6686,8 +7527,45 @@ function renderAccueil(){
   var validees=DATA_REM.filter(function(r){return r.statut==='quiz_final_valide';}).length;
   var pctComblees=assignees>0?Math.round(validees/assignees*100):0;
 
+  // Helper : animation "count-up" (compteur qui monte progressivement vers la valeur cible)
+  // - element : élément DOM cible
+  // - target : valeur finale (entier)
+  // - duration : durée en ms (par défaut 1400ms pour matcher la transition du donut)
+  // - suffix : texte ajouté après le nombre (ex: "%")
+  function animateCountUp(element, target, duration, suffix){
+    if(!element) return;
+    duration = duration || 1400;
+    suffix = suffix || '';
+    target = parseInt(target, 10);
+    if(isNaN(target)) target = 0;
+    // Stoppe une animation en cours sur cet élément
+    if(element._countAnim){ cancelAnimationFrame(element._countAnim); }
+    var start = parseInt(element.textContent, 10);
+    if(isNaN(start)) start = 0;
+    // Si la valeur ne change pas, pas d'animation
+    if(start === target){ element.textContent = target + suffix; return; }
+    // Pour les très petites valeurs (≤3) on garde un mini-effet, sinon ease-out cubic
+    var startTime = null;
+    function step(timestamp){
+      if(!startTime) startTime = timestamp;
+      var elapsed = timestamp - startTime;
+      var progress = Math.min(elapsed / duration, 1);
+      // Easing : cubic ease-out (démarre vite, ralentit à la fin) — plus organique
+      var eased = 1 - Math.pow(1 - progress, 3);
+      var current = Math.round(start + (target - start) * eased);
+      element.textContent = current + suffix;
+      if(progress < 1){
+        element._countAnim = requestAnimationFrame(step);
+      } else {
+        element.textContent = target + suffix;
+        element._countAnim = null;
+      }
+    }
+    element._countAnim = requestAnimationFrame(step);
+  }
+
   // KPI I — Élèves diagnostiqués (+ répartition CAP / Bac Pro)
-  document.getElementById('kpi-evalues').textContent=totalEval||'0';
+  animateCountUp(document.getElementById('kpi-evalues'), totalEval||0, 1400);
   var nCap=0, nBp=0;
   eleves.forEach(function(e){
     var fil=getFiliereDeClasse(e.classe);
@@ -6696,8 +7574,37 @@ function renderAccueil(){
   });
   var capEl=document.getElementById('kpi-eval-cap');
   var bpEl=document.getElementById('kpi-eval-bp');
-  if(capEl) capEl.textContent=nCap;
-  if(bpEl) bpEl.textContent=nBp;
+  animateCountUp(capEl, nCap, 1400);
+  animateCountUp(bpEl, nBp, 1400);
+
+  // Mise à jour du donut CAP/BP — animation contrôlée
+  var donutCap=document.querySelector('.ap-diag-donut-cap');
+  var donutBp=document.querySelector('.ap-diag-donut-bp');
+  if(donutCap && donutBp){
+    var perim=2*Math.PI*100; // ≈ 628.32
+    var totalEleves=nCap+nBp;
+    var capArcTarget = totalEleves>0 ? (nCap/totalEleves)*perim : 0;
+    var bpArcTarget  = totalEleves>0 ? (nBp/totalEleves)*perim : 0;
+
+    // 1) Force l'état "vide" (dasharray=0) IMMÉDIATEMENT
+    donutCap.setAttribute('stroke-dasharray', '0 '+perim.toFixed(2));
+    donutCap.setAttribute('stroke-dashoffset', '0');
+    donutBp.setAttribute('stroke-dasharray', '0 '+perim.toFixed(2));
+    donutBp.setAttribute('stroke-dashoffset', '0');
+
+    // 2) Force un reflow pour que le navigateur prenne en compte l'état initial
+    void donutCap.getBoundingClientRect();
+
+    // 3) Au prochain frame, applique la valeur cible → la transition CSS s'enclenche
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){
+        donutCap.setAttribute('stroke-dasharray', capArcTarget.toFixed(2)+' '+(perim-capArcTarget).toFixed(2));
+        donutBp.setAttribute('stroke-dasharray', bpArcTarget.toFixed(2)+' '+(perim-bpArcTarget).toFixed(2));
+        donutBp.setAttribute('stroke-dashoffset', (-capArcTarget).toFixed(2));
+      });
+    });
+  }
+
   // Gérer pluriel élève/élèves dynamiquement
   var capFiliere=capEl ? capEl.closest('.ap-filiere') : null;
   var bpFiliere=bpEl ? bpEl.closest('.ap-filiere') : null;
@@ -6710,11 +7617,21 @@ function renderAccueil(){
     if(bpPlural) bpPlural.style.display=(nBp>1?'inline':'none');
   }
 
-  // KPI II — Notions acquises
-  document.getElementById('kpi-notions-acquises').textContent=pctAcquises;
+  // KPI II — Notions acquises (chiffre animé)
+  animateCountUp(document.getElementById('kpi-notions-acquises'), pctAcquises||0, 1400);
   // Code couleur dynamique : Vert ≥80%, Orange 50-79%, Rouge <50%
   var caseNotions=document.getElementById('kpi-notions-acquises');
   if(caseNotions){
+    var blocNotions=caseNotions.closest('.ap-diag-notions');
+    if(blocNotions){
+      blocNotions.classList.remove('lvl-good','lvl-mid','lvl-bad');
+      if(totalNotions>0){
+        if(pctAcquises>=80) blocNotions.classList.add('lvl-good');
+        else if(pctAcquises>=50) blocNotions.classList.add('lvl-mid');
+        else blocNotions.classList.add('lvl-bad');
+      }
+    }
+    // Compat avec ancienne structure si elle existe encore quelque part
     var kpiNotions=caseNotions.closest('.ap-kpi');
     if(kpiNotions){
       kpiNotions.classList.remove('green','amber','red');
@@ -6722,6 +7639,24 @@ function renderAccueil(){
       else if(pctAcquises>=50) kpiNotions.classList.add('amber');
       else kpiNotions.classList.add('red');
     }
+  }
+
+  // Animation du donut Notions — animation contrôlée
+  var donutNotions=document.querySelector('.ap-notions-donut-fill');
+  if(donutNotions){
+    var perimNotions=2*Math.PI*100;
+    var arcNotionsTarget = (totalNotions>0) ? (pctAcquises/100)*perimNotions : 0;
+
+    // 1) Force l'état "vide" immédiatement
+    donutNotions.setAttribute('stroke-dasharray', '0 '+perimNotions.toFixed(2));
+    // 2) Force un reflow
+    void donutNotions.getBoundingClientRect();
+    // 3) Au prochain frame, applique la valeur cible pour déclencher la transition CSS
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){
+        donutNotions.setAttribute('stroke-dasharray', arcNotionsTarget.toFixed(2)+' '+(perimNotions-arcNotionsTarget).toFixed(2));
+      });
+    });
   }
 
   // Commentaire dynamique pro et direct — en pourcentage
