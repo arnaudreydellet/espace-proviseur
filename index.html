@@ -344,7 +344,7 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
 .content{flex:1;padding:1.25rem 2rem 1.5rem;max-width:1400px;width:100%;margin:0 auto;}
 @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
 .section{display:none;animation:fadeIn .2s ease;}
-.section.active{display:block;}
+.section.active{display:block;opacity:1;transform:translate3d(0,0,0);}
 
 .hero{position:relative;background:var(--navy);border-radius:var(--rx);padding:2.5rem 2.75rem;margin-bottom:1.75rem;overflow:hidden;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center;}
 .hero::before{content:'';position:absolute;top:-80px;right:-60px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(74,144,226,.35) 0%,transparent 70%);pointer-events:none;}
@@ -2720,17 +2720,17 @@ body:has(#section-accueil.active) {
   grid-template-columns: auto 1fr auto;
   gap: 2rem;
   align-items: center;
-  padding: 0.85rem 1.5rem;
-  background: #FFFFFF !important;
-  border: 1px solid rgba(20,19,16,0.05) !important;
+  padding: 1.5rem 2rem;
+  background: linear-gradient(180deg, #FAF7EF 0%, #F5F0E2 100%) !important;
+  border: 1px solid rgba(212,164,100,0.18) !important;
   border-radius: 14px;
   position: relative;
   overflow: hidden;
   margin-bottom: 0 !important;
   box-shadow:
-    0 1px 0 rgba(255,255,255,1) inset,
-    0 10px 28px -8px rgba(42,37,26,0.22),
-    0 2px 6px rgba(42,37,26,0.08) !important;
+    0 1px 0 rgba(255,255,255,0.6) inset,
+    0 10px 28px -8px rgba(42,37,26,0.16),
+    0 2px 6px rgba(42,37,26,0.06) !important;
   z-index: 1;
 }
 .ap-hero::before {
@@ -2855,6 +2855,26 @@ body:has(#section-accueil.active) {
   align-items: stretch;
 }
 
+/* ═══ Animations de transition entre vues — fade + slide subtil ═══ */
+/* Section qui quitte */
+.section.is-leaving-section {
+  animation: apSectionLeave 250ms cubic-bezier(.4, 0, .6, 1) forwards;
+  pointer-events: none;
+}
+@keyframes apSectionLeave {
+  0%   { opacity: 1; transform: translate3d(0, 0, 0); }
+  100% { opacity: 0; transform: translate3d(0, -12px, 0); }
+}
+
+/* Section qui arrive */
+.section.is-entering {
+  animation: apSectionEnter 350ms cubic-bezier(.4, 0, .2, 1) forwards;
+}
+@keyframes apSectionEnter {
+  0%   { opacity: 0; transform: translate3d(0, 16px, 0); }
+  100% { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
 /* ═══ Bloc Élèves diagnostiqués — composition centrée éditoriale ═══ */
 .ap-diag {
   display: flex;
@@ -2877,11 +2897,12 @@ body:has(#section-accueil.active) {
 /* Tout le contenu reste au-dessus (z-index 1 conservé pour compat) */
 .ap-diag > * { position: relative; z-index: 1; }
 .ap-diag:hover {
-  border-color: rgba(20, 19, 16, 0.1);
+  border-color: rgba(27, 46, 94, 0.18);
   box-shadow:
-    0 8px 24px rgba(27, 46, 94, 0.06),
+    0 12px 32px rgba(27, 46, 94, 0.10),
+    0 4px 12px rgba(27, 46, 94, 0.05),
     inset 0 1px 0 rgba(255, 255, 255, 0.7);
-  transform: translateY(-1px);
+  transform: translateY(-3px);
 }
 .ap-diag-head {
   display: flex;
@@ -3691,22 +3712,24 @@ body:has(#section-accueil.active) {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-size: 12px;
+  font-size: 12.5px;
   font-weight: 600;
   color: var(--navy);
   font-family: 'Inter Tight', 'Sora', sans-serif;
   letter-spacing: 0.04em;
-  padding: 10px 22px;
-  background: rgba(27, 46, 94, 0.04);
-  border: 1px solid rgba(27, 46, 94, 0.10);
+  padding: 11px 26px;
+  background: rgba(27, 46, 94, 0.07);
+  border: 1px solid rgba(27, 46, 94, 0.18);
   border-radius: 999px;
-  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: 0 1px 2px rgba(27, 46, 94, 0.04);
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
 }
 .ap-diag:hover .ap-kpi-cta {
   background: var(--navy);
   border-color: var(--navy);
   color: #FFFFFF;
-  box-shadow: 0 4px 14px rgba(27, 46, 94, 0.18);
+  box-shadow: 0 6px 18px rgba(27, 46, 94, 0.25);
+  transform: translateY(-1px);
 }
 .ap-kpi-cta-arrow {
   font-family: 'Inter Tight', 'Sora', sans-serif;
@@ -5141,8 +5164,61 @@ function themeDeFiche(fid){
 function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 function setSyncState(s,t){document.getElementById('sync-dot').className='sync-dot '+s;document.getElementById('sync-txt').textContent=t;}
 
+// Helper de transition entre sections.
+// Particularités :
+// - On retire is-entering de la section active AVANT de lui ajouter is-leaving-section
+//   (sinon les 2 animations cohabitent et causent des bugs)
+// - On filtre l'event animationend pour ne réagir qu'à l'animation cible
+//   (sinon les animations bubbling des enfants peuvent déclencher la suite trop tôt)
+function _animerTransition(sectionActive, sectionDest, basculer){
+  // 1) Nettoyage : retirer is-entering de la section active si elle l'avait
+  sectionActive.classList.remove('is-entering');
+  void sectionActive.getBoundingClientRect();
+
+  var done=false;
+  var finish=function(){
+    if(done) return;
+    done=true;
+    sectionActive.removeEventListener('animationend', onLeaveEnd);
+    sectionActive.classList.remove('is-leaving-section');
+
+    basculer();
+
+    sectionDest.classList.remove('is-entering');
+    void sectionDest.getBoundingClientRect();
+    sectionDest.classList.add('is-entering');
+  };
+
+  // 2) Listener filtré : ne réagit qu'à 'apSectionLeave' (ignore animations enfants)
+  var onLeaveEnd=function(e){
+    if(e.target!==sectionActive) return;
+    if(e.animationName!=='apSectionLeave') return;
+    finish();
+  };
+  sectionActive.addEventListener('animationend', onLeaveEnd);
+  sectionActive.classList.add('is-leaving-section');
+
+  // 3) Filet de sécurité : si l'event ne se déclenche pas (rare), on force après 350ms
+  setTimeout(finish, 350);
+}
+
 function navVers(dest){
   closeFlyout();
+  var sectionActive=document.querySelector('.section.active');
+  var sectionDest=null;
+  if(dest==='accueil') sectionDest=document.getElementById('section-accueil');
+  else if(dest==='classes') sectionDest=document.getElementById('section-classes');
+  else if(dest==='stats') sectionDest=document.getElementById('section-stats');
+  else if(dest==='rapports') sectionDest=document.getElementById('section-rapports');
+
+  if(sectionActive && sectionDest && sectionActive!==sectionDest){
+    _animerTransition(sectionActive, sectionDest, function(){ _basculerNavVers(dest); });
+  } else {
+    _basculerNavVers(dest);
+  }
+}
+
+function _basculerNavVers(dest){
   document.querySelectorAll('.section').forEach(function(s){s.classList.remove('active');});
   document.querySelectorAll('.sb-item').forEach(function(n){n.classList.remove('active');});
   if(dest==='accueil'){
@@ -5169,6 +5245,16 @@ function navVers(dest){
 
 function ouvrirVueNotionsAcquises(){
   closeFlyout();
+  var sectionActive=document.querySelector('.section.active');
+  var sectionDest=document.getElementById('section-notions-acquises');
+  if(sectionActive && sectionDest && sectionActive!==sectionDest){
+    _animerTransition(sectionActive, sectionDest, _basculerVueNotionsAcquises);
+  } else {
+    _basculerVueNotionsAcquises();
+  }
+}
+
+function _basculerVueNotionsAcquises(){
   document.querySelectorAll('.section').forEach(function(s){s.classList.remove('active');});
   document.querySelectorAll('.sb-item').forEach(function(n){n.classList.remove('active');});
   document.getElementById('section-notions-acquises').classList.add('active');
@@ -6308,6 +6394,16 @@ function ouvrirVueLacunesComblees(){
 
 function ouvrirVueDiagnostiques(){
   closeFlyout();
+  var sectionActive=document.querySelector('.section.active');
+  var sectionDest=document.getElementById('section-diagnostiques');
+  if(sectionActive && sectionDest && sectionActive!==sectionDest){
+    _animerTransition(sectionActive, sectionDest, _basculerVueDiagnostiques);
+  } else {
+    _basculerVueDiagnostiques();
+  }
+}
+
+function _basculerVueDiagnostiques(){
   document.querySelectorAll('.section').forEach(function(s){s.classList.remove('active');});
   document.querySelectorAll('.sb-item').forEach(function(n){n.classList.remove('active');});
   document.getElementById('section-diagnostiques').classList.add('active');
@@ -6318,8 +6414,7 @@ function ouvrirVueDiagnostiques(){
   ]);
   // Réinitialise la sélection sur le mois courant (null = temps réel)
   moisSelectionne=null;
-  // Afficher immédiatement l'écran de chargement
-  afficherLoaderDiag();
+  // Charge directement les données sans loader
   chargerSnapshotsEtRender();
 }
 
@@ -6336,18 +6431,27 @@ function masquerLoaderDiag(){
 }
 
 function chargerSnapshotsEtRender(){
-  // Charge les snapshots en arrière-plan puis rend tout
+  // 1) RENDU IMMÉDIAT avec les données déjà en mémoire (mois courant / temps réel)
+  //    → la page apparaît instantanément, pas d'écran blanc
+  //    Si on a déjà des snapshots en cache d'une visite précédente, on les garde le temps du fetch.
+  if(typeof SNAPSHOTS_HISTORIQUE === 'undefined' || !Array.isArray(SNAPSHOTS_HISTORIQUE)){
+    SNAPSHOTS_HISTORIQUE = [];
+  }
+  renderVueDiagnostiquesComplete();
+
+  // 2) FETCH EN ARRIÈRE-PLAN des snapshots historiques (silencieux)
+  //    Au retour, on rafraîchit uniquement le sélecteur de mois pour exposer les archives.
   fetch(SCRIPT_URL+'?type=snapshots&etablissement='+encodeURIComponent(ETABLISSEMENT)+'&t='+Date.now())
     .then(function(r){return r.json();})
     .then(function(j){
       SNAPSHOTS_HISTORIQUE=(j.status==='ok')?(j.data||[]):[];
-      renderVueDiagnostiquesComplete();
-      masquerLoaderDiag();
+      // Rafraîchit le sélecteur de mois (les archives apparaissent maintenant)
+      if(typeof renderMoisSelector==='function') renderMoisSelector();
+      if(typeof renderMoisMetaBar==='function') renderMoisMetaBar();
     })
     .catch(function(){
+      // En cas d'échec, on laisse les snapshots vides : la page reste utilisable en temps réel
       SNAPSHOTS_HISTORIQUE=[];
-      renderVueDiagnostiquesComplete();
-      masquerLoaderDiag();
     });
 }
 
@@ -7466,10 +7570,18 @@ function closeFlyout(){
   var shell=document.getElementById('shell');
   if(shell && shell.style.display!=='none'){
     var accueil=document.getElementById('section-accueil');
+    var diagnostiques=document.getElementById('section-diagnostiques');
+    var notionsAcquises=document.getElementById('section-notions-acquises');
     var stats=document.getElementById('section-stats');
+    var rapports=document.getElementById('section-rapports');
+    var classes=document.getElementById('section-classes');
+    // Sections accessibles depuis l'accueil → onglet "Accueil" reste actif
     if(accueil && accueil.classList.contains('active')) document.getElementById('sb-accueil').classList.add('active');
+    else if(diagnostiques && diagnostiques.classList.contains('active')) document.getElementById('sb-accueil').classList.add('active');
+    else if(notionsAcquises && notionsAcquises.classList.contains('active')) document.getElementById('sb-accueil').classList.add('active');
     else if(stats && stats.classList.contains('active')) document.getElementById('sb-stats').classList.add('active');
-    else document.getElementById('sb-classes').classList.add('active');
+    else if(rapports && rapports.classList.contains('active')) document.getElementById('sb-rapports').classList.add('active');
+    else if(classes && classes.classList.contains('active')) document.getElementById('sb-classes').classList.add('active');
   }
 }
 
