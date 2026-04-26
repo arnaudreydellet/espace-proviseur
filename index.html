@@ -1248,21 +1248,56 @@ tr:hover td{background:#FDFCF9;}
 
 /* ═══ JAUGE GLOBALE NOTIONS ACQUISES ═══ */
 .global-container{width:100%;max-width:900px;margin:0 auto;padding:.25rem 0;}
-.global-main{display:grid;grid-template-columns:240px 1fr;gap:2rem;align-items:center;padding:1.75rem 1.5rem;background:var(--bg);border:1px solid var(--border);border-radius:var(--rl);}
+.global-main{display:grid;grid-template-columns:230px 240px 1fr;gap:2rem;align-items:center;padding:1.75rem 1.5rem;background:var(--bg);border:1px solid var(--border);border-radius:var(--rl);}
+@media (max-width: 1100px) { .global-main { grid-template-columns: 240px 1fr; } .global-main .grille-ref { grid-column: 1 / -1; } }
+
+/* ═══ Grille de lecture qualitative (à gauche du donut) ═══ */
+.grille-ref{display:flex;flex-direction:column;gap:14px;padding:18px 18px 16px;background:#FFFFFF;border:1px solid rgba(20,19,16,0.06);border-radius:14px;box-shadow:0 1px 3px rgba(20,19,16,0.02);}
+.grille-ref-kicker{font-family:'Inter Tight',sans-serif;font-size:9.5px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#9A9A9A;}
+.grille-ref-title{font-family:'Sora',sans-serif;font-size:14px;font-weight:700;color:var(--text);letter-spacing:-0.2px;line-height:1.3;}
+.grille-ref-list{display:flex;flex-direction:column;gap:8px;border-top:1px solid rgba(20,19,16,0.06);padding-top:12px;}
+.grille-ref-row{display:flex;align-items:flex-start;gap:10px;padding:7px 9px;border-radius:8px;transition:background 0.2s;position:relative;}
+.grille-ref-row.is-active{background:rgba(20,19,16,0.04);box-shadow:inset 0 0 0 1px rgba(20,19,16,0.06);}
+.grille-ref-row.is-active.good{background:rgba(21,163,98,0.10);box-shadow:inset 0 0 0 1px rgba(21,163,98,0.25);}
+.grille-ref-row.is-active.mid{background:rgba(34,211,124,0.10);box-shadow:inset 0 0 0 1px rgba(34,211,124,0.25);}
+.grille-ref-row.is-active.warn{background:rgba(212,123,6,0.10);box-shadow:inset 0 0 0 1px rgba(212,123,6,0.25);}
+.grille-ref-row.is-active.bad{background:rgba(212,38,38,0.10);box-shadow:inset 0 0 0 1px rgba(212,38,38,0.25);}
+.grille-ref-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;margin-top:5px;background:rgba(20,19,16,0.20);}
+.grille-ref-row.good .grille-ref-dot{background:#15A362;}
+.grille-ref-row.mid  .grille-ref-dot{background:#22D37C;}
+.grille-ref-row.warn .grille-ref-dot{background:#D47B06;}
+.grille-ref-row.bad  .grille-ref-dot{background:#D42626;}
+.grille-ref-row.is-active .grille-ref-dot{box-shadow:0 0 0 3px rgba(255,255,255,0.6),0 0 0 4px currentColor;}
+.grille-ref-row.is-active.good .grille-ref-dot{color:rgba(21,163,98,0.30);}
+.grille-ref-row.is-active.mid  .grille-ref-dot{color:rgba(34,211,124,0.30);}
+.grille-ref-row.is-active.warn .grille-ref-dot{color:rgba(212,123,6,0.30);}
+.grille-ref-row.is-active.bad  .grille-ref-dot{color:rgba(212,38,38,0.30);}
+.grille-ref-info{display:flex;flex-direction:column;gap:1px;flex:1;min-width:0;}
+.grille-ref-row-head{display:flex;align-items:baseline;justify-content:space-between;gap:8px;}
+.grille-ref-lbl{font-family:'Inter Tight',sans-serif;font-size:12px;font-weight:700;letter-spacing:-0.1px;color:var(--text);}
+.grille-ref-row.is-active .grille-ref-lbl{font-weight:800;}
+.grille-ref-range{font-family:'Sora',sans-serif;font-size:11px;font-weight:700;color:#5A5A5A;font-variant-numeric:tabular-nums;}
+.grille-ref-desc{font-family:'Inter Tight',sans-serif;font-size:11px;font-weight:500;color:#7A7A7A;line-height:1.35;}
+.grille-ref-pointer{display:flex;align-items:center;gap:8px;padding:10px 12px;background:linear-gradient(135deg,rgba(20,19,16,0.04),rgba(20,19,16,0.02));border-radius:10px;font-family:'Inter Tight',sans-serif;font-size:11.5px;color:var(--text2);}
+.grille-ref-pointer-pct{font-family:'Sora',sans-serif;font-size:18px;font-weight:800;letter-spacing:-0.5px;color:var(--text);}
+.grille-ref-pointer-arrow{color:#9A9A9A;font-size:13px;}
+.grille-ref-pointer-niv{font-weight:700;color:var(--text);}
 @media (max-width:760px){.global-main{grid-template-columns:1fr;gap:1.5rem;padding:1.5rem 1.25rem;}}
 .global-gauge{position:relative;width:220px;height:220px;flex-shrink:0;margin:0 auto;}
 .global-gauge svg{transform:rotate(-90deg);}
 .global-gauge-bg{fill:none;stroke:var(--bg2);stroke-width:18;}
 .global-gauge-fill{fill:none;stroke-width:18;stroke-linecap:round;transition:stroke-dashoffset 1.4s cubic-bezier(.4,0,.2,1);}
 .global-gauge-fill.excellent{stroke:#15A362;filter:drop-shadow(0 0 8px rgba(21,163,98,.3));}
-.global-gauge-fill.good{stroke:#22D37C;}
-.global-gauge-fill.mid{stroke:#D47B06;}
+.global-gauge-fill.good{stroke:#15A362;filter:drop-shadow(0 0 8px rgba(21,163,98,.25));}
+.global-gauge-fill.mid{stroke:#22D37C;}
+.global-gauge-fill.warn{stroke:#D47B06;}
 .global-gauge-fill.bad{stroke:#D42626;}
 .global-gauge-inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;}
 .global-gauge-val{font-size:52px;font-weight:800;color:var(--navy);letter-spacing:-2.5px;line-height:1;font-family:'Sora',sans-serif;}
 .global-gauge-val.excellent{color:var(--green-dark);}
-.global-gauge-val.good{color:#0E7348;}
-.global-gauge-val.mid{color:var(--amber);}
+.global-gauge-val.good{color:var(--green-dark);}
+.global-gauge-val.mid{color:#0E7348;}
+.global-gauge-val.warn{color:var(--amber);}
 .global-gauge-val.bad{color:var(--red);}
 .global-gauge-lbl{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--text3);margin-top:8px;}
 .global-gauge-sub{font-size:11px;color:var(--text3);margin-top:6px;font-family:'JetBrains Mono',monospace;}
@@ -1301,19 +1336,22 @@ tr:hover td{background:#FDFCF9;}
 /* Panneau d'explication pédagogique à droite du donut (remplace les stat-cards) */
 .global-explain{display:flex;flex-direction:column;gap:.65rem;padding:1.25rem 1.4rem;background:var(--white);border:1px solid var(--border);border-left:3px solid var(--text3);border-radius:var(--r);}
 .global-explain.excellent{border-left-color:#15A362;background:linear-gradient(135deg,#FAFDFB 0%,var(--white) 60%);}
-.global-explain.good{border-left-color:var(--accent);background:linear-gradient(135deg,#FAFCFE 0%,var(--white) 60%);}
-.global-explain.mid{border-left-color:var(--amber);background:linear-gradient(135deg,#FEFBF5 0%,var(--white) 60%);}
+.global-explain.good{border-left-color:#15A362;background:linear-gradient(135deg,#FAFDFB 0%,var(--white) 60%);}
+.global-explain.mid{border-left-color:#22D37C;background:linear-gradient(135deg,#FAFDFB 0%,var(--white) 60%);}
+.global-explain.warn{border-left-color:var(--amber);background:linear-gradient(135deg,#FEFBF5 0%,var(--white) 60%);}
 .global-explain.bad{border-left-color:var(--red);background:linear-gradient(135deg,#FEF8F8 0%,var(--white) 60%);}
 .global-explain-title{font-family:'Sora',sans-serif;font-size:14px;font-weight:700;letter-spacing:-.3px;color:var(--text);margin-bottom:.15rem;line-height:1.3;}
 .global-explain.excellent .global-explain-title{color:var(--green-dark);}
-.global-explain.good .global-explain-title{color:var(--navy);}
-.global-explain.mid .global-explain-title{color:#8B5500;}
+.global-explain.good .global-explain-title{color:var(--green-dark);}
+.global-explain.mid .global-explain-title{color:#0E7348;}
+.global-explain.warn .global-explain-title{color:#8B5500;}
 .global-explain.bad .global-explain-title{color:var(--red);}
 .global-explain-p{font-family:'Inter Tight',sans-serif;font-size:12.5px;line-height:1.55;color:var(--text2);margin:0;}
 .global-explain-p strong{font-weight:700;color:var(--text);}
 .global-explain.excellent .global-explain-p strong{color:var(--green-dark);}
-.global-explain.good .global-explain-p strong{color:var(--navy);}
-.global-explain.mid .global-explain-p strong{color:#8B5500;}
+.global-explain.good .global-explain-p strong{color:var(--green-dark);}
+.global-explain.mid .global-explain-p strong{color:#0E7348;}
+.global-explain.warn .global-explain-p strong{color:#8B5500;}
 .global-explain.bad .global-explain-p strong{color:var(--red);}
 
 /* ═══ COMPARAISON PAR FILIÈRE — NOTIONS ACQUISES ═══ */
@@ -2880,8 +2918,8 @@ body:has(#section-accueil.active) {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 28px;
-  padding: 28px 28px 22px;
+  gap: 22px;
+  padding: 26px 28px 22px;
   background: #FFFFFF;
   border: 1px solid rgba(20, 19, 16, 0.06);
   border-radius: 18px;
@@ -2906,17 +2944,38 @@ body:has(#section-accueil.active) {
 }
 .ap-diag-head {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
+  gap: 6px;
   width: 100%;
+  position: relative;
 }
 .ap-diag-kicker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  text-align: center;
+}
+.ap-diag-kicker::before {
+  content: attr(data-section);
   font-family: 'Inter Tight', sans-serif;
-  font-size: 11px;
+  font-size: 9.5px;
   font-weight: 700;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: var(--text3);
+  color: #B5B5B5;
+  line-height: 1;
+}
+.ap-diag-kicker {
+  font-family: 'Sora', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.8px;
+  text-transform: none;
+  color: var(--navy);
+  line-height: 1.1;
+  font-variation-settings: normal;
 }
 .ap-diag-live {
   display: inline-flex;
@@ -2925,6 +2984,10 @@ body:has(#section-accueil.active) {
   font-family: 'Inter Tight', sans-serif;
   font-size: 9.5px;
   font-weight: 700;
+  position: absolute;
+  top: 4px;
+  right: 0;
+  flex-shrink: 0;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: #047857;
@@ -2949,12 +3012,12 @@ body:has(#section-accueil.active) {
 /* Donut grand format avec chiffre central */
 .ap-diag-donut-stage {
   position: relative;
-  width: 240px;
-  height: 240px;
+  width: 210px;
+  height: 210px;
 }
 .ap-diag-donut {
-  width: 240px;
-  height: 240px;
+  width: 210px;
+  height: 210px;
   display: block;
 }
 .ap-diag-donut-bg { stroke: rgba(27, 46, 94, 0.08); }
@@ -3058,12 +3121,17 @@ body:has(#section-accueil.active) {
 
 .ap-diag-leg-info {
   display: flex;
-  flex-direction: row;
-  align-items: baseline;
-  gap: 8px;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 4px;
   flex: 1;
   min-width: 0;
+}
+.ap-diag-leg-row {
+  display: flex;
+  align-items: baseline;
   justify-content: space-between;
+  gap: 8px;
 }
 .ap-diag-leg-tag {
   font-family: 'Inter Tight', sans-serif;
@@ -3085,6 +3153,39 @@ body:has(#section-accueil.active) {
   font-feature-settings: 'lnum' 1;
 }
 
+/* Sous-ligne "dont N en mode DYS" */
+.ap-diag-leg-dys {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 10.5px;
+  font-weight: 500;
+  color: #7C3AED;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+}
+.ap-diag-leg-dys span:not(.ap-diag-leg-dys-dot) {
+  font-family: 'Sora', sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  color: #6D28D9;
+  font-variant-numeric: tabular-nums;
+  margin: 0 1px;
+}
+.ap-diag-leg-dys-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #7C3AED;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+/* Cacher la ligne DYS si 0 (ou pas de chiffre) — plus propre */
+.ap-diag-leg-dys.is-zero {
+  opacity: 0.4;
+}
+
 .ap-diag-foot {
   display: flex;
   align-items: center;
@@ -3102,15 +3203,702 @@ body:has(#section-accueil.active) {
   .ap-diag-num { font-size: 80px; letter-spacing: -4px; }
 }
 
+/* ═══ Vue Élèves diagnostiqués — 2 colonnes parallèles CAP / Bac Pro ═══ */
+.diag-filieres-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  align-items: start;
+  margin-top: 1.5rem;
+}
+.diag-filiere-col {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Carte filière (donut + label) */
+.diag-filiere-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(20, 19, 16, 0.06);
+  border-radius: 18px;
+  padding: 22px 24px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  box-shadow: 0 1px 3px rgba(20, 19, 16, 0.02), inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  position: relative;
+  overflow: hidden;
+}
+.diag-filiere-head {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  width: 100%;
+  justify-content: space-between;
+}
+.diag-filiere-tag {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #1B2E5E;
+  background: rgba(27, 46, 94, 0.08);
+  padding: 5px 12px;
+  border-radius: 999px;
+}
+.diag-filiere-tag-bp {
+  color: #4A90E2;
+  background: rgba(74, 144, 226, 0.10);
+}
+.diag-filiere-sub {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--text3);
+  font-style: italic;
+}
+
+/* Donut SVG */
+.diag-filiere-donut-stage {
+  position: relative;
+  width: 220px;
+  height: 220px;
+}
+.diag-filiere-donut {
+  width: 220px;
+  height: 220px;
+  display: block;
+}
+.diag-filiere-donut-bg { stroke: rgba(27, 46, 94, 0.06); }
+.diag-filiere-donut-fill {
+  transition: stroke-dasharray 1.4s cubic-bezier(.4, 0, .2, 1);
+}
+.diag-filiere-donut-cap { stroke: url(#diagCapDonutGrad); }
+.diag-filiere-donut-bp  { stroke: url(#diagBpDonutGrad); }
+
+.diag-filiere-donut-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  pointer-events: none;
+}
+.diag-filiere-num {
+  font-family: 'Sora', sans-serif;
+  font-size: 72px;
+  font-weight: 800;
+  line-height: 0.85;
+  letter-spacing: -3.5px;
+  color: var(--navy);
+  font-variant-numeric: tabular-nums;
+}
+.diag-filiere-bp .diag-filiere-num { color: #4A90E2; }
+.diag-filiere-num-lbl {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text3);
+  margin-top: 2px;
+}
+
+.diag-filiere-pct {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 13px;
+  color: var(--text2);
+  text-align: center;
+}
+.diag-filiere-pct > span:first-child {
+  font-family: 'Sora', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--navy);
+  letter-spacing: -0.4px;
+}
+.diag-filiere-bp .diag-filiere-pct > span:first-child { color: #4A90E2; }
+.diag-filiere-pct-suffix {
+  font-weight: 500;
+  margin-left: 4px;
+}
+
+/* Sous-ligne "dont N en mode DYS" sous chaque donut filière */
+.diag-filiere-dys {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 6px;
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 11.5px;
+  font-weight: 500;
+  color: #7C3AED;
+  letter-spacing: 0.01em;
+}
+.diag-filiere-dys span:not(.diag-filiere-dys-dot) {
+  font-family: 'Sora', sans-serif;
+  font-weight: 800;
+  font-size: 13px;
+  color: #6D28D9;
+  font-variant-numeric: tabular-nums;
+  margin: 0 1px;
+}
+.diag-filiere-dys-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #7C3AED;
+  flex-shrink: 0;
+}
+.diag-filiere-dys.is-zero {
+  opacity: 0.4;
+}
+
+/* Liste des classes */
+.diag-classes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.diag-classes-empty {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 12px;
+  color: var(--text3);
+  text-align: center;
+  padding: 24px;
+  font-style: italic;
+}
+
+/* En-tête de section niveau (Seconde / Première / Terminale + 6e/5e/4e/3e pour collège) */
+.diag-classes-niveau-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+  margin-bottom: 4px;
+  padding: 0 4px;
+}
+.diag-classes-niveau-head:first-child { margin-top: 4px; }
+.diag-classes-niveau-name {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text3);
+}
+.diag-classes-niveau-line {
+  flex: 1;
+  height: 1px;
+  background: rgba(20, 19, 16, 0.08);
+}
+
+/* Ligne classe */
+.diag-classe-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  background: #FFFFFF;
+  border: 1px solid rgba(20, 19, 16, 0.06);
+  border-radius: 12px;
+  box-shadow: 0 1px 2px rgba(20, 19, 16, 0.02);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+  cursor: default;
+  position: relative;
+  overflow: hidden;
+}
+.diag-classe-row.is-clickable {
+  cursor: pointer;
+}
+.diag-classe-row.is-clickable:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(20, 19, 16, 0.06);
+  border-color: rgba(27, 46, 94, 0.15);
+}
+.diag-classe-row.is-clickable:hover .diag-classe-arrow {
+  transform: translateX(3px);
+  opacity: 1;
+}
+.diag-classe-row::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+}
+.diag-classe-arrow {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 16px;
+  color: var(--text3);
+  opacity: 0.5;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+  width: 16px;
+  text-align: right;
+}
+.diag-filiere-cap .diag-classe-row::before { background: linear-gradient(180deg, #2C4A96, #1B2E5E); }
+.diag-filiere-bp  .diag-classe-row::before { background: linear-gradient(180deg, #6FA8E8, #4A90E2); }
+
+.diag-classe-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+.diag-classe-nom {
+  font-family: 'Sora', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.2px;
+  line-height: 1.2;
+}
+.diag-classe-bar {
+  height: 4px;
+  width: 100%;
+  background: rgba(20, 19, 16, 0.05);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-top: 2px;
+}
+.diag-classe-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.8s cubic-bezier(.4, 0, .2, 1);
+}
+.diag-filiere-cap .diag-classe-bar-fill { background: linear-gradient(90deg, #2C4A96, #1B2E5E); }
+.diag-filiere-bp  .diag-classe-bar-fill { background: linear-gradient(90deg, #6FA8E8, #4A90E2); }
+
+.diag-classe-num {
+  font-family: 'Sora', sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: var(--navy);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.diag-filiere-bp .diag-classe-num { color: #4A90E2; }
+
+@media (max-width: 980px) {
+  .diag-filieres-grid { grid-template-columns: 1fr; gap: 36px; }
+  .diag-filiere-donut-stage,
+  .diag-filiere-donut { width: 180px; height: 180px; }
+  .diag-filiere-num { font-size: 56px; letter-spacing: -2.5px; }
+}
+
+/* ═══ Sous-vue : Élèves d'une classe ═══ */
+.diag-eleves-header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 28px;
+  align-items: end;
+  margin-top: 1rem;
+  margin-bottom: 1.75rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(20, 19, 16, 0.08);
+}
+.diag-eleves-title-block {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.diag-eleves-kicker {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #9A9A9A;
+}
+.diag-eleves-title {
+  font-family: 'Sora', sans-serif;
+  font-size: 36px;
+  font-weight: 800;
+  letter-spacing: -1.2px;
+  color: var(--navy);
+  line-height: 1.05;
+  margin: 0;
+}
+.diag-eleves-sub {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 13px;
+  color: var(--text2);
+  margin: 6px 0 0 0;
+}
+.diag-eleves-stats {
+  display: flex;
+  align-items: stretch;
+  gap: 18px;
+}
+.diag-eleves-graphics {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-shrink: 0;
+}
+
+/* Donut Notions acquises */
+.dce-donut-wrap {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  flex-shrink: 0;
+}
+.dce-donut { width: 140px; height: 140px; display: block; }
+.dce-donut-bg { stroke: rgba(20, 19, 16, 0.06); }
+.dce-donut-fill {
+  transition: stroke-dasharray 1s cubic-bezier(.4, 0, .2, 1);
+}
+.dce-donut-fill.good { stroke: url(#dceDonutGood); }
+.dce-donut-fill.mid  { stroke: url(#dceDonutMid); }
+.dce-donut-fill.bad  { stroke: url(#dceDonutBad); }
+.dce-donut-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  pointer-events: none;
+}
+.dce-donut-pct {
+  font-family: 'Sora', sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -1.2px;
+  line-height: 1;
+  color: var(--navy);
+  font-variant-numeric: tabular-nums;
+  display: inline-flex;
+  align-items: baseline;
+}
+.dce-donut-pct.good { color: #047857; }
+.dce-donut-pct.mid  { color: #B45309; }
+.dce-donut-pct.bad  { color: #991B1B; }
+.dce-donut-pct-suffix {
+  font-size: 16px;
+  font-weight: 700;
+  margin-left: 1px;
+}
+.dce-donut-lbl {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text3);
+  margin-top: 4px;
+  text-align: center;
+}
+
+/* Bar chart de distribution par palier */
+.dce-distrib {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 240px;
+}
+.dce-distrib-title {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text3);
+  margin-bottom: 2px;
+}
+.dce-distrib-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.dce-distrib-row {
+  display: grid;
+  grid-template-columns: 80px 1fr 22px;
+  align-items: center;
+  gap: 10px;
+}
+.dce-distrib-lbl {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text2);
+  letter-spacing: -0.1px;
+}
+.dce-distrib-bar {
+  height: 8px;
+  background: rgba(20, 19, 16, 0.04);
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+}
+.dce-distrib-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 1s cubic-bezier(.4, 0, .2, 1);
+}
+.dce-distrib-bar-fill.good { background: linear-gradient(90deg, #34D399, #059669); }
+.dce-distrib-bar-fill.mid  { background: linear-gradient(90deg, #FBBF24, #D97706); }
+.dce-distrib-bar-fill.bad  { background: linear-gradient(90deg, #F87171, #DC2626); }
+.dce-distrib-num {
+  font-family: 'Sora', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--text);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+.dce-distrib-num.is-zero { color: var(--text4); font-weight: 600; }
+.dce-distrib-foot {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 11.5px;
+  color: var(--text2);
+}
+.dce-distrib-foot-stat span:first-child {
+  font-family: 'Sora', sans-serif;
+  font-weight: 800;
+  color: var(--navy);
+  font-variant-numeric: tabular-nums;
+}
+.dce-distrib-foot-dys span:first-child { color: #6D28D9; }
+.dce-distrib-foot-sep { color: var(--text4); }
+.diag-eleves-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 10px 16px;
+  background: #FFFFFF;
+  border: 1px solid rgba(20, 19, 16, 0.06);
+  border-radius: 10px;
+  min-width: 72px;
+}
+.diag-eleves-stat-num {
+  font-family: 'Sora', sans-serif;
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.6px;
+  color: var(--navy);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  display: inline-flex;
+  align-items: baseline;
+}
+.diag-eleves-stat-pct {
+  font-size: 14px;
+  font-weight: 700;
+  margin-left: 1px;
+}
+.diag-eleves-stat-lbl {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text3);
+}
+
+.diag-eleves-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.diag-eleves-empty {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 13px;
+  color: var(--text3);
+  text-align: center;
+  padding: 40px;
+  font-style: italic;
+}
+
+.diag-eleve-card {
+  display: grid;
+  grid-template-columns: 36px 1fr auto auto;
+  gap: 16px;
+  align-items: center;
+  padding: 14px 18px;
+  background: #FFFFFF;
+  border: 1px solid rgba(20, 19, 16, 0.06);
+  border-radius: 12px;
+  box-shadow: 0 1px 2px rgba(20, 19, 16, 0.02);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+.diag-eleve-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(20, 19, 16, 0.06);
+  border-color: rgba(27, 46, 94, 0.15);
+}
+.diag-eleve-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--navy-l), #DDE5F4);
+  color: var(--navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Sora', sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
+}
+.diag-eleve-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+.diag-eleve-nom-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.diag-eleve-nom {
+  font-family: 'Sora', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.2px;
+  line-height: 1.2;
+}
+.diag-eleve-dys-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #6D28D9;
+  background: rgba(124, 58, 237, 0.10);
+  padding: 3px 9px;
+  border-radius: 999px;
+}
+.diag-eleve-dys-badge::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #7C3AED;
+}
+.diag-eleve-meta {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 11.5px;
+  color: var(--text3);
+}
+.diag-eleve-pct {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  min-width: 110px;
+}
+.diag-eleve-pct-bar {
+  width: 100%;
+  height: 4px;
+  background: rgba(20, 19, 16, 0.06);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.diag-eleve-pct-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.6s cubic-bezier(.4, 0, .2, 1);
+}
+.diag-eleve-pct-bar-fill.good { background: linear-gradient(90deg, #34D399, #059669); }
+.diag-eleve-pct-bar-fill.mid  { background: linear-gradient(90deg, #FBBF24, #D97706); }
+.diag-eleve-pct-bar-fill.bad  { background: linear-gradient(90deg, #F87171, #DC2626); }
+.diag-eleve-pct-row {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+.diag-eleve-pct-num {
+  font-family: 'Sora', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+  color: var(--text);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.diag-eleve-pct-num.good { color: #047857; }
+.diag-eleve-pct-num.mid  { color: #B45309; }
+.diag-eleve-pct-num.bad  { color: #991B1B; }
+.diag-eleve-pct-suffix {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text3);
+}
+.diag-eleve-lacunes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: rgba(20, 19, 16, 0.03);
+  min-width: 56px;
+}
+.diag-eleve-lacunes-num {
+  font-family: 'Sora', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.diag-eleve-lacunes-lbl {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text3);
+}
+@media (max-width: 720px) {
+  .diag-eleve-card { grid-template-columns: 36px 1fr; gap: 12px; }
+  .diag-eleve-pct, .diag-eleve-lacunes { grid-column: 1 / -1; flex-direction: row; align-items: center; justify-content: space-between; min-width: 0; padding: 8px 0; }
+  .diag-eleves-header { grid-template-columns: 1fr; }
+  .diag-eleves-stats { flex-wrap: wrap; }
+}
+
 /* ═══ Bloc Notions acquises — variante du bloc Élèves ═══ */
 .ap-diag-sublabel {
   font-family: 'Inter Tight', sans-serif;
-  font-size: 11px;
+  font-size: 11.5px;
   font-weight: 500;
-  letter-spacing: 0;
+  letter-spacing: 0.04em;
   text-transform: none;
-  color: var(--text3);
+  color: #7A7A7A;
   font-style: italic;
+  position: absolute;
+  top: 4px;
+  right: 0;
+  white-space: nowrap;
 }
 .ap-notions-num {
   font-family: 'Sora', sans-serif;
@@ -4275,7 +5063,7 @@ body:has(#section-accueil.active) {
           <!-- GAUCHE : Élèves diagnostiqués -->
           <div class="ap-diag" onclick="ouvrirVueDiagnostiques()">
             <div class="ap-diag-head">
-              <span class="ap-diag-kicker">Élèves diagnostiqués</span>
+              <span class="ap-diag-kicker" data-section="Section">Élèves diagnostiqués</span>
               <span class="ap-diag-live"><span class="ap-diag-live-dot"></span>live</span>
             </div>
 
@@ -4317,15 +5105,27 @@ body:has(#section-accueil.active) {
               <div class="ap-diag-leg ap-diag-leg-cap">
                 <span class="ap-diag-leg-swatch ap-diag-leg-swatch-cap"></span>
                 <div class="ap-diag-leg-info">
-                  <span class="ap-diag-leg-tag">CAP</span>
-                  <span class="ap-diag-leg-num" id="kpi-eval-cap">—</span>
+                  <div class="ap-diag-leg-row">
+                    <span class="ap-diag-leg-tag">CAP</span>
+                    <span class="ap-diag-leg-num" id="kpi-eval-cap">—</span>
+                  </div>
+                  <div class="ap-diag-leg-dys" id="kpi-eval-cap-dys-wrap">
+                    <span class="ap-diag-leg-dys-dot"></span>
+                    dont <span id="kpi-eval-cap-dys">—</span> en mode DYS
+                  </div>
                 </div>
               </div>
               <div class="ap-diag-leg ap-diag-leg-bp">
                 <span class="ap-diag-leg-swatch ap-diag-leg-swatch-bp"></span>
                 <div class="ap-diag-leg-info">
-                  <span class="ap-diag-leg-tag">Bac Pro</span>
-                  <span class="ap-diag-leg-num" id="kpi-eval-bp">—</span>
+                  <div class="ap-diag-leg-row">
+                    <span class="ap-diag-leg-tag">Bac Pro</span>
+                    <span class="ap-diag-leg-num" id="kpi-eval-bp">—</span>
+                  </div>
+                  <div class="ap-diag-leg-dys" id="kpi-eval-bp-dys-wrap">
+                    <span class="ap-diag-leg-dys-dot"></span>
+                    dont <span id="kpi-eval-bp-dys">—</span> en mode DYS
+                  </div>
                 </div>
               </div>
             </div>
@@ -4338,7 +5138,7 @@ body:has(#section-accueil.active) {
           <!-- DROITE : Notions acquises -->
           <div class="ap-diag ap-diag-notions" onclick="ouvrirVueNotionsAcquises()">
             <div class="ap-diag-head">
-              <span class="ap-diag-kicker">Notions acquises</span>
+              <span class="ap-diag-kicker" data-section="Section">Notions acquises</span>
               <span class="ap-diag-sublabel">Prérequis de seconde</span>
             </div>
 
@@ -4419,37 +5219,160 @@ body:has(#section-accueil.active) {
             <div class="page-loader-sub">Récupération de l'historique et des indicateurs<span class="page-loader-dots"></span></div>
           </div>
         </div>
+
+        <!-- ── Sous-vue principale ── -->
+        <div id="view-diag-main">
         <button class="back-btn" onclick="navVers('accueil')">← Retour à l'accueil</button>
 
         <!-- Sélecteur de mois + bandeau snapshot -->
         <div id="mois-selector-wrap" class="mois-selector-wrap"></div>
         <div id="mois-meta-wrap"></div>
 
-        <!-- Répartition par filière (hero) -->
-        <div class="themes-section-title" style="margin-top:.5rem;">Répartition par filière</div>
-        <div class="charts-grid charts-grid-2col">
+        <!-- Vue par filière : 2 colonnes parallèles CAP / Bac Pro -->
+        <div class="diag-filieres-grid">
 
-          <div class="chart-card">
-            <div class="chart-header">
-              <div>
-                <div class="chart-title">Vue d'ensemble</div>
-                <div class="chart-subtitle">Volumétrie globale et répartition entre les filières CAP et Bac Pro.</div>
+          <!-- Colonne CAP -->
+          <div class="diag-filiere-col diag-filiere-cap">
+            <div class="diag-filiere-card">
+              <div class="diag-filiere-head">
+                <span class="diag-filiere-tag">CAP</span>
+                <span class="diag-filiere-sub">Filière</span>
+              </div>
+              <div class="diag-filiere-donut-stage">
+                <svg class="diag-filiere-donut" viewBox="0 0 220 220" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="diagCapDonutGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#2C4A96"/>
+                      <stop offset="100%" stop-color="#1B2E5E"/>
+                    </linearGradient>
+                  </defs>
+                  <circle class="diag-filiere-donut-bg" cx="110" cy="110" r="92" stroke-width="14" fill="none"/>
+                  <circle class="diag-filiere-donut-fill diag-filiere-donut-cap" cx="110" cy="110" r="92" stroke-width="14" fill="none"
+                          stroke-dasharray="0 578.05" transform="rotate(-90 110 110)" stroke-linecap="round"/>
+                </svg>
+                <div class="diag-filiere-donut-center">
+                  <span class="diag-filiere-num" id="diag-cap-num">—</span>
+                  <span class="diag-filiere-num-lbl">élèves</span>
+                </div>
+              </div>
+              <div class="diag-filiere-pct">
+                <span id="diag-cap-pct">—</span><span class="diag-filiere-pct-suffix">% des diagnostiqués</span>
+              </div>
+              <div class="diag-filiere-dys" id="diag-cap-dys-wrap">
+                <span class="diag-filiere-dys-dot"></span>
+                dont <span id="diag-cap-dys">—</span> en mode DYS
               </div>
             </div>
-            <div class="chart-body" id="chart-filiere"></div>
+
+            <!-- Liste des classes CAP -->
+            <div class="diag-classes-list" id="diag-classes-cap">
+              <div class="diag-classes-empty">Chargement…</div>
+            </div>
           </div>
 
-          <!-- Répartition par classe -->
-          <div class="chart-card">
-            <div class="chart-header">
-              <div>
-                <div class="chart-title">Élèves par classe</div>
-                <div class="chart-subtitle">Volumétrie par classe pour suivre le déploiement.</div>
+          <!-- Colonne Bac Pro -->
+          <div class="diag-filiere-col diag-filiere-bp">
+            <div class="diag-filiere-card">
+              <div class="diag-filiere-head">
+                <span class="diag-filiere-tag diag-filiere-tag-bp">Bac Pro</span>
+                <span class="diag-filiere-sub">Filière</span>
+              </div>
+              <div class="diag-filiere-donut-stage">
+                <svg class="diag-filiere-donut" viewBox="0 0 220 220" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="diagBpDonutGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#6FA8E8"/>
+                      <stop offset="100%" stop-color="#4A90E2"/>
+                    </linearGradient>
+                  </defs>
+                  <circle class="diag-filiere-donut-bg" cx="110" cy="110" r="92" stroke-width="14" fill="none"/>
+                  <circle class="diag-filiere-donut-fill diag-filiere-donut-bp" cx="110" cy="110" r="92" stroke-width="14" fill="none"
+                          stroke-dasharray="0 578.05" transform="rotate(-90 110 110)" stroke-linecap="round"/>
+                </svg>
+                <div class="diag-filiere-donut-center">
+                  <span class="diag-filiere-num" id="diag-bp-num">—</span>
+                  <span class="diag-filiere-num-lbl">élèves</span>
+                </div>
+              </div>
+              <div class="diag-filiere-pct">
+                <span id="diag-bp-pct">—</span><span class="diag-filiere-pct-suffix">% des diagnostiqués</span>
+              </div>
+              <div class="diag-filiere-dys" id="diag-bp-dys-wrap">
+                <span class="diag-filiere-dys-dot"></span>
+                dont <span id="diag-bp-dys">—</span> en mode DYS
               </div>
             </div>
-            <div class="chart-body" id="vol-chart-classes"></div>
+
+            <!-- Liste des classes BP -->
+            <div class="diag-classes-list" id="diag-classes-bp">
+              <div class="diag-classes-empty">Chargement…</div>
+            </div>
           </div>
 
+        </div>
+
+        <!-- Anciens conteneurs cachés (compat JS) -->
+        <div style="display:none;">
+          <div id="chart-filiere"></div>
+          <div id="vol-chart-classes"></div>
+        </div>
+        </div><!-- fin view-diag-main -->
+
+        <!-- ── Sous-vue : Élèves d'une classe ── -->
+        <div id="view-diag-classe-eleves" style="display:none;">
+          <button class="back-btn" onclick="retourDiagMain()">← Retour aux filières</button>
+          <div class="diag-eleves-header">
+            <div class="diag-eleves-title-block">
+              <span class="diag-eleves-kicker" id="dce-kicker">Classe</span>
+              <h2 class="diag-eleves-title" id="dce-title">—</h2>
+              <p class="diag-eleves-sub" id="dce-sub">—</p>
+            </div>
+            <div class="diag-eleves-graphics">
+
+              <!-- Donut Notions acquises -->
+              <div class="dce-donut-wrap">
+                <svg class="dce-donut" viewBox="0 0 140 140" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="dceDonutGood" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#34D399"/>
+                      <stop offset="100%" stop-color="#059669"/>
+                    </linearGradient>
+                    <linearGradient id="dceDonutMid" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#FBBF24"/>
+                      <stop offset="100%" stop-color="#D97706"/>
+                    </linearGradient>
+                    <linearGradient id="dceDonutBad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#F87171"/>
+                      <stop offset="100%" stop-color="#DC2626"/>
+                    </linearGradient>
+                  </defs>
+                  <circle class="dce-donut-bg" cx="70" cy="70" r="58" stroke-width="11" fill="none"/>
+                  <circle class="dce-donut-fill" cx="70" cy="70" r="58" stroke-width="11" fill="none"
+                          stroke-dasharray="0 364.42" transform="rotate(-90 70 70)" stroke-linecap="round"/>
+                </svg>
+                <div class="dce-donut-center">
+                  <span class="dce-donut-pct" id="dce-stat-pct">—<span class="dce-donut-pct-suffix">%</span></span>
+                  <span class="dce-donut-lbl">Notions acquises</span>
+                </div>
+              </div>
+
+              <!-- Distribution par palier -->
+              <div class="dce-distrib">
+                <div class="dce-distrib-title">Distribution des élèves</div>
+                <div class="dce-distrib-rows" id="dce-distrib-rows"></div>
+                <div class="dce-distrib-foot">
+                  <span class="dce-distrib-foot-stat"><span id="dce-stat-total">—</span> élève<span id="dce-stat-total-plural">s</span></span>
+                  <span class="dce-distrib-foot-sep">·</span>
+                  <span class="dce-distrib-foot-stat dce-distrib-foot-dys"><span id="dce-stat-dys">—</span> en mode DYS</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="diag-eleves-list" id="dce-list">
+            <div class="diag-eleves-empty">Chargement…</div>
+          </div>
         </div>
 
       </div>
@@ -5697,24 +6620,25 @@ function renderNaChartGlobal(){
   var notionsAcquises=DATA_EVAL.filter(function(r){return r.assigne==='non';}).length;
   var pctAcquises=totalNotions>0?Math.round(notionsAcquises/totalNotions*100):0;
   var classeJauge;
-  if(pctAcquises>=80) classeJauge='excellent';
-  else if(pctAcquises>=60) classeJauge='good';
-  else if(pctAcquises>=40) classeJauge='mid';
-  else classeJauge='bad';
+  // Seuils alignés sur les paliers de la grille de lecture (lycée pro réaliste)
+  if(pctAcquises>=70) classeJauge='good';        // Solide
+  else if(pctAcquises>=50) classeJauge='mid';    // Acceptable
+  else if(pctAcquises>=30) classeJauge='warn';   // Insuffisant
+  else classeJauge='bad';                         // Critique
   var circ=2*Math.PI*90;
   var offset=circ-(pctAcquises/100)*circ;
 
   // Panneau d'explication dynamique : interprétation pédagogique + appel à l'action
   var explainTitre, explainP1, explainP2;
-  if(pctAcquises>=80){
+  if(pctAcquises>=70){
     explainTitre='Niveau solide à l\'entrée du lycée';
     explainP1='Les élèves de l\'établissement maîtrisent <strong>'+pctAcquises+'%</strong> des prérequis attendus à la sortie du collège. La base est là pour aborder les programmes de seconde dans de bonnes conditions.';
     explainP2='Les fiches de remédiation permettent de consolider les <strong>'+(100-pctAcquises)+'%</strong> de notions encore fragiles, pour ne pas laisser de zones d\'ombre s\'installer durant l\'année.';
-  } else if(pctAcquises>=60){
+  } else if(pctAcquises>=50){
     explainTitre='Des bases correctes, mais des fragilités à travailler';
     explainP1='Les élèves maîtrisent <strong>'+pctAcquises+'%</strong> des prérequis du collège. C\'est un socle exploitable, mais il reste des notions clés non acquises qui peuvent freiner les apprentissages de seconde.';
     explainP2='Pour combler ces lacunes, il est important que les élèves <strong>fassent leurs fiches de remédiation</strong> dans les semaines qui viennent. C\'est le levier principal pour stabiliser leur niveau.';
-  } else if(pctAcquises>=40){
+  } else if(pctAcquises>=30){
     explainTitre='Prérequis du collège partiellement acquis';
     explainP1='Avec <strong>'+pctAcquises+'%</strong> seulement, les élèves de l\'établissement n\'ont pas réellement consolidé les notions du collège. Cela compromet leur capacité à suivre les programmes de seconde sans aide.';
     explainP2='Il est essentiel que <strong>chaque élève réalise ses fiches de remédiation</strong> sans attendre. C\'est le moyen le plus direct de combler les écarts avant que les nouveaux apprentissages ne s\'empilent dessus.';
@@ -5724,9 +6648,46 @@ function renderNaChartGlobal(){
     explainP2='La priorité absolue est que <strong>chaque élève fasse ses fiches de remédiation</strong>. Sans ce travail de fond, les difficultés rencontrées en classe vont se cumuler tout au long de l\'année.';
   }
 
+  // Définition des paliers de référence (adaptés au public lycée pro)
+  var PALIERS=[
+    {id:'solide',     min:70, max:100, lbl:'Solide',      desc:'Bases bien acquises',      cls:'good'},
+    {id:'acceptable', min:50, max:70,  lbl:'Acceptable',  desc:'Socle exploitable',        cls:'mid'},
+    {id:'insuffisant',min:30, max:50,  lbl:'Insuffisant', desc:'Bases fragiles',           cls:'warn'},
+    {id:'critique',   min:0,  max:30,  lbl:'Critique',    desc:'Bases non consolidées',    cls:'bad'}
+  ];
+  // Identifier le palier actuel
+  var palierActuel=PALIERS.find(function(p){return pctAcquises>=p.min && (pctAcquises<p.max || (p.max===100 && pctAcquises===100));});
+  if(!palierActuel) palierActuel=PALIERS[3]; // fallback
+  // Construction du HTML de la jauge de référence
+  var jaugeRefHtml='<div class="grille-ref">'
+    +'<div class="grille-ref-kicker">Grille de lecture</div>'
+    +'<div class="grille-ref-title">Où se situe ce résultat&nbsp;?</div>'
+    +'<div class="grille-ref-list">';
+  PALIERS.forEach(function(p){
+    var isActif=(p.id===palierActuel.id);
+    jaugeRefHtml+='<div class="grille-ref-row '+p.cls+(isActif?' is-active':'')+'">'
+      +'<span class="grille-ref-dot"></span>'
+      +'<div class="grille-ref-info">'
+        +'<div class="grille-ref-row-head">'
+          +'<span class="grille-ref-lbl">'+p.lbl+'</span>'
+          +'<span class="grille-ref-range">'+(p.min===0?'< '+p.max:p.max===100?'≥ '+p.min:p.min+'–'+p.max)+'%</span>'
+        +'</div>'
+        +'<div class="grille-ref-desc">'+p.desc+'</div>'
+      +'</div>'
+    +'</div>';
+  });
+  jaugeRefHtml+='</div>'
+    +'<div class="grille-ref-pointer">'
+      +'<span class="grille-ref-pointer-pct">'+pctAcquises+'%</span>'
+      +'<span class="grille-ref-pointer-arrow">→</span>'
+      +'<span class="grille-ref-pointer-niv">'+palierActuel.lbl.toLowerCase()+'</span>'
+    +'</div>'
+  +'</div>';
+
   container.innerHTML=
     '<div class="global-container">'
       +'<div class="global-main">'
+        +jaugeRefHtml
         +'<div class="global-gauge">'
           +'<svg viewBox="0 0 220 220" width="220" height="220">'
             +'<circle class="global-gauge-bg" cx="110" cy="110" r="90"/>'
@@ -6408,6 +7369,11 @@ function _basculerVueDiagnostiques(){
   document.querySelectorAll('.sb-item').forEach(function(n){n.classList.remove('active');});
   document.getElementById('section-diagnostiques').classList.add('active');
   document.getElementById('sb-accueil').classList.add('active');
+  // Toujours réafficher la vue principale (et masquer la sous-vue élèves de classe)
+  var viewMain=document.getElementById('view-diag-main');
+  var viewEleves=document.getElementById('view-diag-classe-eleves');
+  if(viewMain) viewMain.style.display='block';
+  if(viewEleves) viewEleves.style.display='none';
   setBreadcrumb([
     {label:'Accueil',onclick:'navVers(\'accueil\')'},
     {label:'Élèves diagnostiqués',current:true}
@@ -6464,6 +7430,7 @@ function renderVueDiagnostiquesComplete(){
     renderChartFiliere();
     renderVolChartClasses();
     renderDysChart();
+    renderDiagFilieres();
   } else {
     // Mode archive : on rend depuis le snapshot
     var snap=SNAPSHOTS_HISTORIQUE.find(function(s){return getMoisKey(s.mois)===moisSelectionne;});
@@ -6471,6 +7438,7 @@ function renderVueDiagnostiquesComplete(){
       renderChartsDepuisSnapshot(snap);
       renderVolChartClassesDepuisSnapshot(snap);
       renderDysChartIndisponible();
+      renderDiagFilieresDepuisSnapshot(snap);
     }
   }
 }
@@ -6700,6 +7668,395 @@ function renderVolChartClasses(){
   }).join('')+'</div>';
 
   container.innerHTML='<div class="vol-classes-container">'+rowsHtml+'</div>';
+}
+
+/* ═══ Helpers globaux ═══ */
+// animation "count-up" (compteur qui monte progressivement vers la valeur cible)
+function animateCountUp(element, target, duration, suffix){
+  if(!element) return;
+  duration = duration || 1400;
+  suffix = suffix || '';
+  target = parseInt(target, 10);
+  if(isNaN(target)) target = 0;
+  if(element._countAnim){ cancelAnimationFrame(element._countAnim); }
+  var start = parseInt(element.textContent, 10);
+  if(isNaN(start)) start = 0;
+  if(start === target){ element.textContent = target + suffix; return; }
+  var startTime = null;
+  function step(timestamp){
+    if(!startTime) startTime = timestamp;
+    var elapsed = timestamp - startTime;
+    var progress = Math.min(elapsed / duration, 1);
+    var eased = 1 - Math.pow(1 - progress, 3);
+    var current = Math.round(start + (target - start) * eased);
+    element.textContent = current + suffix;
+    if(progress < 1){
+      element._countAnim = requestAnimationFrame(step);
+    } else {
+      element.textContent = target + suffix;
+      element._countAnim = null;
+    }
+  }
+  element._countAnim = requestAnimationFrame(step);
+}
+
+/* ═══ Vue Élèves diagnostiqués — 2 colonnes parallèles CAP / Bac Pro ═══ */
+function renderDiagFilieres(){
+  var perim=2*Math.PI*92; // ≈ 578.05
+
+  // 1) Compter les élèves uniques par filière et par classe
+  var stats={CAP:{total:0,classes:[],dys:0},BACPRO:{total:0,classes:[],dys:0}};
+  NIVEAUX.forEach(function(niv){
+    var filiereId=niv.id; // 'CAP' ou 'BACPRO'
+    if(!stats[filiereId]) return;
+    niv.classes.forEach(function(cl){
+      var mapE={};
+      DATA_EVAL.forEach(function(r){if(matchClasse(r.classe,cl.id)) mapE[r.email]=true;});
+      var emails=Object.keys(mapE);
+      var count=emails.length;
+      // Compter les élèves DYS dans cette classe
+      var dysCount=emails.filter(function(em){return estDys(em);}).length;
+      stats[filiereId].total+=count;
+      stats[filiereId].dys+=dysCount;
+      stats[filiereId].classes.push({id:cl.id,nom:cl.nom,count:count});
+    });
+  });
+  var totalGlobal=stats.CAP.total+stats.BACPRO.total;
+  var pctCap=totalGlobal>0?Math.round(stats.CAP.total/totalGlobal*100):0;
+  var pctBp =totalGlobal>0?Math.round(stats.BACPRO.total/totalGlobal*100):0;
+
+  // 2) Mettre à jour les chiffres centraux des donuts
+  var capNumEl=document.getElementById('diag-cap-num');
+  var bpNumEl=document.getElementById('diag-bp-num');
+  var capPctEl=document.getElementById('diag-cap-pct');
+  var bpPctEl=document.getElementById('diag-bp-pct');
+  var capDysEl=document.getElementById('diag-cap-dys');
+  var bpDysEl=document.getElementById('diag-bp-dys');
+  if(capNumEl) animateCountUp(capNumEl, stats.CAP.total, 1400);
+  if(bpNumEl)  animateCountUp(bpNumEl,  stats.BACPRO.total, 1400);
+  if(capPctEl) animateCountUp(capPctEl, pctCap, 1400);
+  if(bpPctEl)  animateCountUp(bpPctEl,  pctBp, 1400);
+  if(capDysEl) animateCountUp(capDysEl, stats.CAP.dys, 1400);
+  if(bpDysEl)  animateCountUp(bpDysEl,  stats.BACPRO.dys, 1400);
+  // Atténuer les sous-lignes DYS si 0
+  var capDysWrap=document.getElementById('diag-cap-dys-wrap');
+  var bpDysWrap=document.getElementById('diag-bp-dys-wrap');
+  if(capDysWrap) capDysWrap.classList.toggle('is-zero', stats.CAP.dys===0);
+  if(bpDysWrap) bpDysWrap.classList.toggle('is-zero', stats.BACPRO.dys===0);
+
+  // 3) Animer les donuts (départ à 0 puis transition CSS)
+  var capDonut=document.querySelector('.diag-filiere-donut-cap');
+  var bpDonut=document.querySelector('.diag-filiere-donut-bp');
+  if(capDonut){
+    var arcCap=(pctCap/100)*perim;
+    capDonut.setAttribute('stroke-dasharray', '0 '+perim.toFixed(2));
+    void capDonut.getBoundingClientRect();
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){
+        capDonut.setAttribute('stroke-dasharray', arcCap.toFixed(2)+' '+(perim-arcCap).toFixed(2));
+      });
+    });
+  }
+  if(bpDonut){
+    var arcBp=(pctBp/100)*perim;
+    bpDonut.setAttribute('stroke-dasharray', '0 '+perim.toFixed(2));
+    void bpDonut.getBoundingClientRect();
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){
+        bpDonut.setAttribute('stroke-dasharray', arcBp.toFixed(2)+' '+(perim-arcBp).toFixed(2));
+      });
+    });
+  }
+
+  // 4) Construire les listes de classes (chaque colonne)
+  _renderDiagClassesList('diag-classes-cap', stats.CAP.classes);
+  _renderDiagClassesList('diag-classes-bp',  stats.BACPRO.classes);
+}
+
+function _renderDiagClassesList(containerId, classes){
+  var container=document.getElementById(containerId);
+  if(!container) return;
+  if(classes.length===0){
+    container.innerHTML='<div class="diag-classes-empty">Aucune classe.</div>';
+    return;
+  }
+  // Tri : classes avec des élèves d'abord (décroissant), puis classes vides
+  var sorted=classes.slice().sort(function(a,b){
+    if(b.count!==a.count) return b.count-a.count;
+    return a.nom.localeCompare(b.nom);
+  });
+  var maxCount=Math.max.apply(null, sorted.map(function(c){return c.count;}).concat([1]));
+  var html=sorted.map(function(item){
+    var pctBar=maxCount>0?(item.count/maxCount*100):0;
+    var displayCount=item.count>0?item.count:'—';
+    var clickable=item.count>0;
+    var idEsc=item.id.replace(/'/g,"\\'");
+    var onclickAttr=clickable?' onclick="ouvrirDiagClasseEleves(\''+idEsc+'\')"':'';
+    return '<div class="diag-classe-row'+(item.count===0?' is-empty':'')+(clickable?' is-clickable':'')+'"'+onclickAttr+'>'
+      +'<div class="diag-classe-info">'
+        +'<span class="diag-classe-nom">'+esc(item.nom)+'</span>'
+        +'<div class="diag-classe-bar"><div class="diag-classe-bar-fill" style="width:'+pctBar.toFixed(1)+'%;"></div></div>'
+      +'</div>'
+      +'<span class="diag-classe-num">'+displayCount+'</span>'
+      +(clickable?'<span class="diag-classe-arrow">→</span>':'')
+      +'</div>';
+  }).join('');
+  container.innerHTML=html;
+  // Si la liste vient d'être rendue, l'animation des barres se déclenche via la transition CSS
+  // (les barres partent de width:0 à leur valeur, mais comme on les définit immédiatement, on doit forcer via rAF)
+  requestAnimationFrame(function(){
+    requestAnimationFrame(function(){
+      // Re-trigger la transition en remettant les widths (au cas où le navigateur les a déjà appliquées)
+      Array.prototype.forEach.call(container.querySelectorAll('.diag-classe-bar-fill'), function(bar){
+        var w=bar.style.width;
+        bar.style.width='0%';
+        void bar.getBoundingClientRect();
+        bar.style.width=w;
+      });
+    });
+  });
+}
+
+// Version snapshot (mois archivé)
+// Bascule vers la sous-vue "élèves d'une classe" depuis la vue diagnostiques principale
+function ouvrirDiagClasseEleves(classeId){
+  // Retrouver la classe
+  var niv=NIVEAUX.find(function(n){return n.classes.some(function(c){return c.id===classeId;});});
+  var cl=niv?niv.classes.find(function(c){return c.id===classeId;}):null;
+  if(!niv || !cl) return;
+
+  // Calculer les élèves uniques de cette classe
+  var mapE={};
+  DATA_EVAL.forEach(function(r){
+    if(matchClasse(r.classe, classeId)){
+      if(!mapE[r.email]){
+        var compte=DATA_COMPTES.find(function(c){return String(c.email||'').toLowerCase()===String(r.email||'').toLowerCase();});
+        mapE[r.email]={
+          email: r.email,
+          nom: compte ? (compte.nom||'') : '',
+          prenom: compte ? (compte.prenom||'') : '',
+          dys: compte ? String(compte.dys||'').toLowerCase()==='oui' : false,
+          totalNotions: 0,
+          notionsAcquises: 0,
+          lacunes: 0
+        };
+      }
+      mapE[r.email].totalNotions++;
+      if(r.assigne==='non') mapE[r.email].notionsAcquises++;
+      else if(r.assigne==='oui') mapE[r.email].lacunes++;
+    }
+  });
+  var eleves=Object.values(mapE);
+
+  // Tri : DYS d'abord, puis alphabétique
+  eleves.sort(function(a,b){
+    if(a.dys!==b.dys) return a.dys?-1:1;
+    var nomA=(a.nom+' '+a.prenom).toLowerCase();
+    var nomB=(b.nom+' '+b.prenom).toLowerCase();
+    return nomA.localeCompare(nomB);
+  });
+
+  // Stats globales de la classe
+  var totalEleves=eleves.length;
+  var totalDys=eleves.filter(function(e){return e.dys;}).length;
+  var totalNotionsClasse=eleves.reduce(function(s,e){return s+e.totalNotions;},0);
+  var notionsAcquisesClasse=eleves.reduce(function(s,e){return s+e.notionsAcquises;},0);
+  var pctClasse=totalNotionsClasse>0?Math.round(notionsAcquisesClasse/totalNotionsClasse*100):0;
+
+  // Calcul de la distribution par palier (par élève)
+  // Seuils : Solide ≥70%, Acceptable 50-70%, Insuffisant 30-50%, Critique <30%
+  var paliers={solide:0, acceptable:0, insuffisant:0, critique:0};
+  eleves.forEach(function(e){
+    var pct=e.totalNotions>0?Math.round(e.notionsAcquises/e.totalNotions*100):0;
+    if(pct>=70) paliers.solide++;
+    else if(pct>=50) paliers.acceptable++;
+    else if(pct>=30) paliers.insuffisant++;
+    else paliers.critique++;
+  });
+
+  // Mise à jour de l'en-tête
+  document.getElementById('dce-kicker').textContent=niv.nom;
+  document.getElementById('dce-title').textContent=cl.nom;
+  document.getElementById('dce-sub').textContent=totalEleves+' élève'+(totalEleves>1?'s':'')+' diagnostiqué'+(totalEleves>1?'s':'')+(totalDys>0?(' · '+totalDys+' en mode DYS'):'');
+  animateCountUp(document.getElementById('dce-stat-total'), totalEleves, 1000);
+  animateCountUp(document.getElementById('dce-stat-dys'), totalDys, 1000);
+  animateCountUp(document.getElementById('dce-stat-pct'), pctClasse, 1000);
+  // Pluriel "élève(s)"
+  var pluralEl=document.getElementById('dce-stat-total-plural');
+  if(pluralEl) pluralEl.textContent=(totalEleves>1?'s':'');
+
+  // Animation du donut Notions acquises
+  var donutFill=document.querySelector('.dce-donut-fill');
+  var donutPct=document.querySelector('.dce-donut-pct');
+  if(donutFill){
+    var perim=2*Math.PI*58; // ≈ 364.42
+    var arcTarget=(pctClasse/100)*perim;
+    // Couleur selon palier
+    donutFill.classList.remove('good','mid','bad');
+    if(pctClasse>=70) donutFill.classList.add('good');
+    else if(pctClasse>=40) donutFill.classList.add('mid');
+    else donutFill.classList.add('bad');
+    // Couleur du % central
+    if(donutPct){
+      donutPct.classList.remove('good','mid','bad');
+      if(pctClasse>=70) donutPct.classList.add('good');
+      else if(pctClasse>=40) donutPct.classList.add('mid');
+      else donutPct.classList.add('bad');
+    }
+    // Animation
+    donutFill.setAttribute('stroke-dasharray', '0 '+perim.toFixed(2));
+    void donutFill.getBoundingClientRect();
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){
+        donutFill.setAttribute('stroke-dasharray', arcTarget.toFixed(2)+' '+(perim-arcTarget).toFixed(2));
+      });
+    });
+  }
+
+  // Bar chart de distribution
+  var distribRows=document.getElementById('dce-distrib-rows');
+  if(distribRows){
+    var maxPalier=Math.max(paliers.solide, paliers.acceptable, paliers.insuffisant, paliers.critique, 1);
+    var rowsConfig=[
+      {key:'solide',      lbl:'Solide',      cls:'good', count:paliers.solide},
+      {key:'acceptable',  lbl:'Acceptable',  cls:'good', count:paliers.acceptable},
+      {key:'insuffisant', lbl:'Insuffisant', cls:'mid',  count:paliers.insuffisant},
+      {key:'critique',    lbl:'Critique',    cls:'bad',  count:paliers.critique}
+    ];
+    var rowsHtml=rowsConfig.map(function(r){
+      var widthPct=(r.count/maxPalier)*100;
+      return '<div class="dce-distrib-row">'
+        +'<span class="dce-distrib-lbl">'+r.lbl+'</span>'
+        +'<div class="dce-distrib-bar"><div class="dce-distrib-bar-fill '+r.cls+'" style="width:0%;" data-target="'+widthPct.toFixed(1)+'"></div></div>'
+        +'<span class="dce-distrib-num'+(r.count===0?' is-zero':'')+'">'+r.count+'</span>'
+      +'</div>';
+    }).join('');
+    distribRows.innerHTML=rowsHtml;
+    // Animation des barres : on déclenche la transition CSS au prochain frame
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){
+        Array.prototype.forEach.call(distribRows.querySelectorAll('.dce-distrib-bar-fill'), function(bar){
+          bar.style.width=bar.getAttribute('data-target')+'%';
+        });
+      });
+    });
+  }
+
+  // Construction de la liste
+  var listEl=document.getElementById('dce-list');
+  if(eleves.length===0){
+    listEl.innerHTML='<div class="diag-eleves-empty">Aucun élève diagnostiqué dans cette classe.</div>';
+  } else {
+    var html=eleves.map(function(e){
+      var nomComplet=(e.prenom?e.prenom:'')+' '+(e.nom?e.nom:'');
+      nomComplet=nomComplet.trim();
+      if(!nomComplet) nomComplet=e.email||'(élève sans nom)';
+      // Initiales pour avatar
+      var initiales='';
+      if(e.prenom) initiales+=e.prenom.charAt(0).toUpperCase();
+      if(e.nom) initiales+=e.nom.charAt(0).toUpperCase();
+      if(!initiales) initiales=(e.email||'?').charAt(0).toUpperCase();
+      // % notions acquises de l'élève
+      var pctEleve=e.totalNotions>0?Math.round(e.notionsAcquises/e.totalNotions*100):0;
+      var classePct=pctEleve>=70?'good':(pctEleve>=40?'mid':'bad');
+      return '<div class="diag-eleve-card">'
+        +'<div class="diag-eleve-avatar">'+esc(initiales)+'</div>'
+        +'<div class="diag-eleve-info">'
+          +'<div class="diag-eleve-nom-line">'
+            +'<span class="diag-eleve-nom">'+esc(nomComplet)+'</span>'
+            +(e.dys?'<span class="diag-eleve-dys-badge">Mode DYS</span>':'')
+          +'</div>'
+          +(e.email?'<div class="diag-eleve-meta">'+esc(e.email)+'</div>':'')
+        +'</div>'
+        +'<div class="diag-eleve-pct">'
+          +'<div class="diag-eleve-pct-row">'
+            +'<span class="diag-eleve-pct-num '+classePct+'">'+pctEleve+'%</span>'
+            +'<span class="diag-eleve-pct-suffix">acquis</span>'
+          +'</div>'
+          +'<div class="diag-eleve-pct-bar"><div class="diag-eleve-pct-bar-fill '+classePct+'" style="width:'+pctEleve+'%;"></div></div>'
+        +'</div>'
+        +'<div class="diag-eleve-lacunes">'
+          +'<span class="diag-eleve-lacunes-num">'+e.lacunes+'</span>'
+          +'<span class="diag-eleve-lacunes-lbl">lacune'+(e.lacunes>1?'s':'')+'</span>'
+        +'</div>'
+      +'</div>';
+    }).join('');
+    listEl.innerHTML=html;
+  }
+
+  // Bascule de vue
+  document.getElementById('view-diag-main').style.display='none';
+  document.getElementById('view-diag-classe-eleves').style.display='block';
+
+  // Mettre à jour le breadcrumb
+  setBreadcrumb([
+    {label:'Accueil',onclick:'navVers(\'accueil\')'},
+    {label:'Élèves diagnostiqués',onclick:'retourDiagMain()'},
+    {label:cl.nom,current:true}
+  ]);
+
+  // Scroll en haut
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function retourDiagMain(){
+  document.getElementById('view-diag-classe-eleves').style.display='none';
+  document.getElementById('view-diag-main').style.display='block';
+  setBreadcrumb([
+    {label:'Accueil',onclick:'navVers(\'accueil\')'},
+    {label:'Élèves diagnostiqués',current:true}
+  ]);
+}
+
+function renderDiagFilieresDepuisSnapshot(snap){
+  // Si le snapshot a la structure attendue, on peut reconstruire ; sinon on rend vide proprement
+  if(!snap || !snap.parClasse){
+    // On essaie quand même de rendre depuis les données temps réel actuelles si pas de snapshot par classe
+    renderDiagFilieres();
+    return;
+  }
+  var perim=2*Math.PI*92;
+  var stats={CAP:{total:0,classes:[]},BACPRO:{total:0,classes:[]}};
+  NIVEAUX.forEach(function(niv){
+    var filiereId=niv.id;
+    if(!stats[filiereId]) return;
+    niv.classes.forEach(function(cl){
+      var c=(snap.parClasse[cl.id]&&snap.parClasse[cl.id].nbEleves)||0;
+      stats[filiereId].total+=c;
+      stats[filiereId].classes.push({id:cl.id,nom:cl.nom,count:c});
+    });
+  });
+  var totalGlobal=stats.CAP.total+stats.BACPRO.total;
+  var pctCap=totalGlobal>0?Math.round(stats.CAP.total/totalGlobal*100):0;
+  var pctBp =totalGlobal>0?Math.round(stats.BACPRO.total/totalGlobal*100):0;
+  var capNumEl=document.getElementById('diag-cap-num');
+  var bpNumEl=document.getElementById('diag-bp-num');
+  var capPctEl=document.getElementById('diag-cap-pct');
+  var bpPctEl=document.getElementById('diag-bp-pct');
+  if(capNumEl) animateCountUp(capNumEl, stats.CAP.total, 1400);
+  if(bpNumEl)  animateCountUp(bpNumEl,  stats.BACPRO.total, 1400);
+  if(capPctEl) animateCountUp(capPctEl, pctCap, 1400);
+  if(bpPctEl)  animateCountUp(bpPctEl,  pctBp, 1400);
+  var capDonut=document.querySelector('.diag-filiere-donut-cap');
+  var bpDonut=document.querySelector('.diag-filiere-donut-bp');
+  if(capDonut){
+    var arcCap=(pctCap/100)*perim;
+    capDonut.setAttribute('stroke-dasharray', '0 '+perim.toFixed(2));
+    void capDonut.getBoundingClientRect();
+    requestAnimationFrame(function(){requestAnimationFrame(function(){
+      capDonut.setAttribute('stroke-dasharray', arcCap.toFixed(2)+' '+(perim-arcCap).toFixed(2));
+    });});
+  }
+  if(bpDonut){
+    var arcBp=(pctBp/100)*perim;
+    bpDonut.setAttribute('stroke-dasharray', '0 '+perim.toFixed(2));
+    void bpDonut.getBoundingClientRect();
+    requestAnimationFrame(function(){requestAnimationFrame(function(){
+      bpDonut.setAttribute('stroke-dasharray', arcBp.toFixed(2)+' '+(perim-arcBp).toFixed(2));
+    });});
+  }
+  _renderDiagClassesList('diag-classes-cap', stats.CAP.classes);
+  _renderDiagClassesList('diag-classes-bp',  stats.BACPRO.classes);
 }
 
 function renderVolChartClassesDepuisSnapshot(snap){
@@ -7639,55 +8996,28 @@ function renderAccueil(){
   var validees=DATA_REM.filter(function(r){return r.statut==='quiz_final_valide';}).length;
   var pctComblees=assignees>0?Math.round(validees/assignees*100):0;
 
-  // Helper : animation "count-up" (compteur qui monte progressivement vers la valeur cible)
-  // - element : élément DOM cible
-  // - target : valeur finale (entier)
-  // - duration : durée en ms (par défaut 1400ms pour matcher la transition du donut)
-  // - suffix : texte ajouté après le nombre (ex: "%")
-  function animateCountUp(element, target, duration, suffix){
-    if(!element) return;
-    duration = duration || 1400;
-    suffix = suffix || '';
-    target = parseInt(target, 10);
-    if(isNaN(target)) target = 0;
-    // Stoppe une animation en cours sur cet élément
-    if(element._countAnim){ cancelAnimationFrame(element._countAnim); }
-    var start = parseInt(element.textContent, 10);
-    if(isNaN(start)) start = 0;
-    // Si la valeur ne change pas, pas d'animation
-    if(start === target){ element.textContent = target + suffix; return; }
-    // Pour les très petites valeurs (≤3) on garde un mini-effet, sinon ease-out cubic
-    var startTime = null;
-    function step(timestamp){
-      if(!startTime) startTime = timestamp;
-      var elapsed = timestamp - startTime;
-      var progress = Math.min(elapsed / duration, 1);
-      // Easing : cubic ease-out (démarre vite, ralentit à la fin) — plus organique
-      var eased = 1 - Math.pow(1 - progress, 3);
-      var current = Math.round(start + (target - start) * eased);
-      element.textContent = current + suffix;
-      if(progress < 1){
-        element._countAnim = requestAnimationFrame(step);
-      } else {
-        element.textContent = target + suffix;
-        element._countAnim = null;
-      }
-    }
-    element._countAnim = requestAnimationFrame(step);
-  }
-
   // KPI I — Élèves diagnostiqués (+ répartition CAP / Bac Pro)
   animateCountUp(document.getElementById('kpi-evalues'), totalEval||0, 1400);
-  var nCap=0, nBp=0;
+  var nCap=0, nBp=0, nDysCap=0, nDysBp=0;
   eleves.forEach(function(e){
     var fil=getFiliereDeClasse(e.classe);
-    if(fil==='CAP') nCap++;
-    else if(fil==='BACPRO') nBp++;
+    var dys=estDys(e.email);
+    if(fil==='CAP'){ nCap++; if(dys) nDysCap++; }
+    else if(fil==='BACPRO'){ nBp++; if(dys) nDysBp++; }
   });
   var capEl=document.getElementById('kpi-eval-cap');
   var bpEl=document.getElementById('kpi-eval-bp');
+  var capDysEl=document.getElementById('kpi-eval-cap-dys');
+  var bpDysEl=document.getElementById('kpi-eval-bp-dys');
   animateCountUp(capEl, nCap, 1400);
   animateCountUp(bpEl, nBp, 1400);
+  animateCountUp(capDysEl, nDysCap, 1400);
+  animateCountUp(bpDysEl, nDysBp, 1400);
+  // Atténuer la sous-ligne DYS si 0
+  var capDysWrap=document.getElementById('kpi-eval-cap-dys-wrap');
+  var bpDysWrap=document.getElementById('kpi-eval-bp-dys-wrap');
+  if(capDysWrap) capDysWrap.classList.toggle('is-zero', nDysCap===0);
+  if(bpDysWrap) bpDysWrap.classList.toggle('is-zero', nDysBp===0);
 
   // Mise à jour du donut CAP/BP — animation contrôlée
   var donutCap=document.querySelector('.ap-diag-donut-cap');
