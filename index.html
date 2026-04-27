@@ -2893,6 +2893,288 @@ body:has(#section-accueil.active) {
   align-items: stretch;
 }
 
+/* ═══ Cartes filière (Résultats par classe) ═══ */
+
+/* Header éditorial de la page Résultats par classe */
+.niv-page-header {
+  text-align: center;
+  margin-bottom: 1.25rem;
+  padding: 0;
+}
+.niv-page-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 8px;
+}
+.niv-page-kicker-line {
+  width: 32px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212,164,100,0.5), transparent);
+}
+.niv-page-kicker-text {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #9A9588;
+}
+.niv-page-title {
+  font-family: 'Fraunces', 'Instrument Serif', Georgia, serif;
+  font-size: 32px;
+  font-weight: 500;
+  letter-spacing: -1px;
+  color: var(--navy);
+  line-height: 1.05;
+  margin: 0;
+  font-variation-settings: 'opsz' 100;
+}
+.niv-page-title-accent {
+  font-style: italic;
+  color: #D4A464;
+  font-weight: 400;
+}
+.niv-page-sub {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--text2);
+  margin: 6px auto 0;
+  max-width: 520px;
+  line-height: 1.45;
+}
+
+/* CONTRASTE : cases avec fond légèrement crème pour ressortir du blanc du body */
+#view-niveaux .ap-diag {
+  background: linear-gradient(180deg, #FEFDFB 0%, #FBF8F1 100%) !important;
+  border: 1px solid rgba(212,164,100,0.22) !important;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.6) inset,
+    0 8px 24px -8px rgba(42,37,26,0.10),
+    0 2px 6px rgba(42,37,26,0.04) !important;
+  padding: 18px 22px 18px !important;
+  gap: 14px !important;
+}
+#view-niveaux .ap-diag:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.6) inset,
+    0 14px 36px -8px rgba(42,37,26,0.16),
+    0 4px 10px rgba(42,37,26,0.06) !important;
+  border-color: rgba(212,164,100,0.35) !important;
+}
+
+/* Compacter head + foot dans view-niveaux pour gagner de la hauteur */
+#view-niveaux .ap-diag-head { padding-bottom: 4px; }
+#view-niveaux .ap-diag-kicker {
+  font-size: 24px !important;
+  letter-spacing: -0.6px !important;
+}
+#view-niveaux .ap-diag-kicker::before {
+  font-size: 9px !important;
+  letter-spacing: 0.26em !important;
+}
+#view-niveaux .ap-diag-foot {
+  margin-top: 4px;
+}
+#view-niveaux .ap-kpi-cta {
+  padding: 8px 22px !important;
+  font-size: 12.5px !important;
+}
+
+/* Bloc principal : 2 chiffres côte à côte (élèves + % acquis) */
+.niv-main-row {
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr;
+  gap: 14px;
+  align-items: center;
+  padding: 6px 8px 10px;
+}
+.niv-main-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  text-align: center;
+}
+.niv-main-sep {
+  width: 1px;
+  height: 76px;
+  background: linear-gradient(180deg,
+    transparent 0%,
+    rgba(20,19,16,0.12) 50%,
+    transparent 100%);
+}
+.niv-main-num {
+  font-family: 'Sora', sans-serif;
+  font-size: 52px;
+  font-weight: 800;
+  letter-spacing: -2.4px;
+  line-height: 0.9;
+  font-variant-numeric: tabular-nums;
+  display: inline-flex;
+  align-items: baseline;
+}
+.niv-card-cap .niv-main-eleves .niv-main-num { color: #1B2E5E; }
+.niv-card-bp  .niv-main-eleves .niv-main-num { color: #4A90E2; }
+.niv-main-num.good { color: #047857; }
+.niv-main-num.mid  { color: #B45309; }
+.niv-main-num.bad  { color: #991B1B; }
+.niv-main-num-suffix {
+  font-size: 26px;
+  font-weight: 700;
+  margin-left: 2px;
+  letter-spacing: -0.8px;
+}
+.niv-main-lbl {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text3);
+  margin-top: 2px;
+}
+.niv-main-dys {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 10.5px;
+  font-weight: 500;
+  color: #7C3AED;
+  margin-top: 3px;
+}
+.niv-main-dys strong {
+  font-family: 'Sora', sans-serif;
+  font-weight: 800;
+  color: #6D28D9;
+  font-variant-numeric: tabular-nums;
+}
+.niv-main-dys.is-zero { opacity: 0.4; }
+
+/* Mini-jauge horizontale sous le % acquis */
+.niv-main-pct-bar {
+  display: block;
+  width: 100px;
+  height: 4px;
+  background: rgba(20,19,16,0.06);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-top: 5px;
+}
+.niv-main-pct-bar-fill {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  transition: width 1s cubic-bezier(.4, 0, .2, 1);
+}
+.niv-main-pct-bar-fill.good { background: linear-gradient(90deg, #34D399, #059669); }
+.niv-main-pct-bar-fill.mid  { background: linear-gradient(90deg, #FBBF24, #D97706); }
+.niv-main-pct-bar-fill.bad  { background: linear-gradient(90deg, #F87171, #DC2626); }
+
+/* Bloc classes : carte blanche bien marquée à l'intérieur de la case crème */
+.niv-classes-block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 0;
+  padding: 14px 18px 16px;
+  background: #FFFFFF;
+  border: 1px solid rgba(20,19,16,0.06);
+  border-radius: 14px;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.8) inset,
+    0 2px 6px rgba(20,19,16,0.04);
+}
+.niv-classes-title {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: var(--text3);
+  margin-bottom: 4px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(20,19,16,0.06);
+}
+.niv-classes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.niv-classe-row {
+  display: grid;
+  grid-template-columns: 100px 1fr auto auto;
+  align-items: center;
+  gap: 12px;
+  padding: 2px 0;
+}
+.niv-classe-row.is-empty { opacity: 0.45; }
+.niv-classe-nom {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.niv-classe-bar {
+  height: 8px;
+  background: rgba(20,19,16,0.05);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.niv-classe-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.8s cubic-bezier(.4, 0, .2, 1);
+}
+.niv-card-cap .niv-classe-bar-fill { background: linear-gradient(90deg, #2C4A96, #1B2E5E); }
+.niv-card-bp  .niv-classe-bar-fill { background: linear-gradient(90deg, #6FA8E8, #4A90E2); }
+.niv-classe-row.is-empty .niv-classe-bar-fill { width: 0 !important; }
+
+.niv-classe-dys {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: 'Sora', sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  color: #6D28D9;
+  font-variant-numeric: tabular-nums;
+  background: rgba(124,58,237,0.10);
+  padding: 3px 8px;
+  border-radius: 999px;
+}
+.niv-classe-dys-dot {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #7C3AED;
+  flex-shrink: 0;
+}
+.niv-classe-count {
+  font-family: 'Sora', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.4px;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  min-width: 24px;
+  text-align: right;
+}
+.niv-card-cap .niv-classe-count { color: #1B2E5E; }
+.niv-card-bp  .niv-classe-count { color: #4A90E2; }
+.niv-classe-row.is-empty .niv-classe-count { color: var(--text4); font-weight: 600; }
+
+/* Titre éditorial coloré selon la filière (cohérence avec page d'accueil) */
+.niv-card-bp .ap-diag-kicker { color: #4A90E2; }
+
 /* ═══ Animations de transition entre vues — fade + slide subtil ═══ */
 /* Section qui quitte */
 .section.is-leaving-section {
@@ -2910,6 +3192,23 @@ body:has(#section-accueil.active) {
 }
 @keyframes apSectionEnter {
   0%   { opacity: 0; transform: translate3d(0, 16px, 0); }
+  100% { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+/* Sous-vues (à l'intérieur d'une même section) : même animation, durées plus courtes */
+[id^="view-"].is-leaving-subview {
+  animation: apSubviewLeave 200ms cubic-bezier(.4, 0, .6, 1) forwards;
+  pointer-events: none;
+}
+@keyframes apSubviewLeave {
+  0%   { opacity: 1; transform: translate3d(0, 0, 0); }
+  100% { opacity: 0; transform: translate3d(0, -10px, 0); }
+}
+[id^="view-"].is-entering-subview {
+  animation: apSubviewEnter 280ms cubic-bezier(.4, 0, .2, 1) forwards;
+}
+@keyframes apSubviewEnter {
+  0%   { opacity: 0; transform: translate3d(0, 12px, 0); }
   100% { opacity: 1; transform: translate3d(0, 0, 0); }
 }
 
@@ -3546,14 +3845,140 @@ body:has(#section-accueil.active) {
   flex-shrink: 0;
 }
 
-/* Donut Notions acquises */
-.dce-donut-wrap {
-  position: relative;
-  width: 140px;
-  height: 140px;
+/* Séparateur entre les cases et la liste des élèves */
+.dce-separator {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 2.25rem 0 1.5rem;
+}
+.dce-separator-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(212,164,100,0.30) 30%,
+    rgba(212,164,100,0.45) 50%,
+    rgba(212,164,100,0.30) 70%,
+    transparent 100%);
+}
+.dce-separator-text {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #9A9588;
+  white-space: nowrap;
+}
+
+/* Header de page Élèves diagnostiqués → Classe */
+#view-diag-classe-eleves .page-header {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 0;
+}
+#view-diag-classe-eleves .page-kicker {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #9A9588;
+}
+#view-diag-classe-eleves .page-title {
+  font-family: 'Sora', sans-serif;
+  font-size: 36px;
+  font-weight: 800;
+  letter-spacing: -1.2px;
+  color: var(--navy);
+  line-height: 1.05;
+}
+
+/* Case GAUCHE : Identité de la classe */
+.dce-card-left {
+  justify-content: center;
+}
+.dce-eleves-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 0;
+}
+.dce-eleves-num {
+  font-family: 'Sora', sans-serif;
+  font-size: 120px;
+  font-weight: 800;
+  letter-spacing: -6px;
+  color: var(--navy);
+  line-height: 0.85;
+  font-variant-numeric: tabular-nums;
+}
+.dce-eleves-lbl {
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text3);
+  margin-top: 8px;
+}
+.dce-dys-strip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: rgba(124, 58, 237, 0.08);
+  border: 1px solid rgba(124, 58, 237, 0.18);
+  border-radius: 999px;
+  font-family: 'Inter Tight', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: #6D28D9;
+  margin-top: 4px;
+}
+.dce-dys-strip.is-zero { opacity: 0.4; }
+.dce-dys-strip-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #7C3AED;
   flex-shrink: 0;
 }
-.dce-donut { width: 140px; height: 140px; display: block; }
+.dce-dys-strip-num {
+  font-family: 'Sora', sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  color: #6D28D9;
+  font-variant-numeric: tabular-nums;
+}
+.dce-dys-strip-lbl {
+  letter-spacing: 0.04em;
+}
+
+/* Case DROITE : Notions acquises (donut + distribution) */
+.dce-card-right {
+  justify-content: flex-start;
+}
+.dce-notions-row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 24px;
+  align-items: center;
+  width: 100%;
+  padding: 8px 4px;
+}
+
+/* Donut Notions acquises (agrandi) */
+.dce-donut-wrap {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  flex-shrink: 0;
+}
+.dce-donut { width: 200px; height: 200px; display: block; }
 .dce-donut-bg { stroke: rgba(20, 19, 16, 0.06); }
 .dce-donut-fill {
   transition: stroke-dasharray 1s cubic-bezier(.4, 0, .2, 1);
@@ -3574,9 +3999,9 @@ body:has(#section-accueil.active) {
 }
 .dce-donut-pct {
   font-family: 'Sora', sans-serif;
-  font-size: 32px;
+  font-size: 56px;
   font-weight: 800;
-  letter-spacing: -1.2px;
+  letter-spacing: -2.4px;
   line-height: 1;
   color: var(--navy);
   font-variant-numeric: tabular-nums;
@@ -3587,19 +4012,10 @@ body:has(#section-accueil.active) {
 .dce-donut-pct.mid  { color: #B45309; }
 .dce-donut-pct.bad  { color: #991B1B; }
 .dce-donut-pct-suffix {
-  font-size: 16px;
+  font-size: 26px;
   font-weight: 700;
   margin-left: 1px;
-}
-.dce-donut-lbl {
-  font-family: 'Inter Tight', sans-serif;
-  font-size: 8.5px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--text3);
-  margin-top: 4px;
-  text-align: center;
+  letter-spacing: -0.8px;
 }
 
 /* Bar chart de distribution par palier */
@@ -5321,55 +5737,87 @@ body:has(#section-accueil.active) {
         <!-- ── Sous-vue : Élèves d'une classe ── -->
         <div id="view-diag-classe-eleves" style="display:none;">
           <button class="back-btn" onclick="retourDiagMain()">← Retour aux filières</button>
-          <div class="diag-eleves-header">
-            <div class="diag-eleves-title-block">
-              <span class="diag-eleves-kicker" id="dce-kicker">Classe</span>
-              <h2 class="diag-eleves-title" id="dce-title">—</h2>
-              <p class="diag-eleves-sub" id="dce-sub">—</p>
-            </div>
-            <div class="diag-eleves-graphics">
-
-              <!-- Donut Notions acquises -->
-              <div class="dce-donut-wrap">
-                <svg class="dce-donut" viewBox="0 0 140 140" aria-hidden="true">
-                  <defs>
-                    <linearGradient id="dceDonutGood" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stop-color="#34D399"/>
-                      <stop offset="100%" stop-color="#059669"/>
-                    </linearGradient>
-                    <linearGradient id="dceDonutMid" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stop-color="#FBBF24"/>
-                      <stop offset="100%" stop-color="#D97706"/>
-                    </linearGradient>
-                    <linearGradient id="dceDonutBad" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stop-color="#F87171"/>
-                      <stop offset="100%" stop-color="#DC2626"/>
-                    </linearGradient>
-                  </defs>
-                  <circle class="dce-donut-bg" cx="70" cy="70" r="58" stroke-width="11" fill="none"/>
-                  <circle class="dce-donut-fill" cx="70" cy="70" r="58" stroke-width="11" fill="none"
-                          stroke-dasharray="0 364.42" transform="rotate(-90 70 70)" stroke-linecap="round"/>
-                </svg>
-                <div class="dce-donut-center">
-                  <span class="dce-donut-pct" id="dce-stat-pct">—<span class="dce-donut-pct-suffix">%</span></span>
-                  <span class="dce-donut-lbl">Notions acquises</span>
-                </div>
-              </div>
-
-              <!-- Distribution par palier -->
-              <div class="dce-distrib">
-                <div class="dce-distrib-title">Distribution des élèves</div>
-                <div class="dce-distrib-rows" id="dce-distrib-rows"></div>
-                <div class="dce-distrib-foot">
-                  <span class="dce-distrib-foot-stat"><span id="dce-stat-total">—</span> élève<span id="dce-stat-total-plural">s</span></span>
-                  <span class="dce-distrib-foot-sep">·</span>
-                  <span class="dce-distrib-foot-stat dce-distrib-foot-dys"><span id="dce-stat-dys">—</span> en mode DYS</span>
-                </div>
-              </div>
-
-            </div>
+          <div class="page-header">
+            <span class="page-kicker" id="dce-kicker">Classe</span>
+            <div class="page-title" id="dce-title">—</div>
           </div>
 
+          <!-- 2 grandes cases côte à côte (style page d'accueil) -->
+          <div class="ap-kpi-row ap-kpi-row-2col" style="margin-top: 1.25rem;">
+
+            <!-- GAUCHE : Identité de la classe -->
+            <div class="ap-diag dce-card-left">
+              <div class="ap-diag-head">
+                <span class="ap-diag-kicker" data-section="Section">Élèves de la classe</span>
+                <span class="ap-diag-sublabel" id="dce-niveau-lbl">—</span>
+              </div>
+
+              <div class="dce-eleves-stage">
+                <span class="dce-eleves-num" id="dce-stat-total">—</span>
+                <span class="dce-eleves-lbl">élève<span id="dce-stat-total-plural">s</span> diagnostiqué<span id="dce-stat-total-plural2">s</span></span>
+              </div>
+
+              <div class="dce-dys-strip" id="dce-dys-strip">
+                <span class="dce-dys-strip-dot"></span>
+                <span class="dce-dys-strip-num" id="dce-stat-dys">—</span>
+                <span class="dce-dys-strip-lbl">en mode DYS</span>
+              </div>
+            </div>
+
+            <!-- DROITE : Notions acquises de la classe -->
+            <div class="ap-diag dce-card-right">
+              <div class="ap-diag-head">
+                <span class="ap-diag-kicker" data-section="Section">Notions acquises</span>
+                <span class="ap-diag-sublabel">Par palier</span>
+              </div>
+
+              <div class="dce-notions-row">
+                <!-- Donut grand format avec % central -->
+                <div class="dce-donut-wrap">
+                  <svg class="dce-donut" viewBox="0 0 200 200" aria-hidden="true">
+                    <defs>
+                      <linearGradient id="dceDonutGood" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#34D399"/>
+                        <stop offset="100%" stop-color="#059669"/>
+                      </linearGradient>
+                      <linearGradient id="dceDonutMid" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#FBBF24"/>
+                        <stop offset="100%" stop-color="#D97706"/>
+                      </linearGradient>
+                      <linearGradient id="dceDonutBad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#F87171"/>
+                        <stop offset="100%" stop-color="#DC2626"/>
+                      </linearGradient>
+                    </defs>
+                    <circle class="dce-donut-bg" cx="100" cy="100" r="84" stroke-width="14" fill="none"/>
+                    <circle class="dce-donut-fill" cx="100" cy="100" r="84" stroke-width="14" fill="none"
+                            stroke-dasharray="0 527.79" transform="rotate(-90 100 100)" stroke-linecap="round"/>
+                  </svg>
+                  <div class="dce-donut-center">
+                    <span class="dce-donut-pct">
+                      <span id="dce-stat-pct">—</span><span class="dce-donut-pct-suffix">%</span>
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Distribution par palier (à droite du donut) -->
+                <div class="dce-distrib">
+                  <div class="dce-distrib-title">Distribution des élèves</div>
+                  <div class="dce-distrib-rows" id="dce-distrib-rows"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Séparateur entre les cases et la liste des élèves -->
+          <div class="dce-separator">
+            <span class="dce-separator-line"></span>
+            <span class="dce-separator-text">Liste des élèves</span>
+            <span class="dce-separator-line"></span>
+          </div>
+
+          <!-- Liste des élèves -->
           <div class="diag-eleves-list" id="dce-list">
             <div class="diag-eleves-empty">Chargement…</div>
           </div>
@@ -5451,11 +5899,16 @@ body:has(#section-accueil.active) {
 
       <div class="section" id="section-classes">
         <div id="view-niveaux">
-          <div class="page-header">
-            <div class="page-title">Résultats par classe</div>
-            <div class="page-sub">Sélectionnez un niveau pour explorer les classes.</div>
+          <div class="niv-page-header">
+            <div class="niv-page-kicker">
+              <span class="niv-page-kicker-line"></span>
+              <span class="niv-page-kicker-text">Vue par filière</span>
+              <span class="niv-page-kicker-line"></span>
+            </div>
+            <h1 class="niv-page-title">Résultats <span class="niv-page-title-accent">par classe</span></h1>
+            <p class="niv-page-sub">Choisissez une filière pour explorer les résultats détaillés de chaque classe.</p>
           </div>
-          <div class="niveau-grid" id="niveaux-grid-2"></div>
+          <div class="ap-kpi-row ap-kpi-row-2col" id="niveaux-grid-2"></div>
         </div>
 
         <div id="view-classes" style="display:none;">
@@ -5473,39 +5926,132 @@ body:has(#section-accueil.active) {
             <div class="page-title" id="dc-title">—</div>
             <div class="page-sub" id="dc-sub">—</div>
           </div>
-          <div class="kpi-row">
-            <div class="kpi-cell"><div class="kpi-val" id="dc-evalues">—</div><div class="kpi-lbl">Évalués</div></div>
-            <div class="kpi-cell"><div class="kpi-val" id="dc-assignees">—</div><div class="kpi-lbl">Fiches assignées</div></div>
-            <div class="kpi-cell"><div class="kpi-val" id="dc-validees">—</div><div class="kpi-lbl">Validées</div></div>
-            <div class="kpi-cell"><div class="kpi-val" id="dc-alertes">—</div><div class="kpi-lbl">Alertes</div></div>
-          </div>
-          <div class="visual-row">
-            <div class="vis-card">
-              <div class="vis-title">Lacunes / Acquis</div>
-              <div style="display:flex;align-items:center;gap:1.5rem;">
-                <div class="big-pie">
-                  <svg viewBox="0 0 120 120" width="110" height="110">
-                    <circle class="big-pie-bg" cx="60" cy="60" r="46"/>
-                    <circle class="big-pie-fill" id="dc-pie-fill" cx="60" cy="60" r="46" stroke-dasharray="289" stroke-dashoffset="289"/>
-                  </svg>
-                  <div class="big-pie-inner"><div class="big-pie-pct" id="dc-pie-pct">—</div><div class="big-pie-sub">acquis</div></div>
-                </div>
-                <div>
-                  <div class="leg-item"><div class="leg-dot" style="background:var(--green);"></div><div class="leg-txt">Acquis</div><div class="leg-val" id="dc-leg-acquis">—</div></div>
-                  <div class="leg-item"><div class="leg-dot" style="background:#EF4444;"></div><div class="leg-txt">Lacunes</div><div class="leg-val" id="dc-leg-lacunes">—</div></div>
+
+          <!-- 2 grosses cases côte à côte, identiques à la page d'accueil -->
+          <div class="ap-kpi-row ap-kpi-row-2col" style="margin-top: 1.5rem;">
+
+            <!-- GAUCHE : Élèves diagnostiqués (clone de l'accueil) -->
+            <div class="ap-diag" onclick="ouvrirDiagClasseElevesDepuisDetail()">
+              <div class="ap-diag-head">
+                <span class="ap-diag-kicker" data-section="Section">Élèves diagnostiqués</span>
+                <span class="ap-diag-live"><span class="ap-diag-live-dot"></span>live</span>
+              </div>
+
+              <!-- Donut grand format avec chiffre central -->
+              <div class="ap-diag-donut-stage">
+                <svg class="ap-diag-donut" viewBox="0 0 240 240" aria-hidden="true">
+                  <circle class="ap-diag-donut-bg" cx="120" cy="120" r="100" stroke-width="20" fill="none"/>
+                  <circle class="ap-diag-donut-cap" cx="120" cy="120" r="100" stroke-width="20" fill="none"
+                          stroke-dasharray="0 628.32" stroke-dashoffset="0" transform="rotate(-90 120 120)"
+                          filter="url(#apDiagShadow)"/>
+                  <circle class="ap-diag-donut-bp" cx="120" cy="120" r="100" stroke-width="20" fill="none"
+                          stroke-dasharray="0 628.32" stroke-dashoffset="0" transform="rotate(-90 120 120)"
+                          filter="url(#apDiagShadow)"/>
+                </svg>
+                <div class="ap-diag-donut-center">
+                  <span class="ap-diag-num" id="dc-evalues">—</span>
+                  <span class="ap-diag-num-lbl">élèves au total</span>
                 </div>
               </div>
+
+              <!-- Légende CAP / BP en bas -->
+              <div class="ap-diag-legend">
+                <div class="ap-diag-leg ap-diag-leg-cap">
+                  <span class="ap-diag-leg-swatch ap-diag-leg-swatch-cap"></span>
+                  <div class="ap-diag-leg-info">
+                    <div class="ap-diag-leg-row">
+                      <span class="ap-diag-leg-tag">CAP</span>
+                      <span class="ap-diag-leg-num" id="dc-eval-cap">—</span>
+                    </div>
+                    <div class="ap-diag-leg-dys" id="dc-eval-cap-dys-wrap">
+                      <span class="ap-diag-leg-dys-dot"></span>
+                      dont <span id="dc-eval-cap-dys">—</span> en mode DYS
+                    </div>
+                  </div>
+                </div>
+                <div class="ap-diag-leg ap-diag-leg-bp">
+                  <span class="ap-diag-leg-swatch ap-diag-leg-swatch-bp"></span>
+                  <div class="ap-diag-leg-info">
+                    <div class="ap-diag-leg-row">
+                      <span class="ap-diag-leg-tag">Bac Pro</span>
+                      <span class="ap-diag-leg-num" id="dc-eval-bp">—</span>
+                    </div>
+                    <div class="ap-diag-leg-dys" id="dc-eval-bp-dys-wrap">
+                      <span class="ap-diag-leg-dys-dot"></span>
+                      dont <span id="dc-eval-bp-dys">—</span> en mode DYS
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="ap-diag-foot">
+                <span class="ap-kpi-cta">Explorer <span class="ap-kpi-cta-arrow">→</span></span>
+              </div>
             </div>
-            <div class="vis-card">
-              <div class="vis-title">Progression remédiation</div>
-              <div class="prog-big-pct" id="dc-prog-pct">—</div>
-              <div class="prog-track"><div class="prog-fill" id="dc-prog-fill-bar"></div></div>
-              <div class="prog-note" id="dc-prog-note">—</div>
+
+            <!-- DROITE : Notions acquises (clone de l'accueil) -->
+            <div class="ap-diag ap-diag-notions" onclick="ouvrirNotionsAcquisesPourClasse(currentClasse)">
+              <div class="ap-diag-head">
+                <span class="ap-diag-kicker" data-section="Section">Notions acquises</span>
+                <span class="ap-diag-sublabel">Prérequis de seconde</span>
+              </div>
+
+              <!-- Donut grand format avec % central -->
+              <div class="ap-diag-donut-stage">
+                <svg class="ap-diag-donut" viewBox="0 0 240 240" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="dcNotionsGoodGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#34D399"/>
+                      <stop offset="100%" stop-color="#059669"/>
+                    </linearGradient>
+                    <linearGradient id="dcNotionsMidGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#FBBF24"/>
+                      <stop offset="100%" stop-color="#D97706"/>
+                    </linearGradient>
+                    <linearGradient id="dcNotionsBadGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#F87171"/>
+                      <stop offset="100%" stop-color="#DC2626"/>
+                    </linearGradient>
+                  </defs>
+                  <circle class="ap-diag-donut-bg" cx="120" cy="120" r="100" stroke-width="20" fill="none"/>
+                  <circle class="ap-notions-donut-fill" id="dc-notions-fill" cx="120" cy="120" r="100" stroke-width="20" fill="none"
+                          stroke-dasharray="0 628.32" stroke-dashoffset="0" transform="rotate(-90 120 120)"
+                          stroke-linecap="round"/>
+                </svg>
+                <div class="ap-diag-donut-center">
+                  <span class="ap-notions-num"><span id="dc-pie-pct">—</span><span class="ap-notions-num-pct">%</span></span>
+                  <span class="ap-diag-num-lbl">notions acquises</span>
+                </div>
+              </div>
+
+              <!-- Verdict + commentaire -->
+              <div class="ap-notions-verdict-wrap">
+                <span class="ap-notions-verdict" id="dc-notions-verdict">—</span>
+              </div>
+              <div class="ap-notions-comment" id="dc-notions-comment">
+                Analyse en cours…
+              </div>
+
+              <div class="ap-diag-foot">
+                <span class="ap-kpi-cta">Explorer <span class="ap-kpi-cta-arrow">→</span></span>
+              </div>
             </div>
+
           </div>
-          <div class="themes-section-title">Thèmes</div>
-          <div class="themes-grid" id="themes-grid"></div>
-          <button class="btn-cta" onclick="voirDetailEleves()">Voir le détail par élève →</button>
+
+          <!-- Anciens IDs cachés (compat JS) -->
+          <div style="display:none;">
+            <span id="dc-assignees">—</span>
+            <span id="dc-validees">—</span>
+            <span id="dc-alertes">—</span>
+            <span id="dc-leg-acquis">—</span>
+            <span id="dc-leg-lacunes">—</span>
+            <span id="dc-prog-pct">—</span>
+            <div id="dc-prog-fill-bar"></div>
+            <span id="dc-prog-note">—</span>
+            <div id="dc-pie-fill"></div>
+            <div id="themes-grid"></div>
+          </div>
         </div>
 
         <div id="view-detail-eleves" style="display:none;">
@@ -5875,6 +6421,8 @@ var DATA_EVAL=[],DATA_REM=[],DATA_COMPTES=[];
 var currentNiveau=null,currentClasse=null,currentEleve=null;
 var currentImpactClasse="all";
 var provenanceDetailClasse=null; // null | "stats-classement"
+var provenanceDiagEleves=null;   // null | "detail-classe" — d'où on est arrivé sur view-diag-classe-eleves
+var classeFilterNotionsAcquises=null; // null | classeId — si défini, filtre toutes les vues "Notions acquises" sur cette classe
 
 document.getElementById('login-id').addEventListener('keydown',function(e){if(e.key==='Enter')connexion();});
 document.getElementById('login-mdp').addEventListener('keydown',function(e){if(e.key==='Enter')connexion();});
@@ -6178,6 +6726,8 @@ function ouvrirVueNotionsAcquises(){
 }
 
 function _basculerVueNotionsAcquises(){
+  // Reset filtre car on entre par le canal "Accueil" (vue établissement)
+  classeFilterNotionsAcquises=null;
   document.querySelectorAll('.section').forEach(function(s){s.classList.remove('active');});
   document.querySelectorAll('.sb-item').forEach(function(n){n.classList.remove('active');});
   document.getElementById('section-notions-acquises').classList.add('active');
@@ -6189,9 +6739,53 @@ function _basculerVueNotionsAcquises(){
     {label:'Accueil',onclick:'navVers(\'accueil\')'},
     {label:'Notions acquises',current:true}
   ]);
+  // Restaurer les textes par défaut (mode établissement)
+  _appliquerTextesNotionsAcquises();
+  // Restaurer le bouton retour par défaut
+  var btnBack=document.querySelector('#view-na-main .back-btn');
+  if(btnBack){
+    btnBack.textContent='← Retour à l\'accueil';
+    btnBack.setAttribute('onclick', "navVers('accueil')");
+  }
   renderNaChartGlobal();
   renderNaChartNiveaux();
   renderNaChartThemes();
+}
+
+// Helper : applique les textes des kickers/titres en fonction du mode (établissement ou classe)
+function _appliquerTextesNotionsAcquises(){
+  var modeClasse = !!classeFilterNotionsAcquises;
+  var nomClasse = '';
+  if(modeClasse){
+    var cl=null;
+    NIVEAUX.some(function(n){
+      var f=n.classes.find(function(c){return c.id===classeFilterNotionsAcquises;});
+      if(f){cl=f;return true;} return false;
+    });
+    nomClasse=cl?cl.nom:'';
+  }
+
+  // Bloc global
+  var kickerGlobal=document.querySelector('#view-na-main .charts-grid:nth-of-type(1) .chart-header-kicker-text');
+  var titleGlobal=document.querySelector('#view-na-main .charts-grid:nth-of-type(1) .chart-title-hero');
+  var subGlobal=document.querySelector('#view-na-main .charts-grid:nth-of-type(1) .chart-subtitle-hero');
+  if(kickerGlobal) kickerGlobal.textContent = modeClasse ? ('Diagnostic classe '+nomClasse) : 'Diagnostic établissement';
+  if(titleGlobal) titleGlobal.innerHTML = 'Taux d\'acquisition <span class="chart-title-accent">des prérequis</span>';
+  if(subGlobal) subGlobal.innerHTML = modeClasse
+    ? 'Quelle proportion des notions du collège les élèves de cette classe maîtrisent-ils à l\'entrée du lycée&nbsp;?'
+    : 'Quelle proportion des notions du collège vos élèves maîtrisent-ils à l\'entrée du lycée&nbsp;?';
+
+  // Bloc niveaux (rien à changer dans le titre, mais on adapte le sous-titre)
+  var subNiveaux=document.querySelector('#view-na-main .charts-grid:nth-of-type(2) .chart-subtitle-hero');
+  if(subNiveaux) subNiveaux.innerHTML = modeClasse
+    ? 'À quel niveau du collège les élèves de cette classe maîtrisent-ils déjà les prérequis, et où sont les fragilités&nbsp;?'
+    : 'À quel niveau du collège vos élèves maîtrisent-ils déjà les prérequis, et où sont les fragilités&nbsp;?';
+
+  // Bloc thèmes (idem)
+  var subThemes=document.querySelector('#view-na-main .charts-grid:nth-of-type(3) .chart-subtitle-hero');
+  if(subThemes) subThemes.innerHTML = modeClasse
+    ? 'Sur quels thèmes mathématiques les élèves de cette classe rencontrent-ils le plus de difficultés&nbsp;?'
+    : 'Sur quels thèmes mathématiques vos élèves rencontrent-ils le plus de difficultés&nbsp;?';
 }
 
 function themeDeFicheId(fid){
@@ -6611,13 +7205,17 @@ function renderNaChartFiliere(){
 function renderNaChartGlobal(){
   var container=document.getElementById('na-chart-global');
   if(!container) return;
-  var eleves=elevesUniques();
-  if(eleves.length===0 || DATA_EVAL.length===0){
+  // Filtrage par classe si un filtre est actif
+  var dataSource = classeFilterNotionsAcquises ? evalParClasse(classeFilterNotionsAcquises) : DATA_EVAL;
+  var eleves = classeFilterNotionsAcquises ? elevesUniques(dataSource) : elevesUniques();
+  var sujetCourt = classeFilterNotionsAcquises ? 'les élèves de cette classe' : 'les élèves de l\'établissement';
+  var sujetMeme  = classeFilterNotionsAcquises ? 'Les élèves de cette classe' : 'Les élèves de l\'établissement';
+  if(eleves.length===0 || dataSource.length===0){
     container.innerHTML='<div class="global-empty">Aucune donnée de diagnostic disponible pour le moment.</div>';
     return;
   }
-  var totalNotions=DATA_EVAL.length;
-  var notionsAcquises=DATA_EVAL.filter(function(r){return r.assigne==='non';}).length;
+  var totalNotions=dataSource.length;
+  var notionsAcquises=dataSource.filter(function(r){return r.assigne==='non';}).length;
   var pctAcquises=totalNotions>0?Math.round(notionsAcquises/totalNotions*100):0;
   var classeJauge;
   // Seuils alignés sur les paliers de la grille de lecture (lycée pro réaliste)
@@ -6632,19 +7230,19 @@ function renderNaChartGlobal(){
   var explainTitre, explainP1, explainP2;
   if(pctAcquises>=70){
     explainTitre='Niveau solide à l\'entrée du lycée';
-    explainP1='Les élèves de l\'établissement maîtrisent <strong>'+pctAcquises+'%</strong> des prérequis attendus à la sortie du collège. La base est là pour aborder les programmes de seconde dans de bonnes conditions.';
+    explainP1=sujetMeme+' maîtrisent <strong>'+pctAcquises+'%</strong> des prérequis attendus à la sortie du collège. La base est là pour aborder les programmes de seconde dans de bonnes conditions.';
     explainP2='Les fiches de remédiation permettent de consolider les <strong>'+(100-pctAcquises)+'%</strong> de notions encore fragiles, pour ne pas laisser de zones d\'ombre s\'installer durant l\'année.';
   } else if(pctAcquises>=50){
     explainTitre='Des bases correctes, mais des fragilités à travailler';
-    explainP1='Les élèves maîtrisent <strong>'+pctAcquises+'%</strong> des prérequis du collège. C\'est un socle exploitable, mais il reste des notions clés non acquises qui peuvent freiner les apprentissages de seconde.';
-    explainP2='Pour combler ces lacunes, il est important que les élèves <strong>fassent leurs fiches de remédiation</strong> dans les semaines qui viennent. C\'est le levier principal pour stabiliser leur niveau.';
+    explainP1=sujetMeme+' maîtrisent <strong>'+pctAcquises+'%</strong> des prérequis du collège. C\'est un socle exploitable, mais il reste des notions clés non acquises qui peuvent freiner les apprentissages de seconde.';
+    explainP2='Pour combler ces lacunes, il est important que '+sujetCourt+' <strong>fassent leurs fiches de remédiation</strong> dans les semaines qui viennent. C\'est le levier principal pour stabiliser leur niveau.';
   } else if(pctAcquises>=30){
     explainTitre='Prérequis du collège partiellement acquis';
-    explainP1='Avec <strong>'+pctAcquises+'%</strong> seulement, les élèves de l\'établissement n\'ont pas réellement consolidé les notions du collège. Cela compromet leur capacité à suivre les programmes de seconde sans aide.';
+    explainP1='Avec <strong>'+pctAcquises+'%</strong> seulement, '+sujetCourt+' n\'ont pas réellement consolidé les notions du collège. Cela compromet leur capacité à suivre les programmes de seconde sans aide.';
     explainP2='Il est essentiel que <strong>chaque élève réalise ses fiches de remédiation</strong> sans attendre. C\'est le moyen le plus direct de combler les écarts avant que les nouveaux apprentissages ne s\'empilent dessus.';
   } else {
     explainTitre='Prérequis du collège non maîtrisés';
-    explainP1='Avec <strong>'+pctAcquises+'%</strong> de notions acquises, les élèves arrivent en seconde sans les bases nécessaires pour suivre le programme. Les fondamentaux du collège n\'ont pas été consolidés.';
+    explainP1='Avec <strong>'+pctAcquises+'%</strong> de notions acquises, '+sujetCourt+' arrivent en seconde sans les bases nécessaires pour suivre le programme. Les fondamentaux du collège n\'ont pas été consolidés.';
     explainP2='La priorité absolue est que <strong>chaque élève fasse ses fiches de remédiation</strong>. Sans ce travail de fond, les difficultés rencontrées en classe vont se cumuler tout au long de l\'année.';
   }
 
@@ -6734,8 +7332,7 @@ function niveauDeFiche(fid){
 }
 
 function retourNaMain(){
-  document.getElementById('view-na-themes-classement').style.display='none';
-  document.getElementById('view-na-main').style.display='block';
+  _animerBasculeSousVue('view-na-themes-classement', 'view-na-main');
   setBreadcrumb([
     {label:'Accueil',onclick:'navVers(\'accueil\')'},
     {label:'Notions acquises',current:true}
@@ -6745,8 +7342,10 @@ function retourNaMain(){
 function renderNaChartNiveaux(){
   var container=document.getElementById('na-chart-niveaux');
   if(!container) return;
-  var eleves=elevesUniques();
-  if(eleves.length===0 || DATA_EVAL.length===0){
+  // Filtrage par classe si filtre actif
+  var dataSource = classeFilterNotionsAcquises ? evalParClasse(classeFilterNotionsAcquises) : DATA_EVAL;
+  var eleves = classeFilterNotionsAcquises ? elevesUniques(dataSource) : elevesUniques();
+  if(eleves.length===0 || dataSource.length===0){
     container.innerHTML='<div class="global-empty">Aucune donnée de diagnostic disponible pour le moment.</div>';
     return;
   }
@@ -6773,7 +7372,7 @@ function renderNaChartNiveaux(){
     '4e':{lacunes:0,total:0,lacCap:0,lacBp:0,totalCap:0,totalBp:0},
     '3e':{lacunes:0,total:0,lacCap:0,lacBp:0,totalCap:0,totalBp:0}
   };
-  DATA_EVAL.forEach(function(r){
+  dataSource.forEach(function(r){
     var niv=niveauDeFiche(r.fiche_id);
     var fil=filiereByEmail[String(r.email||'').toLowerCase()];
     // Toutes les lignes (avec ou sans niveau identifié) comptent dans 'all'
@@ -7010,8 +7609,10 @@ function renderNaChartNiveaux(){
 function renderNaChartThemes(){
   var container=document.getElementById('na-chart-themes');
   if(!container) return;
-  var eleves=elevesUniques();
-  if(eleves.length===0 || DATA_EVAL.length===0){
+  // Filtrage par classe si filtre actif
+  var dataSource = classeFilterNotionsAcquises ? evalParClasse(classeFilterNotionsAcquises) : DATA_EVAL;
+  var eleves = classeFilterNotionsAcquises ? elevesUniques(dataSource) : elevesUniques();
+  if(eleves.length===0 || dataSource.length===0){
     container.innerHTML='<div class="global-empty">Aucune donnée de diagnostic disponible pour le moment.</div>';
     return;
   }
@@ -7032,7 +7633,7 @@ function renderNaChartThemes(){
 
   // Calcul des stats par thème
   var blocs=THEMES_CONFIG.map(function(th){
-    var lignes=DATA_EVAL.filter(function(r){return themeDeFicheId(r.fiche_id)===th.id;});
+    var lignes=dataSource.filter(function(r){return themeDeFicheId(r.fiche_id)===th.id;});
     var total=lignes.length;
     var lacunes=0, totalCap=0, lacCap=0, totalBp=0, lacBp=0;
     lignes.forEach(function(r){
@@ -7190,8 +7791,7 @@ function renderNaChartThemes(){
 // ═══════════════════════════════════════════════════════════════════
 
 function ouvrirVueThemesClassement(){
-  document.getElementById('view-na-main').style.display='none';
-  document.getElementById('view-na-themes-classement').style.display='block';
+  _animerBasculeSousVue('view-na-main', 'view-na-themes-classement');
   setBreadcrumb([
     {label:'Accueil',onclick:'navVers(\'accueil\')'},
     {label:'Notions acquises',onclick:'retourNaMain()'},
@@ -7365,6 +7965,8 @@ function ouvrirVueDiagnostiques(){
 }
 
 function _basculerVueDiagnostiques(){
+  // Reset provenance car on entre par le canal "Accueil"
+  provenanceDiagEleves=null;
   document.querySelectorAll('.section').forEach(function(s){s.classList.remove('active');});
   document.querySelectorAll('.sb-item').forEach(function(n){n.classList.remove('active');});
   document.getElementById('section-diagnostiques').classList.add('active');
@@ -7875,21 +8477,29 @@ function ouvrirDiagClasseEleves(classeId){
   });
 
   // Mise à jour de l'en-tête
-  document.getElementById('dce-kicker').textContent=niv.nom;
+  var kickerEl=document.getElementById('dce-kicker');
+  if(kickerEl) kickerEl.textContent=niv.nom;
   document.getElementById('dce-title').textContent=cl.nom;
-  document.getElementById('dce-sub').textContent=totalEleves+' élève'+(totalEleves>1?'s':'')+' diagnostiqué'+(totalEleves>1?'s':'')+(totalDys>0?(' · '+totalDys+' en mode DYS'):'');
+  var nivLblEl=document.getElementById('dce-niveau-lbl');
+  if(nivLblEl) nivLblEl.textContent=niv.nom;
   animateCountUp(document.getElementById('dce-stat-total'), totalEleves, 1000);
   animateCountUp(document.getElementById('dce-stat-dys'), totalDys, 1000);
   animateCountUp(document.getElementById('dce-stat-pct'), pctClasse, 1000);
-  // Pluriel "élève(s)"
+  // Pluriel "élève(s)" et "diagnostiqué(s)"
   var pluralEl=document.getElementById('dce-stat-total-plural');
+  var pluralEl2=document.getElementById('dce-stat-total-plural2');
   if(pluralEl) pluralEl.textContent=(totalEleves>1?'s':'');
+  if(pluralEl2) pluralEl2.textContent=(totalEleves>1?'s':'');
+
+  // Toggle is-zero sur la pastille DYS
+  var dysStrip=document.getElementById('dce-dys-strip');
+  if(dysStrip) dysStrip.classList.toggle('is-zero', totalDys===0);
 
   // Animation du donut Notions acquises
   var donutFill=document.querySelector('.dce-donut-fill');
   var donutPct=document.querySelector('.dce-donut-pct');
   if(donutFill){
-    var perim=2*Math.PI*58; // ≈ 364.42
+    var perim=2*Math.PI*84; // ≈ 527.79
     var arcTarget=(pctClasse/100)*perim;
     // Couleur selon palier
     donutFill.classList.remove('good','mid','bad');
@@ -7984,28 +8594,171 @@ function ouvrirDiagClasseEleves(classeId){
     listEl.innerHTML=html;
   }
 
-  // Bascule de vue
-  document.getElementById('view-diag-main').style.display='none';
-  document.getElementById('view-diag-classe-eleves').style.display='block';
+  // Bascule sur la section diagnostiques (au cas où on vient d'ailleurs)
+  document.querySelectorAll('.section').forEach(function(s){s.classList.remove('active');});
+  document.getElementById('section-diagnostiques').classList.add('active');
 
-  // Mettre à jour le breadcrumb
-  setBreadcrumb([
-    {label:'Accueil',onclick:'navVers(\'accueil\')'},
-    {label:'Élèves diagnostiqués',onclick:'retourDiagMain()'},
-    {label:cl.nom,current:true}
-  ]);
+  // Bascule animée de vue dans la section
+  _animerBasculeSousVue('view-diag-main', 'view-diag-classe-eleves');
+
+  // Bouton retour adaptatif selon la provenance
+  var btnBack=document.querySelector('#view-diag-classe-eleves .back-btn');
+  if(btnBack){
+    btnBack.textContent= provenanceDiagEleves==='detail-classe'
+      ? '← Retour au détail de la classe'
+      : '← Retour aux filières';
+  }
+
+  // Breadcrumb adapté à la provenance
+  if(provenanceDiagEleves==='detail-classe'){
+    setBreadcrumb([
+      {label:'Résultats par classe',onclick:'retourNiveauxDepuisDiag()'},
+      {label:niv.nom,onclick:'retourClassesDepuisDiag()'},
+      {label:cl.nom,onclick:'retourDetailClasseDepuisDiag()'},
+      {label:'Élèves',current:true}
+    ]);
+  } else {
+    setBreadcrumb([
+      {label:'Accueil',onclick:'navVers(\'accueil\')'},
+      {label:'Élèves diagnostiqués',onclick:'retourDiagMain()'},
+      {label:cl.nom,current:true}
+    ]);
+  }
 
   // Scroll en haut
   window.scrollTo({top:0, behavior:'smooth'});
 }
 
+// Wrapper : depuis view-detail-classe, ouvrir la vue Notions acquises FILTRÉE sur cette classe
+function ouvrirNotionsAcquisesPourClasse(classeId){
+  if(!classeId) return;
+  classeFilterNotionsAcquises=classeId;
+  // Retrouver la classe et son niveau pour le breadcrumb
+  var niv=NIVEAUX.find(function(n){return n.classes.some(function(c){return c.id===classeId;});});
+  var cl=niv?niv.classes.find(function(c){return c.id===classeId;}):null;
+  if(!cl){ classeFilterNotionsAcquises=null; return; }
+
+  // Bascule de section
+  document.querySelectorAll('.section').forEach(function(s){s.classList.remove('active');});
+  document.getElementById('section-notions-acquises').classList.add('active');
+  // Sous-vue principale
+  document.getElementById('view-na-main').style.display='block';
+  document.getElementById('view-na-themes-classement').style.display='none';
+
+  // Breadcrumb adapté
+  setBreadcrumb([
+    {label:'Résultats par classe',onclick:'retourNiveauxDepuisNotions()'},
+    {label:niv.nom,onclick:'retourClassesDepuisNotions()'},
+    {label:cl.nom,onclick:'retourDetailClasseDepuisNotions()'},
+    {label:'Notions acquises',current:true}
+  ]);
+
+  // Bouton retour
+  var btnBack=document.querySelector('#view-na-main .back-btn');
+  if(btnBack){
+    btnBack.textContent='← Retour au détail de la classe';
+    btnBack.setAttribute('onclick', 'retourDetailClasseDepuisNotions()');
+  }
+
+  // Adapter les textes pour le mode classe
+  _appliquerTextesNotionsAcquises();
+
+  // Render avec filtre actif
+  renderNaChartGlobal();
+  renderNaChartNiveaux();
+  renderNaChartThemes();
+
+  // Scroll en haut
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+// Retour au détail classe depuis Notions acquises
+function retourDetailClasseDepuisNotions(){
+  classeFilterNotionsAcquises=null;
+  document.querySelectorAll('.section').forEach(function(s){s.classList.remove('active');});
+  document.getElementById('section-classes').classList.add('active');
+  if(typeof showSubView==='function') showSubView('detail-classe');
+  if(currentClasse) ouvrirDetailClasse(currentClasse);
+  _appliquerTextesNotionsAcquises();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+// Remonter aux niveaux (CAP/BP) depuis Notions acquises
+function retourNiveauxDepuisNotions(){
+  classeFilterNotionsAcquises=null;
+  document.querySelectorAll('.section').forEach(function(s){s.classList.remove('active');});
+  document.getElementById('section-classes').classList.add('active');
+  if(typeof retourNiveaux==='function') retourNiveaux();
+  _appliquerTextesNotionsAcquises();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+// Remonter à la liste des classes depuis Notions acquises
+function retourClassesDepuisNotions(){
+  classeFilterNotionsAcquises=null;
+  document.querySelectorAll('.section').forEach(function(s){s.classList.remove('active');});
+  document.getElementById('section-classes').classList.add('active');
+  if(typeof retourClasses==='function') retourClasses();
+  _appliquerTextesNotionsAcquises();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+// Wrapper : depuis view-detail-classe (Résultats par classe), ouvrir la vue Élèves diag avec la bonne provenance
+function ouvrirDiagClasseElevesDepuisDetail(){
+  if(!currentClasse) return;
+  provenanceDiagEleves='detail-classe';
+  ouvrirDiagClasseEleves(currentClasse);
+}
+
 function retourDiagMain(){
-  document.getElementById('view-diag-classe-eleves').style.display='none';
-  document.getElementById('view-diag-main').style.display='block';
+  // Si on était venu depuis le détail classe, on revient là-bas
+  if(provenanceDiagEleves==='detail-classe'){
+    retourDetailClasseDepuisDiag();
+    return;
+  }
+  _animerBasculeSousVue('view-diag-classe-eleves', 'view-diag-main');
   setBreadcrumb([
     {label:'Accueil',onclick:'navVers(\'accueil\')'},
     {label:'Élèves diagnostiqués',current:true}
   ]);
+}
+
+// Retour au détail classe depuis la vue élèves (provenance "detail-classe")
+function retourDetailClasseDepuisDiag(){
+  provenanceDiagEleves=null;
+  // Cacher la sous-vue élèves dans diag
+  document.getElementById('view-diag-classe-eleves').style.display='none';
+  document.getElementById('view-diag-main').style.display='block';
+  // Retourner sur la section Classes / vue détail-classe
+  document.querySelectorAll('.section').forEach(function(s){s.classList.remove('active');});
+  document.getElementById('section-classes').classList.add('active');
+  // Réafficher la sous-vue detail-classe (en utilisant showSubView qui gère ça)
+  if(typeof showSubView==='function') showSubView('detail-classe');
+  // Re-rendre la vue détail classe pour que les données soient à jour
+  if(currentClasse) ouvrirDetailClasse(currentClasse);
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+// Remonter au niveau "Niveaux" (CAP / Bac Pro) depuis la vue élèves diag
+function retourNiveauxDepuisDiag(){
+  provenanceDiagEleves=null;
+  document.getElementById('view-diag-classe-eleves').style.display='none';
+  document.getElementById('view-diag-main').style.display='block';
+  document.querySelectorAll('.section').forEach(function(s){s.classList.remove('active');});
+  document.getElementById('section-classes').classList.add('active');
+  if(typeof retourNiveaux==='function') retourNiveaux();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+// Remonter au niveau "Classes" (liste des classes du niveau) depuis la vue élèves diag
+function retourClassesDepuisDiag(){
+  provenanceDiagEleves=null;
+  document.getElementById('view-diag-classe-eleves').style.display='none';
+  document.getElementById('view-diag-main').style.display='block';
+  document.querySelectorAll('.section').forEach(function(s){s.classList.remove('active');});
+  document.getElementById('section-classes').classList.add('active');
+  if(typeof retourClasses==='function') retourClasses();
+  window.scrollTo({top:0, behavior:'smooth'});
 }
 
 function renderDiagFilieresDepuisSnapshot(snap){
@@ -8816,10 +9569,105 @@ function retourImpactMenu(){
 }
 
 function showSubView(view){
-  ['view-niveaux','view-classes','view-detail-classe','view-detail-eleves','view-detail-eleve'].forEach(function(v){
-    document.getElementById(v).style.display='none';
-  });
-  document.getElementById('view-'+view).style.display='block';
+  var allViews=['view-niveaux','view-classes','view-detail-classe','view-detail-eleves','view-detail-eleve'];
+  var destEl=document.getElementById('view-'+view);
+  if(!destEl) return;
+
+  // Trouver la sous-vue actuellement visible (s'il y en a une)
+  var activeEl=null;
+  for(var i=0;i<allViews.length;i++){
+    var el=document.getElementById(allViews[i]);
+    if(el && el.style.display!=='none' && el!==destEl){
+      activeEl=el;
+      break;
+    }
+  }
+
+  // Si pas de sous-vue active OU on bascule sur la même → bascule immédiate sans anim
+  if(!activeEl){
+    allViews.forEach(function(v){
+      var e=document.getElementById(v);
+      if(e) e.style.display='none';
+    });
+    destEl.style.display='block';
+    destEl.classList.remove('is-entering-subview');
+    void destEl.getBoundingClientRect();
+    destEl.classList.add('is-entering-subview');
+    return;
+  }
+
+  // Animation : leave de la vue active → bascule → enter de la nouvelle
+  activeEl.classList.remove('is-entering-subview');
+  void activeEl.getBoundingClientRect();
+
+  var done=false;
+  var finish=function(){
+    if(done) return;
+    done=true;
+    activeEl.removeEventListener('animationend', onLeaveEnd);
+    activeEl.classList.remove('is-leaving-subview');
+    // Bascule réelle
+    allViews.forEach(function(v){
+      var e=document.getElementById(v);
+      if(e) e.style.display='none';
+    });
+    destEl.style.display='block';
+    destEl.classList.remove('is-entering-subview');
+    void destEl.getBoundingClientRect();
+    destEl.classList.add('is-entering-subview');
+  };
+  var onLeaveEnd=function(e){
+    if(e.target!==activeEl) return;
+    if(e.animationName!=='apSubviewLeave') return;
+    finish();
+  };
+  activeEl.addEventListener('animationend', onLeaveEnd);
+  activeEl.classList.add('is-leaving-subview');
+  // Filet de sécurité
+  setTimeout(finish, 280);
+}
+
+// Helper générique : bascule animée entre 2 sous-vues quelconques (pas seulement celles de showSubView)
+function _animerBasculeSousVue(idHide, idShow, callback){
+  var hideEl=document.getElementById(idHide);
+  var showEl=document.getElementById(idShow);
+  if(!showEl) { if(callback) callback(); return; }
+
+  // Si la vue à cacher n'existe pas ou est déjà cachée → bascule directe + enter animation
+  if(!hideEl || hideEl.style.display==='none'){
+    if(hideEl) hideEl.style.display='none';
+    showEl.style.display='block';
+    showEl.classList.remove('is-entering-subview');
+    void showEl.getBoundingClientRect();
+    showEl.classList.add('is-entering-subview');
+    if(callback) callback();
+    return;
+  }
+
+  hideEl.classList.remove('is-entering-subview');
+  void hideEl.getBoundingClientRect();
+
+  var done=false;
+  var finish=function(){
+    if(done) return;
+    done=true;
+    hideEl.removeEventListener('animationend', onLeaveEnd);
+    hideEl.classList.remove('is-leaving-subview');
+    hideEl.style.display='none';
+    showEl.style.display='block';
+    showEl.classList.remove('is-entering-subview');
+    void showEl.getBoundingClientRect();
+    showEl.classList.add('is-entering-subview');
+    if(callback) callback();
+  };
+  var onLeaveEnd=function(e){
+    if(e.target!==hideEl) return;
+    if(e.animationName!=='apSubviewLeave') return;
+    finish();
+  };
+  hideEl.addEventListener('animationend', onLeaveEnd);
+  hideEl.classList.add('is-leaving-subview');
+  setTimeout(finish, 280);
 }
 
 function setBreadcrumb(parts){
@@ -10111,27 +10959,80 @@ function renderNiveauxGrid(targetId){
     var maitrNiv=evalNiv.filter(function(r){return r.assigne==='non';}).length;
     var totNiv=assignNiv+maitrNiv;
     var pctAcq=totNiv>0?Math.round(maitrNiv/totNiv*100):0;
-    var remNiv=DATA_REM.filter(function(r){return niv.classes.some(function(cl){return matchClasse(r.classe,cl.id);});});
-    var valNiv=remNiv.filter(function(r){return r.statut==='quiz_final_valide';}).length;
-    var pctProg=assignNiv>0?Math.round(valNiv/assignNiv*100):0;
-    var alertNiv=remNiv.filter(function(r){return r.statut==='echec_3_tentatives'&&r.alerte_traitee==='non';}).length;
+
+    // Compter les élèves DYS dans ce niveau
+    var emailsNiv={};
+    evalNiv.forEach(function(r){emailsNiv[r.email]=true;});
+    var dysCount=Object.keys(emailsNiv).filter(function(em){return estDys(em);}).length;
+
+    // Couleur d'acquisition selon palier
+    var classeColor;
+    if(pctAcq>=70) classeColor='good';
+    else if(pctAcq>=40) classeColor='mid';
+    else classeColor='bad';
+
+    // Stats par classe de la filière
+    var classesStats=niv.classes.map(function(cl){
+      var emails={};
+      DATA_EVAL.forEach(function(r){if(matchClasse(r.classe,cl.id)) emails[r.email]=true;});
+      var emailsArr=Object.keys(emails);
+      var dys=emailsArr.filter(function(em){return estDys(em);}).length;
+      return {id:cl.id, nom:cl.nom, count:emailsArr.length, dys:dys};
+    });
+    var maxClasseCount=Math.max.apply(null, classesStats.map(function(c){return c.count;}).concat([1]));
+
     var tagCls=niv.id==='CAP'?'cap':'bp';
-    var badge=alertNiv>0?'<span class="badge-alert">'+alertNiv+' alerte'+(alertNiv>1?'s':'')+'</span>'
-      :elevesNiv>0?'<span class="badge-ok">Actif</span>'
-      :'<span class="badge-wait">En attente</span>';
-    return '<div class="niveau-card" onclick="ouvrirNiveauClasses(\''+niv.id+'\')">'
-      +'<div class="niv-arrow">→</div>'
-      +'<div class="niv-tag '+tagCls+'">'+esc(niv.type)+'</div>'
-      +'<div class="niv-name">'+esc(niv.nom)+'</div>'
-      +'<div class="niv-desc">'+niv.classes.length+' classes · Remédiation fractions</div>'
-      +'<div class="niv-stats">'
-      +'<div class="niv-stat"><div class="niv-stat-val">'+elevesNiv+'</div><div class="niv-stat-lbl">Évalués</div></div>'
-      +'<div class="niv-stat"><div class="niv-stat-val">'+pctAcq+'%</div><div class="niv-stat-lbl">Acquis</div></div>'
-      +'<div class="niv-stat"><div class="niv-stat-val">'+valNiv+'</div><div class="niv-stat-lbl">Validées</div></div>'
-      +'</div>'
-      +'<div class="niv-prog-row"><span style="font-size:11px;color:var(--text3);">Progression remédiation</span>'+badge+'</div>'
-      +'<div class="niv-prog-track"><div class="niv-prog-fill" style="width:'+pctProg+'%;"></div></div>'
+    var nivIdSafe=esc(niv.id);
+
+    // Construction de la liste des classes
+    var classesHtml=classesStats.map(function(c){
+      var widthPct=maxClasseCount>0?(c.count/maxClasseCount)*100:0;
+      var emptyCls=c.count===0?' is-empty':'';
+      var displayCount=c.count>0?c.count:'—';
+      var dysHtml=c.dys>0
+        ? '<span class="niv-classe-dys"><span class="niv-classe-dys-dot"></span>'+c.dys+'</span>'
+        : '';
+      return '<div class="niv-classe-row'+emptyCls+'">'
+        +'<span class="niv-classe-nom">'+esc(c.nom)+'</span>'
+        +'<div class="niv-classe-bar"><div class="niv-classe-bar-fill" style="width:'+widthPct.toFixed(1)+'%;"></div></div>'
+        +dysHtml
+        +'<span class="niv-classe-count">'+displayCount+'</span>'
       +'</div>';
+    }).join('');
+
+    return '<div class="ap-diag niv-card-'+tagCls+'" onclick="ouvrirNiveauClasses(\''+nivIdSafe+'\')">'
+      +'<div class="ap-diag-head">'
+        +'<span class="ap-diag-kicker" data-section="Filière">'+esc(niv.nom)+'</span>'
+        +'<span class="ap-diag-sublabel">'+niv.classes.length+' classes</span>'
+      +'</div>'
+
+      // Bloc principal : chiffre élèves + % acquis côte à côte
+      +'<div class="niv-main-row">'
+        +'<div class="niv-main-block niv-main-eleves">'
+          +'<span class="niv-main-num">'+elevesNiv+'</span>'
+          +'<span class="niv-main-lbl">élève'+(elevesNiv>1?'s':'')+' évalué'+(elevesNiv>1?'s':'')+'</span>'
+          +(dysCount>0
+            ? '<span class="niv-main-dys"><span class="niv-classe-dys-dot"></span>dont <strong>'+dysCount+'</strong> en mode DYS</span>'
+            : '<span class="niv-main-dys is-zero"><span class="niv-classe-dys-dot"></span>0 en mode DYS</span>')
+        +'</div>'
+        +'<div class="niv-main-sep"></div>'
+        +'<div class="niv-main-block niv-main-acquis">'
+          +'<span class="niv-main-num '+classeColor+'">'+pctAcq+'<span class="niv-main-num-suffix">%</span></span>'
+          +'<span class="niv-main-lbl">notions acquises</span>'
+          +'<span class="niv-main-pct-bar"><span class="niv-main-pct-bar-fill '+classeColor+'" style="width:'+pctAcq+'%;"></span></span>'
+        +'</div>'
+      +'</div>'
+
+      // Bloc classes : liste compacte avec mini-jauges
+      +'<div class="niv-classes-block">'
+        +'<div class="niv-classes-title">Répartition par classe</div>'
+        +'<div class="niv-classes-list">'+classesHtml+'</div>'
+      +'</div>'
+
+      +'<div class="ap-diag-foot">'
+        +'<span class="ap-kpi-cta">Explorer <span class="ap-kpi-cta-arrow">→</span></span>'
+      +'</div>'
+    +'</div>';
   }).join('');
 }
 
@@ -10190,6 +11091,8 @@ function ouvrirDetailClasse(classeId){
   var valCl=remCl.filter(function(r){return r.statut==='quiz_final_valide';}).length;
   var pctProg=assignCl>0?Math.round(valCl/assignCl*100):0;
   var alertesCl=remCl.filter(function(r){return r.statut==='echec_3_tentatives'&&r.alerte_traitee==='non';}).length;
+
+  // Breadcrumb
   if(provenanceDetailClasse==='stats-classement'){
     setBreadcrumb([
       {label:'Statistiques',onclick:'retourVersStatsMenu()'},
@@ -10207,41 +11110,125 @@ function ouvrirDetailClasse(classeId){
     var btn=document.getElementById('btn-back-detail-classe');
     if(btn) btn.textContent='← Retour aux classes';
   }
+
+  // Header (titre + sous-titre uniquement)
   document.getElementById('dc-title').textContent=cl?cl.nom:classeId;
   document.getElementById('dc-sub').textContent=(niv?niv.nom:'')+' · '+elevesCl+' élève'+(elevesCl>1?'s':'')+' évalué'+(elevesCl>1?'s':'');
-  document.getElementById('dc-evalues').textContent=elevesCl;
+
+  // ── Remplir la case GAUCHE : Élèves diagnostiqués ──
+  // Compter élèves uniques + DYS (les élèves d'une classe sont tous de la même filière, mais on remplit les 2 lignes pour cohérence visuelle)
+  var emailsClasse={};
+  evalCl.forEach(function(r){emailsClasse[r.email]=true;});
+  var emailsList=Object.keys(emailsClasse);
+  var nbDys=emailsList.filter(function(em){return estDys(em);}).length;
+
+  // Filière de la classe (CAP ou BACPRO)
+  var filiereId=niv?niv.id:null;
+  var nCap=0, nBp=0, nDysCap=0, nDysBp=0;
+  if(filiereId==='CAP'){ nCap=elevesCl; nDysCap=nbDys; }
+  else if(filiereId==='BACPRO'){ nBp=elevesCl; nDysBp=nbDys; }
+
+  // Chiffre central
+  animateCountUp(document.getElementById('dc-evalues'), elevesCl, 1400);
+  // Mini-cartes CAP/BP
+  animateCountUp(document.getElementById('dc-eval-cap'), nCap, 1400);
+  animateCountUp(document.getElementById('dc-eval-bp'), nBp, 1400);
+  animateCountUp(document.getElementById('dc-eval-cap-dys'), nDysCap, 1400);
+  animateCountUp(document.getElementById('dc-eval-bp-dys'), nDysBp, 1400);
+  // Atténuer les sous-lignes DYS si 0
+  var capDysWrap=document.getElementById('dc-eval-cap-dys-wrap');
+  var bpDysWrap=document.getElementById('dc-eval-bp-dys-wrap');
+  if(capDysWrap) capDysWrap.classList.toggle('is-zero', nDysCap===0);
+  if(bpDysWrap) bpDysWrap.classList.toggle('is-zero', nDysBp===0);
+
+  // Animation des donuts CAP/BP (technique du double arc identique à la page accueil)
+  var donutCap=document.querySelector('#view-detail-classe .ap-diag-donut-cap');
+  var donutBp=document.querySelector('#view-detail-classe .ap-diag-donut-bp');
+  if(donutCap && donutBp){
+    var perim=2*Math.PI*100; // ≈ 628.32
+    var totalEleves=nCap+nBp;
+    var capArcTarget = totalEleves>0 ? (nCap/totalEleves)*perim : 0;
+    var bpArcTarget  = totalEleves>0 ? (nBp/totalEleves)*perim : 0;
+    // Reset à 0
+    donutCap.setAttribute('stroke-dasharray', '0 '+perim.toFixed(2));
+    donutBp.setAttribute('stroke-dasharray', '0 '+perim.toFixed(2));
+    // L'arc BP démarre après l'arc CAP (rotation -90 + offset)
+    donutBp.setAttribute('transform', 'rotate('+(-90+(capArcTarget/perim)*360)+' 120 120)');
+    void donutCap.getBoundingClientRect();
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){
+        donutCap.setAttribute('stroke-dasharray', capArcTarget.toFixed(2)+' '+(perim-capArcTarget).toFixed(2));
+        donutBp.setAttribute('stroke-dasharray', bpArcTarget.toFixed(2)+' '+(perim-bpArcTarget).toFixed(2));
+      });
+    });
+  }
+
+  // ── Remplir la case DROITE : Notions acquises ──
+  document.getElementById('dc-pie-pct').textContent=pctAcq;
+
+  // Couleur du % central + du suffixe % selon palier
+  var pctCenter=document.getElementById('dc-pie-pct');
+  var pctSuffix=pctCenter ? pctCenter.parentElement.querySelector('.ap-notions-num-pct') : null;
+  var couleurPct;
+  if(pctAcq>=70) couleurPct='#047857';
+  else if(pctAcq>=40) couleurPct='#B45309';
+  else couleurPct='#991B1B';
+  if(pctCenter) pctCenter.style.color=couleurPct;
+  if(pctSuffix) pctSuffix.style.color=couleurPct;
+
+  // Animation du donut Notions avec couleur dynamique (vert/orange/rouge selon palier)
+  var donutNotions=document.getElementById('dc-notions-fill');
+  if(donutNotions){
+    var perim=2*Math.PI*100;
+    var arcTarget=(pctAcq/100)*perim;
+    // Couleur selon palier (mêmes seuils que la page accueil : 70/40)
+    var gradId;
+    if(pctAcq>=70) gradId='dcNotionsGoodGrad';
+    else if(pctAcq>=40) gradId='dcNotionsMidGrad';
+    else gradId='dcNotionsBadGrad';
+    donutNotions.setAttribute('stroke', 'url(#'+gradId+')');
+    // Animation
+    donutNotions.setAttribute('stroke-dasharray', '0 '+perim.toFixed(2));
+    void donutNotions.getBoundingClientRect();
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){
+        donutNotions.setAttribute('stroke-dasharray', arcTarget.toFixed(2)+' '+(perim-arcTarget).toFixed(2));
+      });
+    });
+  }
+
+  // Verdict + commentaire (mêmes seuils et logique que l'accueil)
+  var verdictEl=document.getElementById('dc-notions-verdict');
+  var commentEl=document.getElementById('dc-notions-comment');
+  if(verdictEl && commentEl){
+    var verdict, comment, verdictCls;
+    if(pctAcq>=70){
+      verdict='Objectif atteint';
+      verdictCls='good';
+      comment='Les élèves de cette classe maîtrisent <strong>'+pctAcq+'%</strong> des notions du collège. La base est solide pour suivre le programme de seconde.';
+    } else if(pctAcq>=40){
+      verdict='En progression';
+      verdictCls='mid';
+      comment='Les élèves de cette classe maîtrisent <strong>'+pctAcq+'%</strong> des notions. Quelques fragilités à consolider via les fiches de remédiation.';
+    } else {
+      verdict='À renforcer';
+      verdictCls='bad';
+      comment='Les élèves de cette classe maîtrisent <strong>'+pctAcq+'%</strong> des notions nécessaires à l\'année de seconde.';
+    }
+    verdictEl.textContent=verdict;
+    verdictEl.className='ap-notions-verdict '+verdictCls;
+    commentEl.innerHTML=comment;
+  }
+
+  // IDs cachés (compat) — on conserve pour ne rien casser
   document.getElementById('dc-assignees').textContent=assignCl;
   document.getElementById('dc-validees').textContent=valCl;
   document.getElementById('dc-alertes').textContent=alertesCl;
-  var circ=289,off=circ-(pctAcq/100)*circ;
-  setTimeout(function(){var el=document.getElementById('dc-pie-fill');if(el){el.style.strokeDasharray=circ;el.style.strokeDashoffset=off;}},100);
-  document.getElementById('dc-pie-pct').textContent=pctAcq+'%';
   document.getElementById('dc-leg-acquis').textContent=maitrCl;
   document.getElementById('dc-leg-lacunes').textContent=assignCl;
   document.getElementById('dc-prog-pct').textContent=pctProg+'%';
-  setTimeout(function(){document.getElementById('dc-prog-fill-bar').style.width=pctProg+'%';},100);
   document.getElementById('dc-prog-note').textContent=valCl+' fiche'+(valCl>1?'s':'')+' validée'+(valCl>1?'s':'')+' sur '+assignCl+' assignée'+(assignCl>1?'s':'');
-  document.getElementById('themes-grid').innerHTML=THEMES_CONFIG.map(function(th){
-    if(!th.actif){
-      return '<div class="theme-card disabled">'
-        +'<div class="th-header"><div class="th-icon" style="background:'+th.bg+'">'+th.icon+'</div>'
-        +'<div><div class="th-name">'+esc(th.nom)+'</div><div class="th-coming">En cours de création</div></div></div>'
-        +'<div style="font-size:11px;color:var(--text3);">Fiches à venir</div>'
-        +'</div>';
-    }
-    var pctTh=pctAcq,pctProgTh=pctProg;
-    var circ=132,off=circ-(pctTh/100)*circ;
-    return '<div class="theme-card" onclick="voirDetailEleves()">'
-      +'<div class="th-header"><div class="th-icon" style="background:'+th.bg+'">'+th.icon+'</div>'
-      +'<div><div class="th-name">'+esc(th.nom)+'</div><div class="th-coming">'+elevesCl+' élève'+(elevesCl>1?'s':'')+' évalué'+(elevesCl>1?'s':'')+'</div></div></div>'
-      +'<div class="th-pie-row">'
-      +'<div class="th-mini-pie"><svg viewBox="0 0 48 48" width="48" height="48"><circle class="th-pie-bg" cx="24" cy="24" r="18"/><circle class="th-pie-fill" cx="24" cy="24" r="18" stroke-dasharray="'+circ+'" stroke-dashoffset="'+off+'"/></svg>'
-      +'<div class="th-pie-pct">'+pctTh+'%</div></div>'
-      +'<div><div class="th-info-val">'+pctTh+'% acquis</div>'
-      +'<div class="th-prog-track"><div class="th-prog-fill" style="width:'+pctProgTh+'%;"></div></div>'
-      +'<div class="th-prog-txt">'+pctProgTh+'% remédiation</div></div>'
-      +'</div></div>';
-  }).join('');
+
   showSubView('detail-classe');
 }
 
